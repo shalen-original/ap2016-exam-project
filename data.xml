@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Code Of Honor</title>
+	<atom:link href="http://www.codeofhonor.com/blog/feed" rel="self" type="application/rss+xml" />
+	<link>http://www.codeofhonor.com/blog</link>
+	<description>Game design, programming and more</description>
+	<lastBuildDate>Thu, 02 Oct 2014 19:27:28 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.4.2</generator>
+	<item>
+		<title>Stay Awhile and Listen</title>
+		<link>http://www.codeofhonor.com/blog/stay-awhile-and-listen</link>
+		<comments>http://www.codeofhonor.com/blog/stay-awhile-and-listen#comments</comments>
+		<pubDate>Thu, 31 Oct 2013 05:42:52 +0000</pubDate>
+		<dc:creator><![CDATA[Patrick Wyatt]]></dc:creator>
+				<category><![CDATA[Game history]]></category>
+		<category><![CDATA[Diablo]]></category>
+
+		<guid isPermaLink="false">http://www.codeofhonor.com/blog/?p=710</guid>
+		<description><![CDATA[<p>Developing games is a full-time occupation, so it is no surprise that I&#8217;ve had less time for blogging as I&#8217;ve started creating a new game. After a two-year stint helping other folks publish their games I&#8217;m back to coding and game design full-time and having a wonderful time. But for those of you who have [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/stay-awhile-and-listen">Stay Awhile and Listen</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Developing games is a full-time occupation, so it is no surprise that I&#8217;ve had less time for blogging as I&#8217;ve started creating a new game. After a two-year stint helping other folks publish their games I&#8217;m back to coding and game design full-time and having a wonderful time.</p>
+<p>But for those of you who have enjoyed my blogging about the early years of Blizzard Entertainment and the development of Warcraft, StarCraft and Diablo, and want more, I&#8217;m glad to be able to share the news: there&#8217;s a book available today about those very subjects!</p>
+<p>Back in January, 2011, an author named David Craddock contacted me to chat about my experiences in the game industry, and what caused Blizzard to go from an unassuming startup to the dominating presence it has today.</p>
+<p>Over the past couple of years David interviewed me and many other folks who were there from the early years of Blizzard and Blizzard North, and his book provides an intimate look at their games and the people involved.</p>
+<p>During those formative years of my career in the game industry &#8212; Blizzard was my first job coming out of college &#8212; I discovered joy and sorrow in large measures. I still have raw feelings from some events of those times, and I still look back with fondness on many others. This book is about our naivete and hopefulness as we undertook an adventure to reinvent the game industry.</p>
+<p>I hope you&#8217;ll enjoy the book: <a href="http://www.amazon.com/dp/B00G8UL474/?tag=codofhon-20">Stay Awhile and Listen: How Two Blizzards Unleashed Diablo and Forged a Video-Game Empire</a></p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/stay-awhile-and-listen">Stay Awhile and Listen</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codeofhonor.com/blog/stay-awhile-and-listen/feed</wfw:commentRss>
+		<slash:comments>36</slash:comments>
+		</item>
+		<item>
+		<title>Uh-oh: was the company site hacked?</title>
+		<link>http://www.codeofhonor.com/blog/uh-oh-was-the-company-site-hacked</link>
+		<comments>http://www.codeofhonor.com/blog/uh-oh-was-the-company-site-hacked#comments</comments>
+		<pubDate>Thu, 09 May 2013 04:40:37 +0000</pubDate>
+		<dc:creator><![CDATA[Patrick Wyatt]]></dc:creator>
+				<category><![CDATA[Security]]></category>
+
+		<guid isPermaLink="false">http://www.codeofhonor.com/blog/?p=688</guid>
+		<description><![CDATA[<p>Anyone who runs a web site knows that they&#8217;re constantly under attack. You only have to look at your log files to know that hackers running site-scanners are constantly hitting your servers looking for unpatched vulnerabilities to exploit. One of the servers I wrote for Guild Wars 1 &#8212; named AcctHttpSrv &#8212; was designed to [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/uh-oh-was-the-company-site-hacked">Uh-oh: was the company site hacked?</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Anyone who runs a web site knows that they&#8217;re constantly under attack. You only have to look at your log files to know that hackers running site-scanners are constantly hitting your servers looking for unpatched vulnerabilities to exploit.</p>
+<p>One of the servers I wrote for Guild Wars 1 &#8212; named AcctHttpSrv &#8212; was designed to behave like a web server. When you received an email from the Guild Wars account management system and clicked on the link it contained, AcctHttpSrv would convert that click into a database transaction to update your account information. Pretty standard stuff.</p>
+<p>For debugging purposes I configured AcctHttpSrv to log all unknown requests it received for later review. It turned out the number of errors logged was larger by far than the number of valid transactions. Peeking at the error log provided a view into an entirely different universe, a firsthand look at the dark side of the Internet, each line an exploit that had likely been successful on other sites in the past.</p>
+<p>Just the other day one of my readers pointed out that <em>this</em> site started misbehaving: the articles RSS feed stopped functioning. Since I hadn&#8217;t logged in for several weeks it likely wasn&#8217;t a change I had made. My first guess was a new WordPress hack as there have been several recently, so I ran some security scans (nothing found) and rolled back the site to a previous backup, which fixed the bug. My thanks to Steven Y. for pointing out the problem.</p>
+<p>So I thought I&#8217;d use the occasion share a story about a web deploy that went awry.</p>
+<p>At a previous company I worked at the web team was getting ready to roll out a completely new game site. The old site was in need of a revamp, but rather than re-use the crufty and difficult-to-use web content-management system (CMS) that had been built by an external web agency our team chose a new CMS that would make it easy for non-developers to post game news and updates with no programming required.</p>
+<p>The web team was under the gun to deliver the site on a deadline because the game&#8217;s platform and services were cross-linked with it, and consequently those services could not be rolled out until the main web site went live. Several missed deadlines, late nights, heroic efforts and so forth, but eventually the site content was ready.</p>
+<p>The web team pushed the content to the servers and started forwarding traffic from old servers to new. We were all happy to see the results of their efforts live at last, with everything running smoothly.</p>
+<p>Then one of the web developers made a startling announcement. &#8220;Greg&#8221; (not his real name) announced that he was seeing an &#8220;adult&#8221; image displayed on the site. Ack! We&#8217;ve only been live a few minutes and it has been hacked already?!?</p>
+<p>The web team, operations team, and security team jump on the problem. Let&#8217;s verify this &#8212; RIGHT NOW!</p>
+<p>Oddly, nobody besides Greg can reproduce the problem. Should we switch back to the old servers? Brazen it out and call it a feature?</p>
+<p>While it wouldn&#8217;t be impossible for the site to be hacked, it would be challenging. See, we weren&#8217;t actually using the CMS yet &#8212; it wasn&#8217;t ready in time. We were actually hosting the entire site as static files. Instead of running the site on a smart web server capable of dynamically generating content, we ran the site on the equivalent of a dumb file server.</p>
+<p>As we approached the deadline it became clear that, while the site&#8217;s content was complete, there were some CMS issues that prevented it from being deployed. But we HAD to deploy the site! So I hacked together a trivial solution which scraped all the web pages from a QA-test server and we posted those files on the public web server. For the technically inclined:</p>
+<pre><code>wget --input-file list-of-urls-to-scrape.txt --mirror
+</code></pre>
+<p>Since we weren&#8217;t running a dynamic language on the web server, the attack surface was small enough that we could verify the configuration was correct pretty quickly. Hmmm&#8230; what are we missing; the clock is ticking!</p>
+<p>After a few minutes, Greg sheepishly announced that he had discovered the problem. It turned out that the web browser he was using on his mobile phone (Opera) sometimes rendered pages incorrectly, leaving images from a previously viewed page visible while downloading a new page. Well &#8230; you can guess the kind of pages he was checking out at lunch just before the site was deployed.</p>
+<p>I have to give him props, though. A lot of folks would not have said anything and we all would have been held in suspense for months. He owned up and saved us all a lot of grief, and we didn&#8217;t have to roll back to the old site. Problem solved!</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/uh-oh-was-the-company-site-hacked">Uh-oh: was the company site hacked?</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codeofhonor.com/blog/uh-oh-was-the-company-site-hacked/feed</wfw:commentRss>
+		<slash:comments>14</slash:comments>
+		</item>
+		<item>
+		<title>The StarCraft path-finding hack</title>
+		<link>http://www.codeofhonor.com/blog/the-starcraft-path-finding-hack</link>
+		<comments>http://www.codeofhonor.com/blog/the-starcraft-path-finding-hack#comments</comments>
+		<pubDate>Wed, 20 Feb 2013 05:40:36 +0000</pubDate>
+		<dc:creator><![CDATA[Patrick Wyatt]]></dc:creator>
+				<category><![CDATA[Game design]]></category>
+		<category><![CDATA[Starcraft]]></category>
+
+		<guid isPermaLink="false">http://www.codeofhonor.com/blog/?p=644</guid>
+		<description><![CDATA[<p>Game-unit path-finding is something that most players never notice until it doesn&#8217;t work quite right, and then that minor issue becomes a rage-inducing, end-of-the-world problem. During the development of StarCraft there were times when path-finding just didn&#8217;t work at all. As the development of StarCraft dragged on it seemed like it would never be done: [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/the-starcraft-path-finding-hack">The StarCraft path-finding hack</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Game-unit path-finding is something that most players never notice until it doesn&#8217;t work <em>quite right</em>, and then that minor issue becomes a rage-inducing, end-of-the-world problem. During the development of StarCraft there were times when path-finding just didn&#8217;t work <em>at all</em>.</p>
+<p>As the development of StarCraft dragged on it seemed like it would never be done: the game was always two months from launch but never seemed to get any closer to the mythical ship date. &#8220;Fortunately&#8221; &#8212; and I use that term advisedly &#8212; Blizzard had previous experience shipping games late.</p>
+<p>While we always had launch-date &#8220;goals&#8221; (though &#8220;wishes&#8221; might be a better term) we tried not to announce publicly until there was a good chance that the game would be ready at that point. Blizzard&#8217;s &#8220;when it&#8217;s done&#8221; policy for game launch was as much an admission that no one had any idea when we would finish as it was a commitment to releasing quality products.</p>
+<p>In any event, towards the end of the project we had a set of problems that prevented launching. Like any game in the latter stages of the development process there were defects galore that needed to be found and repaired and the bug count still numbered in the thousands.</p>
+<p>Many of those bugs were trivial, and needed only a little attention to fix. Too bad they weren&#8217;t all like that.</p>
+<p>Others, like a multiplayer synchronization bug, would pop up and require dedicated attention from several members of the programming team &#8212; sometimes weeks of effort for a single problem. Other game developers have reported similar experiences with their sync bugs: <a href="http://www.gamasutra.com/view/feature/131503/1500_archers_on_a_288_network_.php?print=1">Ages of Empires</a> and <a href="http://www.gamasutra.com/view/news/126022/Opinion_Synchronous_RTS_Engines_And_A_Tale_of_Desyncs.php">Supreme Commander</a>.</p>
+<p>Some bugs were related to the development process itself. The Protoss Carrier regularly lagged behind other units because it had its own way of doing &#8230; everything. At some point in time the code for the Carrier was branched from the main game code and had diverged beyond any hope of re-integration. Consequently any time a feature was added for other units, it had to be re-implemented for the Carrier. And any time a bug was fixed for other units, a similar bug would later be found in the Carrier code too, only more devious and difficult to fix.</p>
+<p>But the biggest thing holding back StarCraft was unit path-finding.</p>
+<p>It wasn&#8217;t that the path-finding was totally broken; in most cases it worked quite well. But there were enough edge-cases that the game was un-shippable.</p>
+<p>Game units would get stuck and stop on the battlefield. Often they would go through elaborate efforts to find paths, inching forward or looping around but not making progress, and sometimes getting wedged and unable to move further. Entire task forces would get bogged down in what looked like the afternoon commute.</p>
+<p>The problem was frustrating for players, but also made the AI weak and consequently made it impossible to balance the missions, wasting design time.</p>
+<p>Though I was never a top-tier RTS player, before the game launched I was good at the game because I discovered that Goliaths were overpowered to make up for their poor path-finding abilities. Because they were larger than other ground units they needed wider spaces for path-finding, and so by carefully shepherding Goliaths around obstacles I was able to bring their firepower to bear in crucial situations to overcome &#8220;macro&#8221; players who would otherwise tear me to shreds. Sadly my skills only lasted a short while until the Goliaths were rebalanced. <em>sigh</em></p>
+<p>Early path-finding was rough &#8212; while there were well-chosen algorithms driving unit movement they were handicapped by some poor development decisions made during the course of the project.</p>
+<h3>How did we get here?</h3>
+<p>In an <a href="http://www.codeofhonor.com/blog/tough-times-on-the-road-to-starcraft#path-finding">earlier article on this blog</a> I alluded to the path-finding difficulties. StarCraft was built on the Warcraft engine, which renders terrain-art using a tile-engine that&#8217;s optimized to draw 32&#215;32 pixel square tiles made of 16 8&#215;8 pixel square cells. I architected Warcraft this way because it had worked well for our Super Nintendo and Genesis titles. Those game consoles had hardware support for drawing 8&#215;8 cells, but the behavior was easy to emulate on a PC.</p>
+<p>Because the camera perspective of Warcraft I and II were almost top-down, the edges of objects (forests, terrain, buildings) on game maps are either horizontal or vertical, so the render-engine&#8217;s representation of the world as a square tile-map is conducive to easy path-finding. In those games each 32&#215;32 tile was either passable or un-passable. I&#8217;ve shown a few of the <del datetime="2013-02-20T21:05:39+00:00">passable tiles</del> tile-edges in the image below in green. Some tiles appeared passable but actually were not; below you can see the barracks building artwork does not fill the <del datetime="2013-06-12T05:52:36+00:00">48&#215;48</del>96&#215;96 area it sits on completely, leaving two tiles that appear passable but actually are not (red).</p>
+<div id="attachment_647" style="width: 650px" class="wp-caption aligncenter"><img src="http://www.codeofhonor.com/blog/wp-content/uploads/2013/02/Warcraft2.jpg" alt="Annotated Warcraft 2 screen captured show tile edges" width="640" height="480" class="size-full wp-image-647" srcset="http://www.codeofhonor.com/blog/wp-content/uploads/2013/02/Warcraft2-300x225.jpg 300w, http://www.codeofhonor.com/blog/wp-content/uploads/2013/02/Warcraft2.jpg 640w" sizes="(max-width: 640px) 100vw, 640px" /><p class="wp-caption-text">Warcraft 2 map with 32&#215;32 tiles</p></div>
+<p>But along the way the development team switched StarCraft to isometric artwork to make the game more visually attractive (<a href="http://www.codeofhonor.com/blog/starcraft-orcs-in-space-go-down-in-flames">details in previous post</a>). But the underlying terrain engine wasn&#8217;t re-engineered to use isometric tiles, only the artwork which was redrawn.</p>
+<p>The new camera perspective looked great but in order for path-finding to work properly it was necessary to increase the resolution of the path-finding map: now each 8&#215;8 tile was either passable or un-passable, increasing the size of the path-finding map by a factor of 16. While this finer resolution enabled more units to be squeezed onto the map, it also meant that searching for a path around the map would require substantially more computational effort to search the larger pathing-space.</p>
+<p>Path-finding was now more challenging because diagonal edges drawn in the artwork split many of the square tiles unevenly, making it hard to determine whether a tile should be passable or not. Ensuring that all tiles were correctly marked required painstaking effort.</p>
+<p>And the StarCraft map editor was horribly difficult to write because of the many edge-cases necessitated by laying down diagonal shapes onto a square tile-map. Writing the specialized &#8220;tile-fixup&#8221; code necessitated months programming time.</p>
+<p>Unlike Diablo, which used an isometric tile-rendering engine, the StarCraft development team kept the old engine even as new problems with the approach continued to be discovered week by week.</p>
+<p>This image shows how a bridge was made up of 8&#215;8 cells; several are shown in green. The almost isometric perspective of the artwork unevenly slices through the cells, leading to a stair-stepped edge along each side of the bridge, as you can see where the red line cuts each tile into an irregular shape.</p>
+<div id="attachment_646" style="width: 650px" class="wp-caption aligncenter"><img src="http://www.codeofhonor.com/blog/wp-content/uploads/2013/02/Starcraft.jpg" alt="Annotated StarCraft screen captured show tile edges" width="640" height="480" class="size-full wp-image-646" srcset="http://www.codeofhonor.com/blog/wp-content/uploads/2013/02/Starcraft-300x225.jpg 300w, http://www.codeofhonor.com/blog/wp-content/uploads/2013/02/Starcraft.jpg 640w" sizes="(max-width: 640px) 100vw, 640px" /><p class="wp-caption-text">StarCraft map with 8&#215;8 cells</p></div>
+<p>Because the project was always two months from launch it was inconceivable that there was enough time to re-engineer the terrain engine to make path-finding easier, so the path-finding code just had to be made to work. To handle all the tricky edge-cases, the pathing code exploded into a gigantic state-machine which encoded all sorts of specialized &#8220;get me out of here&#8221; hacks.</p>
+<h3>Rush hour</h3>
+<p>If there was any one major problem with path-finding it was that harvesting units (Terran SCV, Zerg drone, Protoss probe) would get jammed up trying to harvest crystals or vespene gas (hereafter &#8220;minerals&#8221;), and they would grind to a halt. While a player was busy managing an attack or constructing a secondary, the harvesters back at the home base would jam up, halting the flow of minerals into the treasury. When next the player looked up the entire build-queue would have collapsed due to lack of cash.</p>
+<p>The basic problem with resource-gathering is that players want to max-out the number of harvesters working on each mineral deposit to maximize their cash flow. Those harvesters are commuting between the minerals and their base so they&#8217;re constantly running headlong into other harvesters traveling in the opposite direction. Given enough harvesters in a small space it&#8217;s entirely possible that some get jammed in and are unable to move until the mineral deposit is mined out.</p>
+<h3>How do we get out of here?</h3>
+<p>I either volunteered or was asked to look into the problem; I just can&#8217;t remember after all this time. After studying the path-finding code extensively I realized that there was no way I was smart enough to just &#8220;fix the problem&#8221;. So I came up with a dirty hack instead.</p>
+<p>While programmers can become obsessed with finding the most pure, abstract, clean, even sublime solution to a problem, there are times in a project when a few sacrifices have to be made. If they&#8217;re done well no one notices the evil compromises that had to be made, as is true for the hacks written up by Brandon Sheffield in his article <a href="http://www.gamasutra.com/view/feature/4111/dirty_coding_tricks.php">Dirty Coding Tricks</a>.</p>
+<p>My idea was simple: whenever harvesters are on their way to get minerals, or when they&#8217;re on the way back carrying those minerals, they ignore collisions with <del datetime="2013-02-20T21:26:54+00:00">other harvesters in the same state</del> other units. By eliminating the inter-unit collision code for the harvesters there is never a rush-hour commute to get jammed up, and harvesters operate efficiently.</p>
+<p>It&#8217;s possible to notice this behavior by selecting a large group of harvesters who are working a plot of crystals and telling them to halt. They immediately spread out to find tiles that aren&#8217;t occupied by other harvesters.</p>
+<p>The behavior is obvious if you look, but hidden in plain sight &#8212; it doesn&#8217;t rise to the level of conscious awareness, though professional-level players and map-makers/modders do notice.</p>
+<p>In short, it just works, which is the best kind of hack.</p>
+<p>And while there was a lot more work required to finish the game, that hack was what enabled us to launch without massive and time-consuming re-engineering.</p>
+<p>The development team was able to work around some of the other path-finding problems and just plain ignore the rest, though the Protoss Dragoon in particular ended up with a bad reputation because, as the largest ground-unit, it frequently failed to path well.</p>
+<p>The final result was that path-finding was good enough, and we all learned a hard lesson about hope and wishful thinking as scheduling tools.</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/the-starcraft-path-finding-hack">The StarCraft path-finding hack</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codeofhonor.com/blog/the-starcraft-path-finding-hack/feed</wfw:commentRss>
+		<slash:comments>78</slash:comments>
+		</item>
+		<item>
+		<title>Whose bug is this anyway?!?</title>
+		<link>http://www.codeofhonor.com/blog/whose-bug-is-this-anyway</link>
+		<comments>http://www.codeofhonor.com/blog/whose-bug-is-this-anyway#comments</comments>
+		<pubDate>Tue, 18 Dec 2012 17:56:21 +0000</pubDate>
+		<dc:creator><![CDATA[Patrick Wyatt]]></dc:creator>
+				<category><![CDATA[Programming]]></category>
+		<category><![CDATA[debugging]]></category>
+		<category><![CDATA[Guild Wars]]></category>
+		<category><![CDATA[Starcraft]]></category>
+
+		<guid isPermaLink="false">http://www.codeofhonor.com/blog/?p=529</guid>
+		<description><![CDATA[<p>At a certain point in every programmer&#8217;s career we each find a bug that seems impossible because the code is right, dammit! So it must be the operating system, the tools or the computer that&#8217;s causing the problem. Right?!? Today&#8217;s story is about some of those bugs I&#8217;ve discovered in my career. This bug is [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/whose-bug-is-this-anyway">Whose bug is this anyway?!?</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>At a certain point in every programmer&#8217;s career we each find a bug that seems impossible because the code is right, dammit! So it <em>must</em> be the operating system, the tools or the computer that&#8217;s causing the problem. Right?!?</p>
+<p>Today&#8217;s story is about some of those bugs I&#8217;ve discovered in my career.</p>
+<h3>This bug is Microsoft&#8217;s fault&#8230; or not</h3>
+<p>Several months after the launch of Diablo in late 1995, the StarCraft team put on the hustle and started working extra long hours to get the game done. Since the game was &#8220;only two months from launch&#8221; it seemed to make sense to work more hours every day (and some weekends too). There was much to do because, even though the team started with the Warcraft II game engine almost every system needed rework. All of the scheduling estimates were willfully wrong (my own included), so this extra effort kept on for over a year.</p>
+<p>I wasn&#8217;t originally part of the StarCraft dev team, but after Diablo launched, when it became clear that StarCraft needed more &#8220;resources&#8221; (AKA people), I joined the effort. Because I came aboard late I didn&#8217;t have a defined role, so instead I just &#8220;used the force&#8221; to figure out what needed to happen to move the project forward (<a href="http://www.codeofhonor.com/blog/tough-times-on-the-road-to-starcraft">more details in a previous post on this blog</a>).</p>
+<p>I got to write fun features like implementing parts of the computer AI, which was largely developed by Bob Fitch. One was a system to determine the best place to create &#8220;strong-points&#8221; &#8212; places that AI players would gather units for defense and staging areas for attacks. I was fortunate because there were already well-designed APIs that I could query to learn which map areas were joined together by the path-finding algorithm and where concentrations of enemy units were located in order to select good strong-points, as it would otherwise be embarrassing to fortify positions that could be trivially bypassed by opponents.</p>
+<p>I re-implemented some components like the &#8220;fog of war&#8221; system I had written for previous incarnations of the &#8216;Craft series. StarCraft deserved to have a better fog-of-war system than its predecessor, Warcraft II, with finer resolution in the fog-map, and we meant to include line-of-sight visibility calculations so that units on higher terrain would be invisible to those on lower terrain, greatly increasing the tactical complexity of the game: when you can&#8217;t see what the enemy is doing the game is far more complicated. Similarly, units around a corner would be out of sight and couldn&#8217;t be detected.</p>
+<p>The new fog of war was the most enjoyable part of the project for me as I needed to do some quick learning to make the system functional and fast. Earlier efforts by another programmer were graphically displeasing and moreover, ran so slowly as to be unworkable. I learned about <a href="http://lodev.org/cgtutor/filtering.html">texture filtering algorithms</a> and <a href="http://en.wikipedia.org/wiki/Gouraud_shading">Gouraud shading</a>, and wrote the best x386 assembly language of my career &#8212; a skill now almost unnecessary for modern game development. Like many others I hope that StarCraft is eventually open-sourced, in my case so I can look with fondness on my coding efforts, though perhaps my memories are better than seeing the actual code!</p>
+<p>But my greatest contribution to the StarCraft code was fixing defects. With so many folks working extreme hours writing brand new code the entire development process was haunted by bugs: two steps forward, one step back. While most of the team coded new features, I spent my days hunting down the problems identified by our Quality Assurance (QA) test team.</p>
+<p>The trick for effective bug-fixing is to discover how to reliably reproduce a problem. Once you know how to replicate a bug it&#8217;s possible to discover why the bug occurs, and then it&#8217;s often straightforward to fix. Unfortunately reproducing a &#8220;will o&#8217; the wisp&#8221; bug that only occasionally deigns to show up can take days or weeks of work. Even worse is that it is difficult or impossible to determine beforehand how long a bug will take to fix, so long hours investigating were the order of the day. My terse status updates to the team were along the lines of &#8220;yeah, still looking for it&#8221;. I&#8217;d sit down in the morning and basically spend all day cracking on, sometimes fixing hundreds of issues, but many times fixing none.</p>
+<p>One day I came across some code that wasn&#8217;t working: it was supposed to choose a behavior for a game unit based on the unit&#8217;s class (&#8220;harvesting unit&#8221;, &#8220;flying unit&#8221;, &#8220;ground unit&#8221;, etc.) and state (&#8220;active&#8221;, &#8220;disabled&#8221;, &#8220;under attack&#8221;, &#8220;busy&#8221;, &#8220;idle&#8221;, etc.). I don&#8217;t remember the specifics after so many years, but something along the lines of this:</p>
+<pre><code>if (UnitIsHarvester(unit))
+    return X;
+
+if (UnitIsFlying(unit)) {
+    if (UnitCannotAttack(unit))
+        return Z;
+    return Y;
+}
+
+... many more lines
+
+if (! UnitIsHarvester(unit))    // "!" means "not"
+    return Q;
+
+return R;   &lt;&lt;&lt; BUG: this code is never reached!
+</code></pre>
+<p>After staring at the problem for too many hours I guessed it might be a compiler bug, so I looked at the assembly language code.</p>
+<p>For the non-programmers out there, compilers are tools that take the code that programmers write and convert it into &#8220;machine code&#8221;, which are the individual instructions executed by the CPU.</p>
+<pre><code>// Add two numbers in C, C#, C++ or Java
+A = B + C
+
+; Add two numbers in 80386 assembly
+mov     eax, [B]    ; move B into a register
+add     eax, [C]    ; add C to that register
+mov     [A], eax    ; save results into A
+</code></pre>
+<p>After looking at the assembly code I concluded that the compiler was generating the wrong results, and sent a bug report off to Microsoft &#8212; the first compiler bug report I&#8217;d ever submitted. And I received a response in short order, which in retrospect is surprising: considering that Microsoft wrote the most popular compiler in the world it&#8217;s hard to imagine that my bug report got any attention at all, much less a quick reply!</p>
+<p>You can probably guess &#8212; it wasn&#8217;t a bug, there was a trivial error I had been staring at all along but didn&#8217;t notice. In my exhaustion &#8212; weeks of 12+ hour days &#8212; I had failed to see that it was impossible for the code to work properly. It&#8217;s not possible for a unit to be neither &#8220;a harvester&#8221; nor &#8220;not a harvester&#8221;. The Microsoft tester who wrote back politely explained my mistake. I felt crushed and humiliated at the time, only slightly mitigated by the knowledge that the bug was now fixable.</p>
+<p>Incidentally, this is one of the reasons that crunch time is a failed development methodology, as I&#8217;ve mentioned in past posts on this blog; developers get tired and start making stupid mistakes. It&#8217;s far more effective to work reasonable hours, go home, have a life, and come back fresh the next day.</p>
+<p>When I started ArenaNet with two of my friends the &#8220;no crunch&#8221; philosophy was a cornerstone of our development effort, and one of the reasons we didn&#8217;t buy foozball tables and arcade machines for the office. Work, go home at a reasonable time, come back fresh!</p>
+<h3>This bug is actually Microsoft&#8217;s fault</h3>
+<p>Several years later, while working on Guild Wars, we discovered a catastrophic bug that caused game servers to crash on startup. Unfortunately, this bug didn&#8217;t occur in the &#8220;dev&#8221; (&#8220;development&#8221;) branch that the programming team used for everyday work, nor did it occur in the &#8220;stage&#8221; (&#8220;staging&#8221;) branch used by the game testers for final verification, it only occurred in the &#8220;live&#8221; branch which our players used to play the game. We had &#8220;pushed&#8221; a new build out to end-users, and now none of them could play the game! WTF!</p>
+<p>Having thousands of angry players amps up the pressure to get that kind of problem fixed quickly. Fortunately we were able to &#8220;roll back&#8221; the code changes and restore the previous version of the code in short order, but now we needed to understand how we broke the build. Like many problems in programming, it turned out that several issues taken together conspired to cause the bug.</p>
+<p>There was a compiler bug in Microsoft Visual Studio 6 (MSVC6), which we used to build the game. Yes! Not our fault! Well, except that our testing failed to uncover the problem. Whoops.</p>
+<p>Under certain circumstances the compiler would generate incorrect results when processing templates. What are templates? <a href="http://yosefk.com/c++fqa/templates.html">They&#8217;re useful, but they&#8217;ll blow your mind; read this if you dare</a>.</p>
+<p>C++ is a complex programming language so it is no surprise that compilers that implement the language have their own bugs. In fact the C++ language is far more complicated than other mainstream languages, <a href="http://cpprocks.com/cpp-ruby-coffeescript-language-complexity/">as shown in this article that visualizes the complexity of C++ compared to the Ruby language</a>. Ruby is a complex and fully-featured language, but as the diagram shows C++ is twice as complex, so we would expect it to have twice as many bugs, all other things being equal.</p>
+<p>When we researched the compiler bug it turned out to be one that we already knew about, and that had already fixed by the Microsoft dev team in MSVC6 Service Pack 5 (SP5). In fact all of the programmers had already upgraded to SP5. Sadly, though we had each updated our work computers we neglected to upgrade the build server, which is the computer that gathers the code, artwork, game maps and other assets and turns them into a playable game. So while the game would run perfectly on each programmers&#8217; computer, it would fail horribly when built by the build server. But only in the live branch!</p>
+<p>Why only in live? Hmmm&#8230; Well, ideally all branches (dev, stage, live) would be identical to eliminate the opportunity for bugs just like this one, but in fact there were a number of differences. For a start we disabled many debugging capabilities for the live branch that were used by the programming and test teams. These capabilities could be used to create gold and items, or spawn monsters, or even crash the game.</p>
+<p>We wanted to make sure that the ArenaNet and NCsoft staff didn&#8217;t have access to cheat functions because we wanted to create a level playing field for all players. Many MMO companies have had to fire folks who abused their godlike &#8220;GM&#8221; powers so we thought to eliminate that problem by removing capability.</p>
+<p>A further change was to eliminate some of the &#8220;sanity checking&#8221; code that&#8217;s used to validate that the game is functioning properly. This type of code, known as asserts or assertions by programmers, is used to ensure that the game state is proper and correct before and after a computation. These assertions come with a cost, however: each additional check that has to be performed takes time; with enough assertions embedded in the code the game can run quite slowly. We had decided to disable assertions in the live code to reduce the CPU utilization of the game servers, but this had the unintended consequence of causing the C++ compiler to generate the incorrect results which led to the game crash. A program that doesn&#8217;t run uses a lot less CPU, but that wasn&#8217;t actually the desired result.</p>
+<p>The bug was easily fixed by upgrading the build server, but in the end we decided to leave assertions enabled even for live builds. The anticipated cost-savings in CPU utilization (or more correctly, the anticipated savings from being able to purchase fewer computers in the future) were lost due to the programming effort required to identify the bug, so we felt it better to avoid similar issues in future.</p>
+<p>Lesson learned: everyone, programmers and build servers alike, should be running the same version of the tools!</p>
+<h3>Your computer is broken</h3>
+<p>After my experience reporting a non-bug to the folks at Microsoft, I was notably more shy about suggesting that bugs might be caused by anything other than the code I or one of my teammates wrote.</p>
+<p>During the development of Guild Wars (GW) I had occasion to review many bug reports sent in from players&#8217; computers. As GW players may remember, in the (hopefully unlikely) event that the game crashed it would offer to send the bug report back to our &#8220;lab&#8221; for analysis. When we received those bug reports we triaged to determine who should handle each report, but of course bugs come in all manner of shapes and sizes and some don&#8217;t have a clear owner, so several of us would take turns at fixing these bugs.</p>
+<p>Periodically we&#8217;d come across bugs that defied belief and we&#8217;d be left scratching our heads. While it wasn&#8217;t impossible for the bugs to occur, and we could construct hypothetically plausible explanations that didn&#8217;t involve redefining the space-time continuum, they just &#8220;shouldn&#8217;t&#8221; have occurred. It was possible they could be memory corruption or thread race issues, but given the information we had it just seemed unlikely.</p>
+<p>Mike O&#8217;Brien, one of the co-founders and a crack programmer, eventually came up with the idea that they were related to computer hardware failures rather than programming failures. More importantly he had the bright idea for how to test that hypothesis, which is the mark of an excellent scientist.</p>
+<p>He wrote a module (&#8220;OsStress&#8221;) which would allocate a block of memory, perform calculations in that memory block, and then compare the results of the calculation to a table of known answers. He encoded this stress-test into the main game loop so that the computer would perform this verification step about 30-50 times per second.</p>
+<p>On a properly functioning computer this stress test should never fail, but surprisingly we discovered that on about 1% of the computers being used to play Guild Wars it did fail! One percent might not sound like a big deal, but when one million gamers play the game on any given day that means 10,000 would have at least one crash bug. Our programming team could spend weeks researching the bugs for just one day at that rate!</p>
+<p>When the stress test failed Guild Wars would alert the user by closing the game and launching a web browser to a <a href="http://www.guildwars.com/support/en-hardwarefailure.php">Hardware Failure page</a> which detailed the several common causes that we discovered over time:</p>
+<ul>
+<li>Memory failure: in the early days of the IBM PC, when hardware failures were more common, computers used to have <a href="http://en.wikipedia.org/wiki/RAM_parity">&#8220;RAM parity bits&#8221;</a> so that in the event a portion of the memory failed the computer hardware would be able to detect the problem and halt computation, but parity RAM fell out of favor in the early &#8217;90s. Some computers use <a href="http://en.wikipedia.org/wiki/ECC_memory">&#8220;Error Correcting Code&#8221; (ECC) memory</a>, but because of the additional cost it is more commonly found on servers rather than desktop computers. Related articles: <a href="http://news.cnet.com/8301-30685_3-10370026-264.html">Google: Computer memory flakier than expected</a> and <a href="http://www.sc.edu/news/newsarticle.php?nid=5371">doctoral student unravels ‘tin whisker’ mystery</a>.</li>
+<p></p>
+<li><a href="http://en.wikipedia.org/wiki/Overclock">Overclocking</a>: while less common these days, many gamers used to buy lower <a href="http://en.wikipedia.org/wiki/Clock_rate">clock rate</a> &#8212; and hence less expensive &#8212; CPUs for their computers, and would then increase the clock frequency to improve performance. Overclocking a CPU from 1.8 GHz to 1.9 GHz might work for one particular chip but not another. I&#8217;ve overclocked computers myself without experiencing an increase in crash-rate, but some users ratchet up the clock frequency so high as to cause spectacular crashes as the signals bouncing around inside the CPU don&#8217;t show up at the right time or place.</li>
+<p></p>
+<li>Inadequate power supply: many gamers purchase new computers every few years, but purchase new graphics cards more frequently. Graphics cards are an inexpensive system upgrade which generate remarkable improvements in game graphics quality. During the era when Guild Wars was released many of these newer graphics cards had substantially higher power needs than their predecessors, and in some cases a computer power supply was unable to provide enough power when the computer was &#8220;under load&#8221;, as happens when playing games.</li>
+<p></p>
+<li>Overheating: Computers don&#8217;t much like to be hot and malfunction more frequently in those conditions, which is why computer datacenters are usually cooled to 68-72F (20-22C). Computer games try to maximize video frame-rate to create better visual fidelity; that increase in frame-rate can cause computer temperatures to spike beyond the tolerable range, causing game crashes.</li>
+<p>
+</ul>
+<p>In college I had an external hard-drive on my Mac that would frequently malfunction during spring and summer when it got too hot. I purchased a six-foot SCSI cable that was long enough to reach from my desk to the mini-fridge (nicknamed Julio), and kept the hard-drive in the fridge year round. No further problems!</p>
+<p>Once the Guild Wars tech support team was alerted to the overheating issue they had success fixing many otherwise intractable crash bugs. When they received certain types of crash reports they encouraged players to create more air flow by relocating furniture, adding external fans, or just blowing out the accumulated dust that builds up over years, and that solved many problems.</p>
+<p>While implementing the computer stress test solution seems beyond the call of duty it had a huge payoff: we were able to identify computers that were generating bogus bug reports and ignore their crashes. When millions of people play a game in any given week, even a low defect rate can result in more bug reports than the programming team can field. By focusing our efforts on the bugs that were actually our fault the programming team was able to spend time creating features that players wanted instead of triaging unfixable bugs.</p>
+<h3>Ever more bugs</h3>
+<p>I don&#8217;t think that we&#8217;ll ever reach a stage where computer programs don&#8217;t have bugs &#8212; the increase in the expectations from users is rising faster than the technical abilities of programmers. The Warcraft 1 code base was approximately 200,000 lines of code (including in-house tools), whereas Guild Wars 1 eventually grew to 6.5 million lines of code (including tools). Even if it&#8217;s possible to write fewer bugs per line of code, the vast increase in the number of lines of code means it is difficult to reduce the total bug count. But we&#8217;ll keep trying.</p>
+<p>To close out this post I wanted to share one of my favorite tongue-in-cheek quotes from Bob Fitch, who I worked with back in my Blizzard days. He posited that &#8220;all programs can be optimized, and all programs have bugs; therefore all programs can be optimized to one line that doesn&#8217;t work.&#8221; And that&#8217;s why we have bugs.</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/whose-bug-is-this-anyway">Whose bug is this anyway?!?</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codeofhonor.com/blog/whose-bug-is-this-anyway/feed</wfw:commentRss>
+		<slash:comments>95</slash:comments>
+		</item>
+		<item>
+		<title>The making of Warcraft part 3</title>
+		<link>http://www.codeofhonor.com/blog/the-making-of-warcraft-part-3</link>
+		<comments>http://www.codeofhonor.com/blog/the-making-of-warcraft-part-3#comments</comments>
+		<pubDate>Mon, 12 Nov 2012 06:00:42 +0000</pubDate>
+		<dc:creator><![CDATA[Patrick Wyatt]]></dc:creator>
+				<category><![CDATA[Game design]]></category>
+		<category><![CDATA[Warcraft]]></category>
+
+		<guid isPermaLink="false">http://www.codeofhonor.com/blog/?p=486</guid>
+		<description><![CDATA[<p>The first-ever multiplayer game of Warcraft was a crushing victory, an abject defeat, and a tie, all at once. Wait, how is that possible? Well, therein lies a tale. This tale grew organically during the writing to include game AI, the economics of the game business, fog of war and more. Read on if you [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/the-making-of-warcraft-part-3">The making of Warcraft part 3</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>The first-ever multiplayer game of <em>Warcraft</em> was a crushing victory, an abject defeat, and a tie, all at once. Wait, how is that possible? Well, therein lies a tale. This tale grew organically during the writing to include game AI, the economics of the game business, fog of war and more. Read on if you have lots of free time!</p>
+<p>This is part 3 of the story. <a href="http://www.codeofhonor.com/blog/the-making-of-warcraft-part-1">Part 1</a> <a href="http://www.codeofhonor.com/blog/the-making-of-warcraft-part-2">Part 2</a></p>
+<p>After six months of development that started in September 1993, <em>Warcraft: Orcs vs. Humans</em>, the first product in what would eventually become the <em>Warcraft</em> series, was finally turning into a game instead of an extended tech-demo.</p>
+<p>For several months I was the only full-time employee on the project, which limited the rate of development. I was fortunate to be assisted by other staff members, including Ron Millar, Stu Rose, and others, who did design work on the project. And several artists contributed prototype artwork when they found time in between milestones on other projects.</p>
+<p>The team was thinly staffed because the development of <em>Warcraft</em> was self-funded by the company from revenues received for developing titles for game publishers like <em>Interplay</em> and <em>SunSoft</em>, and the company coffers were not deep.</p>
+<p>At that time we were developing four 16-bit console titles: <em>The Lost Vikings 2</em> (the sequel to our critically-acclaimed but low-selling, side-scrolling &#8220;run-and-jump&#8221; puzzle game), <em>Blackthorne</em> (a side-scrolling &#8220;run-and-jump&#8221; game where the lead character gets busy with a shotgun), <em>Justice League Task Force</em> (a Street Fighter clone set in the DC Comics universe), and <em>Death and Return of Superman</em> (a side-scrolling beat-em-up based on the DC universe comic series of the same name).</p>
+<p>With the money received for developing these games and other odd jobs the company was able to pay initial development costs.</p>
+<h3>Game development economics</h3>
+<p>For most of the history of the game industry, independent game development studios &#8212; which is to say studios that weren&#8217;t owned by a retail game publishing company &#8212; usually funded their projects by signing contracts with those publishing companies. Publishers would &#8220;advance&#8221; money for the development of the project. In addition to advances for development, publishers were responsible for publicity, marketing, manufacturing, retail distribution, customer support and so forth.</p>
+<p>Back in the early 90&#8217;s there were many more retail game-publishers than exist today, but the increasing cost of game development and especially of game publishing led to massive industry consolidation due to bankruptcies and acquisitions, so when you think of a retail game publisher today you&#8217;ll probably think of <em>Activision-Blizzard</em>, <em>EA</em> or <em>Ubisoft</em> instead of the myriad mid-sized companies that existed twenty years ago.</p>
+<p>As in all industries, the terms of contracts are drawn up to be heavily in the favor of the people with the money. This is the other golden rule: &#8220;he who has the money makes the rules&#8221;. While in theory these agreements are structured so that the game developer is rewarded when a game sells well, as in the record and movie industries publishers capture the vast majority of profits, with developers receiving enough money to survive to sign another agreement &#8212; if they&#8217;re lucky.</p>
+<p>When I mentioned &#8220;advances&#8221; paid by the publisher, the more correct term is &#8220;advances against royalties&#8221;, where the developer if effectively receiving a forgivable loan to be repaid from royalties for game sales. It sounds great: develop a game, get paid for each copy sold. But the mechanics work out such that the vast majority of game titles never earn enough money to recoup (pay for) the advances. Since development studios often had to give up the rights to their title and sequels, these agreements are often thinly disguised work-for-hire agreements.</p>
+<p>To aim for better deal terms, a common strategy employed by development studios was to self-fund an initial game prototype, then use the prototype to &#8220;pitch&#8221; a development deal to publishers. The longer a developer was able to self-fund game creation the better the eventual contract terms.</p>
+<p>Perhaps the best example of this strategy is <em>Valve Software</em>, where Gabe Newell used the wealth he earned at Microsoft to fund the development of <em>Half Life</em> and thereby gain a measure of control over the launch schedule for the game &#8212; releasing the game only when it was a high-quality product instead of rushing it out the door to meet quarterly revenue goals as Sierra Entertainment (the game&#8217;s publisher) desired. More importantly, Gabe&#8217;s financial wherewithal enabled Valve to obtain ownership of the online distribution rights for Half Life just as digital downloads were becoming a viable strategy for selling games, and led to that studio&#8217;s later &#8212; vast &#8212; successes.</p>
+<p>The downside to self-funding a prototype is the risk that the developer takes in the event that the game project is not signed by a publisher &#8212; oftentimes resulting in the death of the studio.</p>
+<p>The company I worked for &#8212; at that time named <em>Silicon and Synapse</em> &#8212; was self-funding <em>Warcraft</em>, along with another project called <em>Games People Play</em>, which would include crossword puzzles, boggle and similar games found on the shelves at airport bookstores to entertain stranded travelers.</p>
+<p>By developing two games that targeted radically different audiences the company owners hoped to create multiple sources of revenue that would be more economically stable compared to betting all the company&#8217;s prospects on the core entertainment market (that is, &#8220;hard core&#8221; gamers like you &#8216;n me).</p>
+<p>Of course spreading bets across diverse game genres also has risks, inasmuch as a company brand can be diluted by creating products that don&#8217;t meet the desires its audiences. One of the great strengths of the Blizzard brand today is that users will buy its games sight-unseen because they believe in the company&#8217;s vision and reputation. That reputation would have been more difficult to establish had the company released both lower-budget casual titles and high-budget AAA+ games, as did Sierra Entertainment, which is now out of business after repeated struggles to find an audience.</p>
+<p>In any event, creating <em>Games People Play</em> turned out to be a misstep because developing a casual entertainment product was so demoralizing for the lead programmer that the project never matured and was later canceled. Or perhaps it wasn&#8217;t a mistake, because the combination of <em>Warcraft</em> and <em>Games People Play</em> convinced <em>Davidson &amp; Associates</em>, at that time the second largest educational software company in the world, to purchase <em>Silicon &amp; Synapse</em>.</p>
+<h3>Our new overlords</h3>
+<p><em>Davidson &amp; Associates</em>, started by Jan Davidson and later joined by her husband Bob, was a diversified educational software company whose growth was predicated on the success of a title named Math Blaster, in which a player answers math problems to blow up incoming asteroids before they destroy the player&#8217;s ship. It was a clever conjunction of education and entertainment, and the company reaped massive rewards from its release.</p>
+<p>Aside: As an educational title Math Blaster may have had some value when used properly, but I had occasion to see it used in folly. My high school journalism class would write articles for our school newspaper in a computer room shared with the remedial education class; my fellow journalism students and I watched in horror as remedial twelfth graders played Math Blaster using calculators. As asteroids containing expressions like &#8220;3 + 5&#8221; and &#8220;2 * 3&#8221; approached those students would rapidly punch the equations into calculators then enter the results to destroy those asteroids. Arguably they were learning something, considering they outsmarted their teachers, but I&#8217;m not sure it was the best use of their time given their rapidly approaching entry into the work-force.</p>
+<p>With good stewardship and aggressive leadership <em>Davidson &amp; Associates</em> expanded into game manufacturing (creating &amp; packing the retail box), game distribution (shipping boxes to retailers and intermediate distributors), and direct-to-school learning-materials distribution. They saw an opportunity to expand into the entertainment business, but their early efforts at creating entertainment titles internally convinced them that it would make better sense to purchase an experienced game development studio rather than continuing to develop their own games with a staff more knowledgeable about early learning than swords &amp; sorcery.</p>
+<p>And so at a stroke the cash-flow problems that prevented the growth of the <em>Warcraft</em> development team were solved by the company&#8217;s acquisition; with the deep pockets of <em>Davidson</em> backing the effort it was now possible for <em>Silicon &amp; Synapse</em> (renamed <em>Blizzard</em> in the aftermath of the sale) to focus on its own titles instead of pursuing marginally-profitable deals with other game publishers. And they were very marginal &#8212; even creating two top-rated games in 1993, which led to the company being named &#8220;Nintendo Developer of the Year&#8221;, the company didn&#8217;t receive any royalties.</p>
+<p>With a stack of cash from the acquisition to hire new employees and enable existing staff to jump on board the project, the development of <em>Warcraft</em> accelerated dramatically.</p>
+<h3>The design &#8220;process&#8221;</h3>
+<p>The approach to designing and building games at Blizzard during its early years could best be described as &#8220;organic&#8221;. It was a chaotic process that occurred during formal design meetings but more frequently during impromptu hallway gatherings or over meals.</p>
+<p>Some features came from design documents, whereas others were added by individual programmers at whim. Some game art was planned, scheduled and executed methodically, whereas other work was created late at night because an artist had a great idea or simply wanted to try something different. Other elements were similarly ad-libbed; the story and lore for <em>Warcraft</em> came together only in the last several months prior to launch.</p>
+<p>While the process was unpredictable, the results were spectacular. Because the team was comprised of computer game fanatics, our games evolved over the course of their development to become something that gamers would want to play and play and play.  And <em>Warcraft</em>, our first original game for the IBM PC, exemplified the best (and sometimes the worst) of that process, ultimately resulting in a game that &#8212; at least for its day &#8212; was exemplary.</p>
+<h3>How the <em>Warcraft</em> unit-creation system came about</h3>
+<p>As biologists know the process of evolution has false starts where entire branches of the evolutionary tree are wiped out, and so it was with our development efforts. Because we didn&#8217;t have spec to measure against, we instead experimented and culled the things that didn&#8217;t work. I&#8217;d like to say that this was a measured, conscious process in each case, but many times it arose from accidents, arguments, and personality conflicts.</p>
+<p>One event I remember in particular was related to the creation of game units. During the early phase of development, units were conjured into existence using &#8220;cheat&#8221; commands typed into the console because there was no other user-interface mechanism to build them. As we considered how best to create units, various ideas were proposed.</p>
+<p>Ron Millar, an artist who did much of the ideation and design for early Blizzard games proposed that players would build farm-houses, and &#8212; as in the game <a href="http://en.wikipedia.org/wiki/Populous">Populous</a> &#8212; those farms would periodically spawn basic worker units, known as (Human) peasants and (Orc) peons. The player would be able to use those units directly for gold-mining, lumber-harvesting and building-construction, but they wouldn&#8217;t be much good as fighters.</p>
+<p>Those &#8220;peons&#8221; not otherwise occupied could be directed by the player to attend military training in barracks, where they&#8217;d disappear from the map for a while and eventually emerge as skilled combatants. Other training areas would be used for the creation of more advanced military units like catapult teams and wizards.</p>
+<p>The idea was not fully &#8220;fleshed out&#8221;, which was one of the common flaws of our design process: the end result of the design process lacked the formality to document how an idea <em>should</em> be implemented. So the idea was kicked around and argued back and forth through the informal design team (that is, most of the company) before we started coding (programming) the implementation.</p>
+<p>Before we started working on the code Ron left to attend a trade show (probably Winter CES &#8212; the Consumer Electronics Show), along with Allen Adham, the company&#8217;s president. And during their absence an event occurred which set the direction for the entire <em>Warcraft</em> series, an event that I call the &#8220;<em>Warcraft</em> design coup&#8221;.</p>
+<p>Stu Rose, another early artist/designer to join the company (employee #6, I believe), came late one afternoon to my office to make a case for a different approach. Stu felt that the unit creation mechanism Ron proposed had too many as-yet-unsolved implementation complexities, and moreover that it was antithetical to the type of control we should be giving players in a Real-Time Strategy (RTS) game.</p>
+<p>In this new RTS genre the demands on players were much greater than in other genres and players&#8217; attention could not be focused in one place for long because of the many competing demands: plan the build/upgrade tree, drive economic activity, create units, place buildings, scout the map, oversee combat and micromanage individual unit skills. In an RTS the most limited resource is player attention so adding to the cognitive burden with an indirect unit creation mechanism would add to the attention deficit and increase the game&#8217;s difficulty.</p>
+<p>To build &#8220;grunts&#8221;, the basic fighting unit, it would be necessary to corral idle peasants or those working on lower priority tasks to give them training, unnecessarily (in Stu&#8217;s view) adding to the game&#8217;s difficulty.</p>
+<p>I was a ready audience for his proposal as I had similar (though less well thought out) concerns and didn&#8217;t feel that unit creation was an area where we needed to make bold changes. Dune II, the game from which the design of <em>Warcraft</em> was derived, had a far simpler mechanism for unit creation: just click a button on the user-interface panel of a factory building and the unit would pop out a short time later. It wasn&#8217;t novel &#8212; the idea was copied from even earlier games &#8212; but it just worked.</p>
+<p>Stu argued that we should take this approach, and in lieu of more debate just get it done now, so over the next couple of days and late nights I banged out the game and user-interface code necessary to implement unit creation, and the design decision became fait accompli. By the time Ron and Allen returned the game was marginally playable in single-player mode, excepting that the enemy-computer AI was still months away from being developed.</p>
+<p><em>Warcraft</em> was now an actual game that was simple to play and &#8212; more importantly &#8212; fun. We never looked back.</p>
+<h3>The first multiplayer game of <em>Warcraft</em></h3>
+<p>In June 1994, after ten months of development, the game engine was nearly ready for multiplayer. It was with a growing sense of excitement that I integrated the code changes that would make it possible to play the first-ever multiplayer game of <em>Warcraft</em>. While I had been busy building the core game logic (event loop, unit-dispatcher, path-finding, tactical unit-AI, status bar, in-game user-interface, high-level network code) to play, other programmers had been working on related components required to create a multiplayer game.</p>
+<p>Jesse McReynolds, a graduate of Caltech, had finished coding a low-level network library to send IPX packets over a local-area network. The code was written based on knowledge gleaned from the source code of <del datetime="2012-11-12T20:29:22+00:00">Quake</del> Doom, which <del datetime="2012-11-12T20:29:22+00:00">had been recently</del> was later open-sourced by John Carmack at id software. While the IPX interface layer was only several hundred lines of C code, it was the portion of the code that interfaced with the network-card driver to ensure that messages created on one game client would be sent to the other player.</p>
+<p>And Bob Fitch, who was earning his master&#8217;s degree from Cal State Fullerton, developed the initial &#8220;glue screens&#8221; that enabled players to create and join multiplayer games. My office was next to Bob&#8217;s, which was mighty convenient since it was necessary for us to collaborate closely to integrate his game join-or-create logic to my game-event loop.</p>
+<p>After incorporating the changes I compiled the game client and copied it to a network drive while Bob raced back to his office to join the game. In what was a minor miracle, the code we&#8217;d written actually worked and we were able to start playing the very first multiplayer game of <em>Warcraft</em>.</p>
+<p>As we started the game I felt a greater sense of excitement than I&#8217;d ever known playing any other game. Part of the thrill was in knowing that I had helped to write the code, but even more so were two factors that created a sense of terror: playing against a human opponent instead of a mere computer AI, and more especially, not knowing what he was up to because of the fog of war.</p>
+<h3>The fog of war</h3>
+<div id="attachment_495" style="width: 600px" class="wp-caption aligncenter"><a href="http://www.codeofhonor.com/blog/wp-content/uploads/2012/11/Warcraft-1-fog-of-war.jpg"><img src="http://www.codeofhonor.com/blog/wp-content/uploads/2012/11/Warcraft-1-fog-of-war.jpg" alt="Screen capture of Warcraft 1 game play showing fog of war" title="Warcraft-1-fog-of-war" width="590" height="472" class="size-full wp-image-495" srcset="http://www.codeofhonor.com/blog/wp-content/uploads/2012/11/Warcraft-1-fog-of-war-300x240.jpg 300w, http://www.codeofhonor.com/blog/wp-content/uploads/2012/11/Warcraft-1-fog-of-war.jpg 590w" sizes="(max-width: 590px) 100vw, 590px" /></a><p class="wp-caption-text">A small village surrounded by the fog of war; what&#8217;s out there?!?</p></div>
+<p>One of the ideas drawn from earlier games was that of hiding enemy units from sight of the opposing player. A black graphic overlay hid areas of the game map unless a friendly unit explored the area, which is designed to mimic the imperfect information known by a general about enemy operations and troop movements during real battles.</p>
+<p><a href="http://en.wikipedia.org/wiki/Classic_Empire_%28video_game%29">Empire</a>, a multiplayer turn-based strategy game written almost seventeen years before by the brilliant <a href="http://en.wikipedia.org/wiki/Walter_Bright">Walter Bright</a> (creator the &#8220;D&#8221; programming language), used fog of war for that same purpose. Once an area of the map was &#8220;discovered&#8221; (uncovered) it would remain visible forever afterwards, so an important consideration when playing was to explore enough of the map early in the game so as to receive advance warning of enemy troop movements before their incursions could cause damage to critical infrastructure or economic capability.</p>
+<p>The psychological terror created by not knowing what the enemy is doing has been the demise of many generals throughout history, and adding this element to the RTS genre is a great way to add to the excitement (and fear) level. Thank Walter and the folks at Westwood who created Dune II for their savvy!</p>
+<h3>Computer AI</h3>
+<p>As many gamers know, computer-controlled &#8220;Artificial Intelligence&#8221; (AI) players in strategy games are often weak. It&#8217;s common for human players to discover exploits that the computer AI is not programmed to defend against that can be used destroy the AI with little difficulty, so computer AI players usually rely upon a numeric troop advantage, positional advantage, or &#8220;asymmetric rules&#8221; in order to give players a good challenge.</p>
+<p>In most <em>Warcraft</em> missions the enemy computer players are given entire cities and armies to start with when battling human players. Moreover, <em>Warcraft</em> contains several asymmetric rules which make it easier for the AI player to compete, though these rules would perhaps be called outright cheating by most players.</p>
+<p>One rule we created to help the computer AI was to reduce the amount of gold removed from gold mines to prevent them from being mined-out. When a human player&#8217;s workers emerge from a gold mine those workers remove 100 units of ore from the mine and deliver it back to the player&#8217;s town hall on each trip, and eventually the gold mine is exhausted by these mining efforts. However, when an AI-controlled worker makes the same trip, the worker only remove 8 units of ore from the mine, while still delivering 100 units into the AI treasury.</p>
+<p>This asymmetric rule actually makes the game more fun in two respects: it prevents humans from &#8220;turtling&#8221;, which is to say building an unassailable defense and using their superior strategic skills to overcome the computer AI. Turtling is a doomed strategy against computer AIs because the human player&#8217;s gold-mines will run dry long before those of the computer.</p>
+<p>Secondarily, when the human player eventually does destroy the computer encampment there will still be gold left for the player to harvest, which makes the game run faster and is more fun than grinding out a victory with limited resources.</p>
+<p>Most players are aware of a more serious violation of the spirit of fair competition: the computer AI cheats because it can see through the fog of war; the AI knows exactly what the player is doing from moment to moment. In practice this wasn&#8217;t a huge advantage for the computer and merely served to prevent it from appearing completely stupid.</p>
+<p>Interestingly, with the long popularity of <em>StarCraft</em> (over 14 years since launch and still played), a group of AI programmers has risen to the challenge of building non-cheating AIs. Aided by a library called <a href="http://code.google.com/p/bwapi/">BWAPI</a>, these programmers write code that can inject commands directly into the <em>StarCraft</em> engine to play the game. Programmers enter their AIs in competitions with each other to determine the victor. While these BWAPI AI players are good, the best of them are handily beaten by skilled human opponents.</p>
+<h3>Playing against a human</h3>
+<p>As a person who had played many (many many) strategy games before developing <em>Warcraft</em>, I was well aware of the limitations of computer AIs of that era. While I had battled against many computer AIs, sometimes losing, many times winning, I was never scared by AI intelligence, even when battling the terrible Russian offensive in the game <em>Eastern Front</em> by Chris Crawford, which I played on a friend&#8217;s Atari 800 until eventually the audio cassette tape (!) that contained the game was so old it could no longer be read.</p>
+<p>These games were fun, exciting, and most certainly challenging, but not scary. But something changed when I played the first multiplayer game of <em>Warcraft</em>.</p>
+<p>The knowledge that I was competing against an able human player &#8212; not just in terms of skill and strategy, but also in terms of speed of command &#8212; but was prevented from seeing his actions by the fog of war was both electrifying and terrifying. In my entire career I have never felt as excited about a single game as I was during that first experience playing <em>Warcraft</em>, where it was impossible to know whether I was winning or losing.</p>
+<p>As a massive adrenaline rush spiked in my bloodstream, I did my best to efficiently harvest gold and lumber, build farms and barracks, develop an offensive capability, explore the map, and &#8212; most importantly &#8212; crush Bob&#8217;s armies before he could do the same to mine.</p>
+<p>This was no test-game to verify the functionality of the engine; I know he felt the same desire to claim bragging rights over who won the first-ever multiplayer game of <em>Warcraft</em>. Moreover, when we had played Doom together at Blizzard, I had won some renown because, after a particularly fierce game Bob had become so angry at me for killing him so frequently with a rocket launcher that he had vowed never to play me again. I knew he&#8217;d be looking for payback.</p>
+<p>As our armies met in battle, we redoubled our efforts to build more units and threw them into the fray. Once I discovered his encampment and attacked, I felt more hopeful. Bob&#8217;s strategy seemed disorganized and it appeared I would be able to crush his forces, but I wanted to leave nothing to chance so I continued at a frenzied pace, attacking his units and buildings wherever I could find them.</p>
+<p>And then &#8230; crash:</p>
+<div id="attachment_494" style="width: 330px" class="wp-caption aligncenter"><a href="http://www.codeofhonor.com/blog/wp-content/uploads/2012/11/Dos4GW-crash.png"><img src="http://www.codeofhonor.com/blog/wp-content/uploads/2012/11/Dos4GW-crash.png" alt="DOS4GW output in 320x200 mode; shown after a game crash" title="Dos4GW-crash" width="320" height="200" class="size-full wp-image-494" srcset="http://www.codeofhonor.com/blog/wp-content/uploads/2012/11/Dos4GW-crash-300x187.png 300w, http://www.codeofhonor.com/blog/wp-content/uploads/2012/11/Dos4GW-crash.png 320w" sizes="(max-width: 320px) 100vw, 320px" /></a><p class="wp-caption-text">Bad news bears &#8211; DOS4GW lets us know Warcraft crashed</p></div>
+<p>As any programmer knows, the likelihood of new code working properly the first time is close to zero, and so it should be no surprise that the game crashed. The game&#8217;s graphics scrolled off the top of the monitor and were replaced with the blocky text of the DOS4GW &#8220;crash screen&#8221; so familiar to gamers in the era before Windows gaming. Now we have the far more sophisticated Windows Error Reporting dialog which enables the player to submit the crash report, though occasionally players see the dreaded &#8220;blue screen of death&#8221; which is remarkably similar to those of old.</p>
+<p>After the crash I leaped up from my chair and ran into Bob&#8217;s office, yelling &#8220;That was awesooooommmme!&#8221; immediately followed by &#8220;&#8230; and I was kicking your ass!&#8221; So I was surprised to hear Bob&#8217;s immediate rebuttal: to the contrary, he had been destroying me.</p>
+<p>It took a few minutes for our jangled nerves to return to normal but in short order we determined that not only did we have a crash bug but also a game-state synchronization problem, which I termed a &#8220;sync bug&#8221;: the two computers were showing entirely different battles that, while they started identically, diverged into two entirely different universes.</p>
+<p>Someone who hasn&#8217;t worked on programming network code might assume that the two <em>Warcraft</em> game clients would send the entire game state back and forth each turn as the game is played. That is, each turn the computers would send the positions and actions for every game unit. In a slow-paced game with only a few board positions, like Chess or Checkers, this would certainly be possible but in a game like <em>Warcraft</em>, with up to 600 units in action at once, it was impossible to send that volume of information over the network.</p>
+<p>We anticipated that many gamers would play <em>Warcraft</em> with 2400 baud modems, which could only transmit a few hundred characters per second. Younger gamers who never used a modem should take the time to read up on the technology, which was little removed from smoke signals, and only slightly more advanced than banging rocks together. Remember, this was before Amazon, Google and Netflix &#8212; we&#8217;re talking the dark ages, man.</p>
+<p>Having previously &#8220;ported&#8221; Battle Chess from DOS to Windows, I was familiar with how multiplayer games could communicate using modems. I knew that because of the limited bandwidth available via a modem it would have been impossible to send the entire game state over the network, so my solution was to send only each player&#8217;s commands and have both players execute those commands simultaneously.</p>
+<p>I knew that this solution would work because computers are great at doing exactly what they&#8217;re told. Unfortunately it turned out that many times we humans who program them are not so good at telling computers exactly the right thing to do, and that is a major source of bugs. When two computers are supposed to be doing the same thing, but disagree because of a bug, well, that&#8217;s a problem.</p>
+<p>A sync bug arises when the two computers simulating the game each choose different answers to the same question, and from there diverge further and further over time. As in time-travel movies like <em>Back to the Future</em>, small changes made by the time-traveler while in the past lead to entirely different futures; so it was that games of <em>Warcraft</em> would similarly diverge. On my computer my <del datetime="2013-10-16T05:19:08+00:00">Elvish </del> Human archer would see your Orcish peon and attack, whereas on your computer the peon would fail to notice the attack and wander off to harvest lumber. With no mechanism to discover or rectify these types of disagreements, our two games would soon be entirely different.</p>
+<p>So it was that the first game of <em>Warcraft</em> was a draw, but at the same time it was a giant win for the game team &#8212; it was hella fun! Other team members in the office played multiplayer soon afterwards and discovered it was like Blue Sky, the pure crystal meth manufactured by Walter White in Breaking Bad. Once people got a taste for multiplayer <em>Warcraft</em>, nothing else was as good. Even with regular game crashes, we knew we were on to something big.</p>
+<p>All we needed to do was get the game done.</p>
+<p>Tragically, we soon made an even worse discovery: not only did we have numerous sync bugs, but there were also many different causes for those sync bugs. If all the sync bugs were for similar reasons we could have endeavored to fix the singular root cause. Instead it turned out there were numerous different <em>types</em> of problems, each of which caused a different type of sync bug, and each which therefore necessitated its own fix.</p>
+<h3>Why do sync bugs happen</h3>
+<p>When developing <em>Warcraft</em> I had designed a solution to minimize the amount of data that needed to be transmitted over the network by only sending the commands that each player initiated, like &#8220;select unit 5&#8221;, &#8220;move to 650, 1224&#8221;, and &#8220;attack unit 53&#8221;. Many programmers have independently designed this same system; it&#8217;s an obvious solution to the problem of trying to synchronize two computers without sending the entire game state between them every single game turn.</p>
+<p>Aside: These days there are probably several patents retroactively trying to claim credit for this approach. Over time I&#8217;ve come to believe that software should not be patentable; most any idea in software is something that a moderately experienced programmer could invent, and the definition of patents requires that patents be non-obvious. Nuff said.</p>
+<p>I hadn&#8217;t yet implemented a mechanism to verify synchronization between the two computers, so any bug in the game code that caused those computers to make different choices would cause the game to &#8220;bifurcate&#8221; – that is, split it into two loosely-coupled universes that would continue to communicate but diverge with increasing rapidity over time.</p>
+<p>Creating systems designed to detect de-synchronization issues was clearly the next task on my long list of things to do to ship the game!</p>
+<h3>In for the long haul</h3>
+<p>You know the ending to this story: Warcraft eventually shipped only five months later. It seemed an eternity because we worked so many hours each day, encountered so many obstacles, overcame so many challenges, and created something we cared for so passionately. I&#8217;ll continue to explore those remaining months in future blog articles, but so much was packed into that time that it&#8217;s impossible to squeeze those recollections into this already too long post!</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/the-making-of-warcraft-part-3">The making of Warcraft part 3</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codeofhonor.com/blog/the-making-of-warcraft-part-3/feed</wfw:commentRss>
+		<slash:comments>54</slash:comments>
+		</item>
+		<item>
+		<title>StarCraft: Orcs in space go down in flames</title>
+		<link>http://www.codeofhonor.com/blog/starcraft-orcs-in-space-go-down-in-flames</link>
+		<comments>http://www.codeofhonor.com/blog/starcraft-orcs-in-space-go-down-in-flames#comments</comments>
+		<pubDate>Thu, 27 Sep 2012 16:46:14 +0000</pubDate>
+		<dc:creator><![CDATA[Patrick Wyatt]]></dc:creator>
+				<category><![CDATA[Game design]]></category>
+		<category><![CDATA[Starcraft]]></category>
+
+		<guid isPermaLink="false">http://www.codeofhonor.com/blog/?p=442</guid>
+		<description><![CDATA[<p>In my previous article about StarCraft I talked about why we rebooted the project and changed it from a follow-on to Warcraft &#8212; derisively called &#8220;Orcs in space&#8221; in 1996 &#8212; into the award-winning game that we were finally able to deliver after two more years of hardship. But one noteworthy source of inspiration didn&#8217;t [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/starcraft-orcs-in-space-go-down-in-flames">StarCraft: Orcs in space go down in flames</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>In my <a href="http://www.codeofhonor.com/blog/tough-times-on-the-road-to-starcraft">previous article about StarCraft</a> I talked about why we rebooted the project and changed it from a follow-on to Warcraft &#8212; derisively called &#8220;Orcs in space&#8221; in 1996 &#8212; into the award-winning game that we were finally able to deliver after two more years of hardship. But one noteworthy source of inspiration didn&#8217;t make it into my previous article, and that&#8217;s what I&#8217;m going to write about today.</p>
+<p>Blizzard first brought StarCraft to the attention of the gaming public at the Electronic Entertainment Expo (E3) in June of 1996. At that point the game had only been in development for a few months so it was no surprise to the development team and other staff members that it wasn&#8217;t markedly different from its immediate antecedent, Warcraft II.</p>
+<p>With the success of previous Warcraft titles and of <em>Command and Conquer</em> from Westwood Studios, the RTS genre attracted competitors. The race to build the next great RTS was on, and consequently Blizzard was about to be publicly embarrassed by its choice to show so early in the development lifecycle. Just a short walk away from the Blizzard booth was that of another game which appeared to be better than StarCraft in every respect: <em>Dominion: Storm over Gift 3</em>, from Ion Storm.</p>
+<h3>&#8220;Maybe you haven&#8217;t been keeping up on current events, but we just got our asses kicked&#8221; &#8212; Private Hudson from <a href="http://en.wikipedia.org/wiki/Aliens_%28film%29">Aliens</a></h3>
+<p>It&#8217;s 1996 and you want to buy an RTS game. Would you pay money for this?</p>
+<div id="attachment_445" style="width: 570px" class="wp-caption alignnone"><a href="http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/Dominion-Storm.jpg"><img src="http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/Dominion-Storm.jpg" alt="Dominion Storm game screenshot" title="Dominion Storm" width="560" height="420" class="size-full wp-image-445" srcset="http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/Dominion-Storm-300x225.jpg 300w, http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/Dominion-Storm.jpg 560w" sizes="(max-width: 560px) 100vw, 560px" /></a><p class="wp-caption-text">Dominion Storm</p></div>
+<p>Or this?</p>
+<div id="attachment_371" style="width: 510px" class="wp-caption alignnone"><a href="http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/Starcraft-orcs-in-space.png"><img src="http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/Starcraft-orcs-in-space.png" alt="StarCraft &quot;Orcs in space&quot; screenshot prior to the project reboot" title="StarCraft: Orcs in space" width="500" height="375" class="size-full wp-image-371" srcset="http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/Starcraft-orcs-in-space-300x225.png 300w, http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/Starcraft-orcs-in-space.png 500w" sizes="(max-width: 500px) 100vw, 500px" /></a><p class="wp-caption-text">StarCraft at E3 in 1996</p></div>
+<h3>Trade show espionage</h3>
+<p>During the early years of Blizzard &#8212; back before the company was even called that &#8212; the entire development team would attend trade shows like the Consumer Electronics Show (CES) and E3. We&#8217;d spread out over the show floor and &#8220;research&#8221; (that is, play) products at our competitors&#8217; booths, getting an early look at what other game studios would be launching over the next year. It was an opportunity to analyze gaming trends, learn about technological advances, evaluate new user interface techniques, and review gameplay. Even better, our competitors would facilitate this learning by demoing the games and answering our questions, and of course we&#8217;d do the same for them back at our booth. This is one reason game publishers have a love/hate relationship with trade shows, along with high costs (tens of thousands of dollars for a few feet of floor space) and excessive distractions for the dev teams, is that other studios are like hungry wolves looking for prey to devour.</p>
+<p>In the early years, when our games were programmed for 16-bit game consoles, our programming staff would review soon-to-be-launched Super Nintendo (SNES) titles, and would crowd around games trying to puzzle out how their developers had accomplished some feat of technical magic and derring-do. The SNES was an odd combination of a glacially slow 2.58 megahertz (not gigahertz) processor with a tiny 64 kilobytes (not megabytes or gigabytes) of memory coupled with exotic microchips designed to rapidly blast bits onto the screen &#8212; if you could figure out the right incantations to make it all work.</p>
+<p>We&#8217;d stand staring at a game talking in phrases that only a few thousand folks in the whole world &#8212; most of them working for Nintendo &#8212; knew anything about. Someone would toss off an idea like &#8220;perhaps they&#8217;re using the hblank interrupt to set the scroll register to adjust the view distance in mode 7&#8221;, and we&#8217;d all do our best to wrap our heads around that idea, learning a great deal in the process. Our artists and designers would be similarly wowed by their own show-floor discoveries.</p>
+<p>It was an exciting experience to see so many new ideas in just a few days, and we&#8217;d come back from the shows both energized by our findings and exhausted by the brilliance and audacity of our competitors.</p>
+<p>Better yet, these trade shows were held in exotic venues like Las Vegas where we&#8217;d get to stay out late drinking and gambling before dragging our hung-over selves back to the trade-show floor. Staffing the booth during the early mornings was always challenging, and required a careful evaluation of who would be the best advocates for the game after nights of excess &#8212; would it be the hardy-partiers, with their higher alcohol tolerance, or the more abstemious members of the team &#8212; the lightweights? While it might seem that the lightweights (myself included) were a better bet, just a few drinks more than usual might cause us to miss a morning event due to a catastrophic hangover.</p>
+<p>For the privilege of getting access to the insights to be found on the show floor our dev team staff would be stacked like cordwood in cheap motel rooms far from the convention centers to save the company money. We stayed in a hotel so far into the rotting core of Chicago that several on the team felt the necessity to carry steak-knives as protection against the perceived threat of muggers. And who could forget when one of the two elevators caught fire and was put out of service, necessitating fourteen-floor hikes morning and evening.</p>
+<p>Back on the show floor after these escapades, Blizzard staff members would discover great games on the show floor and would &#8212; like honeybees returning to the nest &#8212; communicate their findings so other devs could seek them out to harvest insights.</p>
+<p>As the Ion Storm booth was next but one over from our booth it was no surprise that we quickly discovered in Dominion Storm a stunningly better entrant into the real-time strategy (RTS) genre than our company&#8217;s paltry efforts, which was all the more humiliating given that StarCraft represented our third foray into the genre.</p>
+<h3>Like the Battle of Hoth, only interactive</h3>
+<p>While we didn&#8217;t have the opportunity to play Dominion Storm because it was a hands-off affair, it didn&#8217;t seem necessary. The Ion Storm staff members who demonstrated the game had a remarkable event that showed great-looking game units, including a signature unit that moved like the AT-AT walkers first seen in &#8220;The Empire Strikes Back&#8221; during the Battle of Hoth. With other impressive units of all sizes and forms, electric fences that could be chained together to create impenetrable barriers, and isometric-perspective artwork that showed the game units from a more compelling angle than did our nearly top-down perspective, Ion Storm&#8217;s game was kicking our ass in every regard.</p>
+<p>It was a glum crew that made the drive back to Orange County to lick our wounds and plan for the future. The fundamental problem was that StarCraft wasn&#8217;t envisioned as a triple-A game; it was intended to fill a hole in Blizzard&#8217;s development schedule so that the company would ship a game in 1996 and thereby continue to generate revenues.</p>
+<p>In retrospect that decision was a mistake of the first order, and it behooves me try to explain why we, and by that I mean Blizzard&#8217;s leadership team, could have allowed that to happen. But first some caveats: these events occurred in 1996 so reasoning about that events is clouded by time. I haven&#8217;t talked about these issues with Blizzard folks since before 2000, when I split off with a couple of buddies to start ArenaNet. Moreover, I doubt that the Blizzard folks would talk to me about these issues if I did ask. In the intervening years we became competitors, and in any event they&#8217;re notoriously close-mouthed about their business for good reason &#8212; they&#8217;d prefer to avoid talking about any missteps and put their efforts towards more positive news. But I have no such compunctions, so you&#8217;re getting my assuredly biased views, which I&#8217;m sharing as a form of therapy, I guess. Perhaps some of the other folks who participated in these events will step forward to share their thoughts about these long-ago happenings.</p>
+<h3>Wherefore Orcs in Space?</h3>
+<p>Blizzard&#8217;s business strategy was driven by Allen Adham, the company&#8217;s president. Allen was a student of both gaming and business, and under the tutelage of Bob Davidson (CEO of Davidson &amp; Associates, the educational software company that first acquired Blizzard), they planned the company&#8217;s development pipeline with a keen eye towards maximizing the revenue and profit of our studio, as would any corporate leader. Whereas the development team was driven by a desire to make awesome games, Allen endeavored to build a pipeline with predictable game releases, and that included projects that didn&#8217;t engender excitement on the part of the devs.</p>
+<p>Some projects were pushed onto unwilling dev team members, including projects like Games People Play (a crossword puzzle game that died because the team lead was so unmotivated), Warcraft Adventures (a Sierra-style point-n-click adventure that &#8212; no matter how good an adventure it might be &#8212; would never be a capital-B Blizzard game), Diablo Hellfire (an expansion to Diablo developed by an external team selected for their availability rather than expertise), and Crixa (an updated clone of Virgin Games&#8217; SubSpace that would have been too shallow and arcade-like to meet with the approval of most of Blizzard&#8217;s fans). When there was greater consensus against an idea by the dev team, Allen&#8217;s strategies would be ruthlessly shot down, as when the team revolted against creating a mini-golf game franchise.</p>
+<p>In the period immediately after the launch of Warcraft II, Allen&#8217;s goal was to ensure another product launch in 1996. Since the Shattered Nations project (a turn-based game in the style of XCOM) had failed, there was a gap in the schedule, and putting together a project to fill that void was a top priority. Seen in that light, Allen&#8217;s choice to make a moderately scoped game might be considered reasonable in foresight, though it was rapidly overtaken by events.</p>
+<p>During that period, the game industry was undergoing a massive sea-change. With the advent of CDROM-based distribution in place of floppy disks and game cartridges, studios competed to build massive games to fill the available space and team-sizes shot upwards meet the demands; consequently development budgets skyrocketed.</p>
+<p>State of the art projects conceived in an earlier time would drag on for years as the projects lagged behind ever more advanced competitors&#8217; products, necessitating scope creep, redesigns, reboots and ever larger expenditures to play catch-up. StarCraft was to be Blizzard&#8217;s poster-child for this type of development process.</p>
+<p>For many on the team, myself included, the efforts of building two RTS games back to back in just two years was exhausting. The crunch-time we endured to ship these titles was physically wearing and, immediately following the game launches, many would become fall sick due to the fatigue.</p>
+<p>I later learned that sleep deprivation leads to other ill effects like memory loss because sleep is required for &#8220;memory consolidation&#8221;. And extensive sleep loss can also lead to depression, which is less about being &#8220;sad&#8221;, as I first thought as a naive youth, and more about changes in brain-chemistry that lead to an inability to function.</p>
+<p>While I don&#8217;t believe that anyone on the dev team was clinically depressed, during the post-launch period for our games we were notably lacking in energy for weeks or months depending upon the duration of the crunch effort. Work output suffered, but more relevant to this article is the changes in attitude the fatigue caused. Disagreements in direction and strategy that might have occasioned fierce arguments in earlier times would get more apathetic treatment after a product launch.</p>
+<p>For my own part, I very much remember being disagreeable to the idea of rushing StarCraft out the door with a one year development effort. I had been similarly disagreeable at the beginning of the Warcraft II project, which was another one-year project right on the heels of the initial launch. In retrospect, getting Warcraft II done in one year, even at great personal cost for myself and many of the team members, was what kept Blizzard at the head of the pack, so perhaps it was worth the effort.</p>
+<p>But when disagreeing about the short schedule for StarCraft, I wasn&#8217;t as vocal. I was moving on to other duties, and &#8212; in my profound exhaustion &#8212; absolved myself of the responsibility for the project because <em>I</em> wasn&#8217;t going to have to work on its development. In reality, I didn&#8217;t accomplish much for several months after the end of Warcraft II; I was just too burned out. My failure to push for a different course turned out to be a poor personal choice because it was eventually necessary for me to take over a StarCraft rescue effort, but only after taking on a similar effort to rescue Diablo.</p>
+<p>Another issue which arose that we didn&#8217;t fully take into account was the pain of developing more than one game at a time. Blizzard was attempting to grow from being a one-game studio to a multi-game studio. We&#8217;d started an effort to build more than one game internally, and the immediate problem that cropped up was the necessity to split a strong team to create two middling-strong teams. A team which was able to develop a great game, even when augmented with experienced new staff members, is going to have to take chances on promoting many staff members into positions they&#8217;ve not done before, and that&#8217;s a risky proposition.</p>
+<p>Given the complexity of bringing one game to market, it&#8217;s not surprising that the team failed to perform adequately when trying to bring multiple games to market without increasing time, training and budget &#8212; options we weren&#8217;t given. So obvious in retrospect, but at the time the pressure to ship games was ever-present. Ultimately the event that changed the equation was less that the studio changed directly than that our later games sold so many copies that we could afford to spend more time on each new game.</p>
+<p>When my new partners and I headed off to start ArenaNet, you can bet that many of these lessons echoed in our heads, and we endeavored to do a better job building a company having experienced these travails.</p>
+<h3>What became of Dominion Storm</h3>
+<p>Blizzard &#8212; after an arduous development process and fourteen months of crunch time (<a href="http://www.codeofhonor.com/blog/tough-times-on-the-road-to-starcraft">more details here</a>) &#8212; eventually released StarCraft in May, 1998. Dominion Storm released shortly afterwards in June, according to Wikipedia.</p>
+<p>But why did Dominion Storm, a game that showed so well that it necessitated a reboot of the StarCraft development effort, take longer to develop? And why did the game do so poorly when it eventually released? If you haven&#8217;t read the <a href="http://www.dallasobserver.com/1999-01-14/news/stormy-weather/full/">Dallas Observer&#8217;s story about the internal chaos of Ion Storm</a> you will be amazed; it is the most appalling story about game development I&#8217;ve ever read, and its author deserves kudos. If you read it I expect you&#8217;ll have a pretty clear idea why the development team struggled. To give you a taste of the article here is my favorite quote: &#8220;You better be fucking glad we wrote off your car and house, you fucking rat-faced bitch&#8221;.</p>
+<h3>Behold</h3>
+<p>As bad as Ion Storm was internally, there was a dark secret that eventually unraveled. It wasn&#8217;t until years later, well after the 1996 E3 demo of Dominion Storm, and after StarCraft launched, that we discovered that the Dominion Storm demo was a fake.</p>
+<p>As Ion Storm started to disintegrate due to financial and political problems, members of its development teams left to pursue other opportunities. From this crew Blizzard managed to hire <a href="http://www.mobygames.com/developer/sheet/view/developerId,8903/">Mark Skelton</a> and <a href="http://www.mobygames.com/developer/sheet/view/developerId,20679/">Patrick Thomas</a> for the burgeoning cinematics team, where they worked to produce some of Blizzard&#8217;s epic cut-scenes. I spent a lot of time with the cinematics team members (who sat not far from me) and hung out with Mark and Patrick, including during numerous surfing outings to Laguna Beach and Huntington Beach.</p>
+<p>At some point I talked with Mark and Patrick about how Dominion Storm knocked us on our heels, and they let us in on Ion Storm&#8217;s dirty little secret: the entire demo was a pre-rendered movie, and the people who showed the &#8220;demo&#8221; were just pretending to play the game! It would be an understatement to say that we were <a href="http://www.urbandictionary.com/define.php?term=gobsmack">gobsmacked</a>; we had been duped into a rebooting StarCraft, which ultimately led it to be considered &#8220;the defining game of its genre. It is the standard by which all real-time strategy games are judged&#8221; (<a href="http://web.archive.org/web/20060705173935/http://uk.gamespot.com/gamespot/features/all/greatestgames/starcraft.html">GameSpot</a>).</p>
+<p>It&#8217;s hard not to look back at those events now without being thankful for the kick in the ass that Dominion Storm gave us. While I and many others worked on what was the longest and most arduous development efforts of our careers, the end result was nothing short of miraculous.</p>
+<h3>But wait, there&#8217;s more! (<a href="http://www.dailyfinance.com/2012/07/06/but-wait-theres-more-remembering-ginsus-pioneering-pitchman/">every TV infomercial ever</a>)</h3>
+<p>I could probably end the story here, but can&#8217;t resist mentioning another faked demo story that I learned recently. It occurred after I left Blizzard so I can only relate it second-hand.</p>
+<p>As every game developer knows, release dates are slippery, but the dates of trade shows are set in stone. If a game studio has spent hundreds of thousands of dollars to prepare booth space, purchase long-lead print advertising and arrange press appointments, the development team is going to have to demo <em>something</em> or heads will roll.</p>
+<p>And so it came to pass that Warcraft III needed a bit of extra help one year at a trade show. The Warcraft III game engine, written from the ground up with no code shared from previous &#8220;craft&#8221; titles, was complicated and unintuitive enough that it was disparagingly called &#8220;brainfuck&#8221; by many on the team, and so the programmers were forced to struggle against these issues to get terrain collision and path-finding working in the run-up to E3.</p>
+<p>Given the timing they didn&#8217;t manage to get those features stabilized prior to the show, so fans and press weren&#8217;t allowed to get their hands on a playable demo. Instead the demonstration was carefully orchestrated by the game&#8217;s producers to hide their lack, which necessitated carefully steering game units around terrain features while pitching the product. To its credit Blizzard didn&#8217;t release the game until the problems were addressed and Warcraft III was an excellent game.</p>
+<p>Making games, and especially making games while creating enough visibility so that there is a ready audience, is enormously complicated. I wish every one of you who aspires to make games the best of luck in your endeavors, and hope that you&#8217;ll never find yourself on the heels of a similar dilemma about what to show.</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/starcraft-orcs-in-space-go-down-in-flames">StarCraft: Orcs in space go down in flames</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codeofhonor.com/blog/starcraft-orcs-in-space-go-down-in-flames/feed</wfw:commentRss>
+		<slash:comments>57</slash:comments>
+		</item>
+		<item>
+		<title>Avoiding game crashes related to linked lists</title>
+		<link>http://www.codeofhonor.com/blog/avoiding-game-crashes-related-to-linked-lists</link>
+		<comments>http://www.codeofhonor.com/blog/avoiding-game-crashes-related-to-linked-lists#comments</comments>
+		<pubDate>Sun, 09 Sep 2012 05:59:49 +0000</pubDate>
+		<dc:creator><![CDATA[Patrick Wyatt]]></dc:creator>
+				<category><![CDATA[Programming]]></category>
+		<category><![CDATA[C]]></category>
+
+		<guid isPermaLink="false">http://www.codeofhonor.com/blog/?p=386</guid>
+		<description><![CDATA[<p>In this post I&#8217;m going to talk about linked lists, a seemingly trivial subject that many programmers &#8212; even good ones &#8212; seem to get terribly wrong! Then I&#8217;m going to share techniques (with source code) to make your game engine code simpler, faster, more memory efficient and more reliable. Wow! This post is part [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/avoiding-game-crashes-related-to-linked-lists">Avoiding game crashes related to linked lists</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>In this post I&#8217;m going to talk about linked lists, a seemingly trivial subject that many programmers &#8212; even good ones &#8212; seem to get terribly wrong!</p>
+<p>Then I&#8217;m going to share techniques (with source code) to make your game engine code simpler, faster, more memory efficient and more reliable. Wow!</p>
+<p>This post is part of a three-part article:</p>
+<ul>
+<li><a href="http://www.codeofhonor.com/blog/tough-times-on-the-road-to-starcraft">Part 1: Why Starcraft crashed frequently during development</a></li>
+<li>This post: How we could have fixed the most common causes</li>
+<li>Part 3: Explaining the implementation details of the fix</li>
+</ul>
+<p>TL;DR: Here&#8217;s the <a href="https://github.com/webcoyote/coho/blob/master/Base/List.h">source code</a> which implements an intrusive doubly-linked list that&#8217;s better than <a href="http://www.cplusplus.com/reference/list/list/">std::list</a> and <a href="http://www.boost.org/doc/libs/1_51_0/boost/intrusive/list.hpp">boost intrusive lists</a> (for some definition of better).</p>
+<h3>Impetus: <a href="http://xkcd.com/386/">someone is wrong on the Internet</a></h3>
+<p>I was reading an article by Martin Sústrik, one of the lead developers of <a href="http://www.zeromq.org/">ZeroMQ</a>, a network coding library I&#8217;ve both used and recommended. It rocks for coding server-to-server network interactions, and is included in awesome projects like <a href="http://mongrel2.org/">Mongrel 2</a>.</p>
+<p>Martin recently posted about why he should have written ZeroMQ in C instead of C++, which turned out to be my impetus for writing this series of three articles. In his <a href="http://www.250bpm.com/blog:8">second article on the subject</a> he spent the majority of the post writing about the failures of the C++ Standard Template Library linked list (STL std::list library), and drew the conclusion that he could have done a better job using the C language.</p>
+<p>As much as I respect the work he&#8217;s done developing ZeroMQ, I think there&#8217;s a better answer than re-architecting the library in C.</p>
+<h3>Using std::list</h3>
+<p>Here&#8217;s how a programmer declares a linked list using STL (cribbed from the aforementioned article):</p>
+<pre><code>struct person {
+    unsigned age;
+    unsigned weight;
+};
+
+std::list &lt;person*&gt; people;
+</code></pre>
+<p>After adding a few members to the linked list, we&#8217;d get something that looks like this in memory:</p>
+<div id="attachment_406" style="width: 310px" class="wp-caption alignnone"><a href="http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/stl-list.png"><img src="http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/stl-list-300x116.png" alt="Diagram of memory layout for a doubly-linked list created using C++ STL library" title="Doubly-linked list created with C++ STL library" width="300" height="116" class="size-medium wp-image-406" srcset="http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/stl-list-300x116.png 300w, http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/stl-list.png 687w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">A doubly-linked list created using C++ std::list</p></div>
+<p>Here is code that safely removes a person record from the linked list:</p>
+<pre><code>// NOTE: O(N) algorithm
+// -- requires list scanning
+// -- requires memory deallocation
+void erase_person (person *ptr) {
+    std::list &lt;person*&gt;::iterator it;
+    for (it = people.begin(); it != people.end(); ++it) {
+        if (*it != ptr)
+            continue;
+        people.erase(it);
+        break; // assume person is only linked once
+    }
+}
+</code></pre>
+<p>Tragically, this unlinking code is awful: for a list with N entries, on average it is necessary to scan N/2 entries to find the element we&#8217;re interested in removing, which is why a linked list is a bad choice for storing records that need to be accessed in random order.</p>
+<p>More importantly, it&#8217;s necessary to write list-removal functions like the code above, which takes programmer dev-time, slows compilation, and can have bugs. With a better linked-list library, this code is entirely unnecessary.</p>
+<h3>Using intrusive lists</h3>
+<p>Let&#8217;s talk about an alternative to std::list using intrusive lists.</p>
+<p>Intrusive lists are ones that require the &#8220;link&#8221; fields to be embedded directly into the structure being linked. Unlike externally linked lists, where a separate object is used to hold a pointer to the object and previous/next links, the intrusive list makes its presence known in the structure being linked.</p>
+<p>Here&#8217;s code that re-implements the example above so that it use intrusive links:</p>
+<pre><code>struct person {
+    TLink<person>   link;   // The "intrusive" link field
+    unsigned        age;
+    unsigned        weight;
+};
+
+TListDeclare&lt;person, offsetof(person, link)&gt; people;
+</code></pre>
+<p>I use a #define macro to avoid code-duplication and typo-errors, so my list definition would actually look like this:</p>
+<pre><code>LIST_DECLARE(person, link) people;
+</code></pre>
+<p>In comparison to std::list, when viewing the memory layout you can see that there are fewer objects allocated in memory:</p>
+<div id="attachment_407" style="width: 310px" class="wp-caption alignnone"><a href="http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/coho-list.png"><img src="http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/coho-list-300x97.png" alt="Diagram of memory layout for a doubly-linked list created using C++ Coho library" title="Doubly-linked list created with Coho library" width="300" height="97" class="size-medium wp-image-407" /></a><p class="wp-caption-text">A doubly-linked intrusive list</p></div>
+<p>Moreover, the code to remove an element from the list is both simpler and faster, and does not require memory deallocation either:</p>
+<pre><code>// NOTE: O(1) algorithm
+// -- no list traversal
+// -- no memory deallocation
+void erase_person (person *ptr) {
+    ptr-&gt;link.Unlink(); // hmm... must be some magic in there
+}
+</code></pre>
+<p>And even better, if you delete a record that&#8217;s part of an intrusive list, it automatically unlinks itself from the list:</p>
+<pre><code>void delete_person (person *ptr) {
+    // automagically unlinks person record no matter
+    // which linked list it is contained within
+    delete ptr;
+}
+</code></pre>
+<h3>Why intrusive lists are better</h3>
+<p>If you&#8217;ve made it this far, you probably have an inkling about why intrusive lists are better than externally-linked lists in many cases; here are the ones I&#8217;ve come up with:</p>
+<ul>
+<li>Because the link fields which are used to include an object within a linked-list are embedded within the object itself it is no longer necessary to allocate memory to link an item onto a list, nor deallocate memory when unlinking. <code>ApplicationSpeed++.</code>MemoryUtilization&#8211;.</p>
+</li>
+<li>
+<p>When traversing objects stored on an intrusive linked list, it only takes one pointer indirection to get to the object, compared to two pointer indirections for std::list. This causes less memory-cache thrashing so your program runs faster &#8212; particularly on modern processors which have huge delays for memory stalls. <code>ApplicationSpeed++.</code>CacheThrashing&#8211;.</p>
+</li>
+<li>
+<p>We reduce code failure paths because it is no longer necessary to handle out-of-memory exceptions when linking items. <code>CodeObjectSize--.</code>CodeComplexity&#8211;.</p>
+</li>
+<li>
+<p>Most importantly, objects are automatically removed from the lists they&#8217;re linked into, eliminating many common types of bugs. `ApplicationReliability++.</p>
+</li>
+</ul>
+<h3>How do I link an object to multiple lists?</h3>
+<p>One of the great benefits of intrusive lists is that they just work. Let&#8217;s see how:</p>
+<pre><code>struct employee {
+    TLink&lt;employee&gt; employeeLink;
+    TLink&lt;employee&gt; managerLink;
+    unsigned        salary;
+};
+
+struct manager : employee {
+    LIST_DECLARE(employee, managerLink) staff;
+};
+
+LIST_DECLARE(employee, employeeLink) employees;
+
+void friday () {
+    // Hire Joe, a cashier
+    employee * joe  = new employee;
+    joe-&gt;salary     = 50 * 1000;
+    employees.LinkTail(joe);
+
+    // Hire Sally, a shift manager
+    manager * sally = new manager;
+    sally-&gt;salary   = 80 * 1000;
+    employees.LinkTail(sally);
+    sally-&gt;staff.LinkTail(joe);
+
+    // Oops, Joe got caught with his hand in the till
+    delete joe;
+
+    // Now that Joe is gone, Sally has no reports
+    ASSERT(sally-&gt;staff.Empty());
+
+    // And she is now the only employee
+    ASSERT(employees.Head() == sally);
+    ASSERT(employees.Tail() == sally);
+}
+</code></pre>
+<p>Pretty nifty, huh? You can see how a lot of common errors can be avoided when cleanup is automatic.</p>
+<h3>There&#8217;s a fly in my soup</h3>
+<p>Some folks might be concerned that their objects now contain those intrusive link fields which are unrelated to the data the object is supposed to contain. The person record is now &#8220;polluted&#8221; with external &#8220;stuff&#8221;.</p>
+<p>This does make it harder to do leet-programmer stuff like directly writing the record to disk (can&#8217;t safely write pointers), using memcmp to compare objects (those pesky pointers again) and similarly hackish stuff. But you shouldn&#8217;t be doing that anyway. Reliability is more important than speed, and if you&#8217;re reduced to using those hacks for speed-gains your program needs help. Remember Y2K bugs!</p>
+<h3>Where is my object linked?</h3>
+<p>When using intrusive lists your program must declare which lists a record will be embedded within when declaring those structures. In most cases this is trivial, but some cases require finesse:</p>
+<pre><code>// Some3rdPartyHeaderYouCannotChange.h
+struct Some3rdPartyStruct {
+    // lots of data
+};
+
+// MyProgram.cpp
+struct MyStruct : Some3rdPartyStruct {
+    TLink&lt;MyStruct&gt; link;
+}
+LIST_DECLARE(MyStruct, link) mylist;
+</code></pre>
+<p>Of course if you don&#8217;t control the structure definition nor the code where it is allocated, which might be true when working with third-party libraries you can fall back to using std::list.</p>
+<h3>Cautions for threaded code</h3>
+<p>When writing multi-threaded code it is important to remember that a delete operation will call the destructors for each intrusive link field to remove that element from the list.</p>
+<p>If the object being deleted has already been unlinked from all lists, then no problem. But if the object is still linked to a list it will be necessary to use locks to protect against race conditions. Here are some solutions from worst to best:</p>
+<pre><code>// Wrap destructor with a lock to avoid race condition
+// Downsides:
+//   lock held while calling destructor
+//   lock held during memory free
+void threadsafe_delete_person (person *ptr) {
+    s_personlock.EnterWrite();
+    {
+        delete ptr;
+    }
+    s_personlock.LeaveWrite();
+}
+
+-- or -- 
+
+// Wrap unlink with lock to avoid race condition.
+// Avoids downsides of the solution above, but
+// Unlink() will be called again safely but
+// unnecessarily in the TLink destructor.
+void threadsafe_delete_person (person *ptr) {
+    s_personlock.EnterWrite();
+    {
+        ptr-&gt;link.Unlink();
+    }
+    s_personlock.LeaveWrite();
+    delete ptr;
+}
+
+-- or -- 
+
+// Same as above, but less fragile; since the
+// unlinking is done in the destructor it is
+// impossible to forget to unlink when calling
+// delete
+person::~person () {
+    s_personlock.EnterWrite();
+    {
+        link.Unlink();
+    }
+    s_personlock.LeaveWrite();
+}
+
+-- or --
+
+// Same as above but reduces contention on lock
+person::~person () {
+    if (link.IsLinked()) {
+        s_personlock.EnterWrite();
+        {
+            link.Unlink();
+        }
+        s_personlock.LeaveWrite();
+    }
+}
+</code></pre>
+<p>You can probably tell I&#8217;ve done this a lot, huh?</p>
+<h3>Assignment and copy-construction for links and lists</h3>
+<p>It&#8217;s not possible to copy-construct or assign objects linked into intrusive lists, nor to do the same for the lists themselves. In practice this is not a limitation that you&#8217;ll run into. For the special case where it is necessary to move items from one list to another, it&#8217;s possible to write a function to splice elements from one list onto another.</p>
+<h3>Why not use boost intrusive lists?</h3>
+<p>Boost intrusive list.hpp implements a similar intrusive list to the one I wrote; it is designed to solve every linked list problem you&#8217;ve ever had, and consequently it&#8217;s daunting to use. Boy howdy did they make it complicated &#8212; unnecessarily so, I think.</p>
+<p>If you read the <a href="https://github.com/webcoyote/coho/blob/master/Base/List.h">source code</a>, I hope you&#8217;ll find it straightforward. For a start, the entire intrusive linked-list, including the comments and MIT license, clocks in at under 500 lines.</p>
+<p>Compare this with boost intrusive list.hpp &#8212; which admittedly does have more functionality &#8212; at 1500 lines not including the eleven (11!!) subsidiary headers filled with all that unreadable modern C++ templately bollocks.</p>
+<h3>Example use-case where std::list would break down</h3>
+<p>Here&#8217;s an example of some code I implemented in ArenaSrv and StsSrv, the server frameworks I wrote that are used for almost all Guild Wars services (both GW1 and GW2), but rewritten for clarity and brevity.</p>
+<p>The code is designed to prevent a particular type of attack against a network service called <a href="http://ha.ckers.org/slowloris/" class="broken_link" rel="nofollow">Slowloris</a>. What Slowloris does is to gradually connect lots of sockets to a single network service until it has eventually saturated the server with connections, at which point the server generally stops behaving properly. Apache web servers are particularly vulnerable to Slowloris, though many other network services have similar issues.</p>
+<pre><code>//*********** SLOWLORIS PREVENTION FUNCTIONS ***********
+// Mark connection so it will be closed "soon" unless
+// a complete message is received in the near future
+void Slowloris_Add (Connection * c) {
+    s_pendingCritsect.Enter();
+    {
+        // List is kept in sorted order; newest at the tail
+        s_pendingList.LinkTail(c);
+        c-&gt;disconnectTime = GetTime() + DEFEAT_SLOWLORIS_TIME;
+    }
+    s_pendingCritsect.Leave();
+}
+
+// Remove connection from "close-me-soon" list
+void Slowloris_Remove (Connection * c) {
+    s_pendingCritsect.Enter();
+    {
+        s_pendingList.Unlink(c);
+    }
+    s_pendingCritsect.Leave();
+}
+
+// Periodically check "close-me-soon" list
+void Slowloris_CheckAll () {
+    s_pendingCritsect.Enter();
+    while (Connection * c = s_pendingList.Head()) {
+        // Since the list is sorted we can stop any
+        // time we find an entry that has not expired
+        if (!TimeExpired(GetTime(), c-&gt;disconnectTime))
+            break;
+        s_pendingList.Unlink(c);
+        c-&gt;DisconnectSocket();
+    }
+    s_pendingCritsect.Leave();
+}
+
+//*********** SOCKET FUNCTIONS ***********
+void OnSocketConnect (Connection * c) {
+    Slowloris_Add(c);
+}
+
+void OnSocketDisconnect (Connection * c) {
+    Slowloris_Remove(c);
+    delete c;
+}
+
+void OnSocketReadData (Connection * c, Data * data) {
+    bool msgComplete = AddData(&amp;c-&gt;msg, c-&gt;data);
+    if (msgComplete) {
+        Slowloris_Add(c);
+        ProcessMessageAndResetBuffer(&amp;c-&gt;msg);
+    }
+}
+</code></pre>
+<p>You wouldn&#8217;t want to use std::list for this type of problem because, each time it became necessary to remove a connection from the &#8220;close-me-soon&#8221; list it would be necessary to traverse 50% of the list (on average). Since some Guild Wars 1 services hosted as many as 20K connections in a single process, this would entail scanning through 10000 list items &#8212; not a good idea!</p>
+<h3>Credit where credit is due</h3>
+<p>I didn&#8217;t invent this linked-list technique. The first time I encountered it was in Mike O&#8217;Brien&#8217;s code for Diablo, included in Storm.dll. When Mike and I started ArenaNet with Jeff Strain, the first code that Mike wrote was a better version of that linked-list code.</p>
+<p>Upon leaving ArenaNet, I discovered that after ten years of coding with intrusive lists &#8212; and the attendant lack of worry about silly linked-list bugs &#8212; I needed to re-implement the code again because no better alternatives existed (boost notwithstanding). Some trial and error ensued!</p>
+<p>In order to avoid this constant rewriting, I have open-sourced the code using the MIT license, which means you get to use it with no commercial limitations.</p>
+<h3>Conclusions</h3>
+<p>Well there you go: an explanation of the uses of intrusive lists. They&#8217;re awesome for writing more reliable code because they cleanup after themselves (caveat: multithreaded code).</p>
+<p>The programming team that implemented Guild Wars included more than ten coders who were recent college graduates. Had we turned them loose on a game engine to write code using std::list the bug count would have been much higher &#8212; meaning no offense to those programmers at all; they&#8217;re great folks. By giving them access to tools like these we were able to write 6.5 million lines of code &#8212; a huge scope for a game &#8212; with exceptional stability and reliability.</p>
+<p>A key goal of good programming is to increase reliability. By creating collection classes that &#8220;just work&#8221; we can go a great distance towards that end.</p>
+<h3>End of part 2</h3>
+<p>In part 3 of this article I plan to answer the critical question: how does it all work?</p>
+<p>For the impatient, check out the implementation here in <a href="https://github.com/webcoyote/coho/blob/master/Base/List.h">List.h</a>.</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/avoiding-game-crashes-related-to-linked-lists">Avoiding game crashes related to linked lists</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codeofhonor.com/blog/avoiding-game-crashes-related-to-linked-lists/feed</wfw:commentRss>
+		<slash:comments>153</slash:comments>
+		</item>
+		<item>
+		<title>Tough times on the road to Starcraft</title>
+		<link>http://www.codeofhonor.com/blog/tough-times-on-the-road-to-starcraft</link>
+		<comments>http://www.codeofhonor.com/blog/tough-times-on-the-road-to-starcraft#comments</comments>
+		<pubDate>Fri, 07 Sep 2012 04:35:36 +0000</pubDate>
+		<dc:creator><![CDATA[Patrick Wyatt]]></dc:creator>
+				<category><![CDATA[Game design]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Starcraft]]></category>
+
+		<guid isPermaLink="false">http://www.codeofhonor.com/blog/?p=372</guid>
+		<description><![CDATA[<p>I&#8217;ve been writing about the early development of Warcraft, but a recent blog post I read prompted me to start scribbling furiously, and the result is this three-part, twenty-plus page article about the development of StarCraft, along with my thoughts about writing more reliable game code. I&#8217;ll be posting the latter parts over the next [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/tough-times-on-the-road-to-starcraft">Tough times on the road to Starcraft</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve been writing about the early development of Warcraft, but a recent blog post I read prompted me to start scribbling furiously, and the result is this three-part, twenty-plus page article about the development of StarCraft, along with my thoughts about writing more reliable game code. I&#8217;ll be posting the latter parts over the next several days.</p>
+<ul>
+<li>This post: Why StarCraft crashed frequently during development</li>
+<li>Part 2: <a href="http://www.codeofhonor.com/blog/avoiding-game-crashes-related-to-linked-lists">How we could have fixed the most common causes</a></li>
+<li>Part 3: Explaining the implementation details of the fix</li>
+</ul>
+<h3>The beginnings of StarCraft</h3>
+<p>During the development of StarCraft, a two and a half year slog with over a year of crunch time prior to launch, the game was as buggy as a termite nest. While its predecessors (Warcraft I and II) were far more reliable games than their industry peers, StarCraft crashed frequently enough that play-testing was difficult right up until release, and the game continued to require ongoing patching efforts post-launch.</p>
+<p>Why? There were sooooo many reasons.</p>
+<h3>Orcs in space</h3>
+<p>StarCraft was originally envisioned as a game with modest goals that could fit into a one-year development cycle so that it could be released for Christmas, 1996.</p>
+<p>The project leadership was comprised of the same folks who had started <a href="http://www.youtube.com/watch?v=QGZwGyKkIkw">Shattered Nations (video)</a>, a turn-based strategy game along the lines of <a href="http://en.wikipedia.org/wiki/X-COM">X-COM</a> that Blizzard announced in May 1995 but canceled some months later.</p>
+<p>The team members were regrouped to build something that could reach market quickly so Blizzard wouldn&#8217;t have a long gap between game launches.</p>
+<ul>
+<li>Q4 1994 &#8211; Warcraft</li>
+<li>Q4 1995 &#8211; Warcraft II</li>
+<li>Q4 1996 &#8211; planned ship date for StarCraft</li>
+<li>Q2 1998 &#8211; actual ship date for StarCraft</li>
+</ul>
+<p>The decision to rush the game’s development seems ludicrous in retrospect, but Allen Adham, the company&#8217;s president, was under pressure to grow revenue. While Blizzard&#8217;s early games had been far more successful than expected, that just raised expectations for future growth.</p>
+<p>Given a short timeframe and limited staff, the StarCraft team&#8217;s goal was to implement a modest game &#8212; something that could best be described as &#8220;Orcs in space&#8221;. A picture from around the time of the <a href="http://en.wikipedia.org/wiki/E3_%28games_show%29">E3</a> game show in Q2 1996 shows the path the game team originally chose:</p>
+<div id="attachment_371" style="width: 510px" class="wp-caption alignnone"><a href="http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/Starcraft-orcs-in-space.png"><img src="http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/Starcraft-orcs-in-space.png" alt="StarCraft &quot;Orcs in space&quot; screenshot prior to the project reboot" title="StarCraft: Orcs in space" width="500" height="375" class="size-full wp-image-371" srcset="http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/Starcraft-orcs-in-space-300x225.png 300w, http://www.codeofhonor.com/blog/wp-content/uploads/2012/09/Starcraft-orcs-in-space.png 500w" sizes="(max-width: 500px) 100vw, 500px" /></a><p class="wp-caption-text">StarCraft as it appeared in June 1996 at the Electronic Entertainment Expo. Yeah &#8212; I wouldn&#8217;t play it either.</p></div>
+<p>But a higher priority project overshadowed StarCraft and stole its developers one by one. Diablo, a role-playing game being developed by Condor Studios in Redwood City California, was in need of additional help. Condor, a company formed by <a href="http://www.mobygames.com/developer/sheet/view/developerId,11644/">Dave Brevik</a> along with <a href="http://www.mobygames.com/developer/sheet/view/developerId,11645/">Max Schaefer</a> and his brother <a href="http://www.mobygames.com/developer/sheet/view/developerId,11643/">Erich Schaefer</a>, was given a budget of only $1.2 million &#8212; ridiculously small even in those days.</p>
+<p>The Condor team had no hope of making the game they aspired to build, but they did such ground-breaking work in developing something fun that it made sense for Blizzard to acquire Condor, rename it Blizzard North, and start pouring in the money and staff the game really deserved.</p>
+<p>Initially <a href="http://www.mobygames.com/developer/sheet/view/by_genre/developerId,11653/">Collin Murray</a>, a programmer on StarCraft, and I flew to Redwood City to help, while other developers at Blizzard &#8220;HQ&#8221; in Irvine California worked on network &#8220;providers&#8221; for battle.net, modem and LAN games as well as the user-interface screens (known as &#8220;glue screens&#8221; at Blizzard) that performed character creation, game joining, and other meta-game functions.</p>
+<p>As Diablo grew in scope eventually everyone at Blizzard HQ &#8212; artists, programmers, designers, sound engineers, testers &#8212; worked on the game until StarCraft had no one left working on the project. Even the project lead was co-opted to finish the game installer that I had half-written but was too busy to complete.</p>
+<p>After the launch of Diablo at the end of 1996, StarCraft development was restarted, and everyone got a chance to see where the game was headed, and it wasn&#8217;t pretty. The game was dated, and not even remotely impressive, particularly compared to projects like Dominion Storm, which looked great in demos at E3 six months before.</p>
+<p>The massive success of Diablo reset expectations about what Blizzard should strive for: StarCraft became the game that defined Blizzard&#8217;s strategy of not releasing games until they were ready. But a lot of pain had to occur along the way to prove out this strategy.</p>
+<h3>Something to prove</h3>
+<p>With everyone looking critically at StarCraft, it was clear that the project needed to be vastly more ambitious than our previous ground-breaking efforts in defining the future of the real-time strategy (RTS) genre with the first two Warcraft games.</p>
+<p>At the time of the StarCraft reboot, according to Johnny Wilson, then Editor in Chief of Computer Gaming World, the largest-distribution gaming magazine of that time, there were over eighty (80!!) RTS games in development. With so many competitors on our heels, including Westwood Studios, the company that <a href="http://en.wikipedia.org/wiki/Dune_II">originated the modern RTS play-style</a>, we needed to make something that kicked ass.</p>
+<p>And we were no longer an underdog; with the successes of Warcraft and Diablo continuing to fill the news we sure wouldn&#8217;t be getting any slack from players or the gaming press. In the gaming world you&#8217;re only ever as good as your last game. We needed to go far beyond what we&#8217;d done previously, and that required taking risks.</p>
+<h3>New faces</h3>
+<p>Warcraft II had only six core programmers and two support programmers; that was too few for the larger scope of StarCraft, so the dev team grew to include a cadre of new and untested game programmers who needed to learn how to write game code without much mentoring.</p>
+<p>Our programming leadership was weak: we hadn&#8217;t yet learned how essential it is to provide guidance to less experienced developers early in the project so they learn much-needed lessons <em>before</em> the game launches, so it was very much a sink-or-swim proposition for new Padawans. A big part of the problem was just how thin we were on the ground &#8212; every programmer was coding like mad to meet goals, with no time for reviews, code-audits, or training.</p>
+<p>And not only were there inexperienced junior members on the team, the leader of the StarCraft programming effort had never architected a shipping game engine. <a href="http://www.mobygames.com/developer/sheet/view/developerId,1022/">Bob Fitch</a> had been programming games for several years with great results but his previous efforts were game ports, where he worked within an existing engine, and feature programming for Warcraft I and II, which didn&#8217;t require large-scale engine design. And while he had experience as the tech lead for Shattered Nations, that project was canceled, therefore no validation of its architectural decisions was possible.</p>
+<p>The team was incredibly invested in the project, and put in unheard of efforts to complete the project while sacrificing personal health and family life. I’ve never been on a project where every member worked so fiercely. But several key coding decisions in the project, which I&#8217;ll detail presently, would haunt the programming team for the remainder of the project.</p>
+<h3>Some things have changed</h3>
+<p>After spending months working to launch Diablo, and further months of cleanup effort and patching afterwards, I returned to help with the reboot of StarCraft. I wasn&#8217;t looking forward to diving into another bug-fest, but that&#8217;s exactly what happened.</p>
+<p>I thought it would be easy to jump back into the project because I knew the Warcraft code so well &#8212; I&#8217;d literally worked on every component. I was instead terrified to discover that many components of the engine had been thrown away and partially rewritten.</p>
+<p>The game&#8217;s unit classes were in the process of being rewritten from scratch, and the unit dispatcher had been thrown out. The dispatcher is the mechanism I created to ensure that each game unit gets time to plan what it wants to do. Each unit periodically asks: &#8220;what should I do now that I finished my current behavior?&#8221;, &#8220;should I re-evaluate the path to get where I&#8217;m going?&#8221;, &#8220;is there a better unit to attack instead of the one that I&#8217;m targeting now?&#8221;, &#8220;did the user give me a new command?&#8221;, &#8220;I&#8217;m dead, how do I clean up after myself?&#8221;, and so forth.</p>
+<p>There are good reasons code needs to be rewritten, but excising old code comes with risks as well. Joel Spolsky said it most eloquently in <a href="http://www.joelonsoftware.com/articles/fog0000000069.html">Things You Should Never Do, Part I</a>:</p>
+<blockquote><p>
+  It&#8217;s important to remember that when you start from scratch there is absolutely no reason to believe that you are going to do a better job than you did the first time. First of all, you probably don&#8217;t even have the same programming team that worked on version one, so you don&#8217;t actually have &#8220;more experience&#8221;. You&#8217;re just going to make most of the old mistakes again, and introduce some new problems that weren&#8217;t in the original version.
+</p></blockquote>
+<p>The Warcraft engine had taken months of programming effort to get right, and while it needed rework for new gameplay features, a fresh programming team was now going to spend a great deal of time relearning lessons about how and why the engine was architected the way it was in the first place.</p>
+<h3>Game engine architecture</h3>
+<p>I wrote the original Warcraft engine for Microsoft DOS in C using the Watcom Compiler. With the switch to releasing on Microsoft Windows, Bob chose to use the Visual Studio compiler and re-architected the game engine in C++. Both were reasonable choices but for the fact that &#8212; at that point &#8212; few developers on the team had experience with the language and more especially with its many pitfalls.</p>
+<p>Though C++ has strengths it is easy to misuse. As Bjarne Stroustrup, the language&#8217;s creator, so famously said: &#8220;C makes it easy to shoot yourself in the foot; C++ makes it harder, but when you do it blows your whole leg off.&#8221;</p>
+<p>History tells us that programmers feel compelled to try every feature of their new language during the first project, and so it was with class inheritance in StarCraft. Experienced programmers will shudder when seeing the inheritance chain that was designed for the game&#8217;s units:</p>
+<pre><code>CUnit &lt; CDoodad &lt; CFlingy &lt; CThingy
+</code></pre>
+<p>CThingy objects were <a href="http://en.wikipedia.org/wiki/Sprite_%28computer_graphics%29">sprites</a> that could appear anywhere on the game map, but didn&#8217;t move or have behaviors, while CFlingys were used for creating particles; when an explosion occurred several of them would spin off in random directions. CDoodad &#8212; after 14 years I think this is the class name &#8212; was an uninstantiated class that nevertheless had important behaviors required for proper functioning of derived classes. And CUnit was layered on top of that. The behavior of units was scattered all throughout these various modules, and it required an understanding of each class to be able to accomplish anything.</p>
+<p>And beyond the horror of the class hierarchy, the CUnit class itself was an unholy mess defined across multiple header files:</p>
+<pre><code>class CUnit ... {
+    #include "header_1.h"
+    #include "header_2.h"
+    #include "header_3.h"
+    #include "header_4.h"
+};
+</code></pre>
+<p>Each of those headers was several hundred lines, leading to an overall class definition that could at best be called amusing.</p>
+<p>It wasn&#8217;t until many years later that the mantra &#8220;favor composition over inheritance&#8221; gained credence among programmer-kind, but those who worked on StarCraft learned the hard way much earlier.</p>
+<h3>We&#8217;re only two months from launch</h3>
+<p>With its troubled early history, after the reboot the development team was  pressured to finish up, and so schedules were bandied about that showed the game could be launched in two months.</p>
+<p>Given the number of game units and behaviors that needed to be added, the changes necessary to switch from top-down to isometric artwork, a completely new map editor, and the addition of Internet play over battle.net, it was inconceivable that the game actually could ship in that time, even assuming that the art team, designers, sound engineers, game-balancers and testers could finish their end of the bargain. But the programming team continually worked towards shipping in only two months for the next fourteen months!</p>
+<p>The entire team worked long hours, with Bob working stretches of 40 hours, 42 hours, even 48 hours programming. As I recall no one else attempted these sorts of masochistic endeavors, though everyone was putting in massive, ridiculous hours.</p>
+<p>My experiences developing Warcraft, with frequent all-nighters coding, and later Diablo, where I coded fourteen-plus hour days seven days a week for weeks at a time, suffered me to learn that there wasn&#8217;t any point in all-nighters. Any code <em>submissions</em> [ha! what an appropriate word] written after a certain point in the evening would only be regretted and rewritten in the clear light of following days.</p>
+<p>Working these long hours made people groggy, and that&#8217;s bad when trying to accomplish knowledge-based tasks requiring an excess of creativity, so there should have been no surprises about the number of mistakes, misfeatures and outright bugs.</p>
+<p>Incidentally, these sorts of crazy hours weren&#8217;t mandated &#8212; it was just the kind of stuff we did because we wanted to make great games. In retrospect it was foolish &#8212; we could have done better work with more reasonable efforts.</p>
+<p>One of my proudest accomplishments was to ship four Guild Wars campaigns in a two-year window without leading the development team down that dark path.</p>
+<h3>The most common cause of StarCraft game crashes</h3>
+<p>While I implemented some important features in StarCraft, including fog-of-war, line-of-sight, flying unit pathing-repulsion, voice-chat, AI reinforcement points, and others, my primary job gravitated to fixing bugs.</p>
+<p>Wait: voice-chat! In 1998?!? Yeah: I had it all working in December 1997. I used a 3rd-party voice-to-phoneme compressor, and wrote the code to send the phonemes across the network, decompress them, and then play them back on the other seven players&#8217; computers.</p>
+<p>But every single sound-card in our offices required a driver upgrade to make it work, if the sound card was even capable of full-duplex sound (simultaneous recording and playback of sounds), so I regretfully made the recommendation to scrap the idea. The tech-support burden would have been so high that we would have spent more money on game support than we would have made selling the game.</p>
+<p>So anyway I fixed lots of bugs. Some of my own, sure, but mostly the elusive bugs written by other tired programmers. One of the best compliments I&#8217;ve received came just a few months ago, when <a href="http://www.mobygames.com/developer/sheet/view/developerId,9169/">Brian Fitzgerald</a>, one of two best programmers I&#8217;ve had occasion to work with, mentioned a code-review of StarCraft; they were blown away by how many changes and fixes I had made over the entire code-base. At least I got some credit for the effort, if only well after the fact!</p>
+<p>Given all the issues working against the team, you might think it was hard to identify a single large source of bugs, but based on my experiences the biggest problems in StarCraft related to the use of doubly-linked <a href="http://en.wikipedia.org/wiki/Linked_list#Singly.2C_doubly.2C_and_multiply_linked_lists">linked lists</a>.</p>
+<p>Linked lists were used extensively in the engine to track units with shared behavior. With twice the number of units of its predecessor &#8212; StarCraft had a maximum of 1600, up from 800 in Warcraft 2 &#8212; it became essential to optimize the search for units of specific types by keeping them linked together in lists.</p>
+<p>Recalling from distant memory, there were lists for each player&#8217;s units and buildings, lists for each player&#8217;s &#8220;power-generating&#8221; buildings, a list for each Carrier&#8217;s fighter drones, and many many others.</p>
+<p>All of these lists were doubly-linked to make it possible to add and remove elements from the list in constant time &#8212; O(1) &#8212; without the necessity to traverse the list looking for the element to remove &#8212; O(N).</p>
+<p>Unfortunately, each list was &#8220;hand-maintained&#8221; &#8212; there were no shared functions to link and unlink elements from these lists; programmers just manually inlined the link and unlink behavior anywhere it was required. And hand-rolled code is far more error-prone than simply using a routine that&#8217;s already been debugged.</p>
+<p>Some of the link fields were shared among several lists, so it was necessary to know exactly which list an object was linked into in order to safely unlink. And some link fields were even stored in C unions with other data types to keep memory utilization to a minimum.</p>
+<p>So the game would blow up all the time. All the time.</p>
+<h3>But why did you do it that way?</h3>
+<p>Tragically, there was no need for these linked-list problems to exist. <a href="http://www.mobygames.com/developer/sheet/view/developerId,9166/">Mike O&#8217;Brien</a>, who, along with <a href="http://www.mobygames.com/developer/sheet/view/developerId,9171/">Jeff Strain</a>, cofounded ArenaNet with me, wrote a library called Storm.DLL, which shipped with Diablo. Among its many features, storm contained an excellent implementation of doubly-linked lists using templates in C++.</p>
+<p>During the initial development of StarCraft, that library was used. But early in the development the team ripped out the code and hand-rolled the linked-lists, specifically to make writing save-game files easier.</p>
+<p>Let me talk about save games for a second to make this all clearer.</p>
+<h3>Save games</h3>
+<p>Many games that I played before developing Warcraft had crappy save-game functionality. Gamers who played any game created by Origin will remember how looooooong it took to write save-game files. I mean sure, they were written by slow microprocessors onto hard-drives that &#8212; by today&#8217;s standards &#8212; are as different as tricycles and race cars. But there was no reason for them to suck, and I was determined that Warcraft wouldn&#8217;t have those problems.</p>
+<p>So Warcraft did some tricks to enable it to write large memory blocks to disk in one chunk instead of meandering through memory writing a bit here and there. The entire unit array (600 units times a few hundred bytes per unit) could be written to disk in one chunk. And all non-pointer-based global variables could similarly be written in one chunk, as could each of the game-terrain and fog-of-war maps.</p>
+<p>But oddly enough, this ability to write the units to disk in one chunk wasn&#8217;t essential to the speed of writing save game files, though it did drastically simplify the code. But it worked primarily because Warcraft units didn&#8217;t contain &#8220;pointer&#8221; data.</p>
+<p>StarCraft units, which as mentioned previously contained scads of pointers in the fields for linked lists, was an entirely different beast. It was necessary to fixup all the link pointers (taking special care of unioned pointer fields) so that all 1600 units could be written at once. And then unfixup the link pointers to keep playing. Yuck.</p>
+<h3>Change back!</h3>
+<p>So after fixing many, many linked list bugs, I argued vehemently that we should switch back to using Storm&#8217;s linked lists, even if that made the save-game code more complicated. When I say &#8220;argued vehemently&#8221;, I should mention that was more or less the only way we knew how to argue at Blizzard &#8212; with our youthful brashness and arrogant hubris, there was no argument that wasn&#8217;t vehement unless it was what was for lunch that day, which no one much wanted to decide.</p>
+<p>I didn&#8217;t win that argument. Since we were only &#8220;two months&#8221; from shipping, making changes to the engine for the better was regularly passed over for band-aiding existing but sub-optimal solutions, which led to many months of suffering, so much that it affected my approach to coding (for the better) ever since, which is what I&#8217;ll discuss in part two of this article.</p>
+<h3>More Band-Aids: path-finding in StarCraft<a id="path-finding"></a></h3>
+<p>I wanted to mention one more example of patching over bugs instead of fixing the underlying problem: when StarCraft switched from top-down artwork to isometric artwork, the background tile-graphics rendering engine, which dated back to code I had written in 1993/4, was left unchanged.</p>
+<p>Rendering isometric-looking tiles using a square tile engine isn&#8217;t hard, though there are difficulties in getting things like map-editors to work properly because laying down one map tile on another requires many &#8220;edge fixups&#8221; since the map editor is trying to place diagonally-shaped images drawn in square tiles.</p>
+<p>While rendering isn&#8217;t so bad, isometric path-finding on square tiles was very difficult. Instead of large (32&#215;32 pixel) diagonal tiles that were either passable or impassable, the map had to be broken into tiny 8&#215;8 pixel tiles &#8212; multiplying the amount of path-searching by a factor of 16 as well as creating difficulties for larger units that couldn&#8217;t squeeze down a narrow path.</p>
+<p>Had Brian Fitzgerald not been a stellar programmer, the path-finding problem would have prevented the game from launching indefinitely. As it was pathing was one of the problems that was only finalized at the end of the project. I plan to write more about path-finding in StarCraft because there are lots interesting technical and design bits.</p>
+<h3>End of part 1</h3>
+<p>So you&#8217;ve heard me whine a bit about how difficult it was to make StarCraft, largely through poor choices made at every level of the company about the game&#8217;s direction, technology and design.</p>
+<p>We were fortunate to be a foolhardy but valiant crew, and our perspicacity carried the day. In the end we buckled down and stopped adding features long enough to ship the game, and players never saw the horror show underneath. Perhaps that&#8217;s another benefit of compiled languages over scripted ones like JavaScript &#8212; end users never see the train wreck!</p>
+<p>In part two of this article I&#8217;m going to get even more technical and talk about why most programmers get linked lists wrong, then propose an alternative solution that was used successfully for Diablo, battle.net and Guild Wars.</p>
+<p>And even if you don&#8217;t use linked-lists, the same solutions carry over to more complex data structures like hash tables, B-trees and priority queues. Moreover, I believe the underlying ideas generalize well to all programming. But let&#8217;s not get ahead of ourselves; that&#8217;s another article.</p>
+<p>Thanks for reading this far, and sorry I haven&#8217;t yet discovered how to write concisely.</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/tough-times-on-the-road-to-starcraft">Tough times on the road to Starcraft</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codeofhonor.com/blog/tough-times-on-the-road-to-starcraft/feed</wfw:commentRss>
+		<slash:comments>161</slash:comments>
+		</item>
+		<item>
+		<title>The making of Warcraft part 2</title>
+		<link>http://www.codeofhonor.com/blog/the-making-of-warcraft-part-2</link>
+		<comments>http://www.codeofhonor.com/blog/the-making-of-warcraft-part-2#comments</comments>
+		<pubDate>Wed, 15 Aug 2012 18:22:19 +0000</pubDate>
+		<dc:creator><![CDATA[Patrick Wyatt]]></dc:creator>
+				<category><![CDATA[Game design]]></category>
+		<category><![CDATA[Warcraft]]></category>
+
+		<guid isPermaLink="false">http://www.codeofhonor.com/blog/?p=335</guid>
+		<description><![CDATA[<p>In my previous article about Warcraft I talked about the beginnings of a series that would come to define Blizzard Entertainment and lead it to being one of the best-known and most-loved game companies in the world. But how did Warcraft go from an idea to a full-fledged game? Let me tell you, it was [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/the-making-of-warcraft-part-2">The making of Warcraft part 2</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>In my <a href="http://www.codeofhonor.com/blog/the-making-of-warcraft-part-1">previous article about Warcraft</a> I talked about the beginnings of a series that would come to define Blizzard Entertainment and lead it to being one of the best-known and most-loved game companies in the world.</p>
+<p>But how did Warcraft go from an idea to a full-fledged game? Let me tell you, it was not a straight-line path from conception to launch. As with many games the design evolved over time, with ideas being argued, tested, argued, changed, argued, retested and some eventually killed.</p>
+<p>You probably gathered that there was a lot of arguing along the way, but that&#8217;s not always a bad thing. While sometimes they devolved into <a href="http://yourlogicalfallacyis.com/ad-hominem">ad hominem</a> attacks, hard feelings and apologies, the debates ensured that ideas were likely to be well forged.</p>
+<p>And even through the disagreements, there was a sense of camaraderie that pervaded our efforts. We worked together, played together, partied together, slept 10 to a hotel room for trade shows together, and in cases even lived together: I shared a house with three other Blizzard-folks which was the first of many similar dorm rooms scattered throughout Orange County, California.</p>
+<h3>Initial proposal</h3>
+<p>Blizzard was working on at least four other games when I started on the Warcraft project, and as the company numbered only 20 everyone was mega-busy keeping those projects on track. It wasn&#8217;t uncommon for artists, programmers and designers to be working on two or sometimes three projects at a time, and of course our sole musician/sound-engineer, Glenn Stafford, worked on everything.</p>
+<p>But we regularly found time to meet in large groups to brainstorm and discuss company strategy, so much that we called our efforts the &#8220;business plan <a href="http://www.thefreedictionary.com/du+jour">du jour</a>&#8220;.</p>
+<p>I already discussed our motivation to create a Real Time Strategy (RTS) game modeled after Dune II in a <a href="http://www.codeofhonor.com/blog/the-making-of-warcraft-part-1">previous article</a>, but one other key idea propelled us forward.</p>
+<p>The other impetus for the game started with a proposal that Allen Adham &#8212; president and company co-founder &#8212; made during one of our brainstorming sessions. He wanted to build a series of war games that would be released in near identical white boxes under the banner &#8220;Warcraft&#8221;, with subheadings announcing the historical context for each game: The Roman Empire, The Vietnam War, and so forth.</p>
+<p>The goal with the identical boxes was to control a large section of shelf-space that would be easy for players to spot in a crowded retail environment, similar to the <a href="http://en.wikipedia.org/wiki/Gold_Box">Gold Box series of Dungeons &amp; Dragons games from SSI</a>, which enjoyed great success during the late 1980&#8217;s. New players would be drawn to the section of games by its dominating shelf-presence, and veteran players who enjoyed one game they would know where to find the next. I know; retail: so archaic compared to app stores and Amazon, right?!?</p>
+<p>Ron Millar and Sam Didier, two of the early artists to work at the company,  weren&#8217;t excited about the idea of working on historical simulations, they enjoyed fantasy games like Warhammer and Dungeons &amp; Dragons. One glance at <a href="http://www.fordesigner.com/maps/8190-8.htm">Sam&#8217;s artwork</a> is enough to demonstrate his passion for the fantasy milieu. So at a later meeting they proposed the idea that the first game should be set in a high-fantasy world of Orcs and humans, where they&#8217;d have more opportunity to create innovative game artwork instead of being required to conform to the tenets of historical accuracy. The idea took hold, with the first game in the series becoming <em>Warcraft: Orcs and Humans</em>.</p>
+<h3>Initial game design</h3>
+<p>Many people believe that a game designer is solely responsible for all idea conception and actually &#8220;creates the game design&#8221;, and this may be true for some development teams. Designers do need to be highly creative and bring to life many of the elements of the game personally.</p>
+<p>But equally important is for designers to be receptive to the ideas of others: without some involvement in the game&#8217;s design the rest of the team has less motivation to do their best work. And beyond that, it&#8217;s never possible to know where the next great design idea is going to come from. It&#8217;s critical for designers to listen so that the best ideas of others aren&#8217;t stifled.</p>
+<p>Our informal design process during the early period of Warcraft&#8217;s development worked effectively in that regard. Many brainstorming sessions occurred during hallway meetings, lunches, smoke-breaks, and after late evenings of game playing. Everyone in the company contributed their thoughts. With little formal process and no single design document, the game design evolved with each passing month.</p>
+<p>Ron, who had started his career in the game industry as an artist, was at that time our go-to guy for design on Blizzard games. Though he was finishing up the development of <a href="http://en.wikipedia.org/wiki/Blackthorne">Blackthorne</a>, a side-scrolling shooter for Super Nintendo, he devoted time to generating ideas for the game.</p>
+<p>Stu Rose was another artist who became one of Blizzard&#8217;s early staffers. From a personality standpoint he was the polar opposite of Ron in most respects, and his efforts as part of the design group occasioned conflicts of opinion with Ron, though during the times they did agree they were an unassailable force.</p>
+<p>These two ended up as the book-ends for the entire design process, each working independently to develop the world&#8217;s culture and plot overview, define the game&#8217;s units, specify the play mechanics, envision how magic spells worked, develop the game&#8217;s missions, choose place-names, and finalize other minutiae that are nevertheless important to make games comes to life.</p>
+<p>At this late date it&#8217;s not possible to document who developed exactly which idea without canvassing the entire team and sorting out arguments over events that happened so long ago. Even back then we had difficulties determining how game-design credit should be shared, and ultimately decided the fairest, most egalitarian solution was to credit everyone, and thus the Warcraft: Orcs vs. Humans box credits include &#8220;Game design by Blizzard Entertainment&#8221;. Incidentally the <a href="http://www.mobygames.com/game/dos/warcraft-orcs-humans/credits">Moby Games credits for Warcraft 1</a> are completely borked because they mix the much later Macintosh and 1998 releases of the game with the original 1994 DOS release, so many folks are mis-credited.</p>
+<p>While my recollection of the exact timing of events is dim, I&#8217;ve recently seen an early design document dated 1994 and labeled &#8220;Chaos Studios&#8221;, which means it was generated in early 1994 before the company had been renamed Blizzard. By February 1994 we had a set of (still very rough) design documents that had been through several iterations and contained the key concepts for the game.</p>
+<p>Admittedly, it would probably have been better to have a design in place <em>before</em> I started programming in September 1993, but with the amount of &#8220;substrate&#8221; that I needed to build before the actual fun-n-game parts could be developed, the lack of a design wasn&#8217;t a show-stopper at that stage, particularly since we already pulled many of the game&#8217;s elements from Dune 2.</p>
+<h3>What got chopped</h3>
+<p>While it&#8217;s still (barely) possible to play Warcraft 1 today, it&#8217;s not much fun compared to later RTS games. The difficulty of getting the game running on modern computers leads one to high expectations that are then crushed when viewing a game with a screen resolution of only 320&#215;200 pixels &#8212; one twentieth of the resolution of a modern high res monitor &#8212; and with user interface and play balance that are markedly inferior to our later efforts.</p>
+<p>But by playing Warcraft 1 it is possible to see the ideas that survived through the design winnowing process into the game&#8217;s final release. In many ways Warcraft 1 isn&#8217;t so much different from later games in the series.</p>
+<p>Today gamers are familiar with classic Warcraft units like Barracks, Town Halls, Lumber Mills and Gold Mines, all of which survived into future releases of Warcraft games. Those iconic units persist because their names and functions are easily comprehensible to those of us who live in the real world instead of Azeroth.</p>
+<p>But many of the ideas that our early design documents contained didn&#8217;t come to fruition. Some of this was related to the brutal timeline &#8212; the game <em>had</em> to launch for Christmas, 1994 and we barely made it. Ideas died because better alternatives existed, or didn&#8217;t have strong advocates, or were too time-consuming to implement, or would have required too much memory, or weren&#8217;t fun.</p>
+<p>I thought folks might like to know about ideas that ended up on the cutting room floor, like the Mason&#8217;s Hall [required for stone buildings], Dwarven Inn [greater production of stone], Elven Fletcher [upgrades for archers], Tax House and Ale House.</p>
+<p>These buildings all served secondary functions, some of which could be combined elsewhere. We instead added their functionality to existing buildings instead of creating buildings solely dedicated to one function, as for example the Dwarven Inn and Elven Fletcher buildings.</p>
+<p>The Mason&#8217;s Hall was dropped because we considered using stone as a third resource (in addition to gold and lumber) an unnecessary complexity. We revisited the idea again for Warcraft 2, and dropped it again after actually implementing (programming) the idea.</p>
+<p>The Ale Stand was designed to increase the rate at which soldiers and gold would be produced. I&#8217;m not sure how we can rectify that design idea with the amount of work that actually gets done after a night of heavy drinking in <em>our</em> world, but I imagine there are special rules of magic at work in Azeroth. Or maybe that&#8217;s why we cut the Ale Stand.</p>
+<p>And NPC races like lizard men, hobgoblins and Halflings were also on the drawing board but were ultimately rejected, almost certainly due to the effort of drawing and animating the figures in <a href="http://en.wikipedia.org/wiki/Deluxe_Paint">DPaint</a>.</p>
+<p>Game development is about trade-offs &#8212; great games don&#8217;t have to do everything, they have to do a limited number of things well.</p>
+<h3>Formations</h3>
+<p>A design idea much discussed but never implemented was &#8220;formations&#8221;, where units would stick together on the battlefield. Formations are difficult to implement so the feature was chopped from the spec.</p>
+<p>Some of the complexities that prevented implementation: units in formation all move at the same speed so slow units don&#8217;t get left behind &#8212; this created programming complexity. Formations need the ability to rotate &#8212; or &#8220;wheel&#8221; in military parlance &#8212; so that a formation heading north comprised of infantry carrying <a href="http://en.wikipedia.org/wiki/Pike_%28weapon%29">pikes</a> with archers following behind can turn as a group to face an enemy detachment approaching from the east, with the archers still lined up behind the protective wall of infantry &#8212; this created user interface complexity. Given enough time we could have completed the feature, but we needed the development time for more basic features.</p>
+<p>As a stand-in, I did implement &#8220;numbered group selection&#8221;. A user would select a group of units and press the Ctrl (control) key plus a number key (1-4). Those unit-groupings would be remembered so it would be possible to later re-select those units by pressing the number key (1-4) by itself. But those units would move independently even though selected as a group.</p>
+<h3>A player-character on the battlefield</h3>
+<p>Another idea much discussed but never implemented was that of having a unit that represented the player on the game map: an avatar that would progress from mission to mission during the game.</p>
+<p>For a game-avatar to represent the player, it should morph from a weak unit into a mighty hero over the course of several missions to create a sense of progression. To do this properly would require that the character would only become more powerful if utilized. An underutilized avatar would remain weak, while an avatar constantly at work on the front lines would become stronger.</p>
+<p>Carrying a unit over from one mission to the next adds to the difficulty of play-balancing missions. A great player will graduate a strong avatar from each mission, and that avatar&#8217;s strength will make succeeding missions seem easy, while a less-skilled player&#8217;s avatar could be so weak as to make winning later missions impossible. These two problems would lead players to drop out of the game &#8212; in the first instance for lack of challenge, and in the second due to frustration, as few players want to go backwards and redo previous missions in order to survive a mission later in the game.</p>
+<p>A competitor&#8217;s product named <a href="http://en.wikipedia.org/wiki/War_Wind">War Wind</a> released several years after Warcraft allowed units to be carried over from mission to mission; the game&#8217;s designers allowed up to four units to be transferred, but finessed the play-balance problem by ensuring that these units weren&#8217;t powerful enough to affect gameplay, somewhat the antithesis of what a heroic player-avatar is supposed to represent.</p>
+<h3>Heroes &#8212; in Warcraft 1?!?</h3>
+<p>We also considered including hero-units in Warcraft 1; they had names like the Illusion Thief, Barbarian, Huntress, and Juggernaut, each with specialized skills. Ultimately we trimmed the list of game units substantially; probably due to design and art-animation time constraints.</p>
+<p>As someone with limited involvement in Warcraft III, it was interesting to see the idea of heroes finally implemented in the series, though the design genesis of heroes in Warcraft III comes from a different source &#8212; that is, not from ideas re-hashed from Warcraft 1 design documents.</p>
+<p>Briefly, Warcraft III started out as a game called Heroes of Warcraft, which departed from the type of traditional RTS we had already launched five times before (<a href="http://en.wikipedia.org/wiki/Warcraft:_Orcs_%26_Humans">W1</a>, <a href="http://en.wikipedia.org/wiki/Warcraft_II:_Tides_of_Darkness">W2:ToD</a>, <a href="http://en.wikipedia.org/wiki/Warcraft_II:_Beyond_the_Dark_Portal">W2:BtDP</a>, <a href="http://en.wikipedia.org/wiki/StarCraft">SC</a>, <a href="http://en.wikipedia.org/wiki/StarCraft:_Brood_War">SC:BW</a>) and was instead a squad-based tactical combat game set in the Warcraft universe. This game morphed into a more traditional RTS &#8212; but retained the element of heroes &#8212; after a change of team-leads halfway through the development.</p>
+<h3>Warcraft&#8217;s bright color palette</h3>
+<p>If you consider the artwork of the Warcraft series, you&#8217;ll see that the colors are shockingly loud in comparison to, say, Diablo, where only in a dim room is it truly possible to see the beauty of the art. The bright, cartoony art-style was different from the style of many other PC war games of the era, which hewed to more realistic color palette.</p>
+<p>Part of that difference can be explained by the past experiences of our artists, who had worked on several Super Nintendo and Sega Genesis console titles, where games required more dynamic colors since televisions of that era were so much worse at displaying colors than PC monitors. Console games on TVs, which had lower pixel resolution and color bleed, needed high-contrast artwork to show well.</p>
+<p>Another reason was at the behest of Allen, who charged all the artists with drawing artwork in bright conditions. He&#8217;d regularly stalk the halls of Blizzard turning on lights and opening window-blinds.</p>
+<p>His view was that most folks play games in bright rooms, so our artists should be authoring our games to play well in that environment. He argued that it&#8217;s easy to draw artwork that reads well when viewed in a dark room with no outside light can distract from the monitor. But when computer art is competing with bright lights it&#8217;s much more difficult to see. And fluorescent bulbs are the worst form of light available &#8212; the cold, flickering glow of their tubes tires the eyes and washes out colors.</p>
+<p>So the lights were always on in the art rooms to force artists to compensate for terrible lighting by creating art that accounted for those conditions. These working conditions chafed on some (all?) of the art team, but ultimately led to artwork that stood out compared to products of the day.</p>
+<p>Now you know why Warcraft artwork looks like it has been candy-coated!</p>
+<h3>What about &#8230;</h3>
+<p>In the first article of this series I promised to address a bunch of topics in this article, but I&#8217;ve written another long post and didn&#8217;t quite make it to those points; I’ll continue to press forward in future articles. But give me a wee bit because I&#8217;ve become addicted to <a href="http://dayzmod.com">DayZ</a> and need more play-time!</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/the-making-of-warcraft-part-2">The making of Warcraft part 2</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codeofhonor.com/blog/the-making-of-warcraft-part-2/feed</wfw:commentRss>
+		<slash:comments>41</slash:comments>
+		</item>
+		<item>
+		<title>Debugging running server applications</title>
+		<link>http://www.codeofhonor.com/blog/debugging-running-server-applications</link>
+		<comments>http://www.codeofhonor.com/blog/debugging-running-server-applications#comments</comments>
+		<pubDate>Thu, 02 Aug 2012 00:21:45 +0000</pubDate>
+		<dc:creator><![CDATA[Patrick Wyatt]]></dc:creator>
+				<category><![CDATA[Programming]]></category>
+		<category><![CDATA[debugging]]></category>
+
+		<guid isPermaLink="false">http://www.codeofhonor.com/blog/?p=326</guid>
+		<description><![CDATA[<p>So you&#8217;ve written an awesome online game that works perfectly in the test environment, but when real users are playing the game server doesn&#8217;t work properly. Now what?!? I was reading an article by Mike Perham called Debugging with Thread Dumps and wanted to share a related technique from the development of Guild Wars that [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/debugging-running-server-applications">Debugging running server applications</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>So you&#8217;ve written an awesome online game that works perfectly in the test environment, but when real users are playing the game server doesn&#8217;t work properly. Now what?!?</p>
+<p>I was reading an article by Mike Perham called <a href="http://www.mikeperham.com/2012/06/02/debugging-with-thread-dumps/">Debugging with Thread Dumps</a> and wanted to share a related technique from the development of <a href="http://www.guildwars.com">Guild Wars</a> that might help you solve some of those hard-to-find bugs that only show up in the LIVE game environment.</p>
+<p>For those who haven&#8217;t played Guild Wars, it&#8217;s what&#8217;s known as an &#8220;instance-based&#8221; massively-multiplayer online role-playing game, or <a href="http://en.wikipedia.org/wiki/Massively_multiplayer_online_role-playing_game">MMORPG</a>. In Guild Wars if you and your friends want to fight a dragon, there isn&#8217;t actually one waiting patiently in its lair for you to show up and fight. Instead, the game server creates a server game-instance right then and there, imbuing the dragon with hitpoints and a treasure-filled cavern out of thin air.</p>
+<h3>Something is broken</h3>
+<p>Well one day in Guild Wars, after the launch of the <a href="http://en.wikipedia.org/wiki/Guild_Wars_Nightfall">Nightfall</a> campaign, players in one of those aforementioned game instances were having trouble: their game was crawling along at a glacial pace so it felt like their characters were running through molasses. Unfortunately this game instance was not an eight-player party mission, it was a &#8220;town&#8221;, with hundreds of players using the spot as a meeting point and jumping-off location for playing other dungeons and missions.</p>
+<p><a href="http://www.mobygames.com/developer/sheet/view/by_genre/developerId,223568/">Brett Vickers</a> (at that time Lead Programmer) and <a href="http://www.mobygames.com/developer/sheet/view/by_genre/developerId,223576/">Mark Young</a> (at that time Content Team Lead) &#8212; both excellent programmers &#8212; had heard about the problem and started looking into the issue. They used traditional triage methods: investigate the most likely cause of the problem to determine whether evidence supports that cause; if not, move on to the next most probable scenario.</p>
+<p>So they checked the server CPU and memory load, which were within normal levels. While hundreds of game instances were running on the server at that time, the load wasn&#8217;t any higher than on other servers in the same datacenter. Hmmmm.</p>
+<p>They joined other games running on the same physical server hardware, and in particular other instances of the same town map running on that server and on other servers. Aside: In Guild Wars, there can be many instances of the same map &#8212; if 3000 players want to join Ascalon City, which can holds to 100 players per town, then the game will create (3000/100=) 30 town instances. None of these other town instances had slowdown problems. What next?</p>
+<p>They reviewed code checkins since the last build, which notably hadn&#8217;t had this particular problem. Nothing leaped out and bit them. And so they continued searching, until they were stumped.</p>
+<h3>Given enough eyeballs&#8230;</h3>
+<p>One of the best solutions when blocked on a bug is to bounce ideas off other programmers. Various folks got called in, and at some point I was asked to lend a sympathetic ear. While I was one of the co-founders of ArenaNet, one of my several roles in the company was Server Team Lead, which meant I spent much of my day writing code &#8212; we were a lean shop and the founders all wrote plenty of code.</p>
+<p>I wasn&#8217;t working on the game content directly, but did write the low-level, multi-threaded, asynchronous library that handled receiving network messages from players and other backend services and posting those messages up into the synchronous, single-threaded game logic.</p>
+<p>As an aside, we designed the game server libraries specifically so that each game instance ran single-threaded so that the game content programming team wouldn&#8217;t have to fool with writing threaded code, which is time-consuming to develop because of synchronization worries regarding races and deadlocks. Removing these types of obstacles for content team programmers allowed them to get get on to the business of writing game code, allowing them to be much more prolific creating game features that players desperately want. It&#8217;s what enabled the studio to generate 3.5 million lines of code from 2000-2005, and another 3 million lines of code for Guild Wars from 2005-2007 when GWEN (Guild Wars: Eye of the North) shipped.</p>
+<p>The biggest difficulty we faced was that it wasn&#8217;t a good idea to attach a debugger to the running server process and start poking around in memory. That would cause several thousand players on the server to be quite annoyed as their game instances lagged out. And many times when using a debugger it&#8217;s not possible to find the source of the problem anyway. We needed something &#8230; smarter.</p>
+<h3>Debugging tools on tap</h3>
+<p>One of the challenges that programmers often face when writing multi-threaded code is that of deadlocks. A <a href="http://en.wikipedia.org/wiki/Deadlock">deadlock</a> is a situation where, as Wikipedia so succinctly puts it &#8220;two or more competing actions are each waiting for the other to finish, and thus neither ever does&#8221;.</p>
+<div id="attachment_327" style="width: 787px" class="wp-caption aligncenter"><a href="http://www.codeofhonor.com/blog/wp-content/uploads/2012/08/deadlock.png"><img src="http://www.codeofhonor.com/blog/wp-content/uploads/2012/08/deadlock.png" alt="Deadlock" title="deadlock" width="777" height="381" class="size-full wp-image-327" srcset="http://www.codeofhonor.com/blog/wp-content/uploads/2012/08/deadlock-300x147.png 300w, http://www.codeofhonor.com/blog/wp-content/uploads/2012/08/deadlock.png 777w" sizes="(max-width: 777px) 100vw, 777px" /></a><p class="wp-caption-text">What a programming deadlock looks like in real life</p></div>
+<p>So having experienced deadlocks myself (yeah &#8212; I write bugs too) I had already developed a solution to help uncover this type of problem. Thank you <a href="http://people.llnl.gov/jefferson6">David Jefferson</a> for CS 111!</p>
+<p>I had written a game-crash handler based on some <a href="http://www.microsoft.com/msj/0497/hood/hood0497.aspx">great exception-handling code written by Matt Pietrek for MSJ Magazine</a> &#8212; virtually everyone who&#8217;s ever written a crash-handler for Windows apps has referred to this code. When a game crash occurred my handler would send programmers an email detailing where the problem occurred and other relevant information like register and memory contents, including most importantly a full stack-walk showing the call-chain of functions leading up to the crash.</p>
+<p>I generalized this code so that the reporter would display a <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms680650">stack-walk</a> for all running threads instead of just the one that crashed.</p>
+<p>Then I wrote some deadlock-detection code. The idea here is not to perform perfect deadlock detection, which is hard. Instead I created a background thread that periodically checks to ensure that each thread is regularly reporting its aliveness so we know the thread isn&#8217;t stuck.</p>
+<p><a href="https://github.com/webcoyote/coho/blob/master/Base/Thread.cpp">Check out the deadlock detection code here</a></p>
+<h3>Finding the bug</h3>
+<p>For testing purposes I had hooked up the deadlock-reporter to a server-console command, and this was the key to solving the Guild Wars bug. I ran a telnet session to the broken game server and ran the &#8220;/deadlock&#8221; command many times in succession. Each command dumped thread state so we knew what each thread was working on at the moment the dump was captured. By aggregating stack-traces from these reports we could analyze which functions showed up most frequently and pinpoint the code that was hogging the CPU time.</p>
+<p>Mark and Brett were then able to review all relevant code changes to understand the nature of the defect. If I recall correctly, there was a map script that listened for players entering and leaving the map, and stored it in an array.</p>
+<p>When players left the game their data should have been deleted from the array, but the code was buggy, causing the array to grow without bound as players joined and left the game.</p>
+<p>This bug would have <em>eventually</em> resulted in an out-of-memory error, but game servers have lots of memory and the game server was designed to be memory efficient, so it would have been a <em>long</em> time before we found the problem.</p>
+<p>In the meantime array searches were causing the game to spend so much time looping through several million entries that the game felt laggy. We had found the bug!</p>
+<p>A quick change to the code, a recompile of the game on the build server, and several minutes later the problem was fixed.</p>
+<p>One of the great advantages of the Guild Wars development environment we created was the ability to checkin code, then build and deploy it to millions of end-users across the globe with a single command, all in the span of a couple of minutes. Iteration is <em>the</em> key to building great games &#8212; it&#8217;s okay to make mistakes, but make them fast and fix them fast.</p>
+<p>Incidentally, I should mention the bug wasn&#8217;t written by Mark or Brett; the guilty party shall remain nameless; let&#8217;s face it, we&#8217;ve all written bugs :)</p>
+<h3>Conclusion</h3>
+<p>So if you&#8217;re writing server code, perhaps you&#8217;ll be able to use this solution or <a href="http://www.mikeperham.com/2012/06/02/debugging-with-thread-dumps/">Mike Perham&#8217;s</a> to help diagnose trouble spots in your project.</p>
+<p>P.S. Mike Perham is the guy who wrote <a href="http://mperham.github.com/sidekiq/">SideKiq</a>. It&#8217;s a background message-processing library I&#8217;ve used in a Rails project that serves the same purpose as Resque or DelayedJob, but does it better. Thank you Mike!</p>
+<p>The post <a rel="nofollow" href="http://www.codeofhonor.com/blog/debugging-running-server-applications">Debugging running server applications</a> appeared first on <a rel="nofollow" href="http://www.codeofhonor.com/blog">Code Of Honor</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codeofhonor.com/blog/debugging-running-server-applications/feed</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 1.055 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2016-02-22 11:28:51 -->
+
+<!-- Compression = gzip -->
