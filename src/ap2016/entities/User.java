@@ -36,6 +36,36 @@ public class User {
 	private final static int HASH_ITERATION_COUNT = 10000;		
 	
 	
+	private User(String username, String avatarName, Role...roles)
+	{
+		setUsername(username);
+		setAvatarFromName(avatarName);
+		
+		this.roles = (ArrayList<Role>) Arrays.asList(roles);
+	}
+	
+	
+	
+	
+	public User(String username, byte[] passwordHash, byte[] passwordSalt, String avatarName, Role... roles)
+	{
+		this(username, avatarName, roles);
+		
+		this.passwordHash = passwordHash;
+		this.currentPasswordSalt = passwordSalt;
+		
+	}
+	
+	public User(String username, StringBuffer newPassword, String avatarName, Role... roles)
+	{
+		this(username, avatarName, roles);
+		
+		setNewPassword(newPassword);
+		
+	}
+	
+	
+	
 	
 	
 	public String getUsername()
@@ -101,6 +131,10 @@ public class User {
 	
 	
 	
+	
+	
+	
+	
 	public ImageIcon getAvatar()
 	{
 		return avatar;
@@ -140,6 +174,22 @@ public class User {
 		
 	}
 	
+	public void setAvatarFromName(String avatarName)
+	{
+		try {
+			this.avatarName = avatarName;
+			avatar = new ImageIcon(ImageIO.read(new File(ApplicationConstants.assetsBase + avatarName)));
+		} catch (IOException e) {
+			throw new IllegalArgumentException("The supplied avatar name was not found");
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -153,6 +203,10 @@ public class User {
 	{
 		return ApplicationConstants.passwordRegEx.matcher(password).matches();
 	}
+	
+	
+	
+	
 	
 	
 	
