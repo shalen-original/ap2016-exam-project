@@ -8,6 +8,12 @@ The following parts are already included in the project:
 
 * Nothing
 
+##Package description##
+The project includes the following packages:
+
+* **ap2016.entities**: Contains all the data entities used in the project. They are:
+ * *User*: Describes a user of the program.
+
 ##How to setup the enviroment##
 The following steps are required:
 
@@ -16,4 +22,4 @@ The following steps are required:
 * You're good to go.
 
 ##Copyright##
-© All the resources on this repository are owned by Matteo Nardini. All rights reserved.
+&copy; All the resources on this repository are owned by Matteo Nardini. All rights reserved.
