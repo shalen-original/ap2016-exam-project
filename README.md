@@ -11,8 +11,8 @@ The following parts are already included in the project:
 ##Package description##
 The project includes the following packages:
 
-* **ap2016.entities**: Contains all the data entities used in the project. They are:
- * *User*: Describes a user of the program.
+* **ap2016.entities**: Contains all the data entities used in the project. They are: 
+    * *User*: Describes a user of the program.
 
 ##How to setup the enviroment##
 The following steps are required:
