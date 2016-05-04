@@ -1,7 +1,23 @@
 package ap2016.entities;
 
-import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 import ap2016.application.ApplicationConstants;
 
@@ -9,14 +25,15 @@ public class User {
 	
 	private String username;
 	private byte[] passwordHash;
-	private byte[] currentPasswordHash;
+	private byte[] currentPasswordSalt;
 	
-	private Image avatar;
+	private ImageIcon avatar;
 	private String avatarName;
 	
 	private ArrayList<Role> roles;
 
-			
+	
+	private final static int HASH_ITERATION_COUNT = 10000;		
 	
 	
 	
@@ -41,24 +58,15 @@ public class User {
 
 	public boolean isRightPassword(StringBuffer pwd)
 	{
-		byte[] newPwdHash = hashStringBuffer(pwd);
-		
-		if (passwordHash.length != newPwdHash.length) return false;
-		
-		for (int i = 0; i <passwordHash.length; i++)
-		{
-			if(passwordHash[i] != newPwdHash[i])
-				return false;
-		}
-		
-		return true;
+		return Arrays.equals(passwordHash, hashPassword(pwd, currentPasswordSalt));
 	}
 	
 	public void setNewPassword(StringBuffer newPassword)
 	{
 		if (isValidPassword(newPassword))
 		{
-			passwordHash = hashStringBuffer(newPassword);
+			currentPasswordSalt = generateRandomSalt(16);
+			passwordHash = hashPassword(newPassword, currentPasswordSalt);
 		}
 	}
 	
@@ -93,7 +101,44 @@ public class User {
 	
 	
 	
+	public ImageIcon getAvatar()
+	{
+		return avatar;
+	}
 	
+	public String getAvatarName()
+	{
+		return avatarName;
+	}
+	
+	public void setAvatar(String path) throws IOException
+	{
+		setAvatar(new File(path));
+	}
+	
+	public void setAvatar(File file) throws IOException
+	{
+		BufferedImage tmp = null;
+		
+		// Read the image
+		tmp = ImageIO.read(file);
+		
+		// Generate (unique ?) hash
+		avatarName = hashImage(tmp) + ".png";
+		
+		// Writes to a file internal to the program
+		try(BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(ApplicationConstants.assetsBase + avatarName)))
+		{
+			ImageIO.write(tmp, "png", outputStream);
+		}
+		
+		// Reads from the internal file (after next GC, the original image will not be used by the process anymore).
+		tmp = ImageIO.read(new File(ApplicationConstants.assetsBase + avatarName));
+		
+		// Sets the new avatar.
+		avatar = new ImageIcon(tmp);
+		
+	}
 	
 	
 	
@@ -109,49 +154,73 @@ public class User {
 		return ApplicationConstants.passwordRegEx.matcher(password).matches();
 	}
 	
-	private static byte[] hashStringBuffer(StringBuffer toHash)
+	
+	
+	private static byte[] hashPassword(StringBuffer toHash, byte[] salt)
 	{
-		return null;
+		  char[] charsToHash = null;
+		  byte[] hash = null;
+		  toHash.getChars(0, toHash.length() - 1, charsToHash, 0);
+		  
+		  PBEKeySpec spec = new PBEKeySpec(charsToHash, salt, HASH_ITERATION_COUNT, 64 * 8);
+		  
+		  try
+		  {
+			  SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+			  hash = skf.generateSecret(spec).getEncoded();
+		  }catch(NoSuchAlgorithmException e){
+			// This should really never never happen. Never say never, but this time I'm pretty sure.
+			// Unless someone changes the string "PBKDF2WithHmacSHA1". Don't do it.
+		  }catch(InvalidKeySpecException e){
+			  // TODO
+		  }
+		  
+		  return hash;
+	}
+
+	private static byte[] generateRandomSalt(int bytesNum)
+	{
+	        byte[] salt = null;
+	        
+			try {
+				salt = SecureRandom.getInstance("SHA1PRNG").generateSeed(bytesNum);
+			} catch (NoSuchAlgorithmException e) {
+				// This should really never never happen. Never say never, but this time I'm pretty sure.
+				// Unless someone changes the string "SHA1PRNG". Don't do it.
+			}
+			
+	        return salt;
+	}
+
+	private static String hashImage(RenderedImage image) throws IOException
+	{
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ImageIO.write(image, "png", outputStream);
+        byte[] data = outputStream.toByteArray();
+        
+        byte[] hash = null;
+		try {
+			MessageDigest md;
+			md = MessageDigest.getInstance("MD5");
+	        md.update(data);
+	        hash = md.digest();
+		} catch (NoSuchAlgorithmException e) {
+			// This should really never never happen. Never say never, but this time I'm pretty sure.
+			// Unless someone changes the string "MD5". Don't do it.
+		}
+        
+		if (hash == null)
+			return null;
+        
+        StringBuilder ans = new StringBuilder();
+        
+        for (int i = 0; i < data.length; i++)
+        {
+        	ans.append(Integer.toHexString(hash[i]));
+        }
+        
+        return ans.toString();
+        
 	}
 	
-//	public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException 
-//    {
-//        String  originalPassword = "password";
-//        String generatedSecuredPasswordHash = generateStorngPasswordHash(originalPassword);
-//        System.out.println(generatedSecuredPasswordHash);
-//    }
-//    private static String generateStorngPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException
-//    {
-//        int iterations = 1000;
-//        char[] chars = password.toCharArray();
-//        byte[] salt = getSalt();
-//         
-//        PBEKeySpec spec = new PBEKeySpec(chars, salt, iterations, 64 * 8);
-//        SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-//        byte[] hash = skf.generateSecret(spec).getEncoded();
-//        return iterations + ":" + toHex(salt) + ":" + toHex(hash);
-//    }
-//     
-//    private static byte[] getSalt() throws NoSuchAlgorithmException
-//    {
-//        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
-//        byte[] salt = new byte[16];
-//        sr.nextBytes(salt);
-//        return salt;
-//    }
-//     
-//    private static String toHex(byte[] array) throws NoSuchAlgorithmException
-//    {
-//        BigInteger bi = new BigInteger(1, array);
-//        String hex = bi.toString(16);
-//        int paddingLength = (array.length * 2) - hex.length();
-//        if(paddingLength > 0)
-//        {
-//            return String.format("%0"  +paddingLength + "d", 0) + hex;
-//        }else{
-//            return hex;
-//        }
-//    }
-//     
-
 }
