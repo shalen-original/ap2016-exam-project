@@ -12,12 +12,12 @@ public class ApplicationConstants {
 	/**
 	 * The regular expression used to validate usernames
 	 */
-	public final static Pattern usernameRegEx = Pattern.compile("");
+	public final static Pattern usernameRegEx = Pattern.compile("([a-zA-Z0-9_,'-]*)([.]?)([a-zA-Z0-9_,'-]*)");
 	
 	/**
 	 * The regular expression used to validate passwords
 	 */
-	public final static Pattern passwordRegEx = Pattern.compile("");
+	public final static Pattern passwordRegEx = Pattern.compile(".{8,}");
 	
 	
 	

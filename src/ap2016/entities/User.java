@@ -41,7 +41,12 @@ public class User {
 		setUsername(username);
 		setAvatarFromName(avatarName);
 		
-		this.roles = (ArrayList<Role>) Arrays.asList(roles);
+		if (roles != null)
+		{
+			this.roles = (ArrayList<Role>) Arrays.asList(roles);
+		}else{
+			this.roles = new ArrayList<Role>();
+		}
 	}
 	
 	
@@ -68,6 +73,7 @@ public class User {
 	
 	
 	
+	
 	public String getUsername()
 	{
 		return username;
@@ -85,11 +91,6 @@ public class User {
 	
 	
 	
-
-	public boolean isRightPassword(StringBuffer pwd)
-	{
-		return Arrays.equals(passwordHash, hashPassword(pwd, currentPasswordSalt));
-	}
 	
 	public void setNewPassword(StringBuffer newPassword)
 	{
@@ -97,7 +98,24 @@ public class User {
 		{
 			currentPasswordSalt = generateRandomSalt(16);
 			passwordHash = hashPassword(newPassword, currentPasswordSalt);
+		}else{
+			throw new IllegalArgumentException("The password is not valid.");
 		}
+	}
+
+	public boolean isRightPassword(StringBuffer pwd)
+	{
+		return Arrays.equals(passwordHash, hashPassword(pwd, currentPasswordSalt));
+	}
+	
+	public byte[] getCurrentPasswordSalt()
+	{
+		return currentPasswordSalt;
+	}
+	
+	public byte[] getCurrentPasswordHash()
+	{
+		return passwordHash;
 	}
 	
 	
@@ -212,7 +230,7 @@ public class User {
 	
 	private static byte[] hashPassword(StringBuffer toHash, byte[] salt)
 	{
-		  char[] charsToHash = null;
+		  char[] charsToHash = new char[toHash.length()];
 		  byte[] hash = null;
 		  toHash.getChars(0, toHash.length() - 1, charsToHash, 0);
 		  
