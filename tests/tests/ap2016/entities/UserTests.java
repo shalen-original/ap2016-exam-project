@@ -13,14 +13,14 @@ public class UserTests {
 	@Test
 	public void setUsernameTest_00()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test", null);
+		User u = new User("test01", new StringBuffer("123456789"), "test");
 		assertEquals("test01", u.getUsername());
 	}
 	
 	@Test
 	public void setUsernameTest_01()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test", null);
+		User u = new User("test01", new StringBuffer("123456789"), "test");
 		u.setUsername("test02");
 		assertEquals("test02", u.getUsername());
 	}
@@ -28,7 +28,7 @@ public class UserTests {
 	@Test(expected = IllegalArgumentException.class)
 	public void setUsernameTest_02()
 	{
-		User u = new User("gb=sefds_", new StringBuffer("123456789"), "test", null);
+		User u = new User("gb=sefds_", new StringBuffer("123456789"), "test");
 	}
 	
 	
@@ -74,7 +74,7 @@ public class UserTests {
 	@Test
 	public void setNewPasswordisRightPassword_00()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test", null);
+		User u = new User("test01", new StringBuffer("123456789"), "test");
 		u.setNewPassword(new StringBuffer("TestPassword"));
 		
 		assertEquals(true, u.isRightPassword(new StringBuffer("TestPassword")));
@@ -83,7 +83,7 @@ public class UserTests {
 	@Test(expected = IllegalArgumentException.class)
 	public void setNewPasswordisRightPassword_01()
 	{
-		User u = new User("test01", new StringBuffer("34"), "test", null);
+		User u = new User("test01", new StringBuffer("34"), "test");
 	}
 	
 	
@@ -118,7 +118,7 @@ public class UserTests {
 	@Test
 	public void hasRole_00()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test", null);
+		User u = new User("test01", new StringBuffer("123456789"), "test");
 		
 		assertEquals(false, u.hasRole(Role.READ));
 	}
@@ -126,7 +126,7 @@ public class UserTests {
 	@Test
 	public void hasRole_01()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test", null);
+		User u = new User("test01", new StringBuffer("123456789"), "test");
 		u.grantRole(Role.READ);
 		assertEquals(true, u.hasRole(Role.READ));
 	}
@@ -134,7 +134,7 @@ public class UserTests {
 	@Test
 	public void hasRole_02()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test", null);
+		User u = new User("test01", new StringBuffer("123456789"), "test");
 		u.grantRole(Role.READ);
 		u.grantRole(Role.DELETE_NEWS);
 		u.grantRole(Role.READ);
@@ -144,7 +144,7 @@ public class UserTests {
 	@Test
 	public void hasRole_03()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test", null);
+		User u = new User("test01", new StringBuffer("123456789"), "test");
 		u.grantRole(Role.READ);
 		u.grantRole(Role.DELETE_NEWS);
 		u.removeRole(Role.READ);
@@ -154,7 +154,7 @@ public class UserTests {
 	@Test
 	public void hasRole_04()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test", null);
+		User u = new User("test01", new StringBuffer("123456789"), "test");
 		u.removeRole(Role.READ);
 		assertEquals(false, u.hasRole(Role.READ));
 	}

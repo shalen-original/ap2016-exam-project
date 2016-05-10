@@ -36,7 +36,7 @@ public class User {
 	private final static int HASH_ITERATION_COUNT = 10000;		
 	
 	
-	private User(String username, String avatarName, Role...roles)
+	private User(String username, String avatarName, Role[] roles)
 	{
 		setUsername(username);
 		setAvatarFromName(avatarName);
@@ -50,7 +50,22 @@ public class User {
 	}
 	
 	
+	public User(String username, byte[] passwordHash, byte[] passwordSalt, String avatarName)
+	{
+		this(username, avatarName, null);
+		
+		this.passwordHash = passwordHash;
+		this.currentPasswordSalt = passwordSalt;
+		
+	}
 	
+	public User(String username, StringBuffer newPassword, String avatarName)
+	{
+		this(username, avatarName, null);
+		
+		setNewPassword(newPassword);
+		
+	}
 	
 	public User(String username, byte[] passwordHash, byte[] passwordSalt, String avatarName, Role... roles)
 	{
@@ -68,7 +83,6 @@ public class User {
 		setNewPassword(newPassword);
 		
 	}
-	
 	
 	
 	

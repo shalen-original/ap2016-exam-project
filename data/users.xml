@@ -1,0 +1,11 @@
+<users>
+	<user>
+		<username>Test</username>
+		<password>sdfsdf</password>
+		<salt>dsfsdf</salt>
+		<avatar>test</avatar>
+		<roles>
+			<role>read</role>
+		</roles>
+	</user>
+</users>

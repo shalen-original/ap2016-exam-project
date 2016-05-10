@@ -19,6 +19,12 @@ public class ApplicationConstants {
 	 */
 	public final static Pattern passwordRegEx = Pattern.compile(".{8,}");
 	
+	/**
+	 * The regular expression used to validate URLs. Taken from:
+	 * 
+	 */
+	public final static Pattern urlRegEx = Pattern.compile("[a-zA-Z0-9/]*");
+	
 	
 	
 	
@@ -31,6 +37,9 @@ public class ApplicationConstants {
 	 * The folder containing all the XML data (relative path)
 	 */
 	public final static String dataBase = "data/";
+	
+	
+	
 	
 	
 	
