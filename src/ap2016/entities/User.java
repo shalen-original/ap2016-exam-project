@@ -161,6 +161,17 @@ public class User {
 			roles.remove(role);
 	}
 	
+	public ArrayList<String> getRolesString()
+	{
+		ArrayList<String> ans = new ArrayList<>();
+		
+		for (Role r : roles)
+		{
+			ans.add(r.toString());
+		}
+		
+		return ans;
+	}
 	
 	
 	

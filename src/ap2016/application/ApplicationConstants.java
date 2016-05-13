@@ -20,10 +20,12 @@ public class ApplicationConstants {
 	public final static Pattern passwordRegEx = Pattern.compile(".{8,}");
 	
 	/**
-	 * The regular expression used to validate URLs. Taken from:
-	 * 
+	 * The regular expression used to validate URLs. The following regular expression has been kindly provided
+	 * by the website: http://stackoverflow.com/questions/163360/regular-expression-to-match-urls-in-java
+	 * The regex is not perfect, but it detects correctly most of the URLs. It could be the case that
+	 * a valid URL is discarded by this RegEx.
 	 */
-	public final static Pattern urlRegEx = Pattern.compile("[a-zA-Z0-9/]*");
+	public final static Pattern urlRegEx = Pattern.compile("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
 	
 	
 	
