@@ -1,14 +1,12 @@
 package ap2016.entities;
 
-import java.util.Date;
-
 import ap2016.application.ApplicationUtilities;
 
 public class News {
 
 	private String title;
 	private String link;
-	private Date pubblicationDate;
+	private String pubblicationDate;
 	private String author;
 	private String description;
 	private String content;
@@ -31,10 +29,10 @@ public class News {
 			throw new IllegalArgumentException("The url \"" + link + "\" is not valid.");
 		}
 	}
-	public Date getPubblicationDate() {
+	public String getPubblicationDate() {
 		return pubblicationDate;
 	}
-	public void setPubblicationDate(Date pubblicationDate) {
+	public void setPubblicationDate(String pubblicationDate) {
 		this.pubblicationDate = pubblicationDate;
 	}
 	public String getAuthor() {

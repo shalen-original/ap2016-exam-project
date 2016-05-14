@@ -75,7 +75,7 @@ public abstract class DataProvider <T>
 	protected void addElementWithText(Element root, String elementName, String elementText, Document doc)
 	{
 		Element tmp = doc.createElement(elementName);
-		tmp.appendChild(doc.createTextNode(elementText));
+		tmp.appendChild(doc.createCDATASection(elementText != null ? elementText : ""));
 		root.appendChild(tmp);
 	}
 	

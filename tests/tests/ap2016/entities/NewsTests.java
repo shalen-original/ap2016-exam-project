@@ -1,7 +1,8 @@
 package tests.ap2016.entities;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 import org.junit.After;
@@ -21,7 +22,7 @@ public class NewsTests
 		n = new News();
 		n.setTitle("Test Title");
 		n.setLink("http://www.example.org");
-		n.setPubblicationDate(new Date(0));
+		n.setPubblicationDate(DateFormat.getInstance().format(new Date(0)));
 		n.setAuthor("Test Author");
 		n.setDescription("Test Description");
 		n.setContent("Test Content");
@@ -67,14 +68,14 @@ public class NewsTests
 	@Test
 	public void testGetPubblicationDate()
 	{
-		assertEquals(n.getPubblicationDate().toString(), "Thu Jan 01 01:00:00 CET 1970");
+		assertEquals(n.getPubblicationDate().toString(), "01/01/70 1.00");
 	}
 
 	@Test
 	public void testSetPubblicationDate()
 	{
-		n.setPubblicationDate(new Date(1000));
-		assertEquals(n.getPubblicationDate().toString(), "Thu Jan 01 01:00:01 CET 1970");
+		n.setPubblicationDate(DateFormat.getInstance().format(new Date(1000000)));
+		assertEquals(n.getPubblicationDate().toString(), "01/01/70 1.16");
 	}
 
 	@Test
