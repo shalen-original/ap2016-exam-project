@@ -13,10 +13,17 @@ public class NewsChannel {
 	private String language;
 	
 	
+	public NewsChannel()
+	{
+		this("", "", "", "");
+	}
+	
 	public NewsChannel(String title, String link, String description) {
 		this.title = title;
 		this.link = link;
 		this.description = description;
+		
+		news = new ArrayList<>();
 	}
 	
 	public NewsChannel(String title, String link, String description, String language) {
@@ -25,8 +32,9 @@ public class NewsChannel {
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	public ArrayList<News> getNews() {
-		return news;
+		return (ArrayList<News>) news.clone();
 	}
 
 	public void addNews(News news) {

@@ -69,14 +69,23 @@ public class UserDataProvider {
 			
 			for (int i = 0; i < userNodes.getLength(); i++)
 			{
+				// Gets this user's data
 				current = userNodes.item(i).getChildNodes();
+				
+				// Gets the name
 				username = current.item(0).toString();
+				
+				// The password and its salt
 				pwd = ApplicationUtilities.stringToByteArray(current.item(1).toString());
 				salt = ApplicationUtilities.stringToByteArray(current.item(2).toString());
+				
+				// The avatar name
 				avatarName = current.item(3).toString();
 				
+				// Creates the new user
 				currentUser = new User(username, pwd, salt, avatarName);
 				
+				// Adds all the roles to this user
 				currentRoles = current.item(4).getChildNodes();
 				for(int j = 0; j < currentRoles.getLength(); j++)
 				{
@@ -151,10 +160,7 @@ public class UserDataProvider {
 		t.transform(source, result);
 	}
 	
-	
-	
-	
-	private void addElementWithText(Element root, String elementName, String elementText, Document doc)
+	protected void addElementWithText(Element root, String elementName, String elementText, Document doc)
 	{
 		Element tmp = doc.createElement(elementName);
 		tmp.appendChild(doc.createTextNode(elementText));

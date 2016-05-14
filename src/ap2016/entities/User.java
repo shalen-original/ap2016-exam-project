@@ -41,11 +41,12 @@ public class User {
 		setUsername(username);
 		setAvatarFromName(avatarName);
 		
+		this.roles = new ArrayList<Role>();
+		
 		if (roles != null)
 		{
-			this.roles = (ArrayList<Role>) Arrays.asList(roles);
-		}else{
-			this.roles = new ArrayList<Role>();
+			for (Role r : roles)
+				this.roles.add(r);
 		}
 	}
 	
@@ -201,7 +202,7 @@ public class User {
 		tmp = ImageIO.read(file);
 		
 		// Generate (unique ?) hash
-		avatarName = hashImage(tmp) + ".png";
+		avatarName = hashImage(tmp);
 		
 		// Writes to a file internal to the program
 		try(BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(ApplicationConstants.assetsBase + avatarName)))
@@ -311,7 +312,7 @@ public class User {
         
         StringBuilder ans = new StringBuilder();
         
-        for (int i = 0; i < data.length; i++)
+        for (int i = 0; i < hash.length; i++)
         {
         	ans.append(Integer.toHexString(hash[i]));
         }
