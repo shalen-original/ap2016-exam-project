@@ -1,4 +1,4 @@
-package ap2016.entities;
+package ap2016.io;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,10 +21,10 @@ import ap2016.application.ApplicationConstants;
 
 public abstract class DataProvider <T>
 {
-	private ArrayList<T> data;
-	private String filename;
+	protected ArrayList<T> data;
+	protected String filename;
 	
-	private DataProvider(String filename)
+	protected DataProvider(String filename)
 	{
 		data = new ArrayList<T>();
 		this.filename = filename;
@@ -54,7 +54,6 @@ public abstract class DataProvider <T>
 		Document doc = null;
 		try
 		{
-			// Starts building the new document
 			doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 			buildDoc(doc);
 			

@@ -33,12 +33,12 @@ public class ApplicationConstants {
 	/**
 	 * The folder containing all the assets (relative path)
 	 */
-	public final static String assetsBase = "assets/";
+	public final static String assetsBase = "assets\\" + System.getenv("TEST_FOLDER");
 	
 	/**
 	 * The folder containing all the XML data (relative path)
 	 */
-	public final static String dataBase = "data/";
+	public final static String dataBase = "data\\" + System.getenv("TEST_FOLDER");
 	
 	
 	
