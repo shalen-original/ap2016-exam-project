@@ -286,6 +286,12 @@ public class UserTests {
 		assertEquals(false, User.isValidUsername("asdfcx.ffg.f"));
 	}
 	
+	@Test
+	public void testIsValidUsername_05()
+	{
+		assertEquals(false, User.isValidUsername(""));
+	}
+	
 	
 	
 	
@@ -318,7 +324,12 @@ public class UserTests {
 		
 	
 	
-	
+	@Test
+	public void testToString()
+	{
+		User u = new User("ThisIsValidTest", new StringBuffer("123456789"), "test");
+		assertEquals(u.toString(), "ThisIsValidTest");
+	}
 	
 	
 	

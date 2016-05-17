@@ -44,7 +44,7 @@ public abstract class DataProvider <T>
 			parseDoc(doc);
 			
 		} catch (IOException | ParserConfigurationException e) {
-			throw new Exception("The username file located at \"" + ApplicationConstants.dataBase + "\\" + filename + "\" is not valid");
+			throw new Exception("The file located at \"" + ApplicationConstants.dataBase + "\\" + filename + "\" is not valid");
 		} catch (SAXException e) {}	
 	}
 	

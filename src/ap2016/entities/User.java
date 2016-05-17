@@ -240,7 +240,7 @@ public class User {
 	
 	public static boolean isValidUsername(String username)
 	{
-		return ApplicationConstants.usernameRegEx.matcher(username).matches();
+		return ApplicationConstants.usernameRegEx.matcher(username).matches() && (!username.equals(""));
 	}
 	
 	public static boolean isValidPassword(StringBuffer password)
@@ -319,6 +319,12 @@ public class User {
         
         return ans.toString();
         
+	}
+	
+	@Override
+	public String toString()
+	{
+		return getUsername();
 	}
 	
 }

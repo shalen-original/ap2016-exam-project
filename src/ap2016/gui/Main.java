@@ -10,7 +10,8 @@ public class Main
 		
 		JFrame app = new LoginJFrame();
 		app.pack();
-		app.setVisible(false);
+		app.setLocationRelativeTo(null);
+		app.setVisible(true);
 
 	}
 

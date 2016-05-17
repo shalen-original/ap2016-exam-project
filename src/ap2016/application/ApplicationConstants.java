@@ -1,6 +1,10 @@
 package ap2016.application;
 
+import java.awt.Color;
 import java.util.regex.Pattern;
+
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 /**
  * Useful application-wide constants.
@@ -42,6 +46,11 @@ public class ApplicationConstants {
 	
 	
 	
+	
+	public final static Color validColor = new Color(185, 212, 112);
+	public final static Color invalidColor = new Color(236, 160, 150);
+	public final static Border validBorder = BorderFactory.createLineBorder(validColor, 2, true);
+	public final static Border invalidBorder = BorderFactory.createLineBorder(invalidColor, 2, true);
 	
 	
 	
