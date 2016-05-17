@@ -1,4 +1,4 @@
-package ap2016.gui;
+package ap2016.gui.frames;
 
 import javax.swing.JFrame;
 

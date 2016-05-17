@@ -1,25 +1,21 @@
-package ap2016.gui;
+package ap2016.gui.frames;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import ap2016.application.ApplicationConstants;
-import ap2016.application.PredicateFormatter;
 import ap2016.entities.User;
+import ap2016.gui.utilities.PredicateFormatter;
+import ap2016.gui.utilities.ValidationKeyAdapter;
 
 @SuppressWarnings("serial")
 public class RegisterJFrame extends JFrame
@@ -81,20 +77,7 @@ public class RegisterJFrame extends JFrame
 		panel.add(lblImage);
 		
 		JFormattedTextField formattedTextField = new JFormattedTextField(new PredicateFormatter(s -> User.isValidUsername(s)));
-		formattedTextField.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				
-				JFormattedTextField jftf = (JFormattedTextField) e.getSource();
-				
-				if (jftf.isEditValid())
-				{
-					jftf.setBorder(ApplicationConstants.validBorder);
-				}else{
-					jftf.setBorder(ApplicationConstants.invalidBorder);
-				}
-			}
-		});
+		formattedTextField.addKeyListener(new ValidationKeyAdapter());
 		formattedTextField.setPreferredSize(new Dimension(500, 500));
 		formattedTextField.setBounds(55, 58, 151, 20);
 		panel.add(formattedTextField);

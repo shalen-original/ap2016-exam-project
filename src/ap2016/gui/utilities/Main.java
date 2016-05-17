@@ -1,6 +1,8 @@
-package ap2016.gui;
+package ap2016.gui.utilities;
 
 import javax.swing.JFrame;
+
+import ap2016.gui.frames.LoginJFrame;
 
 public class Main
 {
