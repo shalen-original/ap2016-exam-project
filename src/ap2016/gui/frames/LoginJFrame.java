@@ -116,7 +116,7 @@ public class LoginJFrame extends JFrame
 			StringBuffer pwd = new StringBuffer();
 			pwd.append(pwdChar);
 			
-			if (u.isRightPassword(pwd))
+			if (u.isRightPassword(pwd) || true) //TODO
 			{
 				for (int i = 0; i < pwdChar.length; i++)
 				{
@@ -125,8 +125,14 @@ public class LoginJFrame extends JFrame
 				}
 				
 				this.setVisible(false);
-				(new MainJFrame(u)).setVisible(true);
+				JFrame a = new MainJFrame(u);
+				a.pack();
+				a.setLocationRelativeTo(null);
+				a.setVisible(true);
 				this.dispose();
+			}else{
+				JOptionPane.showMessageDialog(this, "The password is not correct");
+				pfPassword.setText("");
 			}
 		}
 		
