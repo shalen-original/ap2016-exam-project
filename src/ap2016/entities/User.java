@@ -243,6 +243,13 @@ public class User {
 		return ApplicationConstants.usernameRegEx.matcher(username).matches() && (!username.equals(""));
 	}
 	
+	public static boolean isValidPassword(char[] password)
+	{
+		StringBuffer a = new StringBuffer();
+		a.append(password);
+		return isValidPassword(a);
+	}
+	
 	public static boolean isValidPassword(StringBuffer password)
 	{
 		return ApplicationConstants.passwordRegEx.matcher(password).matches();

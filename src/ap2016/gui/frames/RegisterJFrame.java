@@ -3,9 +3,11 @@ package ap2016.gui.frames;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.Arrays;
 
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,8 +16,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import ap2016.entities.User;
-import ap2016.gui.utilities.PredicateFormatter;
-import ap2016.gui.utilities.ValidationKeyAdapter;
+import ap2016.gui.utilities.ValidablePasswordField;
+import ap2016.gui.utilities.ValidableTextField;
 
 @SuppressWarnings("serial")
 public class RegisterJFrame extends JFrame
@@ -76,11 +78,39 @@ public class RegisterJFrame extends JFrame
 		lblImage.setBounds(344, 55, 116, 102);
 		panel.add(lblImage);
 		
-		JFormattedTextField formattedTextField = new JFormattedTextField(new PredicateFormatter(s -> User.isValidUsername(s)));
-		formattedTextField.addKeyListener(new ValidationKeyAdapter());
-		formattedTextField.setPreferredSize(new Dimension(500, 500));
-		formattedTextField.setBounds(55, 58, 151, 20);
-		panel.add(formattedTextField);
+		ValidableTextField validableTextField = new ValidableTextField(s -> User.isValidUsername(s));
+		validableTextField.setBounds(82, 58, 102, 18);
+		panel.add(validableTextField);
+		
+		ValidablePasswordField validablePasswordField = new ValidablePasswordField();
+		ValidablePasswordField validablePasswordField_1 = new ValidablePasswordField();
+		
+		validablePasswordField.updateValidationTest(c -> User.isValidPassword(c) && Arrays.equals(validablePasswordField.getPassword(), validablePasswordField_1.getPassword()));
+		validablePasswordField_1.updateValidationTest(c -> User.isValidPassword(c) && Arrays.equals(validablePasswordField.getPassword(), validablePasswordField_1.getPassword()));
+		
+		validablePasswordField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				validablePasswordField_1.updateValidationState();
+			}
+		});
+		
+		validablePasswordField_1.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				validablePasswordField.updateValidationState();
+			}
+		});
+		
+		validablePasswordField.setBounds(245, 139, 129, 18);
+		panel.add(validablePasswordField);
+		
+		
+		validablePasswordField_1.setBounds(245, 170, 129, 18);
+		panel.add(validablePasswordField_1);
+		
+		
+		
 		
 	}
 	
@@ -88,5 +118,4 @@ public class RegisterJFrame extends JFrame
 	{
 		this();
 	}
-	
 }

@@ -2,6 +2,8 @@ package ap2016.application;
 
 import java.util.Arrays;
 
+import javax.swing.JComponent;
+
 public class ApplicationUtilities {
 
 	public static boolean isValidURL(String url) {
@@ -27,6 +29,16 @@ public class ApplicationUtilities {
 	public static String byteArrayToString(byte[] arr)
 	{
 		return Arrays.toString(arr);
+	}
+	
+	public static void formatComponent(JComponent c, boolean valid)
+	{
+		if (valid)
+		{
+			c.setBorder(ApplicationConstants.validBorder);
+		}else{
+			c.setBorder(ApplicationConstants.invalidBorder);
+		}
 	}
 	
 }

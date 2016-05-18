@@ -321,6 +321,13 @@ public class UserTests {
 	{
 		assertEquals(false, User.isValidPassword(new StringBuffer("dg.à73")));
 	}
+	
+	@Test
+	public void testIsValidPassword_04()
+	{
+		char[] a = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+		assertEquals(true, User.isValidPassword(a));
+	}
 		
 	
 	

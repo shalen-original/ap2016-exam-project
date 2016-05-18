@@ -1,10 +1,14 @@
 package tests.ap2016.application;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.JComponent;
+import javax.swing.JTextField;
 
 import org.junit.Test;
 
@@ -136,6 +140,14 @@ public class ApplicationUtilitiesTests
 		
 		assertEquals(a, ApplicationUtilities.byteArrayToString(test));
 		
+	}
+	
+	@Test
+	public void testFormatComponent_00()
+	{
+		JComponent a = new JTextField();
+		ApplicationUtilities.formatComponent(a, true);
+		ApplicationUtilities.formatComponent(a, false);
 	}
 
 }
