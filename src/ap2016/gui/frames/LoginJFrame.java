@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -32,7 +31,7 @@ public class LoginJFrame extends JFrame
 	public LoginJFrame() {
 		setTitle("NewsFeed - Login");
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		setPreferredSize(new Dimension(326, 295));
 		
@@ -127,6 +126,7 @@ public class LoginJFrame extends JFrame
 				
 				this.setVisible(false);
 				(new MainJFrame(u)).setVisible(true);
+				this.dispose();
 			}
 		}
 		

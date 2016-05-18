@@ -45,8 +45,18 @@ public class ValidablePasswordField extends JPasswordField
 	
 	public void updateValidationState()
 	{	
-		isValid = test.test(this.getPassword());
+		try {
+			isValid = test.test(this.getPassword());
+		}catch(Exception ex){
+			isValid = false;
+		}
 		ApplicationUtilities.formatComponent(this, isValid);	
 	}
 	
+	@Override
+	public void setText(String t)
+	{
+		super.setText(t);
+		updateValidationState();
+	}
 }

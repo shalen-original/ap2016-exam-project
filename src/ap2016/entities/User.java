@@ -68,6 +68,14 @@ public class User {
 		
 	}
 	
+	public User(String username, char[] newPassword)
+	{
+		this(username, "default", null);
+		
+		setNewPassword(newPassword);
+		
+	}
+	
 	public User(String username, byte[] passwordHash, byte[] passwordSalt, String avatarName, Role... roles)
 	{
 		this(username, avatarName, roles);
@@ -106,6 +114,12 @@ public class User {
 	
 	
 	
+	public void setNewPassword(char[] newPassword)
+	{
+		StringBuffer sb = new StringBuffer();
+		sb.append(newPassword);
+		setNewPassword(sb);
+	}
 	
 	public void setNewPassword(StringBuffer newPassword)
 	{

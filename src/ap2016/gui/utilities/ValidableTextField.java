@@ -40,8 +40,25 @@ public class ValidableTextField extends JTextField
 	
 	public void updateValidationState()
 	{	
-		isValid = test.test(this.getText());
+		try {
+			isValid = test.test(this.getText());
+		}catch(Exception ex){
+			isValid = false;
+		}
 		ApplicationUtilities.formatComponent(this, isValid);	
+	}
+	
+	@Override
+	public void setText(String t)
+	{
+		super.setText(t);
+		updateValidationState();
+	}
+	
+	public void updateValidationTest(Predicate<String> test)
+	{
+		this.test = test;
+		updateValidationState();
 	}
 	
 }

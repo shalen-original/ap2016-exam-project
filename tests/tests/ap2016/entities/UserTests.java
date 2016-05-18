@@ -34,6 +34,14 @@ public class UserTests {
 	}
 	
 	@Test
+	public void testUserStringChar()
+	{
+		User u = new User("test", "MoreGarbage".toCharArray());
+	}
+	
+	
+	
+	@Test
 	public void testGetUsername()
 	{
 		User u = new User("test", new StringBuffer("123456789"), "test");
@@ -101,6 +109,13 @@ public class UserTests {
 	public void testSetNewPasswordisRightPassword_04()
 	{
 		User u = new User("test01", new StringBuffer("34"), "test");
+	}
+
+	public void testSetNewPasswordisRightPassword_05()
+	{
+		char[] a= "MoreGarbage".toCharArray();
+		User u = new User("test01", a);
+		assertEquals(false, u.isRightPassword(new StringBuffer("MoreGarbage")));
 	}
 	
 	
@@ -337,6 +352,8 @@ public class UserTests {
 		User u = new User("ThisIsValidTest", new StringBuffer("123456789"), "test");
 		assertEquals(u.toString(), "ThisIsValidTest");
 	}
+	
+	
 	
 	
 	
