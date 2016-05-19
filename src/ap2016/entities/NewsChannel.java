@@ -83,4 +83,10 @@ public class NewsChannel {
 		this.language = language;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return this.title;
+	}
+	
 }

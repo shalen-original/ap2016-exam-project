@@ -252,12 +252,7 @@ public class RegisterJFrame extends JFrame
 		}
 		
 		UserDataProvider.getInstance().getData().add(u);
-		try
-		{
-			UserDataProvider.getInstance().saveDataToFile();
-		} catch (TransformerFactoryConfigurationError | TransformerException e1)
-		{
-		}
+		UserDataProvider.getInstance().saveDataToFile();
 		
 		originalLoginFrame.dispose();
 		this.setVisible(false);

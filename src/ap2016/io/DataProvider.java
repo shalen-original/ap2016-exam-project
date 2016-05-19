@@ -49,7 +49,7 @@ public abstract class DataProvider <T>
 	}
 	
 	
-	public void saveDataToFile() throws TransformerFactoryConfigurationError, TransformerException
+	public void saveDataToFile() 
 	{
 		Document doc = null;
 		try
@@ -60,10 +60,14 @@ public abstract class DataProvider <T>
 		} catch (ParserConfigurationException e) {}
 		
 
-		Transformer t = TransformerFactory.newInstance().newTransformer();
-		DOMSource source = new DOMSource(doc);
-		StreamResult result = new StreamResult(new File(ApplicationConstants.dataBase + "\\" + filename));
-		t.transform(source, result);
+		Transformer t;
+		try
+		{
+			t = TransformerFactory.newInstance().newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File(ApplicationConstants.dataBase + "\\" + filename));
+			t.transform(source, result);
+		} catch (TransformerFactoryConfigurationError | TransformerException e) {}
 	}
 	
 	

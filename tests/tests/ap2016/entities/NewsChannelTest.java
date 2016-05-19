@@ -158,5 +158,11 @@ public class NewsChannelTest
 		n.setLanguage("Test Language 2");
 		assertEquals(n.getLanguage(), "Test Language 2");
 	}
+	
+	@Test
+	public void testToString()
+	{
+		assertEquals(n.toString(), "Test Title");
+	}
 
 }

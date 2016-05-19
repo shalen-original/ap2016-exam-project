@@ -1,79 +1,95 @@
 package ap2016.gui.frames;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-
-import ap2016.entities.User;
-import javax.swing.JPanel;
-import javax.swing.BoxLayout;
-import ap2016.gui.utilities.AvatarImageDisplay;
-import java.awt.FlowLayout;
-import java.awt.Component;
-import javax.swing.Box;
-import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.border.LineBorder;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
-import javax.swing.border.TitledBorder;
-import javax.swing.JComboBox;
+import java.awt.Rectangle;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+
+import ap2016.entities.NewsChannel;
+import ap2016.entities.User;
+import ap2016.gui.utilities.AvatarImageDisplay;
+import ap2016.io.NewsChannelDataProvider;
+import ap2016.io.UserDataProvider;
 
 @SuppressWarnings("serial")
 public class MainJFrame extends JFrame
-{
-	private JTextField textField;
-
+{	
+	private User currentUser;
+	private NewsChannel currentNewsChannel;
+	
+	
+	
+	private AvatarImageDisplay avatarImg;
+	private JLabel lblUsername;
+	private JComboBox<NewsChannel> cmbNewsChannel;
+	private JComboBox<String> cmbSaveAllType;
+	private JButton btnExportAll;
+	private JComboBox<String> cmbSaveChannelType;
+	private JButton btnExportChannel;
+	private JButton btnShowStatistic;
+	private JButton btnManageUsers;
+	private JButton btnImportData;
+	private JButton btnAbout;
+	private JButton btnExit;
+	private JButton btnLogout;
+	private JButton btnToggleDrawer;
+	private JPanel DrawerPanel;
+	
+	
 	public MainJFrame() {
-		setSize(new Dimension(900, 649));
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+					NewsChannelDataProvider.getInstance().saveDataToFile();
+					UserDataProvider.getInstance().saveDataToFile();
+			}
+		});
+		setSize(new Dimension(1000, 649));
 		setPreferredSize(new Dimension(900, 649));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("NewsFeed");
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		JMenuBar menuBar = new JMenuBar();
-		getContentPane().add(menuBar, BorderLayout.NORTH);
+		DrawerPanel = new JPanel();
+		getContentPane().add(DrawerPanel, BorderLayout.WEST);
+		DrawerPanel.setLayout(new BorderLayout(5, 0));
 		
-		JMenu mntmExit = new JMenu("Exit");
-		menuBar.add(mntmExit);
-		
-		JMenu mntmAbout = new JMenu("About");
-		menuBar.add(mntmAbout);
-		
-		JPanel panel = new JPanel();
-		getContentPane().add(panel, BorderLayout.WEST);
-		panel.setLayout(new BorderLayout(5, 0));
-		
-		JPanel DrawerPanel = new JPanel();
-		DrawerPanel.setSize(new Dimension(250, 0));
-		DrawerPanel.setMaximumSize(new Dimension(250, 32767));
-		DrawerPanel.setPreferredSize(new Dimension(250, 200));
-		DrawerPanel.setMinimumSize(new Dimension(250, 200));
-		DrawerPanel.setBounds(new Rectangle(0, 0, 250, 0));
-		panel.add(DrawerPanel);
-		DrawerPanel.setLayout(new BoxLayout(DrawerPanel, BoxLayout.Y_AXIS));
+		JPanel DrawerPanelInternal = new JPanel();
+		DrawerPanelInternal.setSize(new Dimension(250, 0));
+		DrawerPanelInternal.setMaximumSize(new Dimension(250, 32767));
+		DrawerPanelInternal.setPreferredSize(new Dimension(250, 200));
+		DrawerPanelInternal.setMinimumSize(new Dimension(250, 200));
+		DrawerPanelInternal.setBounds(new Rectangle(0, 0, 250, 0));
+		DrawerPanel.add(DrawerPanelInternal);
+		DrawerPanelInternal.setLayout(new BoxLayout(DrawerPanelInternal, BoxLayout.Y_AXIS));
 		
 		Component verticalStrut = Box.createVerticalStrut(10);
-		DrawerPanel.add(verticalStrut);
+		DrawerPanelInternal.add(verticalStrut);
 		
 		JPanel UsernameDisplay = new JPanel();
 		UsernameDisplay.setMaximumSize(new Dimension(32767, 97));
 		UsernameDisplay.setMinimumSize(new Dimension(10, 97));
 		UsernameDisplay.setPreferredSize(new Dimension(10, 97));
-		DrawerPanel.add(UsernameDisplay);
+		DrawerPanelInternal.add(UsernameDisplay);
 		UsernameDisplay.setLayout(null);
 		
-		AvatarImageDisplay avatarImg = new AvatarImageDisplay();
+		avatarImg = new AvatarImageDisplay();
 		avatarImg.setBorder(new LineBorder(new Color(0, 0, 0)));
 		avatarImg.setBackground(Color.WHITE);
 		avatarImg.setBounds(10, 11, 75, 75);
@@ -82,20 +98,20 @@ public class MainJFrame extends JFrame
 		avatarImg.setMinimumSize(new Dimension(50, 50));
 		avatarImg.setPreferredSize(new Dimension(50, 50));
 		
-		JLabel lblUsername = new JLabel("Username");
-		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblUsername.setBounds(95, 54, 145, 32);
+		lblUsername = new JLabel("Username");
+		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblUsername.setBounds(102, 54, 138, 32);
 		UsernameDisplay.add(lblUsername);
 		
 		Component verticalStrut_1 = Box.createVerticalStrut(10);
-		DrawerPanel.add(verticalStrut_1);
+		DrawerPanelInternal.add(verticalStrut_1);
 		
 		JPanel SelectNewsChannel = new JPanel();
 		SelectNewsChannel.setSize(new Dimension(0, 80));
 		SelectNewsChannel.setPreferredSize(new Dimension(10, 60));
 		SelectNewsChannel.setMinimumSize(new Dimension(10, 100));
 		SelectNewsChannel.setMaximumSize(new Dimension(32767, 100));
-		DrawerPanel.add(SelectNewsChannel);
+		DrawerPanelInternal.add(SelectNewsChannel);
 		SelectNewsChannel.setLayout(new BoxLayout(SelectNewsChannel, BoxLayout.X_AXIS));
 		
 		Component horizontalStrut_2 = Box.createHorizontalStrut(10);
@@ -117,7 +133,7 @@ public class MainJFrame extends JFrame
 		horizontalStrut_12.setMaximumSize(new Dimension(10, 0));
 		SelectNewsChannelInternal.add(horizontalStrut_12);
 		
-		JComboBox cmbNewsChannel = new JComboBox();
+		cmbNewsChannel = new JComboBox<>();
 		cmbNewsChannel.setMaximumSize(new Dimension(32767, 20));
 		SelectNewsChannelInternal.add(cmbNewsChannel);
 		
@@ -130,10 +146,10 @@ public class MainJFrame extends JFrame
 		SelectNewsChannel.add(horizontalStrut_3);
 		
 		Component verticalStrut_2 = Box.createVerticalStrut(10);
-		DrawerPanel.add(verticalStrut_2);
+		DrawerPanelInternal.add(verticalStrut_2);
 		
 		JPanel QuickActions = new JPanel();
-		DrawerPanel.add(QuickActions);
+		DrawerPanelInternal.add(QuickActions);
 		QuickActions.setLayout(new BoxLayout(QuickActions, BoxLayout.X_AXIS));
 		
 		Component horizontalStrut_7 = Box.createHorizontalStrut(10);
@@ -168,21 +184,23 @@ public class MainJFrame extends JFrame
 		horizontalStrut_4.setMaximumSize(new Dimension(10, 30));
 		panel_1.add(horizontalStrut_4);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setMaximumSize(new Dimension(200, 25));
-		comboBox.setPreferredSize(new Dimension(80, 25));
-		comboBox.setMinimumSize(new Dimension(40, 25));
-		panel_1.add(comboBox);
+		cmbSaveAllType = new JComboBox<>();
+		cmbSaveAllType.setModel(new DefaultComboBoxModel<String>(new String[] {"HTML", "RTF"}));
+		cmbSaveAllType.setSelectedIndex(0);
+		cmbSaveAllType.setMaximumSize(new Dimension(200, 25));
+		cmbSaveAllType.setPreferredSize(new Dimension(80, 25));
+		cmbSaveAllType.setMinimumSize(new Dimension(40, 25));
+		panel_1.add(cmbSaveAllType);
 		
 		Component horizontalStrut_5 = Box.createHorizontalStrut(10);
 		horizontalStrut_5.setMaximumSize(new Dimension(10, 30));
 		panel_1.add(horizontalStrut_5);
 		
-		JButton btnExportDataAsHTML = new JButton("Go");
-		btnExportDataAsHTML.setPreferredSize(new Dimension(50, 25));
-		panel_1.add(btnExportDataAsHTML);
-		btnExportDataAsHTML.setMinimumSize(new Dimension(50, 25));
-		btnExportDataAsHTML.setMaximumSize(new Dimension(50, 25));
+		btnExportAll = new JButton("Go");
+		btnExportAll.setPreferredSize(new Dimension(50, 25));
+		panel_1.add(btnExportAll);
+		btnExportAll.setMinimumSize(new Dimension(50, 25));
+		btnExportAll.setMaximumSize(new Dimension(50, 25));
 		
 		Component verticalStrut_5 = Box.createVerticalStrut(10);
 		panel_2.add(verticalStrut_5);
@@ -200,22 +218,24 @@ public class MainJFrame extends JFrame
 		
 		
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setMaximumSize(new Dimension(200, 25));
-		comboBox_2.setPreferredSize(new Dimension(80, 25));
-		comboBox_2.setMinimumSize(new Dimension(40, 25));
-		panel_3.add(comboBox_2);
+		cmbSaveChannelType = new JComboBox<>();
+		cmbSaveChannelType.setModel(new DefaultComboBoxModel<String>(new String[] {"HTML", "RTF"}));
+		cmbSaveChannelType.setSelectedIndex(0);
+		cmbSaveChannelType.setMaximumSize(new Dimension(200, 25));
+		cmbSaveChannelType.setPreferredSize(new Dimension(80, 25));
+		cmbSaveChannelType.setMinimumSize(new Dimension(40, 25));
+		panel_3.add(cmbSaveChannelType);
 		
 		Component horizontalStrut_9 = Box.createHorizontalStrut(10);
 		horizontalStrut_9.setMaximumSize(new Dimension(20, 30));
 		panel_3.add(horizontalStrut_9);
 		
 		
-		JButton btnExportDataAsRTF = new JButton("Go");
-		btnExportDataAsRTF.setPreferredSize(new Dimension(50, 25));
-		panel_3.add(btnExportDataAsRTF);
-		btnExportDataAsRTF.setMinimumSize(new Dimension(50, 25));
-		btnExportDataAsRTF.setMaximumSize(new Dimension(50, 25));
+		btnExportChannel = new JButton("Go");
+		btnExportChannel.setPreferredSize(new Dimension(50, 25));
+		panel_3.add(btnExportChannel);
+		btnExportChannel.setMinimumSize(new Dimension(50, 25));
+		btnExportChannel.setMaximumSize(new Dimension(50, 25));
 		
 		Component verticalStrut_9 = Box.createVerticalStrut(10);
 		panel_2.add(verticalStrut_9);
@@ -225,11 +245,11 @@ public class MainJFrame extends JFrame
 		panel_2.add(panel_5);
 		panel_5.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnOpenStatistic = new JButton("Show statistics");
-		btnOpenStatistic.setPreferredSize(new Dimension(30, 25));
-		btnOpenStatistic.setMinimumSize(new Dimension(119, 25));
-		btnOpenStatistic.setMaximumSize(new Dimension(119, 25));
-		panel_5.add(btnOpenStatistic, BorderLayout.CENTER);
+		btnShowStatistic = new JButton("Show statistics");
+		btnShowStatistic.setPreferredSize(new Dimension(30, 25));
+		btnShowStatistic.setMinimumSize(new Dimension(119, 25));
+		btnShowStatistic.setMaximumSize(new Dimension(119, 25));
+		panel_5.add(btnShowStatistic, BorderLayout.CENTER);
 		
 		Component verticalStrut_7 = Box.createVerticalStrut(10);
 		panel_2.add(verticalStrut_7);
@@ -239,7 +259,7 @@ public class MainJFrame extends JFrame
 		panel_2.add(panel_6);
 		panel_6.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnManageUsers = new JButton("Manage users");
+		btnManageUsers = new JButton("Manage users");
 		panel_6.add(btnManageUsers, BorderLayout.NORTH);
 		
 		Component verticalStrut_8 = Box.createVerticalStrut(10);
@@ -250,7 +270,7 @@ public class MainJFrame extends JFrame
 		panel_2.add(panel_4);
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnImportData = new JButton("Import data file");
+		btnImportData = new JButton("Import data file");
 		panel_4.add(btnImportData);
 		
 		Component verticalStrut_10 = Box.createVerticalStrut(10);
@@ -265,16 +285,35 @@ public class MainJFrame extends JFrame
 		QuickActions.add(horizontalStrut_11);
 		
 		Component verticalGlue = Box.createVerticalGlue();
-		DrawerPanel.add(verticalGlue);
+		DrawerPanelInternal.add(verticalGlue);
+		
+		JPanel About = new JPanel();
+		About.setPreferredSize(new Dimension(10, 30));
+		About.setMaximumSize(new Dimension(32767, 30));
+		DrawerPanelInternal.add(About);
+		About.setLayout(new BorderLayout(0, 0));
+		
+		Component horizontalStrut_16 = Box.createHorizontalStrut(10);
+		About.add(horizontalStrut_16, BorderLayout.WEST);
+		
+		Component horizontalStrut_17 = Box.createHorizontalStrut(10);
+		About.add(horizontalStrut_17, BorderLayout.EAST);
+		
+		btnAbout = new JButton("About");
+		About.add(btnAbout, BorderLayout.CENTER);
+		
+		Component verticalStrut_3 = Box.createVerticalStrut(10);
+		DrawerPanelInternal.add(verticalStrut_3);
 		
 		JPanel LogoutExit = new JPanel();
-		DrawerPanel.add(LogoutExit);
+		DrawerPanelInternal.add(LogoutExit);
 		LogoutExit.setLayout(new BoxLayout(LogoutExit, BoxLayout.X_AXIS));
 		
 		Component rigidArea = Box.createRigidArea(new Dimension(10, 30));
 		LogoutExit.add(rigidArea);
 		
-		JButton btnExit = new JButton("Exit");
+		btnExit = new JButton("Exit");
+		btnExit.addActionListener(e -> btnExit_Click());
 		btnExit.setMaximumSize(new Dimension(95, 30));
 		btnExit.setMinimumSize(new Dimension(95, 30));
 		btnExit.setPreferredSize(new Dimension(95, 30));
@@ -283,7 +322,8 @@ public class MainJFrame extends JFrame
 		Component horizontalGlue = Box.createHorizontalGlue();
 		LogoutExit.add(horizontalGlue);
 		
-		JButton btnLogout = new JButton("Logout");
+		btnLogout = new JButton("Logout");
+		btnLogout.addActionListener(e -> btnLogout_Click());
 		btnLogout.setMinimumSize(new Dimension(95, 30));
 		btnLogout.setPreferredSize(new Dimension(95, 30));
 		btnLogout.setMaximumSize(new Dimension(95, 30));
@@ -293,7 +333,7 @@ public class MainJFrame extends JFrame
 		LogoutExit.add(rigidArea_1);
 		
 		Component verticalStrut_4 = Box.createVerticalStrut(13);
-		DrawerPanel.add(verticalStrut_4);
+		DrawerPanelInternal.add(verticalStrut_4);
 		
 		JPanel MainPanel = new JPanel();
 		getContentPane().add(MainPanel, BorderLayout.CENTER);
@@ -314,75 +354,48 @@ public class MainJFrame extends JFrame
 		lblNewsfeed.setHorizontalAlignment(SwingConstants.CENTER);
 		Title.add(lblNewsfeed, BorderLayout.CENTER);
 		
-		Component verticalStrut_12 = Box.createVerticalStrut(10);
-		MainPanel.add(verticalStrut_12);
+		JPanel panel = new JPanel();
+		Title.add(panel, BorderLayout.WEST);
+		panel.setLayout(new BorderLayout(0, 0));
 		
-		JPanel News = new JPanel();
-		MainPanel.add(News);
-		News.setLayout(new BoxLayout(News, BoxLayout.X_AXIS));
-		
-		Component horizontalStrut = Box.createHorizontalStrut(10);
-		News.add(horizontalStrut);
-		
-		JPanel NewsInternal = new JPanel();
-		News.add(NewsInternal);
-		NewsInternal.setLayout(new BorderLayout(0, 0));
-		
-		JScrollPane NewsScrollPanel = new JScrollPane();
-		NewsScrollPanel.setBorder(null);
-		NewsInternal.add(NewsScrollPanel, BorderLayout.CENTER);
-		
-		Component horizontalStrut_1 = Box.createHorizontalStrut(10);
-		News.add(horizontalStrut_1);
-		
-		Component verticalStrut_13 = Box.createVerticalStrut(10);
-		MainPanel.add(verticalStrut_13);
-		
-		JPanel NewsButton = new JPanel();
-		MainPanel.add(NewsButton);
-		NewsButton.setLayout(new BoxLayout(NewsButton, BoxLayout.X_AXIS));
-		
-		Component horizontalStrut_16 = Box.createHorizontalStrut(10);
-		NewsButton.add(horizontalStrut_16);
-		
-		JPanel NewsButtonInternal = new JPanel();
-		NewsButtonInternal.setMaximumSize(new Dimension(32767, 30));
-		NewsButton.add(NewsButtonInternal);
-		NewsButtonInternal.setLayout(new BoxLayout(NewsButtonInternal, BoxLayout.X_AXIS));
-		
-		textField = new JTextField();
-		textField.setSize(new Dimension(500, 0));
-		textField.setMinimumSize(new Dimension(500, 20));
-		textField.setPreferredSize(new Dimension(500, 20));
-		textField.setMaximumSize(new Dimension(500, 2147483647));
-		NewsButtonInternal.add(textField);
-		textField.setColumns(10);
+		btnToggleDrawer = new JButton("«");
+		btnToggleDrawer.addActionListener(e -> toggleDrawer());
+		panel.add(btnToggleDrawer);
+		btnToggleDrawer.setFont(new Font("Dialog", Font.PLAIN, 15));
 		
 		Component horizontalStrut_18 = Box.createHorizontalStrut(10);
-		horizontalStrut_18.setMaximumSize(new Dimension(10, 32767));
-		NewsButtonInternal.add(horizontalStrut_18);
+		panel.add(horizontalStrut_18, BorderLayout.WEST);
 		
-		JButton btnSearch = new JButton("Search");
-		NewsButtonInternal.add(btnSearch);
+		JPanel panel_7 = new JPanel();
+		Title.add(panel_7, BorderLayout.EAST);
+		panel_7.setLayout(new BorderLayout(0, 0));
 		
-		Component horizontalGlue_1 = Box.createHorizontalGlue();
-		horizontalGlue_1.setMaximumSize(new Dimension(300, 0));
-		NewsButtonInternal.add(horizontalGlue_1);
+		Component horizontalStrut_19 = Box.createHorizontalStrut(51);
+		panel_7.add(horizontalStrut_19);
 		
-		JButton btnAdd = new JButton("Add");
-		NewsButtonInternal.add(btnAdd);
+		JPanel MainContentPanel = new JPanel();
+		MainPanel.add(MainContentPanel);
+		MainContentPanel.setLayout(new BoxLayout(MainContentPanel, BoxLayout.Y_AXIS));
 		
-		Component horizontalStrut_19 = Box.createHorizontalStrut(10);
-		NewsButtonInternal.add(horizontalStrut_19);
+		Component verticalStrut_12 = Box.createVerticalStrut(10);
+		MainContentPanel.add(verticalStrut_12);
 		
-		JButton btnRemove = new JButton("Remove");
-		NewsButtonInternal.add(btnRemove);
+		JPanel MainContent = new JPanel();
+		MainContentPanel.add(MainContent);
+		MainContent.setLayout(new BoxLayout(MainContent, BoxLayout.X_AXIS));
 		
-		Component horizontalStrut_17 = Box.createHorizontalStrut(10);
-		NewsButton.add(horizontalStrut_17);
+		Component horizontalStrut = Box.createHorizontalStrut(10);
+		MainContent.add(horizontalStrut);
 		
-		Component verticalStrut_3 = Box.createVerticalStrut(10);
-		MainPanel.add(verticalStrut_3);
+		JPanel MainContentCentered = new JPanel();
+		MainContent.add(MainContentCentered);
+		MainContentCentered.setLayout(new BorderLayout(0, 0));
+		
+		Component horizontalStrut_1 = Box.createHorizontalStrut(10);
+		MainContent.add(horizontalStrut_1);
+		
+		Component verticalStrut_13 = Box.createVerticalStrut(10);
+		MainContentPanel.add(verticalStrut_13);
 		
 		JPanel NewsChannelDetail = new JPanel();
 		MainPanel.add(NewsChannelDetail);
@@ -403,12 +416,58 @@ public class MainJFrame extends JFrame
 		NewsChannelDetail.add(horizontalStrut_14);
 		
 		Component verticalStrut_14 = Box.createVerticalStrut(10);
-		MainPanel.add(verticalStrut_14);}
-	
+		MainPanel.add(verticalStrut_14);
+	}
 	
 	public MainJFrame(User u) 
 	{
 		this();
+		this.currentUser = u;
 		
+		avatarImg.setIcon(u.getAvatar());
+		lblUsername.setText(u.getUsername());
+		
+		NewsChannelDataProvider.getInstance().getData().forEach(nc -> cmbNewsChannel.addItem(nc));
+		if (cmbNewsChannel.getItemCount() > 0)
+		{
+			cmbNewsChannel.setSelectedIndex(0);
+			currentNewsChannel = (NewsChannel)cmbNewsChannel.getSelectedItem();
+		}
+		
+		afterGUIInitialization();
+	}
+	
+	private void afterGUIInitialization()
+	{
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private void toggleDrawer()
+	{
+		DrawerPanel.setVisible(!DrawerPanel.isVisible());
+		btnToggleDrawer.setText(btnToggleDrawer.getText().equals("«") ? "»" : "«");
+	}
+	
+	private void btnExit_Click()
+	{
+		this.setVisible(false);
+		this.dispose();
+	}
+	
+	private void btnLogout_Click()
+	{
+		JFrame a = new LoginJFrame();
+		a.pack();
+		a.setLocationRelativeTo(null);
+		btnExit_Click();
+		a.setVisible(true);
 	}
 }
