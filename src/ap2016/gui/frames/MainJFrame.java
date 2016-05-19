@@ -23,6 +23,7 @@ import javax.swing.border.TitledBorder;
 
 import ap2016.entities.NewsChannel;
 import ap2016.entities.User;
+import ap2016.gui.panels.NewsListPanel;
 import ap2016.gui.utilities.AvatarImageDisplay;
 import ap2016.io.NewsChannelDataProvider;
 import ap2016.io.UserDataProvider;
@@ -39,10 +40,7 @@ public class MainJFrame extends JFrame
 	private JLabel lblUsername;
 	private JComboBox<NewsChannel> cmbNewsChannel;
 	private JComboBox<String> cmbSaveAllType;
-	private JButton btnExportAll;
-	private JComboBox<String> cmbSaveChannelType;
-	private JButton btnExportChannel;
-	private JButton btnShowStatistic;
+	private JButton btnExport;
 	private JButton btnManageUsers;
 	private JButton btnImportData;
 	private JButton btnAbout;
@@ -50,6 +48,8 @@ public class MainJFrame extends JFrame
 	private JButton btnLogout;
 	private JButton btnToggleDrawer;
 	private JPanel DrawerPanel;
+	private JLabel lblDataFilePath;
+	private JPanel MainContentCentered;
 	
 	
 	public MainJFrame() {
@@ -61,7 +61,7 @@ public class MainJFrame extends JFrame
 			}
 		});
 		setSize(new Dimension(1000, 649));
-		setPreferredSize(new Dimension(900, 649));
+		setPreferredSize(new Dimension(1000, 649));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("NewsFeed");
 		getContentPane().setLayout(new BorderLayout(0, 0));
@@ -108,9 +108,9 @@ public class MainJFrame extends JFrame
 		
 		JPanel SelectNewsChannel = new JPanel();
 		SelectNewsChannel.setSize(new Dimension(0, 80));
-		SelectNewsChannel.setPreferredSize(new Dimension(10, 60));
-		SelectNewsChannel.setMinimumSize(new Dimension(10, 100));
-		SelectNewsChannel.setMaximumSize(new Dimension(32767, 100));
+		SelectNewsChannel.setPreferredSize(new Dimension(10, 50));
+		SelectNewsChannel.setMinimumSize(new Dimension(10, 50));
+		SelectNewsChannel.setMaximumSize(new Dimension(32767, 50));
 		DrawerPanelInternal.add(SelectNewsChannel);
 		SelectNewsChannel.setLayout(new BoxLayout(SelectNewsChannel, BoxLayout.X_AXIS));
 		
@@ -177,7 +177,7 @@ public class MainJFrame extends JFrame
 		panel_2.add(panel_1);
 		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.X_AXIS));
 		
-		JLabel lblNewLabel = new JLabel("Save all:");
+		JLabel lblNewLabel = new JLabel("Export as:");
 		panel_1.add(lblNewLabel);
 		
 		Component horizontalStrut_4 = Box.createHorizontalStrut(10);
@@ -196,60 +196,20 @@ public class MainJFrame extends JFrame
 		horizontalStrut_5.setMaximumSize(new Dimension(10, 30));
 		panel_1.add(horizontalStrut_5);
 		
-		btnExportAll = new JButton("Go");
-		btnExportAll.setPreferredSize(new Dimension(50, 25));
-		panel_1.add(btnExportAll);
-		btnExportAll.setMinimumSize(new Dimension(50, 25));
-		btnExportAll.setMaximumSize(new Dimension(50, 25));
-		
-		Component verticalStrut_5 = Box.createVerticalStrut(10);
-		panel_2.add(verticalStrut_5);
+		btnExport = new JButton("Go");
+		btnExport.setPreferredSize(new Dimension(50, 25));
+		panel_1.add(btnExport);
+		btnExport.setMinimumSize(new Dimension(50, 25));
+		btnExport.setMaximumSize(new Dimension(50, 25));
 		
 		JPanel panel_3 = new JPanel();
 		panel_2.add(panel_3);
 		panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.X_AXIS));
 		
-		JLabel lblNewLabel2 = new JLabel("Save channel:");
-		panel_3.add(lblNewLabel2);
-		
-		Component horizontalStrut_8 = Box.createHorizontalStrut(10);
-		horizontalStrut_8.setMaximumSize(new Dimension(20, 30));
-		panel_3.add(horizontalStrut_8);
-		
-		
-		
-		cmbSaveChannelType = new JComboBox<>();
-		cmbSaveChannelType.setModel(new DefaultComboBoxModel<String>(new String[] {"HTML", "RTF"}));
-		cmbSaveChannelType.setSelectedIndex(0);
-		cmbSaveChannelType.setMaximumSize(new Dimension(200, 25));
-		cmbSaveChannelType.setPreferredSize(new Dimension(80, 25));
-		cmbSaveChannelType.setMinimumSize(new Dimension(40, 25));
-		panel_3.add(cmbSaveChannelType);
-		
-		Component horizontalStrut_9 = Box.createHorizontalStrut(10);
-		horizontalStrut_9.setMaximumSize(new Dimension(20, 30));
-		panel_3.add(horizontalStrut_9);
-		
-		
-		btnExportChannel = new JButton("Go");
-		btnExportChannel.setPreferredSize(new Dimension(50, 25));
-		panel_3.add(btnExportChannel);
-		btnExportChannel.setMinimumSize(new Dimension(50, 25));
-		btnExportChannel.setMaximumSize(new Dimension(50, 25));
-		
-		Component verticalStrut_9 = Box.createVerticalStrut(10);
-		panel_2.add(verticalStrut_9);
-		
 		JPanel panel_5 = new JPanel();
 		panel_5.setMaximumSize(new Dimension(32767, 25));
 		panel_2.add(panel_5);
 		panel_5.setLayout(new BorderLayout(0, 0));
-		
-		btnShowStatistic = new JButton("Show statistics");
-		btnShowStatistic.setPreferredSize(new Dimension(30, 25));
-		btnShowStatistic.setMinimumSize(new Dimension(119, 25));
-		btnShowStatistic.setMaximumSize(new Dimension(119, 25));
-		panel_5.add(btnShowStatistic, BorderLayout.CENTER);
 		
 		Component verticalStrut_7 = Box.createVerticalStrut(10);
 		panel_2.add(verticalStrut_7);
@@ -283,6 +243,105 @@ public class MainJFrame extends JFrame
 		Component horizontalStrut_11 = Box.createHorizontalStrut(10);
 		horizontalStrut_11.setMaximumSize(new Dimension(10, 0));
 		QuickActions.add(horizontalStrut_11);
+		
+		Component verticalStrut_5 = Box.createVerticalStrut(10);
+		DrawerPanelInternal.add(verticalStrut_5);
+		
+		JPanel Statistics = new JPanel();
+		DrawerPanelInternal.add(Statistics);
+		Statistics.setLayout(new BoxLayout(Statistics, BoxLayout.X_AXIS));
+		
+		Component horizontalStrut_8 = Box.createHorizontalStrut(10);
+		horizontalStrut_8.setMaximumSize(new Dimension(10, 0));
+		Statistics.add(horizontalStrut_8);
+		
+		JPanel StatisticsInternal = new JPanel();
+		StatisticsInternal.setBorder(new TitledBorder(new LineBorder(new Color(192, 192, 192)), "Current session's statistics:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		Statistics.add(StatisticsInternal);
+		StatisticsInternal.setLayout(new BoxLayout(StatisticsInternal, BoxLayout.X_AXIS));
+		
+		Component horizontalStrut_20 = Box.createHorizontalStrut(10);
+		horizontalStrut_20.setMaximumSize(new Dimension(10, 0));
+		StatisticsInternal.add(horizontalStrut_20);
+		
+		JPanel panel_12 = new JPanel();
+		StatisticsInternal.add(panel_12);
+		panel_12.setLayout(new BoxLayout(panel_12, BoxLayout.Y_AXIS));
+		
+		Component verticalStrut_9 = Box.createVerticalStrut(5);
+		verticalStrut_9.setMaximumSize(new Dimension(0, 10));
+		panel_12.add(verticalStrut_9);
+		
+		JPanel panel_8 = new JPanel();
+		panel_8.setAlignmentY(Component.TOP_ALIGNMENT);
+		panel_12.add(panel_8);
+		panel_8.setLayout(new BoxLayout(panel_8, BoxLayout.Y_AXIS));
+		
+		JLabel lblDataFilePathText = new JLabel("Data file path:");
+		panel_8.add(lblDataFilePathText);
+		
+		Component verticalStrut_15 = Box.createVerticalStrut(3);
+		panel_8.add(verticalStrut_15);
+		
+		lblDataFilePath = new JLabel("DATA FILE PATH");
+		panel_8.add(lblDataFilePath);
+		
+		Component verticalStrut_16 = Box.createVerticalStrut(5);
+		verticalStrut_16.setMaximumSize(new Dimension(0, 10));
+		panel_12.add(verticalStrut_16);
+		
+		JPanel panel_9 = new JPanel();
+		panel_12.add(panel_9);
+		panel_9.setLayout(new BoxLayout(panel_9, BoxLayout.Y_AXIS));
+		
+		JLabel lblNumberOfData = new JLabel("Number of data records:");
+		panel_9.add(lblNumberOfData);
+		
+		Component verticalStrut_17 = Box.createVerticalStrut(3);
+		panel_9.add(verticalStrut_17);
+		
+		JLabel lblDataRecordCount = new JLabel("DR");
+		panel_9.add(lblDataRecordCount);
+		
+		Component verticalStrut_18 = Box.createVerticalStrut(5);
+		panel_12.add(verticalStrut_18);
+		
+		JPanel panel_10 = new JPanel();
+		panel_12.add(panel_10);
+		panel_10.setLayout(new BoxLayout(panel_10, BoxLayout.Y_AXIS));
+		
+		JLabel lblNumberOfAdded = new JLabel("Number of added records:");
+		panel_10.add(lblNumberOfAdded);
+		
+		Component verticalStrut_19 = Box.createVerticalStrut(3);
+		panel_10.add(verticalStrut_19);
+		
+		JLabel lblAddedRecords = new JLabel("AR");
+		panel_10.add(lblAddedRecords);
+		
+		Component verticalStrut_20 = Box.createVerticalStrut(5);
+		panel_12.add(verticalStrut_20);
+		
+		JPanel panel_11 = new JPanel();
+		panel_12.add(panel_11);
+		panel_11.setLayout(new BoxLayout(panel_11, BoxLayout.Y_AXIS));
+		
+		JLabel lblNumberOfDeleted = new JLabel("Number of deleted records:");
+		panel_11.add(lblNumberOfDeleted);
+		
+		Component verticalStrut_21 = Box.createVerticalStrut(3);
+		panel_11.add(verticalStrut_21);
+		
+		JLabel lblDeletedRecords = new JLabel("DR");
+		panel_11.add(lblDeletedRecords);
+		
+		Component horizontalStrut_21 = Box.createHorizontalStrut(10);
+		horizontalStrut_21.setMaximumSize(new Dimension(10, 0));
+		StatisticsInternal.add(horizontalStrut_21);
+		
+		Component horizontalStrut_9 = Box.createHorizontalStrut(10);
+		horizontalStrut_9.setMaximumSize(new Dimension(10, 0));
+		Statistics.add(horizontalStrut_9);
 		
 		Component verticalGlue = Box.createVerticalGlue();
 		DrawerPanelInternal.add(verticalGlue);
@@ -387,7 +446,7 @@ public class MainJFrame extends JFrame
 		Component horizontalStrut = Box.createHorizontalStrut(10);
 		MainContent.add(horizontalStrut);
 		
-		JPanel MainContentCentered = new JPanel();
+		MainContentCentered = new JPanel();
 		MainContent.add(MainContentCentered);
 		MainContentCentered.setLayout(new BorderLayout(0, 0));
 		
@@ -424,15 +483,27 @@ public class MainJFrame extends JFrame
 		this();
 		this.currentUser = u;
 		
+		try
+		{
+			NewsChannelDataProvider.getInstance().readDataFromFile();
+		} catch (Exception e){}
+		
+		// Setting image and username
 		avatarImg.setIcon(u.getAvatar());
 		lblUsername.setText(u.getUsername());
 		
+		// Populating cmbNewsChannel and selecting the first news channel
 		NewsChannelDataProvider.getInstance().getData().forEach(nc -> cmbNewsChannel.addItem(nc));
 		if (cmbNewsChannel.getItemCount() > 0)
 		{
 			cmbNewsChannel.setSelectedIndex(0);
 			currentNewsChannel = (NewsChannel)cmbNewsChannel.getSelectedItem();
 		}
+		
+		
+		// Filling the NewsListPanel and adding it to the main frame
+		NewsListPanel nlp = new NewsListPanel(currentUser, currentNewsChannel);
+		MainContentCentered.add(nlp);
 		
 		afterGUIInitialization();
 	}
