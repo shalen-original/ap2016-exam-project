@@ -17,12 +17,14 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import ap2016.application.ApplicationUtilities;
 import ap2016.entities.NewsChannel;
 import ap2016.entities.Role;
 import ap2016.entities.User;
@@ -627,16 +629,23 @@ public class MainJFrame extends JFrame
 		
 		// Updating channel details
 		vecChannelTitle.getViewComponent().setText(currentNewsChannel.getTitle());
+		vecChannelTitle.getEditComponent().updateValidationTest(s -> (!s.equals("")));
 		vecChannelTitle.setViewToEditOperation((v,e) -> e.setText(v.getText()));
+		vecChannelTitle.setEditToViewOperation((v,e) -> v.setText(e.getText()));
 		
 		vecChannelLink.getViewComponent().setText(currentNewsChannel.getLink());
+		vecChannelLink.getEditComponent().updateValidationTest(ApplicationUtilities::isValidURL);
 		vecChannelLink.setViewToEditOperation((v,e) -> e.setText(v.getText()));
+		vecChannelLink.setEditToViewOperation((v,e) -> v.setText(e.getText()));
 		
 		vecChannelLanguage.getViewComponent().setText(currentNewsChannel.getLanguage());
+		vecChannelLanguage.getEditComponent().updateValidationTest(ApplicationUtilities::isValidLanguage);
 		vecChannelLanguage.setViewToEditOperation((v,e) -> e.setText(v.getText()));
+		vecChannelLanguage.setEditToViewOperation((v,e) -> v.setText(e.getText()));
 		
 		vecChannelDescription.getViewComponent().setText(currentNewsChannel.getDescription());
 		vecChannelDescription.setViewToEditOperation((v,e) -> e.setText(v.getText()));
+		vecChannelDescription.setEditToViewOperation((v,e) -> v.setText(e.getText()));
 		
 	}
 	
@@ -697,10 +706,33 @@ public class MainJFrame extends JFrame
 			
 		}else{
 			
+			if (!vecChannelTitle.getEditComponent().isValid())
+			{
+				JOptionPane.showMessageDialog(this, "The new title must not null");
+				return;
+			}
+			if (!vecChannelLink.getEditComponent().isValid())
+			{
+				JOptionPane.showMessageDialog(this, "The new link must be a valid URL");
+				return;
+			}
+			if (!vecChannelLanguage.getEditComponent().isValid())
+			{
+				JOptionPane.showMessageDialog(this, "The new language must be a valid language (es: en-US)");
+				return;
+			}
+			
+			currentNewsChannel.setTitle(vecChannelTitle.getEditComponent().getText());
+			currentNewsChannel.setLink(vecChannelLink.getEditComponent().getText());
+			currentNewsChannel.setLanguage(vecChannelLanguage.getEditComponent().getText());
+			currentNewsChannel.setDescription(vecChannelDescription.getEditComponent().getText());
+			
 			vecChannelTitle.setViewState();
 			vecChannelLink.setViewState();
 			vecChannelLanguage.setViewState();
 			vecChannelDescription.setViewState();
+			
+			this.cmbNewsChannel.repaint();
 			
 			btnEdit.setText("Edit");
 			

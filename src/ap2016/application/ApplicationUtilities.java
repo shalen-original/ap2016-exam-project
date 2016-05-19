@@ -10,6 +10,10 @@ public class ApplicationUtilities {
 		return ApplicationConstants.urlRegEx.matcher(url).matches();
 	}
 	
+	public static boolean isValidLanguage(String language) {
+		return ApplicationConstants.languageRegEx.matcher(language).matches();
+	}
+	
 	public static byte[] stringToByteArray(String str)
 	{
 		if (str.equals("[]"))

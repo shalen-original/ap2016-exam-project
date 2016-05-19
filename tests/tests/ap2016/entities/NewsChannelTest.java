@@ -25,7 +25,7 @@ public class NewsChannelTest
 		n.setTitle("Test Title");
 		n.setLink("http://www.example.org");
 		n.setDescription("Test Description");
-		n.setLanguage("Test Language");
+		n.setLanguage("ts-TS");
 		
 		News a;
 		original = new ArrayList<>();
@@ -62,7 +62,7 @@ public class NewsChannelTest
 	@Test
 	public void testNewsChannelStringStringStringString()
 	{
-		n = new NewsChannel("Test Title 2", "http://next.example.org", "Test Description 2", "Test Language 2");
+		n = new NewsChannel("Test Title 2", "http://next.example.org", "Test Description 2", "ts-TV");
 		
 		if (!n.getTitle().equals("Test Title 2"))
 			fail("Title doesn't match. Obtained [" + n.getTitle() + "] but expected [Test Title 2]");
@@ -70,8 +70,8 @@ public class NewsChannelTest
 			fail("Link doesn't match. Obtained [" + n.getLink() + "] but expected [http://next.example.org]");
 		if (!n.getDescription().equals("Test Description 2"))
 			fail("Title doesn't match. Obtained [" + n.getDescription() + "] but expected [Test Description 2]");
-		if (!n.getLanguage().equals("Test Language 2"))
-			fail("Title doesn't match. Obtained [" + n.getLanguage() + "] but expected [Test Language 2]");
+		if (!n.getLanguage().equals("ts-TV"))
+			fail("Title doesn't match. Obtained [" + n.getLanguage() + "] but expected [ts-TV]");
 	}
 
 	@Test
@@ -149,14 +149,20 @@ public class NewsChannelTest
 	@Test
 	public void testGetLanguage()
 	{
-		assertEquals(n.getLanguage(), "Test Language");
+		assertEquals(n.getLanguage(), "ts-TS");
 	}
 
 	@Test
-	public void testSetLanguage()
+	public void testSetLanguage_00()
 	{
-		n.setLanguage("Test Language 2");
-		assertEquals(n.getLanguage(), "Test Language 2");
+		n.setLanguage("ts-TV");
+		assertEquals(n.getLanguage(), "ts-TV");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetLanguage_01()
+	{
+		n.setLanguage("invalid language");
 	}
 	
 	@Test

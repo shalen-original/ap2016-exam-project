@@ -31,7 +31,7 @@ public class ApplicationConstants {
 	 */
 	public final static Pattern urlRegEx = Pattern.compile("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
 	
-	
+	public final static Pattern languageRegEx = Pattern.compile("[a-z]{2}-[A-Z]{2}");
 	
 	
 	/**

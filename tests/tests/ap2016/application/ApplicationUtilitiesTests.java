@@ -95,6 +95,28 @@ public class ApplicationUtilitiesTests
 						+ " but should have been " + (k.getValue() ? "valid" : "invalid"));
 		}
 	}
+	
+	@Test
+	public void testIsValidLanguage()
+	{
+		HashMap<String, Boolean> tests = new HashMap<>();
+		
+		tests.put("en-EN", true);
+		tests.put("en-Ec", false);
+		tests.put("En-EN", false);
+		tests.put("en-ENF", false);
+		tests.put("enf-EN", false);
+		tests.put("en-sEf", false);
+		tests.put("enD-EN", false);
+		tests.put("ENenD", false);
+				
+		for (Map.Entry<String, Boolean> k : tests.entrySet())
+		{
+			if (ApplicationUtilities.isValidLanguage(k.getKey()) != k.getValue())
+				fail("The language: " + k.getKey() + " is marked as " + (ApplicationUtilities.isValidLanguage(k.getKey()) ? "valid" : "invalid") 
+						+ " but should have been " + (k.getValue() ? "valid" : "invalid"));
+		}
+	}
 
 	@Test
 	public void testStringToByteArray_00()

@@ -80,7 +80,12 @@ public class NewsChannel {
 	}
 
 	public void setLanguage(String language) {
-		this.language = language;
+		if (ApplicationUtilities.isValidLanguage(language))
+		{
+			this.language = language;
+		}else{
+			throw new IllegalArgumentException("The language \"" + language + "\" is not valid.");
+		}
 	}
 	
 	@Override
