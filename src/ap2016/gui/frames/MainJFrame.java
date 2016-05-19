@@ -6,6 +6,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -17,6 +18,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
@@ -26,6 +28,8 @@ import ap2016.entities.Role;
 import ap2016.entities.User;
 import ap2016.gui.panels.NewsListPanel;
 import ap2016.gui.utilities.AvatarImageDisplay;
+import ap2016.gui.utilities.ValidableTextField;
+import ap2016.gui.utilities.ViewEditComponent;
 import ap2016.io.NewsChannelDataProvider;
 import ap2016.io.UserDataProvider;
 
@@ -51,6 +55,11 @@ public class MainJFrame extends JFrame
 	private JPanel DrawerPanel;
 	private JLabel lblDataFilePath;
 	private JPanel MainContentCentered;
+	private ViewEditComponent<JLabel, ValidableTextField> vecChannelTitle;
+	private ViewEditComponent<JLabel, ValidableTextField> vecChannelLink;
+	private ViewEditComponent<JLabel, ValidableTextField> vecChannelLanguage;
+	private JButton btnEdit;
+	private ViewEditComponent<JLabel, JTextField> vecChannelDescription;
 	
 	
 	public MainJFrame() {
@@ -470,6 +479,112 @@ public class MainJFrame extends JFrame
 		NewsChannelDetailInternal.setMaximumSize(new Dimension(32767, 150));
 		NewsChannelDetailInternal.setBorder(new TitledBorder(new LineBorder(new Color(192, 192, 192), 1, true), "News channel details:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
 		NewsChannelDetail.add(NewsChannelDetailInternal);
+		NewsChannelDetailInternal.setLayout(new BoxLayout(NewsChannelDetailInternal, BoxLayout.Y_AXIS));
+		
+		Component verticalStrut_22 = Box.createVerticalStrut(10);
+		NewsChannelDetailInternal.add(verticalStrut_22);
+		
+		JPanel panel_13 = new JPanel();
+		panel_13.setPreferredSize(new Dimension(10, 25));
+		panel_13.setMaximumSize(new Dimension(32767, 25));
+		NewsChannelDetailInternal.add(panel_13);
+		panel_13.setLayout(new BoxLayout(panel_13, BoxLayout.X_AXIS));
+		
+		Component horizontalStrut_22 = Box.createHorizontalStrut(10);
+		horizontalStrut_22.setMaximumSize(new Dimension(20, 0));
+		panel_13.add(horizontalStrut_22);
+		
+		JLabel lblTitle = new JLabel("Title:");
+		panel_13.add(lblTitle);
+		
+		Component horizontalStrut_23 = Box.createHorizontalStrut(4);
+		horizontalStrut_23.setMaximumSize(new Dimension(20, 0));
+		panel_13.add(horizontalStrut_23);
+		
+		vecChannelTitle = new ViewEditComponent<>(new JLabel(), new ValidableTextField());
+		panel_13.add(vecChannelTitle);
+		
+		Component horizontalStrut_24 = Box.createHorizontalStrut(20);
+		horizontalStrut_24.setMaximumSize(new Dimension(20, 0));
+		panel_13.add(horizontalStrut_24);
+		
+		JLabel lblLink = new JLabel("Link:");
+		panel_13.add(lblLink);
+		
+		Component horizontalStrut_25 = Box.createHorizontalStrut(4);
+		horizontalStrut_25.setMaximumSize(new Dimension(20, 0));
+		panel_13.add(horizontalStrut_25);
+		
+		vecChannelLink = new ViewEditComponent<>(new JLabel(), new ValidableTextField());
+		panel_13.add(vecChannelLink);
+		
+		Component horizontalStrut_26 = Box.createHorizontalStrut(20);
+		horizontalStrut_26.setMaximumSize(new Dimension(20, 0));
+		panel_13.add(horizontalStrut_26);
+		
+		JLabel lblLanguage = new JLabel("Language:");
+		panel_13.add(lblLanguage);
+		
+		Component horizontalStrut_27 = Box.createHorizontalStrut(4);
+		horizontalStrut_27.setMaximumSize(new Dimension(20, 0));
+		panel_13.add(horizontalStrut_27);
+		
+		vecChannelLanguage = new ViewEditComponent<>(new JLabel(), new ValidableTextField());
+		panel_13.add(vecChannelLanguage);
+		
+		Component horizontalGlue_1 = Box.createHorizontalGlue();
+		horizontalGlue_1.setMinimumSize(new Dimension(30, 0));
+		panel_13.add(horizontalGlue_1);
+		
+		btnEdit = new JButton("Edit");
+		btnEdit.setMaximumSize(new Dimension(65, 25));
+		btnEdit.setMinimumSize(new Dimension(65, 25));
+		btnEdit.setPreferredSize(new Dimension(65, 25));
+		btnEdit.addActionListener(e -> btnEdit_Click(e));
+		
+		Component horizontalStrut_29 = Box.createHorizontalStrut(20);
+		panel_13.add(horizontalStrut_29);
+		panel_13.add(btnEdit);
+		
+		Component horizontalStrut_28 = Box.createHorizontalStrut(10);
+		horizontalStrut_28.setMaximumSize(new Dimension(20, 0));
+		panel_13.add(horizontalStrut_28);
+		
+		Component verticalStrut_23 = Box.createVerticalStrut(5);
+		NewsChannelDetailInternal.add(verticalStrut_23);
+		
+		JPanel panel_14 = new JPanel();
+		NewsChannelDetailInternal.add(panel_14);
+		panel_14.setLayout(new BoxLayout(panel_14, BoxLayout.X_AXIS));
+		
+		Component horizontalStrut_30 = Box.createHorizontalStrut(10);
+		horizontalStrut_30.setMaximumSize(new Dimension(20, 0));
+		panel_14.add(horizontalStrut_30);
+		
+		JPanel panel_15 = new JPanel();
+		panel_14.add(panel_15);
+		panel_15.setLayout(new BoxLayout(panel_15, BoxLayout.Y_AXIS));
+		
+		JPanel panel_16 = new JPanel();
+		panel_16.setMaximumSize(new Dimension(32767, 25));
+		panel_15.add(panel_16);
+		panel_16.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblNewLabel_1 = new JLabel("Description:");
+		panel_16.add(lblNewLabel_1);
+		
+		Component verticalStrut_26 = Box.createVerticalStrut(4);
+		panel_15.add(verticalStrut_26);
+		
+		vecChannelDescription = new ViewEditComponent<>(new JLabel(), new JTextField());
+		panel_15.add(vecChannelDescription);
+		
+		Component horizontalStrut_31 = Box.createHorizontalStrut(10);
+		horizontalStrut_31.setMaximumSize(new Dimension(10, 0));
+		panel_14.add(horizontalStrut_31);
+		
+		Component verticalStrut_24 = Box.createVerticalStrut(10);
+		NewsChannelDetailInternal.add(verticalStrut_24);
 		
 		Component horizontalStrut_14 = Box.createHorizontalStrut(10);
 		horizontalStrut_14.setMaximumSize(new Dimension(10, 0));
@@ -510,7 +625,18 @@ public class MainJFrame extends JFrame
 		
 		// Updating the statistics label
 		
+		// Updating channel details
+		vecChannelTitle.getViewComponent().setText(currentNewsChannel.getTitle());
+		vecChannelTitle.setViewToEditOperation((v,e) -> e.setText(v.getText()));
 		
+		vecChannelLink.getViewComponent().setText(currentNewsChannel.getLink());
+		vecChannelLink.setViewToEditOperation((v,e) -> e.setText(v.getText()));
+		
+		vecChannelLanguage.getViewComponent().setText(currentNewsChannel.getLanguage());
+		vecChannelLanguage.setViewToEditOperation((v,e) -> e.setText(v.getText()));
+		
+		vecChannelDescription.getViewComponent().setText(currentNewsChannel.getDescription());
+		vecChannelDescription.setViewToEditOperation((v,e) -> e.setText(v.getText()));
 		
 	}
 	
@@ -556,5 +682,28 @@ public class MainJFrame extends JFrame
 		a.setLocationRelativeTo(null);
 		btnExit_Click();
 		a.setVisible(true);
+	}
+	
+	private void btnEdit_Click(ActionEvent e)
+	{
+		if (btnEdit.getText().equals("Edit"))
+		{
+			vecChannelTitle.setEditState();
+			vecChannelLink.setEditState();
+			vecChannelLanguage.setEditState();
+			vecChannelDescription.setEditState();
+			
+			btnEdit.setText("Save");
+			
+		}else{
+			
+			vecChannelTitle.setViewState();
+			vecChannelLink.setViewState();
+			vecChannelLanguage.setViewState();
+			vecChannelDescription.setViewState();
+			
+			btnEdit.setText("Edit");
+			
+		}
 	}
 }
