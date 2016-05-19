@@ -22,6 +22,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import ap2016.entities.NewsChannel;
+import ap2016.entities.Role;
 import ap2016.entities.User;
 import ap2016.gui.panels.NewsListPanel;
 import ap2016.gui.utilities.AvatarImageDisplay;
@@ -465,8 +466,8 @@ public class MainJFrame extends JFrame
 		NewsChannelDetail.add(horizontalStrut_15);
 		
 		JPanel NewsChannelDetailInternal = new JPanel();
-		NewsChannelDetailInternal.setPreferredSize(new Dimension(10, 100));
-		NewsChannelDetailInternal.setMaximumSize(new Dimension(32767, 100));
+		NewsChannelDetailInternal.setPreferredSize(new Dimension(10, 150));
+		NewsChannelDetailInternal.setMaximumSize(new Dimension(32767, 150));
 		NewsChannelDetailInternal.setBorder(new TitledBorder(new LineBorder(new Color(192, 192, 192), 1, true), "News channel details:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
 		NewsChannelDetail.add(NewsChannelDetailInternal);
 		
@@ -482,6 +483,8 @@ public class MainJFrame extends JFrame
 	{
 		this();
 		this.currentUser = u;
+		
+		updatePermissions();
 		
 		try
 		{
@@ -505,12 +508,25 @@ public class MainJFrame extends JFrame
 		NewsListPanel nlp = new NewsListPanel(currentUser, currentNewsChannel);
 		MainContentCentered.add(nlp);
 		
-		afterGUIInitialization();
+		// Updating the statistics label
+		
+		
+		
 	}
 	
-	private void afterGUIInitialization()
+	private void updatePermissions()
 	{
+		if (currentUser == null)
+			return;
 		
+		if (currentUser.hasRole(Role.IMPORT_NEWS_FROM_FILE))
+		{
+			btnImportData.setVisible(true);
+			btnImportData.setEnabled(true);
+		}else{
+			btnImportData.setVisible(false);
+			btnImportData.setEnabled(false);
+		}
 	}
 	
 	

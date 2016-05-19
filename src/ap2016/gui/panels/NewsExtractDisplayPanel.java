@@ -1,8 +1,8 @@
 package ap2016.gui.panels;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.Box;
@@ -13,21 +13,19 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import ap2016.entities.News;
-import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class NewsExtractDisplayPanel extends JPanel
 {
+	private News currentNews;
+	
 	private JLabel lblTitle;
 	private JLabel lblAuthor;
 	private JLabel lblDescription;
+	private JLabel lblPubDate;
 	
 	public NewsExtractDisplayPanel() {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-		
-		Component horizontalStrut = Box.createHorizontalStrut(10);
-		horizontalStrut.setMaximumSize(new Dimension(10, 0));
-		add(horizontalStrut);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(Color.LIGHT_GRAY));
@@ -67,6 +65,9 @@ public class NewsExtractDisplayPanel extends JPanel
 		JLabel lblNewLabel = new JLabel("Author:");
 		panel_2.add(lblNewLabel);
 		
+		Component horizontalStrut = Box.createHorizontalStrut(4);
+		panel_2.add(horizontalStrut);
+		
 		lblAuthor = new JLabel("AUTHOR");
 		panel_2.add(lblAuthor);
 		
@@ -76,7 +77,10 @@ public class NewsExtractDisplayPanel extends JPanel
 		JLabel lblNewLabel_1 = new JLabel("Pubblication date:");
 		panel_2.add(lblNewLabel_1);
 		
-		JLabel lblPubDate = new JLabel("PUBLICATION DATE");
+		Component horizontalStrut_1 = Box.createHorizontalStrut(4);
+		panel_2.add(horizontalStrut_1);
+		
+		lblPubDate = new JLabel("PUBLICATION DATE");
 		panel_2.add(lblPubDate);
 		
 		Component horizontalStrut_3 = Box.createHorizontalStrut(20);
@@ -92,7 +96,7 @@ public class NewsExtractDisplayPanel extends JPanel
 		panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.X_AXIS));
 		
 		Component horizontalGlue_3 = Box.createHorizontalGlue();
-		horizontalGlue_3.setMinimumSize(new Dimension(10, 0));
+		horizontalGlue_3.setMinimumSize(new Dimension(20, 0));
 		panel_3.add(horizontalGlue_3);
 		
 		lblDescription = new JLabel("Description");
@@ -102,23 +106,26 @@ public class NewsExtractDisplayPanel extends JPanel
 		panel_3.add(lblDescription);
 		
 		Component horizontalGlue_4 = Box.createHorizontalGlue();
-		horizontalGlue_4.setMinimumSize(new Dimension(10, 0));
+		horizontalGlue_4.setMinimumSize(new Dimension(20, 0));
 		panel_3.add(horizontalGlue_4);
 		
-		Component verticalStrut = Box.createVerticalStrut(10);
+		Component verticalStrut = Box.createVerticalStrut(15);
 		verticalStrut.setMaximumSize(new Dimension(0, 10));
 		panel.add(verticalStrut);
-		
-		Component horizontalStrut_1 = Box.createHorizontalStrut(10);
-		horizontalStrut_1.setMaximumSize(new Dimension(10, 0));
-		add(horizontalStrut_1);
 	}
 
 	
 	public NewsExtractDisplayPanel(News n) {
 		this();
+		this.currentNews = n;
 		lblTitle.setText(n.getTitle());
 		lblAuthor.setText(n.getAuthor());
+		lblPubDate.setText(n.getPubblicationDate());
 		lblDescription.setText("<html>" + n.getDescription() + "</html>");
+	}
+	
+	public News getNews()
+	{
+		return this.currentNews;
 	}
 }
