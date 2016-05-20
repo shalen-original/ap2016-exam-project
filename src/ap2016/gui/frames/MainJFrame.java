@@ -9,6 +9,7 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -24,7 +25,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import ap2016.application.ApplicationConstants;
 import ap2016.application.ApplicationUtilities;
+import ap2016.entities.News;
 import ap2016.entities.NewsChannel;
 import ap2016.entities.Role;
 import ap2016.entities.User;
@@ -62,6 +65,9 @@ public class MainJFrame extends JFrame
 	private ViewEditComponent<JLabel, ValidableTextField> vecChannelLanguage;
 	private JButton btnEdit;
 	private ViewEditComponent<JLabel, JTextField> vecChannelDescription;
+	private JLabel lblDataRecordCount;
+	private JLabel lblAddedRecords;
+	private JLabel lblDeletedRecords;
 	
 	
 	public MainJFrame() {
@@ -296,6 +302,8 @@ public class MainJFrame extends JFrame
 		panel_8.add(verticalStrut_15);
 		
 		lblDataFilePath = new JLabel("DATA FILE PATH");
+		lblDataFilePath.setMinimumSize(new Dimension(200, 16));
+		lblDataFilePath.setMaximumSize(new Dimension(200, 16));
 		panel_8.add(lblDataFilePath);
 		
 		Component verticalStrut_16 = Box.createVerticalStrut(5);
@@ -312,7 +320,7 @@ public class MainJFrame extends JFrame
 		Component verticalStrut_17 = Box.createVerticalStrut(3);
 		panel_9.add(verticalStrut_17);
 		
-		JLabel lblDataRecordCount = new JLabel("DR");
+		lblDataRecordCount = new JLabel("DR");
 		panel_9.add(lblDataRecordCount);
 		
 		Component verticalStrut_18 = Box.createVerticalStrut(5);
@@ -328,7 +336,7 @@ public class MainJFrame extends JFrame
 		Component verticalStrut_19 = Box.createVerticalStrut(3);
 		panel_10.add(verticalStrut_19);
 		
-		JLabel lblAddedRecords = new JLabel("AR");
+		lblAddedRecords = new JLabel("AR");
 		panel_10.add(lblAddedRecords);
 		
 		Component verticalStrut_20 = Box.createVerticalStrut(5);
@@ -344,7 +352,7 @@ public class MainJFrame extends JFrame
 		Component verticalStrut_21 = Box.createVerticalStrut(3);
 		panel_11.add(verticalStrut_21);
 		
-		JLabel lblDeletedRecords = new JLabel("DR");
+		lblDeletedRecords = new JLabel("DR");
 		panel_11.add(lblDeletedRecords);
 		
 		Component horizontalStrut_21 = Box.createHorizontalStrut(10);
@@ -626,6 +634,22 @@ public class MainJFrame extends JFrame
 		MainContentCentered.add(nlp);
 		
 		// Updating the statistics label
+		lblDataFilePath.setText((new File(ApplicationConstants.dataBase + "\\data.xml")).getAbsolutePath());
+		lblDataFilePath.setToolTipText(new File(ApplicationConstants.dataBase + "\\data.xml").getAbsolutePath());
+		
+		Integer i = 0;
+		for (NewsChannel nc : NewsChannelDataProvider.getInstance().getData())
+		{
+			i += nc.getNews().size();
+		}
+		lblDataRecordCount.setText(i + "");
+		
+		lblAddedRecords.setText("0");
+		nlp.setOnDataAddedListener((k) -> lblAddedRecords.setText(Integer.parseInt(lblAddedRecords.getText()) + k + ""));
+		
+		lblDeletedRecords.setText("0");
+		nlp.setOnDataRemovedListener((k) -> lblDeletedRecords.setText(Integer.parseInt(lblDeletedRecords.getText()) + k + ""));
+		
 		
 		// Updating channel details
 		vecChannelTitle.getViewComponent().setText(currentNewsChannel.getTitle());

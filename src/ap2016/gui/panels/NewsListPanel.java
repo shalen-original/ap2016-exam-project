@@ -1,5 +1,6 @@
 package ap2016.gui.panels;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -21,6 +22,10 @@ import ap2016.entities.News;
 import ap2016.entities.NewsChannel;
 import ap2016.entities.Role;
 import ap2016.entities.User;
+import javax.swing.border.LineBorder;
+import java.awt.Container;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class NewsListPanel extends JPanel
@@ -37,6 +42,31 @@ public class NewsListPanel extends JPanel
 	private JPanel pnlNewsList;
 	private JPanel pnlNewsDetail;
 	private JButton btnBack;
+	private JPanel panel_1;
+	private Component verticalStrut_1;
+	private JPanel panel_2;
+	private Component horizontalGlue_1;
+	private JLabel lblTitle;
+	private Component horizontalGlue_2;
+	private Component verticalStrut_2;
+	private JPanel panel_3;
+	private Component horizontalStrut_2;
+	private JLabel label_1;
+	private Component horizontalStrut_3;
+	private JLabel lblAuthor;
+	private Component horizontalGlue_3;
+	private JLabel label_3;
+	private Component horizontalStrut_4;
+	private JLabel lblPubDate;
+	private Component horizontalStrut_5;
+	private Component verticalStrut_3;
+	private JPanel panel_4;
+	private JLabel lblContent;
+	private JPanel panel_5;
+	private JButton btnEdit;
+	private Component horizontalGlue_6;
+	private JScrollPane spMain;
+	private Component verticalStrut_5;
 	
 	public NewsListPanel() {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -76,9 +106,9 @@ public class NewsListPanel extends JPanel
 		
 		txtSearch = new JTextField();
 		txtSearch.setSize(new Dimension(500, 0));
-		txtSearch.setPreferredSize(new Dimension(500, 20));
-		txtSearch.setMinimumSize(new Dimension(500, 20));
-		txtSearch.setMaximumSize(new Dimension(500, 2147483647));
+		txtSearch.setPreferredSize(new Dimension(800, 20));
+		txtSearch.setMinimumSize(new Dimension(800, 20));
+		txtSearch.setMaximumSize(new Dimension(800, 2147483647));
 		txtSearch.setColumns(10);
 		panel.add(txtSearch);
 		
@@ -90,7 +120,6 @@ public class NewsListPanel extends JPanel
 		panel.add(btnSearch);
 		
 		Component horizontalGlue = Box.createHorizontalGlue();
-		horizontalGlue.setMaximumSize(new Dimension(300, 0));
 		panel.add(horizontalGlue);
 		
 		btnAdd = new JButton("Add");
@@ -104,13 +133,117 @@ public class NewsListPanel extends JPanel
 		panel.add(btnRemove);
 		
 		pnlNewsDetail = new JPanel();
-		pnlNewsDetail.setBackground(Color.ORANGE);
 		pnlNewsDetail.setVisible(false);
 		add(pnlNewsDetail);
+		pnlNewsDetail.setLayout(new BoxLayout(pnlNewsDetail, BoxLayout.Y_AXIS));
 		
-		btnBack = new JButton("Back to the news list");
+		panel_1 = new JPanel();
+		panel_1.setBorder(null);
+		pnlNewsDetail.add(panel_1);
+		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
+		
+		verticalStrut_1 = Box.createVerticalStrut(10);
+		verticalStrut_1.setMaximumSize(new Dimension(0, 10));
+		panel_1.add(verticalStrut_1);
+		
+		panel_2 = new JPanel();
+		panel_1.add(panel_2);
+		panel_2.setLayout(new BoxLayout(panel_2, BoxLayout.X_AXIS));
+		
+		horizontalGlue_1 = Box.createHorizontalGlue();
+		panel_2.add(horizontalGlue_1);
+		
+		lblTitle = new JLabel("Title");
+		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		panel_2.add(lblTitle);
+		
+		horizontalGlue_2 = Box.createHorizontalGlue();
+		panel_2.add(horizontalGlue_2);
+		
+		verticalStrut_2 = Box.createVerticalStrut(10);
+		verticalStrut_2.setMaximumSize(new Dimension(0, 10));
+		panel_1.add(verticalStrut_2);
+		
+		panel_3 = new JPanel();
+		panel_3.setMaximumSize(new Dimension(32767, 25));
+		panel_1.add(panel_3);
+		panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.X_AXIS));
+		
+		horizontalStrut_2 = Box.createHorizontalStrut(20);
+		horizontalStrut_2.setMaximumSize(new Dimension(20, 0));
+		panel_3.add(horizontalStrut_2);
+		
+		label_1 = new JLabel("Author:");
+		panel_3.add(label_1);
+		
+		horizontalStrut_3 = Box.createHorizontalStrut(4);
+		panel_3.add(horizontalStrut_3);
+		
+		lblAuthor = new JLabel("AUTHOR");
+		panel_3.add(lblAuthor);
+		
+		horizontalGlue_3 = Box.createHorizontalGlue();
+		panel_3.add(horizontalGlue_3);
+		
+		label_3 = new JLabel("Pubblication date:");
+		panel_3.add(label_3);
+		
+		horizontalStrut_4 = Box.createHorizontalStrut(4);
+		panel_3.add(horizontalStrut_4);
+		
+		lblPubDate = new JLabel("PUBLICATION DATE");
+		panel_3.add(lblPubDate);
+		
+		horizontalStrut_5 = Box.createHorizontalStrut(20);
+		horizontalStrut_5.setMaximumSize(new Dimension(20, 0));
+		panel_3.add(horizontalStrut_5);
+		
+		verticalStrut_3 = Box.createVerticalStrut(20);
+		verticalStrut_3.setMaximumSize(new Dimension(0, 20));
+		panel_1.add(verticalStrut_3);
+		
+		panel_4 = new JPanel();
+		panel_1.add(panel_4);
+		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.X_AXIS));
+		
+		spMain = new JScrollPane();
+		spMain.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		panel_4.add(spMain);
+		
+		lblContent = new JLabel("Content");
+		lblContent.setPreferredSize(new Dimension(300, 16));
+		lblContent.setMaximumSize(new Dimension(300, 16));
+		lblContent.setMinimumSize(new Dimension(300, 16));
+		lblContent.setVerticalAlignment(SwingConstants.TOP);
+		lblContent.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JPanel pnlContentLabelPanel = new JPanel();
+		pnlContentLabelPanel.setLayout(new BorderLayout());
+		pnlContentLabelPanel.add(lblContent, BorderLayout.CENTER);
+		spMain.setViewportView(pnlContentLabelPanel);
+		
+		verticalStrut_5 = Box.createVerticalStrut(10);
+		pnlNewsDetail.add(verticalStrut_5);
+		
+		panel_5 = new JPanel();
+		pnlNewsDetail.add(panel_5);
+		panel_5.setLayout(new BoxLayout(panel_5, BoxLayout.X_AXIS));
+		
+		btnBack = new JButton("« Back to the news list");
+		btnBack.setPreferredSize(new Dimension(170, 30));
+		btnBack.setMinimumSize(new Dimension(170, 30));
+		btnBack.setMaximumSize(new Dimension(170, 30));
+		panel_5.add(btnBack);
+		
+		horizontalGlue_6 = Box.createHorizontalGlue();
+		panel_5.add(horizontalGlue_6);
+		
+		btnEdit = new JButton("Edit");
+		btnEdit.setPreferredSize(new Dimension(80, 30));
+		btnEdit.setMinimumSize(new Dimension(80, 30));
+		btnEdit.setMaximumSize(new Dimension(80, 30));
+		panel_5.add(btnEdit);
 		btnBack.addActionListener(e -> btnBack_Click());
-		pnlNewsDetail.add(btnBack);
 		
 	}
 
@@ -215,7 +348,14 @@ public class NewsListPanel extends JPanel
 	{
 		pnlNewsList.setVisible(false);
 		pnlNewsDetail.setVisible(true);
-		pnlNewsDetail.add(new JLabel(n.getTitle()));
+		
+		lblTitle.setText(n.getTitle());
+		lblAuthor.setText(n.getAuthor());
+		lblPubDate.setText(n.getPubblicationDate());
+		lblContent.setText("<html>" + n.getContent() + "</html>");
+		
+		lblContent.setPreferredSize(new Dimension((int)spMain.getPreferredSize().getWidth(), 500));
+		spMain.revalidate();
 	}
 	
 	private void btnBack_Click()
