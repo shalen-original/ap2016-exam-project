@@ -181,6 +181,7 @@ public class NewsListPanel extends JPanel
 		panel.add(horizontalStrut);
 
 		btnSearch = new JButton("Search");
+		btnSearch.addActionListener(e -> btnSearch_Click());
 		panel.add(btnSearch);
 
 		Component horizontalGlue = Box.createHorizontalGlue();
@@ -541,6 +542,8 @@ public class NewsListPanel extends JPanel
 		updateCurrentNewsChannel(currentNewsChannel);
 	}
 
+	
+	
 	public void setOnDataAddedListener(Consumer<Integer> listener)
 	{
 		if (listeners.putIfAbsent("onDataAdded", listener) != null)
@@ -553,6 +556,8 @@ public class NewsListPanel extends JPanel
 			listeners.replace("onDataRemoved", listener);
 	}
 
+	
+	
 	public void updateCurrentNewsChannel(NewsChannel nc)
 	{
 		if (nc == null)
@@ -586,9 +591,12 @@ public class NewsListPanel extends JPanel
 		{
 			for (News n : currentNewsChannel.getNews())
 			{
-				tmp = new NewsExtractDisplayPanel(n);
-				scrollableMainPanel.add(tmp);
-				height += tmp.getPreferredSize().getHeight();
+				if (newsContainsTest(n))
+				{	
+					tmp = new NewsExtractDisplayPanel(n);
+					scrollableMainPanel.add(tmp);
+					height += tmp.getPreferredSize().getHeight();
+				}
 			}
 		}
 
@@ -630,6 +638,8 @@ public class NewsListPanel extends JPanel
 		scrollableMainPanel.revalidate();
 	}
 
+	
+	
 	private void onNewsExtractClick(News n)
 	{
 		pnlNewsList.setVisible(false);
@@ -646,6 +656,10 @@ public class NewsListPanel extends JPanel
 		spMain.revalidate();
 	}
 
+	
+	
+	
+	
 	private void btnBack_Click()
 	{
 		reloadNewsList();
@@ -723,5 +737,47 @@ public class NewsListPanel extends JPanel
 		pnlAddNews.setVisible(false);
 		pnlNewsList.setVisible(true);
 
+	}
+	
+	private void btnSearch_Click()
+	{
+		reloadNewsList();
+	}
+	
+	private boolean newsContainsTest(News n)
+	{
+		boolean ans = false;
+		
+		if (n.getTitle().contains(txtSearch.getText()))
+		{
+			ans = true;
+		}
+		
+		if (n.getAuthor().contains(txtSearch.getText()))
+		{
+			ans = true;
+		}
+		
+		if (n.getContent().contains(txtSearch.getText()))
+		{
+			ans = true;
+		}
+		
+		if (n.getDescription().contains(txtSearch.getText()))
+		{
+			ans = true;
+		}
+		
+		if (n.getLink().contains(txtSearch.getText()))
+		{
+			ans = true;
+		}
+		
+		if (n.getPubblicationDate().contains(txtSearch.getText()))
+		{
+			ans = true;
+		}
+		
+		return ans;
 	}
 }
