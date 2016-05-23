@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
@@ -13,19 +14,17 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
 
 import ap2016.entities.News;
 import ap2016.entities.NewsChannel;
 import ap2016.entities.Role;
 import ap2016.entities.User;
-import javax.swing.border.LineBorder;
-import java.awt.Container;
-import java.awt.Font;
-import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class NewsListPanel extends JPanel
@@ -33,11 +32,11 @@ public class NewsListPanel extends JPanel
 	private HashMap<String, Consumer<Integer>> listeners;
 	private User currentUser;
 	private NewsChannel currentNewsChannel;
+	private News currentNews;
 	private JScrollPane scrollPaneMain;
 	private JTextField txtSearch;
 	private JButton btnSearch;
 	private JButton btnAdd;
-	private JButton btnRemove;
 	private JPanel scrollableMainPanel;
 	private JPanel pnlNewsList;
 	private JPanel pnlNewsDetail;
@@ -67,6 +66,10 @@ public class NewsListPanel extends JPanel
 	private Component horizontalGlue_6;
 	private JScrollPane spMain;
 	private Component verticalStrut_5;
+	private JPanel pnlContentLabelPanel;
+	private JButton btnRemove;
+	private Component horizontalStrut_6;
+	private Component horizontalStrut_7;
 	
 	public NewsListPanel() {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -128,9 +131,6 @@ public class NewsListPanel extends JPanel
 		Component horizontalStrut_1 = Box.createHorizontalStrut(10);
 		horizontalStrut_1.setMaximumSize(new Dimension(10, 0));
 		panel.add(horizontalStrut_1);
-		
-		btnRemove = new JButton("Remove");
-		panel.add(btnRemove);
 		
 		pnlNewsDetail = new JPanel();
 		pnlNewsDetail.setVisible(false);
@@ -207,19 +207,15 @@ public class NewsListPanel extends JPanel
 		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.X_AXIS));
 		
 		spMain = new JScrollPane();
-		spMain.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		panel_4.add(spMain);
 		
 		lblContent = new JLabel("Content");
-		lblContent.setPreferredSize(new Dimension(300, 16));
-		lblContent.setMaximumSize(new Dimension(300, 16));
-		lblContent.setMinimumSize(new Dimension(300, 16));
 		lblContent.setVerticalAlignment(SwingConstants.TOP);
 		lblContent.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JPanel pnlContentLabelPanel = new JPanel();
-		pnlContentLabelPanel.setLayout(new BorderLayout());
-		pnlContentLabelPanel.add(lblContent, BorderLayout.CENTER);
+		pnlContentLabelPanel = new JPanel();
+		pnlContentLabelPanel.setLayout(new BorderLayout(0, 0));
+		pnlContentLabelPanel.add(lblContent);
 		spMain.setViewportView(pnlContentLabelPanel);
 		
 		verticalStrut_5 = Box.createVerticalStrut(10);
@@ -243,6 +239,21 @@ public class NewsListPanel extends JPanel
 		btnEdit.setMinimumSize(new Dimension(80, 30));
 		btnEdit.setMaximumSize(new Dimension(80, 30));
 		panel_5.add(btnEdit);
+		
+		horizontalStrut_6 = Box.createHorizontalStrut(10);
+		horizontalStrut_6.setMaximumSize(new Dimension(20, 0));
+		panel_5.add(horizontalStrut_6);
+		
+		btnRemove = new JButton("Remove");
+		btnRemove.setMaximumSize(new Dimension(80, 30));
+		btnRemove.setMinimumSize(new Dimension(80, 30));
+		btnRemove.setPreferredSize(new Dimension(80, 30));
+		btnRemove.addActionListener((e) -> btnRemove_Click());
+		panel_5.add(btnRemove);
+		
+		horizontalStrut_7 = Box.createHorizontalStrut(10);
+		horizontalStrut_7.setMaximumSize(new Dimension(20, 0));
+		panel_5.add(horizontalStrut_7);
 		btnBack.addActionListener(e -> btnBack_Click());
 		
 	}
@@ -352,16 +363,31 @@ public class NewsListPanel extends JPanel
 		lblTitle.setText(n.getTitle());
 		lblAuthor.setText(n.getAuthor());
 		lblPubDate.setText(n.getPubblicationDate());
-		lblContent.setText("<html>" + n.getContent() + "</html>");
+		lblContent.setText("<html><head><style>div#mc{width:"+ pnlNewsList.getPreferredSize().getWidth() + "px;}</style></head><body><div id=\"mc\">" + n.getContent() + "</div></body></html>");
 		
-		lblContent.setPreferredSize(new Dimension((int)spMain.getPreferredSize().getWidth(), 500));
+		currentNews = n;
+		
 		spMain.revalidate();
 	}
 	
 	private void btnBack_Click()
 	{
 		reloadNewsList();
+		currentNews = null;
 		pnlNewsDetail.setVisible(false);
 		pnlNewsList.setVisible(true);
+	}
+	
+	private void btnRemove_Click()
+	{
+		Object[] options = {"Yes", "No"};
+		if (JOptionPane.showOptionDialog(this, "Are you sure you want to delete this news?", "Warning",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+				null, options, options[0]) == JOptionPane.YES_OPTION)
+		{
+			currentNewsChannel.removeNews(currentNews);
+			currentNews = null;
+			btnBack_Click();
+		}
 	}
 }

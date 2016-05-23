@@ -41,6 +41,9 @@ public class NewsChannel {
 		this.news.add(news);
 	}
 	
+	public void removeNews(News news){
+		this.news.remove(news);
+	}
 	
 
 	public String getTitle() {

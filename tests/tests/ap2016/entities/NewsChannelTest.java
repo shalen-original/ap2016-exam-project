@@ -101,6 +101,25 @@ public class NewsChannelTest
 		}
 		
 	}
+	
+	@Test
+	public void testRemoveNews()
+	{
+		News b = new News();
+		b.setTitle("Test News Title Aut");
+		n.addNews(b);
+		original.add(b);
+
+		n.removeNews(b);
+		original.remove(b);
+		
+		ArrayList<News> a = n.getNews();
+		for (int i = 0; i < original.size(); i++)
+		{
+			if (!original.get(i).equals(a.get(i)))
+				fail("The news are not the same");
+		}
+	}
 
 	@Test
 	public void testGetTitle()
