@@ -746,34 +746,35 @@ public class NewsListPanel extends JPanel
 	
 	private boolean newsContainsTest(News n)
 	{
+		String txt = txtSearch.getText().toLowerCase();
 		boolean ans = false;
 		
-		if (n.getTitle().contains(txtSearch.getText()))
+		if (n.getTitle().toLowerCase().contains(txt))
 		{
 			ans = true;
 		}
 		
-		if (n.getAuthor().contains(txtSearch.getText()))
+		if (n.getAuthor().toLowerCase().contains(txt))
 		{
 			ans = true;
 		}
 		
-		if (n.getContent().contains(txtSearch.getText()))
+		if (n.getContent().toLowerCase().contains(txt))
 		{
 			ans = true;
 		}
 		
-		if (n.getDescription().contains(txtSearch.getText()))
+		if (n.getDescription().toLowerCase().contains(txt))
 		{
 			ans = true;
 		}
 		
-		if (n.getLink().contains(txtSearch.getText()))
+		if (n.getLink().toLowerCase().contains(txt))
 		{
 			ans = true;
 		}
 		
-		if (n.getPubblicationDate().contains(txtSearch.getText()))
+		if (n.getPubblicationDate().toLowerCase().contains(txt))
 		{
 			ans = true;
 		}
