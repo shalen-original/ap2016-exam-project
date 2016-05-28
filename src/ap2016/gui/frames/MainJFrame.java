@@ -16,6 +16,7 @@ import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -27,7 +28,6 @@ import javax.swing.border.TitledBorder;
 
 import ap2016.application.ApplicationConstants;
 import ap2016.application.ApplicationUtilities;
-import ap2016.entities.News;
 import ap2016.entities.NewsChannel;
 import ap2016.entities.Role;
 import ap2016.entities.User;
@@ -37,6 +37,7 @@ import ap2016.gui.utilities.ValidableTextField;
 import ap2016.gui.utilities.ViewEditComponent;
 import ap2016.io.NewsChannelDataProvider;
 import ap2016.io.UserDataProvider;
+import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
 public class MainJFrame extends JFrame
@@ -68,7 +69,7 @@ public class MainJFrame extends JFrame
 	private JLabel lblDataRecordCount;
 	private JLabel lblAddedRecords;
 	private JLabel lblDeletedRecords;
-	
+	private NewsListPanel nlp;
 	
 	public MainJFrame() {
 		addWindowListener(new WindowAdapter() {
@@ -152,6 +153,7 @@ public class MainJFrame extends JFrame
 		SelectNewsChannelInternal.add(horizontalStrut_12);
 		
 		cmbNewsChannel = new JComboBox<>();
+		cmbNewsChannel.addActionListener(e -> cmbNewChannel_SelectedItemChanged());
 		cmbNewsChannel.setMaximumSize(new Dimension(32767, 20));
 		SelectNewsChannelInternal.add(cmbNewsChannel);
 		
@@ -249,6 +251,7 @@ public class MainJFrame extends JFrame
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
 		btnImportData = new JButton("Import data file");
+		btnImportData.addActionListener((e) -> btnImportData_Click());
 		panel_4.add(btnImportData);
 		
 		Component verticalStrut_10 = Box.createVerticalStrut(10);
@@ -620,18 +623,11 @@ public class MainJFrame extends JFrame
 		avatarImg.setIcon(u.getAvatar());
 		lblUsername.setText(u.getUsername());
 		
-		// Populating cmbNewsChannel and selecting the first news channel
-		NewsChannelDataProvider.getInstance().getData().forEach(nc -> cmbNewsChannel.addItem(nc));
-		if (cmbNewsChannel.getItemCount() > 0)
-		{
-			cmbNewsChannel.setSelectedIndex(0);
-			currentNewsChannel = (NewsChannel)cmbNewsChannel.getSelectedItem();
-		}
-		
-		
 		// Filling the NewsListPanel and adding it to the main frame
-		NewsListPanel nlp = new NewsListPanel(currentUser, currentNewsChannel);
+		nlp = new NewsListPanel(currentUser);
 		MainContentCentered.add(nlp);
+		
+		fillNewsChannel(0);
 		
 		// Updating the statistics label
 		lblDataFilePath.setText((new File(ApplicationConstants.dataBase + "\\data.xml")).getAbsolutePath());
@@ -671,6 +667,25 @@ public class MainJFrame extends JFrame
 		vecChannelDescription.setViewToEditOperation((v,e) -> e.setText(v.getText()));
 		vecChannelDescription.setEditToViewOperation((v,e) -> v.setText(e.getText()));
 		
+	}
+	
+	private void fillNewsChannel(int defaultChannel)
+	{
+		cmbNewsChannel.removeAllItems();
+		// Populating cmbNewsChannel and selecting the first news channel
+		NewsChannelDataProvider.getInstance().getData().forEach(nc -> cmbNewsChannel.addItem(nc));
+		if (cmbNewsChannel.getItemCount() > defaultChannel)
+		{
+			cmbNewsChannel.setSelectedIndex(defaultChannel);
+		}else{
+			cmbNewsChannel.setSelectedIndex(0);
+		}
+	}
+	
+	private void cmbNewChannel_SelectedItemChanged()
+	{
+		currentNewsChannel = (NewsChannel)cmbNewsChannel.getSelectedItem();
+		nlp.updateCurrentNewsChannel(currentNewsChannel);
 	}
 	
 	private void updatePermissions()
@@ -761,5 +776,25 @@ public class MainJFrame extends JFrame
 			btnEdit.setText("Edit");
 			
 		}
+	}
+
+	private void btnImportData_Click()
+	{
+		JFileChooser fc = new JFileChooser();
+		int returnVal = fc.showOpenDialog(this);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+            
+            try
+            {
+            	int last = cmbNewsChannel.getSelectedIndex();
+            	NewsChannelDataProvider.getInstance().readDataFromSelectedFile(file);
+            	fillNewsChannel(last);
+            }catch (Exception ex){
+            	JOptionPane.showMessageDialog(this, "The application was not able to import the selected file.");
+            }
+            
+        }
 	}
 }

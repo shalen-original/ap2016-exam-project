@@ -157,4 +157,11 @@ public class NewsChannelDataProvider extends DataProvider<NewsChannel>{
 		return el;
 	}
 
+
+	@Override
+	protected void appendDoc(Document doc)
+	{
+		parseDoc(doc);
+	}
+
 }

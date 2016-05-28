@@ -544,12 +544,11 @@ public class NewsListPanel extends JPanel
 
 	}
 
-	public NewsListPanel(User currentUser, NewsChannel currentNewsChannel)
+	public NewsListPanel(User currentUser)
 	{
 		this();
 		listeners = new HashMap<>();
 		updateCurrentUser(currentUser);
-		updateCurrentNewsChannel(currentNewsChannel);
 		
 		vecTitle.setViewToEditOperation((l, t) -> t.setText(l.getText()));
 		vecAuthor.setViewToEditOperation((l, t) -> t.setText(l.getText()));

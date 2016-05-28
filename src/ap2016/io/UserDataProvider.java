@@ -107,4 +107,11 @@ public class UserDataProvider extends DataProvider<User>{
 		}
 	}
 
+
+	@Override
+	protected void appendDoc(Document doc)
+	{
+		// This application doesn't allow to import user file.
+	}
+
 }

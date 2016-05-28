@@ -48,6 +48,17 @@ public abstract class DataProvider <T>
 		} catch (SAXException e) {}	
 	}
 	
+	public void readDataFromSelectedFile(File f) throws Exception
+	{
+		try {
+			
+			Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(f);
+			appendDoc(doc);
+			
+		} catch (IOException | ParserConfigurationException e) {
+			throw new Exception("The file located at \"" + f.getPath() +"\" is not valid");
+		} catch (SAXException e) {}	
+	}
 	
 	public void saveDataToFile() 
 	{
@@ -74,7 +85,7 @@ public abstract class DataProvider <T>
 	
 	protected abstract void parseDoc(Document doc);
 	protected abstract void buildDoc(Document doc);
-	
+	protected abstract void appendDoc(Document doc);
 	
 	protected void addElementWithText(Element root, String elementName, String elementText, Document doc)
 	{
