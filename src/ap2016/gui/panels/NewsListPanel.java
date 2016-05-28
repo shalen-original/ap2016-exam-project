@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import javax.swing.Box;
@@ -28,6 +29,7 @@ import ap2016.entities.NewsChannel;
 import ap2016.entities.Role;
 import ap2016.entities.User;
 import ap2016.gui.utilities.ValidableTextField;
+import ap2016.gui.utilities.ViewEditComponent;
 
 @SuppressWarnings("serial")
 public class NewsListPanel extends JPanel
@@ -48,22 +50,18 @@ public class NewsListPanel extends JPanel
 	private Component verticalStrut_1;
 	private JPanel panel_2;
 	private Component horizontalGlue_1;
-	private JLabel lblTitle;
 	private Component horizontalGlue_2;
 	private Component verticalStrut_2;
 	private JPanel panel_3;
 	private Component horizontalStrut_2;
 	private JLabel label_1;
 	private Component horizontalStrut_3;
-	private JLabel lblAuthor;
 	private Component horizontalGlue_3;
 	private JLabel label_3;
 	private Component horizontalStrut_4;
-	private JLabel lblPubDate;
 	private Component horizontalStrut_5;
 	private Component verticalStrut_3;
 	private JPanel panel_4;
-	private JLabel lblContent;
 	private JPanel panel_5;
 	private JButton btnEdit;
 	private Component horizontalGlue_6;
@@ -129,6 +127,10 @@ public class NewsListPanel extends JPanel
 	private JPanel panel_18;
 	private Component horizontalStrut_21;
 	private Component horizontalStrut_22;
+	private ViewEditComponent<JLabel, ValidableTextField> vecTitle;
+	private ViewEditComponent<JLabel, ValidableTextField> vecAuthor;
+	private ViewEditComponent<JLabel, ValidableTextField> vecPubDate;
+	private ViewEditComponent<JLabel, JTextArea> vecContent;
 
 	public NewsListPanel()
 	{
@@ -216,9 +218,12 @@ public class NewsListPanel extends JPanel
 		horizontalGlue_1 = Box.createHorizontalGlue();
 		panel_2.add(horizontalGlue_1);
 
-		lblTitle = new JLabel("Title");
+		JLabel lblTitle = new JLabel("Title");
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		panel_2.add(lblTitle);
+		vecTitle = new ViewEditComponent<JLabel, ValidableTextField>(lblTitle, new ValidableTextField(s -> !s.isEmpty()));
+		vecTitle.setMaximumSize(new Dimension(2147483647, 40));
+		panel_2.add(vecTitle);
 
 		horizontalGlue_2 = Box.createHorizontalGlue();
 		panel_2.add(horizontalGlue_2);
@@ -241,10 +246,10 @@ public class NewsListPanel extends JPanel
 
 		horizontalStrut_3 = Box.createHorizontalStrut(4);
 		panel_3.add(horizontalStrut_3);
-
-		lblAuthor = new JLabel("AUTHOR");
-		panel_3.add(lblAuthor);
-
+		
+		vecAuthor = new ViewEditComponent<JLabel, ValidableTextField>(new JLabel("AUTHOR"), new ValidableTextField(s -> !s.isEmpty()));
+		vecAuthor.setMaximumSize(new Dimension(700, 2147483647));
+		panel_3.add(vecAuthor);
 		horizontalGlue_3 = Box.createHorizontalGlue();
 		panel_3.add(horizontalGlue_3);
 
@@ -253,9 +258,11 @@ public class NewsListPanel extends JPanel
 
 		horizontalStrut_4 = Box.createHorizontalStrut(4);
 		panel_3.add(horizontalStrut_4);
-
-		lblPubDate = new JLabel("PUBLICATION DATE");
-		panel_3.add(lblPubDate);
+		
+		vecPubDate = new ViewEditComponent<JLabel, ValidableTextField>(new JLabel("PUBLICATION DATE"), new ValidableTextField(s -> !s.isEmpty()));
+		vecPubDate.setMaximumSize(new Dimension(700, 2147483647));
+		vecPubDate.setMinimumSize(new Dimension(0, 16));
+		panel_3.add(vecPubDate);
 
 		horizontalStrut_5 = Box.createHorizontalStrut(20);
 		horizontalStrut_5.setMaximumSize(new Dimension(20, 0));
@@ -272,14 +279,16 @@ public class NewsListPanel extends JPanel
 		spMain = new JScrollPane();
 		panel_4.add(spMain);
 
-		lblContent = new JLabel("Content");
+		JLabel lblContent = new JLabel("Content");
 		lblContent.setVerticalAlignment(SwingConstants.TOP);
 		lblContent.setHorizontalAlignment(SwingConstants.CENTER);
 
 		pnlContentLabelPanel = new JPanel();
-		pnlContentLabelPanel.setLayout(new BorderLayout(0, 0));
-		pnlContentLabelPanel.add(lblContent);
 		spMain.setViewportView(pnlContentLabelPanel);
+		pnlContentLabelPanel.setLayout(new BoxLayout(pnlContentLabelPanel, BoxLayout.X_AXIS));
+		
+		vecContent = new ViewEditComponent<JLabel, JTextArea>(lblContent, new JTextArea());
+		pnlContentLabelPanel.add(vecContent);
 
 		verticalStrut_5 = Box.createVerticalStrut(10);
 		pnlNewsDetail.add(verticalStrut_5);
@@ -301,6 +310,7 @@ public class NewsListPanel extends JPanel
 		btnEdit.setPreferredSize(new Dimension(80, 30));
 		btnEdit.setMinimumSize(new Dimension(80, 30));
 		btnEdit.setMaximumSize(new Dimension(80, 30));
+		btnEdit.addActionListener(e -> btnEdit_Click());
 		panel_5.add(btnEdit);
 
 		horizontalStrut_6 = Box.createHorizontalStrut(10);
@@ -540,6 +550,16 @@ public class NewsListPanel extends JPanel
 		listeners = new HashMap<>();
 		updateCurrentUser(currentUser);
 		updateCurrentNewsChannel(currentNewsChannel);
+		
+		vecTitle.setViewToEditOperation((l, t) -> t.setText(l.getText()));
+		vecAuthor.setViewToEditOperation((l, t) -> t.setText(l.getText()));
+		vecPubDate.setViewToEditOperation((l, t) -> t.setText(l.getText()));
+		vecContent.setViewToEditOperation((l, t) -> t.setText(l.getText()));
+		
+		vecTitle.setEditToViewOperation((l, t) -> l.setText(t.getText()));
+		vecAuthor.setEditToViewOperation((l, t) -> l.setText(t.getText()));
+		vecPubDate.setEditToViewOperation((l, t) -> l.setText(t.getText()));
+		vecContent.setEditToViewOperation((l, t) -> l.setText(t.getText()));
 	}
 
 	
@@ -645,12 +665,18 @@ public class NewsListPanel extends JPanel
 		pnlNewsList.setVisible(false);
 		pnlNewsDetail.setVisible(true);
 
-		lblTitle.setText(n.getTitle());
-		lblAuthor.setText(n.getAuthor());
-		lblPubDate.setText(n.getPubblicationDate());
-		lblContent.setText("<html><head><style>div#mc{width:" + pnlNewsList.getPreferredSize().getWidth()
-				+ "px;}</style></head><body><div id=\"mc\">" + n.getContent() + "</div></body></html>");
-
+		vecTitle.getViewComponent().setText(n.getTitle());
+		vecAuthor.getViewComponent().setText(n.getAuthor());
+		vecPubDate.getViewComponent().setText(n.getPubblicationDate());
+		
+		if (n.getContent().startsWith("<html>"))
+		{
+			vecContent.getViewComponent().setText(n.getContent());
+		}else{
+			vecContent.getViewComponent().setText("<html><head><style>div#mc{width:" + pnlNewsList.getPreferredSize().getWidth()
+					+ "px;}</style></head><body><div id=\"mc\">" + n.getContent() + "</div></body></html>");
+		}
+		
 		currentNews = n;
 
 		spMain.revalidate();
@@ -670,15 +696,55 @@ public class NewsListPanel extends JPanel
 
 	private void btnRemove_Click()
 	{
-		Object[] options = { "Yes", "No" };
-		if (JOptionPane.showOptionDialog(this, "Are you sure you want to delete this news?", "Warning",
-				JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options,
-				options[0]) == JOptionPane.YES_OPTION)
+		if (btnRemove.getText().equals("Remove"))
 		{
-			currentNewsChannel.removeNews(currentNews);
-			currentNews = null;
-			listeners.get("onDataRemoved").accept(1);
-			btnBack_Click();
+			
+			
+			Object[] options = { "Yes", "No" };
+			if (JOptionPane.showOptionDialog(this, "Are you sure you want to delete this news?", "Warning",
+					JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options,
+					options[0]) == JOptionPane.YES_OPTION)
+			{
+				currentNewsChannel.removeNews(currentNews);
+				currentNews = null;
+				listeners.get("onDataRemoved").accept(1);
+				btnBack_Click();
+			}
+			
+			
+		}else{
+			
+			if (!vecTitle.getEditComponent().isValid())
+			{
+				JOptionPane.showMessageDialog(this, "The title should not be empty");
+				return;
+			}
+			
+			if (!vecAuthor.getEditComponent().isValid())
+			{
+				JOptionPane.showMessageDialog(this, "The author should not be empty");
+				return;
+			}
+			
+			if (!vecPubDate.getEditComponent().isValid())
+			{
+				JOptionPane.showMessageDialog(this, "The pubblication date should not be empty");
+				return;
+			}
+			
+			btnEdit.setText("Edit");
+			btnRemove.setText("Remove");
+			
+			vecTitle.setViewState();
+			vecAuthor.setViewState();
+			vecPubDate.setViewState();
+			vecContent.setViewState();
+			
+			currentNews.setTitle(vecTitle.getViewComponent().getText());
+			currentNews.setAuthor(vecAuthor.getViewComponent().getText());
+			currentNews.setPubblicationDate(vecPubDate.getViewComponent().getText());
+			currentNews.setContent(vecContent.getViewComponent().getText());
+			
 		}
 	}
 
@@ -742,6 +808,33 @@ public class NewsListPanel extends JPanel
 	private void btnSearch_Click()
 	{
 		reloadNewsList();
+	}
+	
+	private void btnEdit_Click()
+	{
+		if (btnEdit.getText().equals("Edit"))
+		{
+			btnEdit.setText("Abort");
+			btnRemove.setText("Save");
+			
+			vecTitle.setEditState();
+			vecAuthor.setEditState();
+			vecPubDate.setEditState();
+			vecContent.setEditState();
+		}else{
+			btnEdit.setText("Edit");
+			btnRemove.setText("Remove");
+			
+			vecTitle.setViewState();
+			vecAuthor.setViewState();
+			vecPubDate.setViewState();
+			vecContent.setViewState();
+			
+			onNewsExtractClick(currentNews);
+			
+		}
+		
+		
 	}
 	
 	private boolean newsContainsTest(News n)
