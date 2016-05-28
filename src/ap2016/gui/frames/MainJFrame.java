@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -37,7 +39,6 @@ import ap2016.gui.utilities.ValidableTextField;
 import ap2016.gui.utilities.ViewEditComponent;
 import ap2016.io.NewsChannelDataProvider;
 import ap2016.io.UserDataProvider;
-import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
 public class MainJFrame extends JFrame
@@ -382,6 +383,7 @@ public class MainJFrame extends JFrame
 		About.add(horizontalStrut_17, BorderLayout.EAST);
 		
 		btnAbout = new JButton("About");
+		btnAbout.addActionListener(e -> btnAbout_Click());
 		About.add(btnAbout, BorderLayout.CENTER);
 		
 		Component verticalStrut_3 = Box.createVerticalStrut(10);
@@ -796,5 +798,80 @@ public class MainJFrame extends JFrame
             }
             
         }
+	}
+	
+	private void btnAbout_Click()
+	{
+		StringBuilder ans = new StringBuilder();
+		
+		HashMap<String, Integer> values = new HashMap<>();
+		values.put("numberOfClasses", 0);
+		values.put("numberOfMethods", 0);
+		
+		ArrayList<String> classNames = new ArrayList<>();
+		classNames.add("ap2016.application.ApplicationConstants");
+		classNames.add("ap2016.application.ApplicationUtilities");
+		
+		classNames.add("ap2016.entities.News");
+		classNames.add("ap2016.entities.NewsChannel");
+		classNames.add("ap2016.entities.Role");
+		classNames.add("ap2016.entities.User");
+		
+		classNames.add("ap2016.gui.frames.LoginJFrame");
+		classNames.add("ap2016.gui.frames.MainJFrame");
+		classNames.add("ap2016.gui.frames.RegisterJFrame");
+		
+		classNames.add("ap2016.gui.panels.NewsDetailsPanel");
+		classNames.add("ap2016.gui.panels.NewsExtractDisplayPanel");
+		classNames.add("ap2016.gui.panels.NewsListPanel");
+		
+		classNames.add("ap2016.gui.utilities.AvatarImageDisplay");
+		classNames.add("ap2016.gui.utilities.Main");
+		classNames.add("ap2016.gui.utilities.ValidablePasswordField");
+		classNames.add("ap2016.gui.utilities.ValidableTextField");
+		classNames.add("ap2016.gui.utilities.ViewEditComponent");
+		
+		classNames.add("ap2016.io.DataProvider");
+		classNames.add("ap2016.io.UserDataProvider");
+		classNames.add("ap2016.io.NewsChannelDataProvider");
+		
+		
+		classNames.forEach((s) -> {
+			try{
+				parseClass(values, Class.forName(s));
+			}catch(ClassNotFoundException ex){
+				JOptionPane.showMessageDialog(this, s + " doesn't exist");
+			}
+		});
+		
+		ans.append("NewsFeed, developed by Matteo Nardini \nfor the 2016 Advanced Programming exam.");
+		ans.append("\n");
+		ans.append("All rights reserved.\n\n");
+		ans.append("The application currently uses: \n");
+		
+		ans.append("\t => ");
+		ans.append(values.get("numberOfClasses"));
+		ans.append(" classes;\n");
+		
+		ans.append("\t => ");
+		ans.append(values.get("numberOfMethods"));
+		ans.append(" methods.\n");
+		
+		ans.append("\n");
+		
+		JOptionPane.showMessageDialog(this, ans.toString());
+	}
+	
+	private void parseClass(HashMap<String, Integer> values, Class<? extends Object> c)
+	{
+		Class<?>[] subc = c.getClasses();
+		
+		values.replace("numberOfClasses", values.get("numberOfClasses") + 1);
+		values.replace("numberOfMethods", values.get("numberOfMethods") + c.getMethods().length);
+
+		for(int i = 0; i < subc.length; i++)
+		{
+			parseClass(values, subc[i]);
+		}
 	}
 }
