@@ -18,6 +18,7 @@ import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -241,6 +242,7 @@ public class MainJFrame extends JFrame
 		panel_6.setLayout(new BorderLayout(0, 0));
 		
 		btnManageUsers = new JButton("Manage users");
+		btnManageUsers.addActionListener(e -> btnManageUsers_Click());
 		panel_6.add(btnManageUsers, BorderLayout.NORTH);
 		
 		Component verticalStrut_8 = Box.createVerticalStrut(10);
@@ -799,6 +801,20 @@ public class MainJFrame extends JFrame
             
         }
 	}
+	
+	
+	private void btnManageUsers_Click()
+	{
+		JDialog a = new ManageUsersJDialog(this, currentUser);
+		a.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		a.pack();
+		a.setLocationRelativeTo(null);
+		a.setVisible(true);
+		
+		updatePermissions();
+	}
+	
+	
 	
 	private void btnAbout_Click()
 	{
