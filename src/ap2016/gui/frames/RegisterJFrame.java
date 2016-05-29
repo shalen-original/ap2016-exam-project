@@ -22,8 +22,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileFilter;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactoryConfigurationError;
 
 import ap2016.application.ApplicationConstants;
 import ap2016.entities.Role;
@@ -249,6 +247,7 @@ public class RegisterJFrame extends JFrame
 			u.grantRole(Role.ADD_NEWS);
 			u.grantRole(Role.DELETE_NEWS);
 			u.grantRole(Role.IMPORT_NEWS_FROM_FILE);
+			u.grantRole(Role.MANAGE_USER);
 		}
 		
 		UserDataProvider.getInstance().getData().add(u);

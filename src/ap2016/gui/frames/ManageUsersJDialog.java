@@ -4,27 +4,40 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileFilter;
+
+import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import ap2016.entities.Role;
 import ap2016.entities.User;
 import ap2016.gui.utilities.AvatarImageDisplay;
+import ap2016.gui.utilities.CheckboxListCellRenderer;
 import ap2016.gui.utilities.ValidablePasswordField;
 import ap2016.gui.utilities.ValidableTextField;
 import ap2016.gui.utilities.ViewEditComponent;
+import ap2016.io.UserDataProvider;
 
 @SuppressWarnings("serial")
 public class ManageUsersJDialog extends JDialog
@@ -39,9 +52,47 @@ public class ManageUsersJDialog extends JDialog
 	private ValidablePasswordField vpfNewPassword;
 	private ValidablePasswordField vpfConfirmNewPassword;
 	private JList<Role> lUserRoles;
+	private JPanel pnlUserDetails;
+	private JPasswordField pwOldPassword;
 	
 	public ManageUsersJDialog() {
+		setupGUI();
+	}
+	
+	public ManageUsersJDialog(JFrame parent, User currentUser){
+		super(parent, "Manage users", true);
+		setupGUI();
+		
+		this.currentUser = currentUser;
+		
+		vecUsername.getEditComponent().updateValidationTest(s -> User.isValidUsername(s));
+		vecUsername.setViewToEditOperation((l, vt) -> vt.setText(l.getText()));
+		vecUsername.setEditToViewOperation((l, vt) -> l.setText(vt.getText()));
+		
+		vpfNewPassword.updateValidationTest(c -> User.isValidPassword(c) && Arrays.equals(vpfNewPassword.getPassword(), vpfConfirmNewPassword.getPassword()));
+		vpfConfirmNewPassword.updateValidationTest(c -> User.isValidPassword(c) && Arrays.equals(vpfNewPassword.getPassword(), vpfConfirmNewPassword.getPassword()));
+		
+		vecUsername.getViewComponent().setText(currentUser.getUsername());
+		aidAvatar.setIcon(currentUser.getAvatar());
+		
+		DefaultListModel<Role> a = new DefaultListModel<>();
+		
+		for(Role r : Role.values())
+		{
+			a.addElement(r);
+		}
+		
+		lUserRoles.setModel(a);
+		lUserRoles.setCellRenderer(new CheckboxListCellRenderer());		
+		
+		fillCmbUsers();
+		
+	}
+	
+	private void setupGUI()
+	{
 		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
+		setPreferredSize(new Dimension(550, 670));
 		
 		Component horizontalStrut_4 = Box.createHorizontalStrut(10);
 		getContentPane().add(horizontalStrut_4);
@@ -74,6 +125,7 @@ public class ManageUsersJDialog extends JDialog
 		panel_3.add(verticalStrut_2);
 		
 		cmbUsers = new JComboBox<>();
+		cmbUsers.addActionListener(e -> cmbUsers_SelectedItemChanged());
 		panel_3.add(cmbUsers);
 		
 		Component verticalStrut_3 = Box.createVerticalStrut(10);
@@ -85,7 +137,7 @@ public class ManageUsersJDialog extends JDialog
 		Component verticalStrut_1 = Box.createVerticalStrut(10);
 		panel_2.add(verticalStrut_1);
 		
-		JPanel pnlUserDetails = new JPanel();
+		pnlUserDetails = new JPanel();
 		pnlUserDetails.setBorder(new TitledBorder(new LineBorder(new Color(192, 192, 192), 1, true), "User details:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_2.add(pnlUserDetails);
 		pnlUserDetails.setLayout(new BoxLayout(pnlUserDetails, BoxLayout.X_AXIS));
@@ -112,7 +164,9 @@ public class ManageUsersJDialog extends JDialog
 		horizontalStrut_8.setMaximumSize(new Dimension(10, 0));
 		panel_6.add(horizontalStrut_8);
 		
-		vecUsername = new ViewEditComponent<JLabel, ValidableTextField>(new JLabel("username"), new ValidableTextField());
+		JLabel label = new JLabel("username");
+		ValidableTextField validableTextField = new ValidableTextField();
+		vecUsername = new ViewEditComponent<JLabel, ValidableTextField>(label, validableTextField);
 		vecUsername.setMaximumSize(new Dimension(2147483647, 25));
 		vecUsername.setPreferredSize(new Dimension(200, 30));
 		panel_6.add(vecUsername);
@@ -121,6 +175,7 @@ public class ManageUsersJDialog extends JDialog
 		panel_6.add(horizontalStrut_9);
 		
 		btnEditUsername = new JButton("Edit");
+		btnEditUsername.addActionListener(e -> btnEditUsername_Click());
 		panel_6.add(btnEditUsername);
 		
 		Component verticalStrut_9 = Box.createVerticalStrut(5);
@@ -157,12 +212,15 @@ public class ManageUsersJDialog extends JDialog
 		panel_10.add(horizontalGlue);
 		
 		btnPickNew = new JButton("Pick new");
+		btnPickNew.addActionListener(e -> btnPickNew_Click());
 		panel_10.add(btnPickNew);
 		
 		Component horizontalStrut_11 = Box.createHorizontalStrut(30);
+		horizontalStrut_11.setMaximumSize(new Dimension(30, 0));
 		panel_10.add(horizontalStrut_11);
 		
 		btnResetToDefault = new JButton("Reset to default");
+		btnResetToDefault.addActionListener(e -> btnResetToDefault_Click());
 		panel_10.add(btnResetToDefault);
 		
 		Component verticalStrut_13 = Box.createVerticalStrut(5);
@@ -196,7 +254,7 @@ public class ManageUsersJDialog extends JDialog
 		Component horizontalStrut_14 = Box.createHorizontalStrut(20);
 		panel_12.add(horizontalStrut_14);
 		
-		JPasswordField pwOldPassword = new JPasswordField();
+		pwOldPassword = new JPasswordField();
 		pwOldPassword.setMaximumSize(new Dimension(2147483647, 30));
 		panel_12.add(pwOldPassword);
 		
@@ -245,6 +303,7 @@ public class ManageUsersJDialog extends JDialog
 		panel_15.add(horizontalGlue_1);
 		
 		JButton btnUpdatePassword = new JButton("Update password");
+		btnUpdatePassword.addActionListener(e -> btnUpdatePassword_Click());
 		panel_15.add(btnUpdatePassword);
 		
 		Component horizontalGlue_2 = Box.createHorizontalGlue();
@@ -282,7 +341,24 @@ public class ManageUsersJDialog extends JDialog
 		Component verticalStrut_5 = Box.createVerticalStrut(10);
 		panel_1.add(verticalStrut_5, BorderLayout.SOUTH);
 		
-		lUserRoles = new JList();
+		lUserRoles = new JList<>();
+		lUserRoles.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				User selectedUser = (User)cmbUsers.getSelectedItem();
+				if (selectedUser.hasRole(lUserRoles.getSelectedValue()))
+				{
+					selectedUser.removeRole(lUserRoles.getSelectedValue());
+				}else{
+					selectedUser.grantRole(lUserRoles.getSelectedValue());
+				}
+				
+				fillCmbUsers();
+				
+				lUserRoles.repaint();
+				
+			}
+		});
 		panel_1.add(lUserRoles, BorderLayout.CENTER);
 		
 		Component verticalStrut_6 = Box.createVerticalStrut(10);
@@ -290,19 +366,130 @@ public class ManageUsersJDialog extends JDialog
 		
 		Component horizontalStrut_5 = Box.createHorizontalStrut(10);
 		getContentPane().add(horizontalStrut_5);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{horizontalStrut_4, verticalStrut, panel_4, panel_2, getContentPane(), panel, horizontalStrut, panel_3, verticalStrut_2, cmbUsers, verticalStrut_3, horizontalStrut_1, verticalStrut_1, pnlUserDetails, horizontalStrut_6, panel_5, verticalStrut_8, panel_6, lblUsername, horizontalStrut_8, vecUsername, vecUsername.getViewComponent(), label, vecUsername.getEditComponent(), validableTextField, horizontalStrut_9, btnEditUsername, verticalStrut_9, panel_7, aidAvatar, horizontalStrut_10, panel_9, verticalStrut_11, panel_10, horizontalGlue, btnPickNew, horizontalStrut_11, btnResetToDefault, verticalStrut_13, verticalStrut_10, panel_8, horizontalStrut_12, panel_11, verticalStrut_12, panel_12, lblEnterOldPassword, horizontalStrut_14, pwOldPassword, verticalStrut_14, panel_13, lblEnterNewPassword, horizontalStrut_15, vpfNewPassword, verticalStrut_15, panel_14, lblConfirmNewPassword, horizontalStrut_16, vpfConfirmNewPassword, verticalStrut_16, panel_15, horizontalGlue_1, btnUpdatePassword, horizontalGlue_2, verticalStrut_17, horizontalStrut_13, verticalStrut_18, horizontalStrut_7, verticalStrut_7, panel_1, horizontalStrut_2, horizontalStrut_3, verticalStrut_4, verticalStrut_5, lUserRoles, verticalStrut_6, horizontalStrut_5}));
+	}
+
+	private void cmbUsers_SelectedItemChanged()
+	{
+		if (cmbUsers.getSelectedItem() == null)
+			return;
+		
+		if (cmbUsers.getSelectedItem().equals(currentUser))
+		{
+			pnlUserDetails.setVisible(true);
+		}else{
+			pnlUserDetails.setVisible(false);
+		}
+		
+		((CheckboxListCellRenderer)lUserRoles.getCellRenderer()).updateCurrentUser((User)cmbUsers.getSelectedItem());
+				
+	}
+	
+	
+	private void fillCmbUsers()
+	{
+		Object prev = cmbUsers.getSelectedItem();
+		
+		cmbUsers.removeAllItems();
+		if (currentUser.hasRole(Role.MANAGE_USER))
+		{
+			lUserRoles.setEnabled(true);
+			for (User u : UserDataProvider.getInstance().getData())
+			{
+				cmbUsers.addItem(u);
+			}
+		}else{
+			cmbUsers.addItem(currentUser);
+			lUserRoles.setEnabled(false);
+		}
+		
+		cmbUsers.setSelectedItem(prev);
+		
+		if (cmbUsers.getSelectedItem() == null)
+			cmbUsers.setSelectedItem(currentUser);
 		
 	}
 	
-	public ManageUsersJDialog(JFrame parent) {
-
-		super(parent, "Manage users", true);
-		
+	private void btnEditUsername_Click()
+	{
+		if (btnEditUsername.getText().equals("Edit"))
+		{
+			btnEditUsername.setText("Save");
+			vecUsername.setEditState();
+		}else{
+			
+			if (!vecUsername.getEditComponent().isValid())
+			{
+				JOptionPane.showMessageDialog(this, "The new username is not valid");
+				return;
+			}
+			
+			btnEditUsername.setText("Edit");
+			vecUsername.setViewState();
+			currentUser.setUsername(vecUsername.getViewComponent().getText());
+			fillCmbUsers();
+		}
 	}
 	
-	public ManageUsersJDialog(JFrame parent, User currentUser){
-		this(parent);
+	private void btnResetToDefault_Click()
+	{
+		currentUser.setAvatarFromName("default");
+		aidAvatar.setIcon(currentUser.getAvatar());
+	}
+	
+	private void btnPickNew_Click()
+	{
+		JFileChooser fc = new JFileChooser();
+		fc.setDialogTitle("Choose avatar image file");
+		fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		fc.setMultiSelectionEnabled(false);
+		fc.setFileFilter(new FileFilter() {
+
+			private String[] validExt = {".jpg", ".jpeg", ".png"};
+			
+			@Override
+			public boolean accept(File arg0)
+			{
+				boolean ans = arg0.isDirectory();
+				
+				for (int i = 0; i < validExt.length; i++)
+				{
+					ans = ans || arg0.getName().endsWith(validExt[i]);
+				}
+				
+				return ans;
+			}
+
+			@Override
+			public String getDescription()
+			{
+				return "Compatible images type (*.jpg; *.png)";
+			}
+			
+		});
 		
-		this.currentUser = currentUser;
+		
+		int ans = fc.showOpenDialog(this);
+		if (ans == JFileChooser.APPROVE_OPTION)
+		{
+			try
+			{
+				currentUser.setAvatar(fc.getSelectedFile());
+			}catch (IOException ex){
+				aidAvatar.setText("Default user image");
+			}
+		}
+		
+		aidAvatar.setIcon(currentUser.getAvatar());
+		
 	}
 
+	private void btnUpdatePassword_Click(){
+//		if (!currentUser.isRightPassword(pwOldPassword.getPassword()))
+//		{
+//			JOptionPane.showMessageDialog(this, "The old password inserted is not valid, password not updated");
+//		}
+//		
+//		
+	}
 }
