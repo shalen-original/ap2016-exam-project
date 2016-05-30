@@ -220,6 +220,7 @@ public class MainJFrame extends JFrame
 		
 		btnExport = new JButton("Go");
 		btnExport.setPreferredSize(new Dimension(50, 25));
+		btnExport.addActionListener(e -> btnExport_Click());
 		panel_1.add(btnExport);
 		btnExport.setMinimumSize(new Dimension(50, 25));
 		btnExport.setMaximumSize(new Dimension(50, 25));
@@ -819,6 +820,14 @@ public class MainJFrame extends JFrame
 		updatePermissions();
 	}
 	
+    private void btnExport_Click()
+    {
+    	JDialog a = new ExportJDialog(this, (String)cmbSaveAllType.getSelectedItem());
+		a.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		a.pack();
+		a.setLocationRelativeTo(null);
+		a.setVisible(true);
+    }
 	
 	
 	private void btnAbout_Click()
@@ -895,4 +904,5 @@ public class MainJFrame extends JFrame
 			parseClass(values, subc[i]);
 		}
 	}
+	
 }

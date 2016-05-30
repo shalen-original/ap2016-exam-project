@@ -1,30 +1,30 @@
 package ap2016.gui.utilities;
 
 import java.awt.Component;
+import java.util.ArrayList;
 
 import javax.swing.JCheckBox;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-import ap2016.entities.Role;
-import ap2016.entities.User;
+import ap2016.entities.NewsChannel;
 
-public class NewsChannelCheckboxListCellRenderer implements ListCellRenderer<Role>
+public class NewsChannelCheckboxListCellRenderer implements ListCellRenderer<NewsChannel>
 {
-	private User currentUser;
+	private ArrayList<NewsChannel> selectedChannels;
 	
-	public NewsChannelCheckboxListCellRenderer()
+	public NewsChannelCheckboxListCellRenderer(ArrayList<NewsChannel> selectedChannels)
 	{
-		this.currentUser = null;
+		this.selectedChannels = selectedChannels;
 	}
 	
-	public void updateCurrentUser(User newUser)
+	public void updateCurrentState(ArrayList<NewsChannel> selectedChannels)
 	{
-		this.currentUser = newUser;
+		this.selectedChannels = selectedChannels;
 	}
 	
 	@Override
-	public Component getListCellRendererComponent(JList<? extends Role> list, Role value, int index,
+	public Component getListCellRendererComponent(JList<? extends NewsChannel> list, NewsChannel value, int index,
 			boolean isSelected, boolean cellHasFocus)
 	{
 
@@ -34,7 +34,7 @@ public class NewsChannelCheckboxListCellRenderer implements ListCellRenderer<Rol
 		ans.setFont(list.getFont());
 		ans.setBackground(list.getBackground());
 		ans.setForeground(list.getForeground());
-		ans.setSelected(currentUser == null ? false : currentUser.hasRole(value));
+		ans.setSelected(selectedChannels.contains(value));
 		ans.setEnabled(list.isEnabled());
 
 		return ans;
