@@ -92,7 +92,7 @@ public class ManageUsersJDialog extends JDialog
 	private void setupGUI()
 	{
 		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
-		setPreferredSize(new Dimension(550, 670));
+		setPreferredSize(new Dimension(570, 670));
 		
 		Component horizontalStrut_4 = Box.createHorizontalStrut(10);
 		getContentPane().add(horizontalStrut_4);
@@ -153,35 +153,6 @@ public class ManageUsersJDialog extends JDialog
 		verticalStrut_8.setMaximumSize(new Dimension(0, 20));
 		panel_5.add(verticalStrut_8);
 		
-		JPanel panel_6 = new JPanel();
-		panel_5.add(panel_6);
-		panel_6.setLayout(new BoxLayout(panel_6, BoxLayout.X_AXIS));
-		
-		JLabel lblUsername = new JLabel("Username:");
-		panel_6.add(lblUsername);
-		
-		Component horizontalStrut_8 = Box.createHorizontalStrut(10);
-		horizontalStrut_8.setMaximumSize(new Dimension(10, 0));
-		panel_6.add(horizontalStrut_8);
-		
-		JLabel label = new JLabel("username");
-		ValidableTextField validableTextField = new ValidableTextField();
-		vecUsername = new ViewEditComponent<JLabel, ValidableTextField>(label, validableTextField);
-		vecUsername.setMaximumSize(new Dimension(2147483647, 25));
-		vecUsername.setPreferredSize(new Dimension(200, 30));
-		panel_6.add(vecUsername);
-		
-		Component horizontalStrut_9 = Box.createHorizontalStrut(20);
-		panel_6.add(horizontalStrut_9);
-		
-		btnEditUsername = new JButton("Edit");
-		btnEditUsername.addActionListener(e -> btnEditUsername_Click());
-		panel_6.add(btnEditUsername);
-		
-		Component verticalStrut_9 = Box.createVerticalStrut(5);
-		verticalStrut_9.setMaximumSize(new Dimension(0, 20));
-		panel_5.add(verticalStrut_9);
-		
 		JPanel panel_7 = new JPanel();
 		panel_5.add(panel_7);
 		panel_7.setLayout(new BoxLayout(panel_7, BoxLayout.X_AXIS));
@@ -201,27 +172,59 @@ public class ManageUsersJDialog extends JDialog
 		panel_7.add(panel_9);
 		panel_9.setLayout(new BoxLayout(panel_9, BoxLayout.Y_AXIS));
 		
-		Component verticalStrut_11 = Box.createVerticalStrut(5);
+		Component verticalStrut_19 = Box.createVerticalStrut(5);
+		panel_9.add(verticalStrut_19);
+		
+		JPanel panel_6 = new JPanel();
+		panel_9.add(panel_6);
+		panel_6.setLayout(new BoxLayout(panel_6, BoxLayout.X_AXIS));
+		
+		JLabel lblUsername = new JLabel("Username:");
+		panel_6.add(lblUsername);
+		
+		Component horizontalStrut_8 = Box.createHorizontalStrut(10);
+		horizontalStrut_8.setMaximumSize(new Dimension(10, 0));
+		panel_6.add(horizontalStrut_8);
+		
+		JLabel label = new JLabel("username");
+		ValidableTextField validableTextField = new ValidableTextField();
+		vecUsername = new ViewEditComponent<JLabel, ValidableTextField>(label, validableTextField);
+		vecUsername.setMaximumSize(new Dimension(2147483647, 25));
+		vecUsername.setPreferredSize(new Dimension(200, 30));
+		panel_6.add(vecUsername);
+		
+		Component horizontalStrut_9 = Box.createHorizontalStrut(20);
+		horizontalStrut_9.setMaximumSize(new Dimension(20, 0));
+		panel_6.add(horizontalStrut_9);
+		
+		btnEditUsername = new JButton("Edit");
+		btnEditUsername.addActionListener(e -> btnEditUsername_Click());
+		panel_6.add(btnEditUsername);
+		
+		Component verticalStrut_11 = Box.createVerticalStrut(10);
 		panel_9.add(verticalStrut_11);
 		
 		JPanel panel_10 = new JPanel();
 		panel_9.add(panel_10);
 		panel_10.setLayout(new BoxLayout(panel_10, BoxLayout.X_AXIS));
 		
-		Component horizontalGlue = Box.createHorizontalGlue();
-		panel_10.add(horizontalGlue);
-		
-		btnPickNew = new JButton("Pick new");
+		btnPickNew = new JButton("Pick new avatar");
 		btnPickNew.addActionListener(e -> btnPickNew_Click());
+		
+		Component horizontalStrut_11 = Box.createHorizontalStrut(10);
+		panel_10.add(horizontalStrut_11);
 		panel_10.add(btnPickNew);
 		
-		Component horizontalStrut_11 = Box.createHorizontalStrut(30);
-		horizontalStrut_11.setMaximumSize(new Dimension(30, 0));
-		panel_10.add(horizontalStrut_11);
-		
-		btnResetToDefault = new JButton("Reset to default");
+		btnResetToDefault = new JButton("Reset avatar to default");
 		btnResetToDefault.addActionListener(e -> btnResetToDefault_Click());
+		
+		Component horizontalGlue_4 = Box.createHorizontalGlue();
+		horizontalGlue_4.setMaximumSize(new Dimension(200, 0));
+		panel_10.add(horizontalGlue_4);
 		panel_10.add(btnResetToDefault);
+		
+		Component horizontalStrut_17 = Box.createHorizontalStrut(10);
+		panel_10.add(horizontalStrut_17);
 		
 		Component verticalStrut_13 = Box.createVerticalStrut(5);
 		panel_9.add(verticalStrut_13);
@@ -366,7 +369,7 @@ public class ManageUsersJDialog extends JDialog
 		
 		Component horizontalStrut_5 = Box.createHorizontalStrut(10);
 		getContentPane().add(horizontalStrut_5);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{horizontalStrut_4, verticalStrut, panel_4, panel_2, getContentPane(), panel, horizontalStrut, panel_3, verticalStrut_2, cmbUsers, verticalStrut_3, horizontalStrut_1, verticalStrut_1, pnlUserDetails, horizontalStrut_6, panel_5, verticalStrut_8, panel_6, lblUsername, horizontalStrut_8, vecUsername, vecUsername.getViewComponent(), label, vecUsername.getEditComponent(), validableTextField, horizontalStrut_9, btnEditUsername, verticalStrut_9, panel_7, aidAvatar, horizontalStrut_10, panel_9, verticalStrut_11, panel_10, horizontalGlue, btnPickNew, horizontalStrut_11, btnResetToDefault, verticalStrut_13, verticalStrut_10, panel_8, horizontalStrut_12, panel_11, verticalStrut_12, panel_12, lblEnterOldPassword, horizontalStrut_14, pwOldPassword, verticalStrut_14, panel_13, lblEnterNewPassword, horizontalStrut_15, vpfNewPassword, verticalStrut_15, panel_14, lblConfirmNewPassword, horizontalStrut_16, vpfConfirmNewPassword, verticalStrut_16, panel_15, horizontalGlue_1, btnUpdatePassword, horizontalGlue_2, verticalStrut_17, horizontalStrut_13, verticalStrut_18, horizontalStrut_7, verticalStrut_7, panel_1, horizontalStrut_2, horizontalStrut_3, verticalStrut_4, verticalStrut_5, lUserRoles, verticalStrut_6, horizontalStrut_5}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{horizontalStrut_4, verticalStrut, panel_4, panel_2, getContentPane(), panel, horizontalStrut, panel_3, verticalStrut_2, cmbUsers, verticalStrut_3, horizontalStrut_1, verticalStrut_1, pnlUserDetails, horizontalStrut_6, panel_5, verticalStrut_8, panel_6, lblUsername, horizontalStrut_8, vecUsername, vecUsername.getViewComponent(), label, vecUsername.getEditComponent(), validableTextField, horizontalStrut_9, btnEditUsername, panel_7, aidAvatar, horizontalStrut_10, panel_9, verticalStrut_11, panel_10, verticalStrut_13, verticalStrut_10, panel_8, horizontalStrut_12, panel_11, verticalStrut_12, panel_12, lblEnterOldPassword, horizontalStrut_14, verticalStrut_14, panel_13, lblEnterNewPassword, horizontalStrut_15, verticalStrut_15, panel_14, lblConfirmNewPassword, horizontalStrut_16, verticalStrut_16, panel_15, horizontalGlue_1, btnUpdatePassword, horizontalGlue_2, verticalStrut_17, horizontalStrut_13, verticalStrut_18, horizontalStrut_7, verticalStrut_7, panel_1, horizontalStrut_2, horizontalStrut_3, verticalStrut_4, verticalStrut_5, verticalStrut_6, horizontalStrut_5}));
 	}
 
 	private void cmbUsers_SelectedItemChanged()
