@@ -28,8 +28,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileFilter;
 
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-
 import ap2016.entities.Role;
 import ap2016.entities.User;
 import ap2016.gui.utilities.AvatarImageDisplay;
@@ -369,7 +367,7 @@ public class ManageUsersJDialog extends JDialog
 		
 		Component horizontalStrut_5 = Box.createHorizontalStrut(10);
 		getContentPane().add(horizontalStrut_5);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{horizontalStrut_4, verticalStrut, panel_4, panel_2, getContentPane(), panel, horizontalStrut, panel_3, verticalStrut_2, cmbUsers, verticalStrut_3, horizontalStrut_1, verticalStrut_1, pnlUserDetails, horizontalStrut_6, panel_5, verticalStrut_8, panel_6, lblUsername, horizontalStrut_8, vecUsername, vecUsername.getViewComponent(), label, vecUsername.getEditComponent(), validableTextField, horizontalStrut_9, btnEditUsername, panel_7, aidAvatar, horizontalStrut_10, panel_9, verticalStrut_11, panel_10, verticalStrut_13, verticalStrut_10, panel_8, horizontalStrut_12, panel_11, verticalStrut_12, panel_12, lblEnterOldPassword, horizontalStrut_14, verticalStrut_14, panel_13, lblEnterNewPassword, horizontalStrut_15, verticalStrut_15, panel_14, lblConfirmNewPassword, horizontalStrut_16, verticalStrut_16, panel_15, horizontalGlue_1, btnUpdatePassword, horizontalGlue_2, verticalStrut_17, horizontalStrut_13, verticalStrut_18, horizontalStrut_7, verticalStrut_7, panel_1, horizontalStrut_2, horizontalStrut_3, verticalStrut_4, verticalStrut_5, verticalStrut_6, horizontalStrut_5}));
+		
 	}
 
 	private void cmbUsers_SelectedItemChanged()
