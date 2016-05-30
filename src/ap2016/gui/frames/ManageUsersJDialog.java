@@ -485,11 +485,17 @@ public class ManageUsersJDialog extends JDialog
 	}
 
 	private void btnUpdatePassword_Click(){
-//		if (!currentUser.isRightPassword(pwOldPassword.getPassword()))
-//		{
-//			JOptionPane.showMessageDialog(this, "The old password inserted is not valid, password not updated");
-//		}
-//		
-//		
+		if (!currentUser.isRightPassword(pwOldPassword.getPassword()))
+		{
+			JOptionPane.showMessageDialog(this, "The old password inserted is not valid, password not updated");
+		}
+		
+		if ((!vpfNewPassword.isValid()) || (!vpfConfirmNewPassword.isValid()))
+		{
+			JOptionPane.showMessageDialog(this, "The new passwords are invalid or they doesn't match");
+		}
+		
+		currentUser.setNewPassword(vpfNewPassword.getPassword());
+		
 	}
 }

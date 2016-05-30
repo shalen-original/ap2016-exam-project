@@ -118,6 +118,13 @@ public class UserTests {
 		assertEquals(false, u.isRightPassword(new StringBuffer("MoreGarbage")));
 	}
 	
+	public void testSetNewPasswordisRightPassword_06()
+	{
+		char[] a= "MoreGarbage".toCharArray();
+		User u = new User("test01", a);
+		assertEquals(false, u.isRightPassword("MoreGarbage".toCharArray()));
+	}
+	
 	
 	@Test
 	public void testGetCurrentPasswordSalt()

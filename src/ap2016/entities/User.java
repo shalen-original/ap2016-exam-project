@@ -132,6 +132,14 @@ public class User {
 		}
 	}
 
+	public boolean isRightPassword(char[] pwd)
+	{
+		StringBuffer sb = new StringBuffer();
+		sb.append(pwd);
+		return isRightPassword(sb);
+	}
+	
+	
 	public boolean isRightPassword(StringBuffer pwd)
 	{
 		return Arrays.equals(passwordHash, hashPassword(pwd, currentPasswordSalt));
