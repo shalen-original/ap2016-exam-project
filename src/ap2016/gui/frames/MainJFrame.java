@@ -616,8 +616,6 @@ public class MainJFrame extends JFrame
 		this();
 		this.currentUser = u;
 		
-		updatePermissions();
-		
 		try
 		{
 			NewsChannelDataProvider.getInstance().readDataFromFile();
@@ -670,6 +668,8 @@ public class MainJFrame extends JFrame
 		vecChannelDescription.getViewComponent().setText(currentNewsChannel.getDescription());
 		vecChannelDescription.setViewToEditOperation((v,e) -> e.setText(v.getText()));
 		vecChannelDescription.setEditToViewOperation((v,e) -> v.setText(e.getText()));
+		
+		updatePermissions();
 		
 	}
 	
