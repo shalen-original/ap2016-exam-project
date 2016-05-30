@@ -31,7 +31,7 @@ import javax.swing.filechooser.FileFilter;
 import ap2016.entities.Role;
 import ap2016.entities.User;
 import ap2016.gui.utilities.AvatarImageDisplay;
-import ap2016.gui.utilities.CheckboxListCellRenderer;
+import ap2016.gui.utilities.RoleCheckboxListCellRenderer;
 import ap2016.gui.utilities.ValidablePasswordField;
 import ap2016.gui.utilities.ValidableTextField;
 import ap2016.gui.utilities.ViewEditComponent;
@@ -81,7 +81,7 @@ public class ManageUsersJDialog extends JDialog
 		}
 		
 		lUserRoles.setModel(a);
-		lUserRoles.setCellRenderer(new CheckboxListCellRenderer());		
+		lUserRoles.setCellRenderer(new RoleCheckboxListCellRenderer());		
 		
 		fillCmbUsers();
 		
@@ -382,7 +382,7 @@ public class ManageUsersJDialog extends JDialog
 			pnlUserDetails.setVisible(false);
 		}
 		
-		((CheckboxListCellRenderer)lUserRoles.getCellRenderer()).updateCurrentUser((User)cmbUsers.getSelectedItem());
+		((RoleCheckboxListCellRenderer)lUserRoles.getCellRenderer()).updateCurrentUser((User)cmbUsers.getSelectedItem());
 				
 	}
 	

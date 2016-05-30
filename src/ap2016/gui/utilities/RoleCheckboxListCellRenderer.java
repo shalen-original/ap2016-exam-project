@@ -9,11 +9,11 @@ import javax.swing.ListCellRenderer;
 import ap2016.entities.Role;
 import ap2016.entities.User;
 
-public class CheckboxListCellRenderer implements ListCellRenderer<Role>
+public class RoleCheckboxListCellRenderer implements ListCellRenderer<Role>
 {
 	private User currentUser;
 	
-	public CheckboxListCellRenderer()
+	public RoleCheckboxListCellRenderer()
 	{
 		this.currentUser = null;
 	}
