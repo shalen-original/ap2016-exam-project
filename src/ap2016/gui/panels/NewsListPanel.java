@@ -584,7 +584,7 @@ public class NewsListPanel extends JPanel
 
 		this.currentNewsChannel = nc;
 
-		reloadNewsList();
+		updatePermissions();
 
 	}
 
@@ -593,10 +593,10 @@ public class NewsListPanel extends JPanel
 		this.currentUser = u;
 
 		// For permission check
-		reloadNewsList();
+		updatePermissions();
 	}
 
-	public void reloadNewsList()
+	public void updatePermissions()
 	{
 		scrollableMainPanel.removeAll();
 
@@ -652,6 +652,15 @@ public class NewsListPanel extends JPanel
 			txtSearch.setVisible(false);
 			txtSearch.setEditable(false);
 		}
+		
+		if (currentUser.hasRole(Role.EDIT_NEWS))
+		{
+			btnEdit.setVisible(true);
+			btnEdit.setEnabled(true);
+		}else{
+			btnEdit.setVisible(false);
+			btnEdit.setEnabled(false);
+		}
 
 		scrollableMainPanel.setPreferredSize(new Dimension(500, height));
 		scrollableMainPanel.revalidate();
@@ -687,7 +696,7 @@ public class NewsListPanel extends JPanel
 	
 	private void btnBack_Click()
 	{
-		reloadNewsList();
+		updatePermissions();
 		currentNews = null;
 		pnlNewsDetail.setVisible(false);
 		pnlNewsList.setVisible(true);
@@ -806,7 +815,7 @@ public class NewsListPanel extends JPanel
 	
 	private void btnSearch_Click()
 	{
-		reloadNewsList();
+		updatePermissions();
 	}
 	
 	private void btnEdit_Click()

@@ -248,6 +248,7 @@ public class RegisterJFrame extends JFrame
 			u.grantRole(Role.DELETE_NEWS);
 			u.grantRole(Role.IMPORT_NEWS_FROM_FILE);
 			u.grantRole(Role.MANAGE_USER);
+			u.grantRole(Role.EDIT_NEWS);
 		}
 		
 		UserDataProvider.getInstance().getData().add(u);

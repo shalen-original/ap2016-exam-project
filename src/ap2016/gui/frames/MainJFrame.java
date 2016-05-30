@@ -705,6 +705,8 @@ public class MainJFrame extends JFrame
 			btnImportData.setVisible(false);
 			btnImportData.setEnabled(false);
 		}
+		
+		nlp.updatePermissions();
 	}
 	
 	
@@ -810,6 +812,9 @@ public class MainJFrame extends JFrame
 		a.pack();
 		a.setLocationRelativeTo(null);
 		a.setVisible(true);
+		
+		avatarImg.setIcon(currentUser.getAvatar());
+		lblUsername.setText(currentUser.getUsername());
 		
 		updatePermissions();
 	}
