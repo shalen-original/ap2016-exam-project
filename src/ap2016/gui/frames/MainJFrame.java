@@ -814,6 +814,8 @@ public class MainJFrame extends JFrame
 		a.setLocationRelativeTo(null);
 		a.setVisible(true);
 		
+		UserDataProvider.getInstance().saveDataToFile();
+		
 		avatarImg.setIcon(currentUser.getAvatar());
 		lblUsername.setText(currentUser.getUsername());
 		
