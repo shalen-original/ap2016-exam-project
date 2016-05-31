@@ -141,8 +141,6 @@ public class NewsListPanel extends JPanel
 		pnlNewsList.setLayout(new BoxLayout(pnlNewsList, BoxLayout.Y_AXIS));
 
 		scrollableMainPanel = new JPanel();
-		scrollableMainPanel.setPreferredSize(new Dimension(300, 10));
-		scrollableMainPanel.setMaximumSize(new Dimension(300, 32767));
 		scrollableMainPanel.setLayout(new BoxLayout(scrollableMainPanel, BoxLayout.Y_AXIS));
 
 		scrollPaneMain = new JScrollPane(scrollableMainPanel);
@@ -156,10 +154,8 @@ public class NewsListPanel extends JPanel
 
 				}
 			});
-		scrollPaneMain.setBackground(Color.GREEN);
 		scrollPaneMain.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPaneMain.setViewportBorder(null);
-		scrollPaneMain.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		pnlNewsList.add(scrollPaneMain);
 
 		Component verticalStrut = Box.createVerticalStrut(10);
@@ -662,7 +658,7 @@ public class NewsListPanel extends JPanel
 			btnEdit.setEnabled(false);
 		}
 
-		scrollableMainPanel.setPreferredSize(new Dimension(500, height));
+		//scrollableMainPanel.setPreferredSize(new Dimension(500, height));
 		scrollableMainPanel.revalidate();
 	}
 
