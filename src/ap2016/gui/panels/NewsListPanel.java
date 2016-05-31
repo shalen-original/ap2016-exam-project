@@ -1,14 +1,11 @@
 package ap2016.gui.panels;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import javax.swing.Box;

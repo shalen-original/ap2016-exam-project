@@ -8,16 +8,11 @@ import java.awt.Font;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import ap2016.entities.News;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 @SuppressWarnings("serial")
 public class NewsExtractDisplayPanel extends JPanel

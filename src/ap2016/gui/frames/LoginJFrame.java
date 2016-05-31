@@ -116,7 +116,7 @@ public class LoginJFrame extends JFrame
 			StringBuffer pwd = new StringBuffer();
 			pwd.append(pwdChar);
 			
-			if (u.isRightPassword(pwd) || true) //TODO
+			if (u.isRightPassword(pwd))
 			{
 				for (int i = 0; i < pwdChar.length; i++)
 				{
