@@ -34,6 +34,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import ap2016.entities.News;
 import ap2016.entities.NewsChannel;
 import ap2016.gui.utilities.NewsChannelCheckboxListCellRenderer;
 import ap2016.io.NewsChannelDataProvider;
@@ -199,7 +200,7 @@ public class ExportJDialog extends JDialog
 			Element html = doc.createElement("html");
 			Element head = doc.createElement("head");
 			
-				/*tmp = doc.createElement("title");
+				tmp = doc.createElement("title");
 				tmp.appendChild(doc.createTextNode("News feed data export"));
 				head.appendChild(tmp);
 				
@@ -208,26 +209,98 @@ public class ExportJDialog extends JDialog
 				head.appendChild(tmp);
 	
 				tmp = doc.createElement("style");
-				tmp.appendChild(doc.createTextNode(""));
-				head.appendChild(tmp);*/
+				tmp.appendChild(doc.createTextNode("")); 
+				head.appendChild(tmp);
 			
 			Element body = doc.createElement("body");
 				
-				/*tmp = doc.createElement("h1");
+				tmp = doc.createElement("h1");
 				tmp.appendChild(doc.createTextNode("News feed export"));
 				body.appendChild(tmp);
 				
-				
-				
-				
-				tmp = doc.createElement("h4");
-				
-				
-				
-				tmp.appendChild(doc.createTextNode("Exported news channel:"));
-				body.appendChild(tmp);*/
+				tmp = doc.createElement("h3");
+				selectedChannels.forEach(nc -> help.append(nc + ", "));
+				tmp.appendChild(doc.createTextNode("Exported news channel: " + help.subSequence(0, help.length() - 2).toString()));
+				body.appendChild(tmp);
 			
-			
+				Element div;
+				Element table;
+				Element tr;
+				for (NewsChannel nc: selectedChannels)
+				{
+					div = doc.createElement("div");
+					
+					tmp = doc.createElement("h4");
+					tmp.appendChild(doc.createTextNode("News channel: " + nc));
+					div.appendChild(tmp);
+					
+					table = doc.createElement("table");
+					
+					
+					tr = doc.createElement("tr");
+					
+					tmp = doc.createElement("td");
+					tmp.appendChild(doc.createTextNode("Title"));
+					tr.appendChild(tmp);
+					
+					tmp = doc.createElement("td");
+					tmp.appendChild(doc.createTextNode("Author"));
+					tr.appendChild(tmp);
+					
+					tmp = doc.createElement("td");
+					tmp.appendChild(doc.createTextNode("Pubblication date"));
+					tr.appendChild(tmp);
+					
+					tmp = doc.createElement("td");
+					tmp.appendChild(doc.createTextNode("Link"));
+					tr.appendChild(tmp);
+					
+					tmp = doc.createElement("td");
+					tmp.appendChild(doc.createTextNode("Description"));
+					tr.appendChild(tmp);
+					
+					tmp = doc.createElement("td");
+					tmp.appendChild(doc.createTextNode("Content"));
+					tr.appendChild(tmp);
+					
+					table.appendChild(tr);
+					
+					
+					for (News n : nc.getNews())
+					{
+						tr = doc.createElement("tr");
+						
+						tmp = doc.createElement("td");
+						tmp.appendChild(doc.createTextNode(n.getTitle()));
+						tr.appendChild(tmp);
+						
+						tmp = doc.createElement("td");
+						tmp.appendChild(doc.createTextNode(n.getAuthor()));
+						tr.appendChild(tmp);
+						
+						tmp = doc.createElement("td");
+						tmp.appendChild(doc.createTextNode(n.getPubblicationDate()));
+						tr.appendChild(tmp);
+						
+						tmp = doc.createElement("td");
+						tmp.appendChild(doc.createTextNode(n.getLink()));
+						tr.appendChild(tmp);
+						
+						tmp = doc.createElement("td");
+						tmp.appendChild(doc.createTextNode(n.getDescription()));
+						tr.appendChild(tmp);
+						
+						tmp = doc.createElement("td");
+						tmp.appendChild(doc.createTextNode(n.getContent()));
+						tr.appendChild(tmp);
+						
+						table.appendChild(tr);
+					}
+					
+					div.appendChild(table);
+					body.appendChild(div);
+				}
+				
 			
 			html.appendChild(head);
 			html.appendChild(body);
