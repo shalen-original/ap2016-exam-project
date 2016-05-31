@@ -8,11 +8,16 @@ import java.awt.Font;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import ap2016.entities.News;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 @SuppressWarnings("serial")
 public class NewsExtractDisplayPanel extends JPanel
@@ -121,7 +126,14 @@ public class NewsExtractDisplayPanel extends JPanel
 		lblTitle.setText(n.getTitle());
 		lblAuthor.setText(n.getAuthor());
 		lblPubDate.setText(n.getPubblicationDate());
-		lblDescription.setText("<html>" + n.getDescription() + "</html>");
+		updateLBLDescription();
+		
+	}
+	
+	private void updateLBLDescription()
+	{
+		lblDescription.setText("<html><head><style>div#mc{width:" + (this.getPreferredSize().getWidth() - 10)
+				+ "px;text-align:center;}</style></head><body><div id=\"mc\">" + currentNews.getDescription() + "</div></body></html>");
 	}
 	
 	public News getNews()

@@ -599,7 +599,6 @@ public class NewsListPanel extends JPanel
 		if (currentUser == null || currentNewsChannel == null)
 			return;
 
-		int height = 0;
 		JPanel tmp;
 
 		if (currentUser.hasRole(Role.READ))
@@ -610,7 +609,6 @@ public class NewsListPanel extends JPanel
 				{	
 					tmp = new NewsExtractDisplayPanel(n);
 					scrollableMainPanel.add(tmp);
-					height += tmp.getPreferredSize().getHeight();
 				}
 			}
 		}
@@ -658,7 +656,6 @@ public class NewsListPanel extends JPanel
 			btnEdit.setEnabled(false);
 		}
 
-		//scrollableMainPanel.setPreferredSize(new Dimension(500, height));
 		scrollableMainPanel.revalidate();
 	}
 
