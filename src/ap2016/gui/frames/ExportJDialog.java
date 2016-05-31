@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -326,7 +328,54 @@ public class ExportJDialog extends JDialog
 	
 	private boolean exportAsRTF(File f)
 	{
-		return false;
+		StringBuilder rtf = new StringBuilder();
+		
+		rtf.append("{\\rtf1\\ansi\\deff0");
+			
+			for (NewsChannel nc: selectedChannels)
+			{
+				rtf.append(nc.getTitle() + "\\line\\par");
+				rtf.append("\\line");
+				rtf.append("\\trowd");
+				rtf.append("\\cellx1000");
+				rtf.append("\\cellx2000");
+				rtf.append("\\cellx3000");
+				rtf.append("\\cellx4000");
+				rtf.append("\\cellx5000");
+				rtf.append("\\cellx6000\n");
+				rtf.append("Title\\intbl\\cell\n");
+				rtf.append("Author\\intbl\\cell\n");
+				rtf.append("Pubblication date\\intbl\\cell\n");
+				rtf.append("Link\\intbl\\cell\n");
+				rtf.append("Description\\intbl\\cell\n");
+				rtf.append("Content\\intbl\\cell\n");
+				rtf.append("\\row\n");
+				
+				for(News n : nc.getNews())
+				{
+					rtf.append(n.getTitle() + "\\intbl\\cell\n");
+					rtf.append(n.getAuthor() + "\\intbl\\cell\n");
+					rtf.append(n.getPubblicationDate() + "\\intbl\\cell\n");
+					rtf.append(n.getLink() + "\\intbl\\cell\n");
+					rtf.append(n.getDescription() + "\\intbl\\cell\n");
+					rtf.append(n.getContent() + "\\intbl\\cell\n");
+					rtf.append("\\row\n");
+				}
+				rtf.append("\\pard\\par\n");
+			}
+			
+			
+		rtf.append("}");
+		
+			
+		try(FileWriter fw = new FileWriter(new File(f.getAbsolutePath() + "\\RTFexport-" + (new Date()).getTime() + ".rtf")))
+		{
+			fw.write(rtf.toString());
+		}catch(IOException ex){
+			return false;
+		}
+		
+		return true;
 	}
 	
 }
