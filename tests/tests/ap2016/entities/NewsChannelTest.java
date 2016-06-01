@@ -21,11 +21,7 @@ public class NewsChannelTest
 	@Before
 	public void setup()
 	{
-		n = new NewsChannel();
-		n.setTitle("Test Title");
-		n.setLink("http://www.example.org");
-		n.setDescription("Test Description");
-		n.setLanguage("ts-TS");
+		n = new NewsChannel("Test Title", "http://www.example.org", "Test Description", "ts-TS");
 		
 		News a;
 		original = new ArrayList<>();

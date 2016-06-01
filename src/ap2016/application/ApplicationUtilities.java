@@ -12,21 +12,21 @@ import javax.swing.JComponent;
 public class ApplicationUtilities {
 
 	/**
-	 * This methods uses the regular expression defined in {@link ap2016.application.ApplicationConstants#urlRegEx ApplicationConstants} to validate a given URL.
+	 * This methods uses the regular expression defined in {@link ap2016.application.ApplicationConstants#urlRegEx ApplicationConstants} to validate a given URL. An empty URL is considered to be valid.
 	 * @param url The URL to be validated.
 	 * @return The method returns {@code true} if the given URL is valid, {@code false} otherwise.
 	 */
 	public static boolean isValidURL(String url) {
-		return ApplicationConstants.urlRegEx.matcher(url).matches();
+		return ApplicationConstants.urlRegEx.matcher(url).matches() || url.equals("");
 	}
 	
 	/**
-	 * This methods uses the regular expression defined in {@link ap2016.application.ApplicationConstants#languageRegEx ApplicationConstants} to validate a given language string.
+	 * This methods uses the regular expression defined in {@link ap2016.application.ApplicationConstants#languageRegEx ApplicationConstants} to validate a given language string. An empty language string is considered to be valid.
 	 * @param language The language string to be validated.
 	 * @return The method returns {@code true} if the given language string is valid, {@code false} otherwise.
 	 */
 	public static boolean isValidLanguage(String language) {
-		return ApplicationConstants.languageRegEx.matcher(language).matches();
+		return ApplicationConstants.languageRegEx.matcher(language).matches() || language.equals("");
 	}
 	
 	/**
