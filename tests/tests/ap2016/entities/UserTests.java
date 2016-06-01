@@ -24,7 +24,7 @@ public class UserTests {
 	@Test
 	public void testUserStringStringBufferString()
 	{
-		User u = new User("test", new StringBuffer("123456789"), "test");
+		User u = new User("test", new StringBuffer("123456789"));
 	}
 	
 	@Test
@@ -44,21 +44,21 @@ public class UserTests {
 	@Test
 	public void testGetUsername()
 	{
-		User u = new User("test", new StringBuffer("123456789"), "test");
+		User u = new User("test", new StringBuffer("123456789"));
 		assertEquals("test", u.getUsername());
 	}
 	
 	@Test
 	public void testSetUsername_00()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		assertEquals("test01", u.getUsername());
 	}
 	
 	@Test
 	public void testSetUsername_01()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.setUsername("test02");
 		assertEquals("test02", u.getUsername());
 	}
@@ -66,7 +66,7 @@ public class UserTests {
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetUsername_02()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.setUsername("gb=sefds_");
 	}
 	
@@ -74,7 +74,7 @@ public class UserTests {
 	@Test
 	public void testSetNewPasswordisRightPassword_00()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.setNewPassword(new StringBuffer("TestPassword"));
 		
 		assertEquals(true, u.isRightPassword(new StringBuffer("TestPassword")));
@@ -83,7 +83,7 @@ public class UserTests {
 	@Test
 	public void testSetNewPasswordisRightPassword_01()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		
 		assertEquals(true, u.isRightPassword(new StringBuffer("123456789")));
 	}
@@ -91,7 +91,7 @@ public class UserTests {
 	@Test
 	public void testSetNewPasswordisRightPassword_02()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.setNewPassword(new StringBuffer("TestPassword"));
 		
 		assertEquals(false, u.isRightPassword(new StringBuffer("garbage")));
@@ -100,7 +100,7 @@ public class UserTests {
 	@Test
 	public void testSetNewPasswordisRightPassword_03()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		
 		assertEquals(false, u.isRightPassword(new StringBuffer("MoreGarbage")));
 	}
@@ -108,7 +108,7 @@ public class UserTests {
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetNewPasswordisRightPassword_04()
 	{
-		User u = new User("test01", new StringBuffer("34"), "test");
+		User u = new User("test01", new StringBuffer("34"));
 	}
 
 	public void testSetNewPasswordisRightPassword_05()
@@ -129,14 +129,14 @@ public class UserTests {
 	@Test
 	public void testGetCurrentPasswordSalt()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.getCurrentPasswordSalt();
 	}
 	
 	@Test
 	public void testGetCurrentPasswordHash()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.getCurrentPasswordHash();
 	}
 	
@@ -145,7 +145,7 @@ public class UserTests {
 	@Test
 	public void testHasRole_00()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		
 		assertEquals(false, u.hasRole(Role.READ));
 	}
@@ -153,7 +153,7 @@ public class UserTests {
 	@Test
 	public void testHasRole_01()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.grantRole(Role.READ);
 		assertEquals(true, u.hasRole(Role.READ));
 	}
@@ -161,7 +161,7 @@ public class UserTests {
 	@Test
 	public void testHasRole_02()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.grantRole(Role.READ);
 		u.grantRole(Role.DELETE_NEWS);
 		u.grantRole(Role.READ);
@@ -171,7 +171,7 @@ public class UserTests {
 	@Test
 	public void testHasRole_03()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.grantRole(Role.READ);
 		u.grantRole(Role.DELETE_NEWS);
 		u.removeRole(Role.READ);
@@ -181,7 +181,7 @@ public class UserTests {
 	@Test
 	public void testHasRole_04()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.removeRole(Role.READ);
 		assertEquals(false, u.hasRole(Role.READ));
 	}
@@ -190,14 +190,14 @@ public class UserTests {
 	@Test
 	public void testGetRolesString_00()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		assertEquals(u.getRolesString().size(), 0);
 	}
 	
 	@Test
 	public void testGetRolesString_01()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.grantRole(Role.READ);
 		if (u.getRolesString().size() != 1)
 			fail("Arraylist of wrong size. Expected 1 but obtained " + u.getRolesString().size());
@@ -208,7 +208,7 @@ public class UserTests {
 	@Test
 	public void testGetRolesString_02()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.grantRole(Role.READ);
 		u.grantRole(Role.SEARCH);
 		if (u.getRolesString().size() != 2)
@@ -223,21 +223,21 @@ public class UserTests {
 	@Test
 	public void testGetAvatar()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.getAvatar();
 	}
 	
 	@Test
 	public void testGetAvatarName()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
-		assertEquals("test", u.getAvatarName());
+		User u = new User("test01", new StringBuffer("123456789"));
+		assertEquals("default", u.getAvatarName());
 	}
 	
 	@Test
 	public void setAvatarString()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		try
 		{
 			u.setAvatar(ApplicationConstants.assetsBase + "\\test");
@@ -250,7 +250,7 @@ public class UserTests {
 	@Test
 	public void setAvatarFile_00()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		try
 		{
 			u.setAvatar(new File(ApplicationConstants.assetsBase + "\\test"));
@@ -263,14 +263,14 @@ public class UserTests {
 	@Test(expected = IOException.class)
 	public void setAvatarFile_01() throws IOException
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.setAvatar(new File(ApplicationConstants.assetsBase + "\\garbagename"));
 	}
 	
 	@Test
 	public void setAvatarFromName()
 	{
-		User u = new User("test01", new StringBuffer("123456789"), "test");
+		User u = new User("test01", new StringBuffer("123456789"));
 		u.setAvatarFromName("test");
 	}
 	
@@ -356,7 +356,7 @@ public class UserTests {
 	@Test
 	public void testToString()
 	{
-		User u = new User("ThisIsValidTest", new StringBuffer("123456789"), "test");
+		User u = new User("ThisIsValidTest", new StringBuffer("123456789"));
 		assertEquals(u.toString(), "ThisIsValidTest");
 	}
 	

@@ -51,6 +51,20 @@ public class User {
 	}
 	
 	
+	public User(String username, char[] newPassword)
+	{
+		this(username, "default", null);
+		
+		setNewPassword(newPassword);	
+	}
+	
+	public User(String username, StringBuffer newPassword)
+	{
+		this(username, "default", null);
+		
+		setNewPassword(newPassword);	
+	}
+	
 	public User(String username, byte[] passwordHash, byte[] passwordSalt, String avatarName)
 	{
 		this(username, avatarName, null);
@@ -60,36 +74,12 @@ public class User {
 		
 	}
 	
-	public User(String username, StringBuffer newPassword, String avatarName)
-	{
-		this(username, avatarName, null);
-		
-		setNewPassword(newPassword);
-		
-	}
-	
-	public User(String username, char[] newPassword)
-	{
-		this(username, "default", null);
-		
-		setNewPassword(newPassword);
-		
-	}
-	
 	public User(String username, byte[] passwordHash, byte[] passwordSalt, String avatarName, Role... roles)
 	{
 		this(username, avatarName, roles);
 		
 		this.passwordHash = passwordHash;
 		this.currentPasswordSalt = passwordSalt;
-		
-	}
-	
-	public User(String username, StringBuffer newPassword, String avatarName, Role... roles)
-	{
-		this(username, avatarName, roles);
-		
-		setNewPassword(newPassword);
 		
 	}
 	
