@@ -12,23 +12,18 @@ public class NewsChannel {
 	private String description;
 	private String language;
 	
-	
 	public NewsChannel()
 	{
 		this("", "", "", "");
 	}
 	
-	public NewsChannel(String title, String link, String description) {
-		this.title = title;
-		this.link = link;
-		this.description = description;
+	public NewsChannel(String title, String link, String description, String language) {
+		setTitle(title);
+		setLink(link);
+		setDescription(description);
+		setLanguage(language);
 		
 		news = new ArrayList<>();
-	}
-	
-	public NewsChannel(String title, String link, String description, String language) {
-		this(title, link, description);
-		this.language = language;
 	}
 
 	
