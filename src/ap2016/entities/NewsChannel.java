@@ -3,6 +3,8 @@ package ap2016.entities;
 import java.util.ArrayList;
 
 import ap2016.application.ApplicationUtilities;
+import ap2016.exceptions.InvalidLanguageStringException;
+import ap2016.exceptions.InvalidURLException;
 
 public class NewsChannel {
 
@@ -59,7 +61,7 @@ public class NewsChannel {
 		{
 			this.link = link;
 		}else{
-			throw new IllegalArgumentException("The url \"" + link + "\" is not valid.");
+			throw new InvalidURLException("The url \"" + link + "\" is not valid.");
 		}
 	}
 
@@ -82,7 +84,7 @@ public class NewsChannel {
 		{
 			this.language = language;
 		}else{
-			throw new IllegalArgumentException("The language \"" + language + "\" is not valid.");
+			throw new InvalidLanguageStringException("The language \"" + language + "\" is not valid.");
 		}
 	}
 	

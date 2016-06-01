@@ -10,6 +10,8 @@ The project includes the following source packages:
 
 * **ap2016.entities**: Contains all the data entities used in the project.
 
+* **ap2016.exceptions**: Contains all the specific exceptions used by the application.
+
 * **ap2016.gui.frames**: Contains all the main windows used by the program (both JFrame and JDialog).
 
 * **ap2016.gui.panels**: Contains all the panels dynamically added to the main frames and dialogs.
@@ -17,6 +19,7 @@ The project includes the following source packages:
 * **ap2016.gui.utilities**: Contains all the utilities used by the GUI. This package includes, among others, the *main* class, some
 	JComponent extensions created for this project and some ListCellRenderers.
 
+* **ap2016.io**: Contains all the I/O of the application.
   
  The **tests** folder contains all the tests created for this application. The structure of the **tests** folder mirrors the one of the
  **src** folder.
@@ -29,4 +32,4 @@ The following steps are required:
 * You're good to go.
 
 ##Copyright##
-All the resources on this repository are owned by Matteo Nardini. All rights reserved ï¿½ 201
+All the resources on this repository are owned by Matteo Nardini. All rights reserved © 2016.

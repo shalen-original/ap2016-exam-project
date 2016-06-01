@@ -1,6 +1,7 @@
 package ap2016.entities;
 
 import ap2016.application.ApplicationUtilities;
+import ap2016.exceptions.InvalidURLException;
 
 public class News {
 
@@ -26,7 +27,7 @@ public class News {
 		{
 			this.link = link;
 		}else{
-			throw new IllegalArgumentException("The url \"" + link + "\" is not valid.");
+			throw new InvalidURLException("The url \"" + link + "\" is not valid.");
 		}
 	}
 	public String getPubblicationDate() {
