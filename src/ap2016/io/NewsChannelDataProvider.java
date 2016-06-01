@@ -66,7 +66,7 @@ public class NewsChannelDataProvider extends DataProvider<NewsChannel>{
 						currentChannel.setLanguage(tmp.getTextContent());
 						break;
 					case "item":
-						currentChannel.addNews(buildNewFromNodeList(tmp));
+						currentChannel.getNews().add(buildNewFromNodeList(tmp));
 						break;
 				}
 			}

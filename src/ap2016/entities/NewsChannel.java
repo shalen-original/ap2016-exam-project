@@ -28,18 +28,8 @@ public class NewsChannel {
 		news = new ArrayList<>();
 	}
 
-	
-	@SuppressWarnings("unchecked")
 	public ArrayList<News> getNews() {
-		return (ArrayList<News>) news.clone();
-	}
-
-	public void addNews(News news) {
-		this.news.add(news);
-	}
-	
-	public void removeNews(News news){
-		this.news.remove(news);
+		return news;
 	}
 	
 

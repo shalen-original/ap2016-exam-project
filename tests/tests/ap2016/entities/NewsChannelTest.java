@@ -34,7 +34,7 @@ public class NewsChannelTest
 		{
 			a = new News();
 			a.setTitle("Test News Title " + (i + 1));
-			n.addNews(a);
+			n.getNews().add(a);
 			original.add(a);
 		}
 	}
@@ -43,20 +43,6 @@ public class NewsChannelTest
 	public void teardown()
 	{
 		n = null;
-	}
-	
-	
-	@Test
-	public void testNewsChannelStringStringString()
-	{
-		n = new NewsChannel("Test Title 2", "http://next.example.org", "Test Description 2");
-		
-		if (!n.getTitle().equals("Test Title 2"))
-			fail("Title doesn't match. Obtained [" + n.getTitle() + "] but expected [Test Title 2]");
-		if (!n.getLink().equals("http://next.example.org"))
-			fail("Link doesn't match. Obtained [" + n.getLink() + "] but expected [http://next.example.org]");
-		if (!n.getDescription().equals("Test Description 2"))
-			fail("Title doesn't match. Obtained [" + n.getDescription() + "] but expected [Test Description 2]");
 	}
 
 	@Test
@@ -77,42 +63,6 @@ public class NewsChannelTest
 	@Test
 	public void testGetNews()
 	{
-		ArrayList<News> a = n.getNews();
-		for (int i = 0; i < original.size(); i++)
-		{
-			if (!original.get(i).equals(a.get(i)))
-				fail("The news are not the same");
-		}
-	}
-
-	@Test
-	public void testAddNews()
-	{
-		News b = new News();
-		b.setTitle("Test News Title Aut");
-		n.addNews(b);
-		original.add(b);
-
-		ArrayList<News> a = n.getNews();
-		for (int i = 0; i < original.size(); i++)
-		{
-			if (!original.get(i).equals(a.get(i)))
-				fail("The news are not the same");
-		}
-		
-	}
-	
-	@Test
-	public void testRemoveNews()
-	{
-		News b = new News();
-		b.setTitle("Test News Title Aut");
-		n.addNews(b);
-		original.add(b);
-
-		n.removeNews(b);
-		original.remove(b);
-		
 		ArrayList<News> a = n.getNews();
 		for (int i = 0; i < original.size(); i++)
 		{

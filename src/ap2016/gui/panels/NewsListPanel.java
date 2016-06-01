@@ -703,7 +703,7 @@ public class NewsListPanel extends JPanel
 					JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options,
 					options[0]) == JOptionPane.YES_OPTION)
 			{
-				currentNewsChannel.removeNews(currentNews);
+				currentNewsChannel.getNews().remove(currentNews);
 				currentNews = null;
 				listeners.get("onDataRemoved").accept(1);
 				btnBack_Click();
@@ -794,7 +794,7 @@ public class NewsListPanel extends JPanel
 		n.setLink(vtfLink.getText());
 		n.setDescription(taDescription.getText());
 		
-		currentNewsChannel.addNews(n);
+		currentNewsChannel.getNews().add(n);
 		
 		listeners.get("onDataAdded").accept(1);
 		
