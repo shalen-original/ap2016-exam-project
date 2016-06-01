@@ -849,6 +849,7 @@ public class MainJFrame extends JFrame
 		classNames.add("ap2016.entities.Role");
 		classNames.add("ap2016.entities.User");
 		
+		classNames.add("ap2016.gui.frames.ExportJDialog");
 		classNames.add("ap2016.gui.frames.LoginJFrame");
 		classNames.add("ap2016.gui.frames.MainJFrame");
 		classNames.add("ap2016.gui.frames.RegisterJFrame");
@@ -859,6 +860,8 @@ public class MainJFrame extends JFrame
 		
 		classNames.add("ap2016.gui.utilities.AvatarImageDisplay");
 		classNames.add("ap2016.gui.utilities.Main");
+		classNames.add("ap2016.gui.utilities.NewsChannelCheckboxListCellRenderer");
+		classNames.add("ap2016.gui.utilities.RoleCheckboxListCellRenderer");
 		classNames.add("ap2016.gui.utilities.ValidablePasswordField");
 		classNames.add("ap2016.gui.utilities.ValidableTextField");
 		classNames.add("ap2016.gui.utilities.ViewEditComponent");
@@ -883,11 +886,47 @@ public class MainJFrame extends JFrame
 		
 		ans.append("\t => ");
 		ans.append(values.get("numberOfClasses"));
-		ans.append(" classes;\n");
+		ans.append(" normal classes;\n");
 		
 		ans.append("\t => ");
 		ans.append(values.get("numberOfMethods"));
-		ans.append(" methods.\n");
+		ans.append(" normal methods.\n");
+		
+		
+		classNames.clear();
+		
+		classNames.add("tests.ap2016.application.ApplicationUtilitiesTests");
+		
+		classNames.add("tests.ap2016.entities.NewsChannelTest");
+		classNames.add("tests.ap2016.entities.NewsTests");
+		classNames.add("tests.ap2016.entities.UserTests");
+		
+		classNames.add("tests.ap2016.gui.utilities.TestAvatarImageDisplay");
+		classNames.add("tests.ap2016.gui.utilities.TestValidablePasswordField");
+		classNames.add("tests.ap2016.gui.utilities.TestValidableTextField");
+		classNames.add("tests.ap2016.gui.utilities.TestViewEditComponent");
+		
+		classNames.add("tests.ap2016.io.NewsChannelDataProviderTest");
+		classNames.add("tests.ap2016.io.UserDataProviderTest");
+		
+		values.replace("numberOfClasses", 0);
+		values.replace("numberOfMethods", 0);
+		
+		classNames.forEach((s) -> {
+			try{
+				parseClass(values, Class.forName(s));
+			}catch(ClassNotFoundException ex){
+				JOptionPane.showMessageDialog(this, s + " doesn't exist");
+			}
+		});
+		
+		ans.append("\t => ");
+		ans.append(values.get("numberOfClasses"));
+		ans.append(" test classes;\n");
+		
+		ans.append("\t => ");
+		ans.append(values.get("numberOfMethods"));
+		ans.append(" test methods.\n");
 		
 		ans.append("\n");
 		
@@ -895,16 +934,9 @@ public class MainJFrame extends JFrame
 	}
 	
 	private void parseClass(HashMap<String, Integer> values, Class<? extends Object> c)
-	{
-		Class<?>[] subc = c.getClasses();
-		
+	{	
 		values.replace("numberOfClasses", values.get("numberOfClasses") + 1);
-		values.replace("numberOfMethods", values.get("numberOfMethods") + c.getMethods().length);
-
-		for(int i = 0; i < subc.length; i++)
-		{
-			parseClass(values, subc[i]);
-		}
+		values.replace("numberOfMethods", values.get("numberOfMethods") + (c.getMethods().length - c.getSuperclass().getMethods().length));
 	}
 	
 }
