@@ -20,6 +20,9 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import ap2016.application.ApplicationConstants;
+import ap2016.exceptions.InvalidAvatarNameException;
+import ap2016.exceptions.InvalidPasswordException;
+import ap2016.exceptions.InvalidUsernameException;
 
 public class User {
 	
@@ -49,7 +52,7 @@ public class User {
 				this.roles.add(r);
 		}
 	}
-	
+
 	
 	public User(String username, char[] newPassword)
 	{
@@ -98,7 +101,7 @@ public class User {
 		{
 			this.username = username;
 		}else{
-			throw new IllegalArgumentException("The username \"" + username + "\" is not valid.");
+			throw new InvalidUsernameException("The username \"" + username + "\" is not valid.");
 		}
 	}
 	
@@ -118,7 +121,7 @@ public class User {
 			currentPasswordSalt = generateRandomSalt(16);
 			passwordHash = hashPassword(newPassword, currentPasswordSalt);
 		}else{
-			throw new IllegalArgumentException("The password is not valid.");
+			throw new InvalidPasswordException("The password is not valid.");
 		}
 	}
 
@@ -236,7 +239,7 @@ public class User {
 			this.avatarName = avatarName;
 			avatar = new ImageIcon(ImageIO.read(new File(ApplicationConstants.assetsBase + avatarName)));
 		} catch (IOException e) {
-			throw new IllegalArgumentException("The supplied avatar name was not found");
+			throw new InvalidAvatarNameException("The supplied avatar name was not found");
 		}
 		
 	}
