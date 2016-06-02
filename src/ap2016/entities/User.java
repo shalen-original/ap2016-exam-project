@@ -49,7 +49,7 @@ public class User {
 		if (roles != null)
 		{
 			for (Role r : roles)
-				this.roles.add(r);
+				grantRole(r);
 		}
 	}
 
@@ -109,20 +109,22 @@ public class User {
 	
 	public void setNewPassword(char[] newPassword)
 	{
-		StringBuffer sb = new StringBuffer();
-		sb.append(newPassword);
-		setNewPassword(sb);
-	}
-	
-	public void setNewPassword(StringBuffer newPassword)
-	{
 		if (isValidPassword(newPassword))
 		{
+			// The algorithm generates a random salt that will be used to hash this password
 			currentPasswordSalt = generateRandomSalt(16);
+			// Then hashes the given password with the generated salt.
 			passwordHash = hashPassword(newPassword, currentPasswordSalt);
 		}else{
 			throw new InvalidPasswordException("The password is not valid.");
 		}
+	}
+	public void setNewPassword(StringBuffer newPassword)
+	{
+		  char[] charsToHash = new char[newPassword.length()];
+		  newPassword.getChars(0, newPassword.length() - 1, charsToHash, 0);
+		  
+		  setNewPassword(charsToHash);
 	}
 
 	public boolean isRightPassword(char[] pwd)
@@ -275,14 +277,19 @@ public class User {
 	
 	
 	
-	
 	private static byte[] hashPassword(StringBuffer toHash, byte[] salt)
 	{
 		  char[] charsToHash = new char[toHash.length()];
-		  byte[] hash = null;
 		  toHash.getChars(0, toHash.length() - 1, charsToHash, 0);
 		  
-		  PBEKeySpec spec = new PBEKeySpec(charsToHash, salt, HASH_ITERATION_COUNT, 64 * 8);
+		  return hashPassword(charsToHash, salt);
+	}
+	
+	private static byte[] hashPassword(char[] toHash, byte[] salt)
+	{	  
+		  byte[] hash = null;
+		
+		  PBEKeySpec spec = new PBEKeySpec(toHash, salt, HASH_ITERATION_COUNT, 64 * 8);
 		  
 		  try
 		  {
