@@ -121,12 +121,6 @@ public class NewsExtractDisplayPanel extends JPanel
 		lblTitle.setText(n.getTitle());
 		lblAuthor.setText(n.getAuthor());
 		lblPubDate.setText(n.getPubblicationDate());
-		updateLBLDescription();
-		
-	}
-	
-	private void updateLBLDescription()
-	{
 		lblDescription.setText("<html><head><style>div#mc{width:" + (this.getPreferredSize().getWidth() - 10)
 				+ "px;text-align:center;}</style></head><body><div id=\"mc\">" + currentNews.getDescription() + "</div></body></html>");
 	}
