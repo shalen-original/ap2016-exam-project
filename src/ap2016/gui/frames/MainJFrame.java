@@ -31,7 +31,6 @@ import javax.swing.border.TitledBorder;
 
 import ap2016.application.ApplicationConstants;
 import ap2016.application.ApplicationUtilities;
-import ap2016.entities.News;
 import ap2016.entities.NewsChannel;
 import ap2016.entities.Role;
 import ap2016.entities.User;
