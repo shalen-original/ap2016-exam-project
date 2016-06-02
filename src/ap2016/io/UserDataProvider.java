@@ -8,10 +8,22 @@ import ap2016.application.ApplicationUtilities;
 import ap2016.entities.Role;
 import ap2016.entities.User;
 
+/**
+ * This class acts as a wrapper between the <i>user.xml</i> file and the rest of the application. Is uses the <i>Singleton</i> pattern.
+ * @author Matteo Nardini
+ *
+ */
 public class UserDataProvider extends DataProvider<User>{
 	
-	
+	/**
+	 * Contains the unique instance of the class.
+	 */
 	private static UserDataProvider instance;
+	
+	/**
+	 * Returns the instance of this class.
+	 * @return This method returns the instance of this class.
+	 */
 	public static UserDataProvider getInstance()
 	{
 		if (instance == null)
@@ -22,13 +34,17 @@ public class UserDataProvider extends DataProvider<User>{
 		return instance;
 	}
 	
-	
+	/**
+	 * Creates a new user data provider from the file <i>user.xml</i>
+	 */
 	private UserDataProvider()
 	{
 		super("user.xml");
 	}
 
-	
+	/**
+	 * Converts the file <i>user.xml</i> to a list of {@link ap2016.entities.User User}.
+	 */
 	protected void parseDoc(Document doc)
 	{
 		NodeList userNodes = doc.getElementsByTagName("user");
@@ -68,6 +84,9 @@ public class UserDataProvider extends DataProvider<User>{
 		}
 	}
 	
+	/**
+	 * Converts the list of {@link ap2016.entities.User User} to an XML document.
+	 */
 	protected void buildDoc(Document doc)
 	{
 		// Creates the root elements and appends it to the document
@@ -107,7 +126,9 @@ public class UserDataProvider extends DataProvider<User>{
 		}
 	}
 
-
+	/**
+	 * This application doesn't allow to import user file. This method doesn't do anything.
+	 */
 	@Override
 	protected void appendDoc(Document doc)
 	{

@@ -8,10 +8,21 @@ import org.w3c.dom.NodeList;
 import ap2016.entities.News;
 import ap2016.entities.NewsChannel;
 
+/**
+ * This class acts as a wrapper between the <i>data.xml</i> file and the rest of the application. Is uses the <i>Singleton</i> pattern.
+ * @author Matteo Nardini
+ *
+ */
 public class NewsChannelDataProvider extends DataProvider<NewsChannel>{
 	
-	
+	/**
+	 * Contains the unique instance of the class.
+	 */
 	private static NewsChannelDataProvider instance;
+	/**
+	 * Returns the instance of this class.
+	 * @return This method returns the instance of this class.
+	 */
 	public static NewsChannelDataProvider getInstance()
 	{
 		if (instance == null)
@@ -22,13 +33,17 @@ public class NewsChannelDataProvider extends DataProvider<NewsChannel>{
 		return instance;
 	}
 	
-	
+	/**
+	 * Creates a new news channel data provider from the file <i>data.xml</i>
+	 */
 	private NewsChannelDataProvider()
 	{
 		super("data.xml");
 	}
 
-	
+	/**
+	 * Converts the file <i>data.xml</i> to a list of {@link ap2016.entities.NewsChannel NewsChannel}.
+	 */
 	protected void parseDoc(Document doc)
 	{
 		NodeList channelNodes = doc.getElementsByTagName("channel");
@@ -75,6 +90,11 @@ public class NewsChannelDataProvider extends DataProvider<NewsChannel>{
 		}
 	}
 	
+	/**
+	 * This method converts a {@code news} tag to a {@link ap2016.entities.News News} object.
+	 * @param item The node representing a {@code news} tag.
+	 * @return The new {@link ap2016.entities.News News} object generated from the {@code news} tag.
+	 */
 	private News buildNewFromNodeList(Node item)
 	{
 		News nn = new News();
@@ -115,7 +135,9 @@ public class NewsChannelDataProvider extends DataProvider<NewsChannel>{
 	
 	
 	
-	
+	/**
+	 * Converts the list of {@link ap2016.entities.NewsChannel NewsChannel} to an XML document.
+	 */
 	protected void buildDoc(Document doc)
 	{
 		// Creates the root elements and appends it to the document
@@ -143,6 +165,13 @@ public class NewsChannelDataProvider extends DataProvider<NewsChannel>{
 		}
 	}
 	
+	/**
+	 * This method generate a new {@code news} tag from a given {@link ap2016.entities.News News} object.
+	 * @param elName The name of the {@code news} tag.
+	 * @param n The {@link ap2016.entities.News News} object to be used to generate the {@code news} tag.
+	 * @param doc The document that is currently being used.
+	 * @return This method returns the new {@code news} tag generated from the {@link ap2016.entities.News News} object.
+	 */
 	private Element generateNodeFromNews(String elName, News n, Document doc)
 	{
 		Element el = doc.createElement(elName);
@@ -157,10 +186,13 @@ public class NewsChannelDataProvider extends DataProvider<NewsChannel>{
 		return el;
 	}
 
-
+	/**
+	 * Imports an external "data.xml" file to the current news channel list.
+	 */
 	@Override
 	protected void appendDoc(Document doc)
 	{
+		// The steps to parse an external document are exactly those required to parse the data.xml.
 		parseDoc(doc);
 	}
 

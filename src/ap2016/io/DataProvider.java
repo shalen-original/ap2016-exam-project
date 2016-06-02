@@ -19,22 +19,47 @@ import org.xml.sax.SAXException;
 
 import ap2016.application.ApplicationConstants;
 
+/**
+ * This class model a generic data provider that can read a file of XML entries and store its content in a list. The values of the list can then be written
+ * back to the file. This class also models the possibility to import data to the current list from another file.
+ * @author Matteo Nardini
+ *
+ * @param <T> The type of data that will be read from the file.
+ */
 public abstract class DataProvider <T>
 {
+	/**
+	 * The list that will contain the entries read from the file.
+	 */
 	protected ArrayList<T> data;
+	/**
+	 * The name of the main file from which to read and in which to save the entries.
+	 */
 	protected String filename;
 	
+	/**
+	 * Creates a new data provider.
+	 * @param filename The name of the main file from which to read and in which to save the entries.
+	 */
 	protected DataProvider(String filename)
 	{
 		data = new ArrayList<T>();
 		this.filename = filename;
 	}
 	
+	/**
+	 * Allows to access the data read from the file. If the method {@link #readDataFromFile() readDataFromFile} has not been called yet, the returned list will be empty.
+	 * @return A list of the entries read from the file.
+	 */
 	public ArrayList<T> getData()
 	{
 		return data;
 	}
 	
+	/**
+	 * Clears all the data currently contained in the list and reads and parses the content of the file located at {@link ap2016.application.ApplicationConstants#dataBase ApplicationConstants.dataBase}\{@link #filename}.
+	 * @throws Exception If the given file is inaccessible, inexistent, invalid.
+	 */
 	public void readDataFromFile() throws Exception
 	{
 		data.clear();
@@ -48,6 +73,11 @@ public abstract class DataProvider <T>
 		} catch (SAXException e) {}	
 	}
 	
+	/**
+	 * This method allows to import XML data from another file to the current list.
+	 * @param f The file to import.
+	 * @throws Exception If the given file is inaccessible, inexistent, invalid.
+	 */
 	public void readDataFromSelectedFile(File f) throws Exception
 	{
 		try {
@@ -59,7 +89,9 @@ public abstract class DataProvider <T>
 			throw new Exception("The file located at \"" + f.getPath() +"\" is not valid");
 		} catch (SAXException e) {}	
 	}
-	
+	 /**
+	  * This method deletes the content of the file located at {@link ap2016.application.ApplicationConstants#dataBase ApplicationConstants.dataBase}\{@link #filename} and writes each entry of the list {@link #data} to it.
+	  */
 	public void saveDataToFile() 
 	{
 		Document doc = null;
@@ -82,12 +114,30 @@ public abstract class DataProvider <T>
 	}
 	
 	
-	
+	/**
+	 * This method is called after reading the entire file content and is responsible for using the XML Document to fill the list {@link #data}.
+	 * @param doc The XML document containing the content of the file.
+	 */
 	protected abstract void parseDoc(Document doc);
+	/**
+	 * This method is called before saving the content of the list {@link #data} to the file and is responsible for using the {@link #data} list entries to generate an XML document to be written in the file.
+	 * @param doc The XML document that will be written to the file.
+	 */
 	protected abstract void buildDoc(Document doc);
+	/**
+	 * This method is called after reading an external file which data have to be imported in the current {@link #data} list. It is responsible for using the XML Document to add the new data to the list {@link #data}.
+	 * @param doc The XML document containing the content of the external file.
+	 */
 	protected abstract void appendDoc(Document doc);
 	
-	protected void addElementWithText(Element root, String elementName, String elementText, Document doc)
+	/**
+	 * Utility method that allows to create an XML tag with a certain text in it and to append this newly generated node to another node.
+	 * @param root The node to which the routine appends the newly generated node.
+	 * @param elementName The name of the tag of the newly generated node.
+	 * @param elementText The text contained in the newly generated tag.
+	 * @param doc The XML document being used.
+	 */
+	protected static void addElementWithText(Element root, String elementName, String elementText, Document doc)
 	{
 		Element tmp = doc.createElement(elementName);
 		tmp.appendChild(doc.createCDATASection(elementText != null ? elementText : ""));
