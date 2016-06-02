@@ -498,5 +498,7 @@ public class ManageUsersJDialog extends JDialog
 		
 		currentUser.setNewPassword(vpfNewPassword.getPassword());
 		
+		JOptionPane.showMessageDialog(this, "The new passwords has been updated correctly");
+		
 	}
 }
