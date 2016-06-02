@@ -19,7 +19,6 @@ public class Main
 		app.pack();
 		app.setLocationRelativeTo(null);
 		app.setVisible(true);
-
 	}
 
 }

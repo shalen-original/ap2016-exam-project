@@ -37,12 +37,12 @@ public class ApplicationConstants {
 	/**
 	 * The folder containing all the assets (relative path).
 	 */
-	public final static String assetsBase = "assets\\" + (System.getenv("TEST_FOLDER") != null ? System.getenv("TEST_FOLDER") : "");
+	public final static String assetsBase = System.getProperty("user.dir") + "\\assets\\" + (System.getenv("TEST_FOLDER") != null ? System.getenv("TEST_FOLDER") : "");
 	
 	/**
 	 * The folder containing all the XML data (relative path).
 	 */
-	public final static String dataBase = "data\\" + (System.getenv("TEST_FOLDER") != null ? System.getenv("TEST_FOLDER") : "");
+	public final static String dataBase = System.getProperty("user.dir") + "\\data\\" + (System.getenv("TEST_FOLDER") != null ? System.getenv("TEST_FOLDER") : "");
 	
 	
 	
