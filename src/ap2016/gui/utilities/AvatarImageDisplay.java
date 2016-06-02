@@ -7,21 +7,40 @@ import java.awt.RenderingHints;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+/**
+ * This class allows to draw an image and to automatically resize the image to the dimensions of this component. The original image is stretched to fill the entire area of the component. Even if this component inherits from JLabel, the text functionality of the component is not granted to work if the image is displayed.
+ * @author Matteo Nardini
+ *
+ */
 @SuppressWarnings("serial")
 public class AvatarImageDisplay extends JLabel
 {
+	/**
+	 * The image to be displayed and resized.
+	 */
 	ImageIcon img;
 	
+	/**
+	 * Creates a new AvatarImageDisplay with display image set to {@code null};
+	 */
 	public AvatarImageDisplay()
 	{
 		this(null);
 	}
 	
+	/**
+	 * Creates a new AvatarImageDisplay with a given image.
+	 * @param icon The image to be displayed and resized in the component.
+	 */
     public AvatarImageDisplay(ImageIcon icon)
     {
         super();
         this.img = icon;
     }
+    
+    /**
+     * Paints the component, filling it with a resized version of the image. The original image is stretched to fill the entire area of the component.
+     */
     @Override
     public void paintComponent(Graphics g)
     {
@@ -37,6 +56,10 @@ public class AvatarImageDisplay extends JLabel
         }
     }
    
+    /**
+     * Allows to update the current image being displayed by the component.
+     * @param i The new image to be displayed by the component.
+     */
     public void setIcon(ImageIcon i)
     {
     	img = i;

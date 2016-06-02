@@ -9,20 +9,38 @@ import javax.swing.ListCellRenderer;
 import ap2016.entities.Role;
 import ap2016.entities.User;
 
+/**
+ * Represent a list renderer in which each component is drawn as a JCheckBox.
+ * @author Matteo Nardini
+ *
+ */
 public class RoleCheckboxListCellRenderer implements ListCellRenderer<Role>
 {
+	/**
+	 * Contains the user whose roles have to be displayed.
+	 */
 	private User currentUser;
 	
+	/**
+	 * Creates a new renderer with a {@code null} user.
+	 */
 	public RoleCheckboxListCellRenderer()
 	{
 		this.currentUser = null;
 	}
 	
+	/**
+	 * Allows to set the user whose roles have to be displayed.
+	 * @param newUser The new user whose roles have to be displayed.
+	 */
 	public void updateCurrentUser(User newUser)
 	{
 		this.currentUser = newUser;
 	}
 	
+	/**
+	 * Returns a component that is able to draw the current cell of the list.
+	 */
 	@Override
 	public Component getListCellRendererComponent(JList<? extends Role> list, Role value, int index,
 			boolean isSelected, boolean cellHasFocus)
