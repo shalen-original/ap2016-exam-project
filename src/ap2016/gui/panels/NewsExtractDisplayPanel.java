@@ -14,9 +14,17 @@ import javax.swing.border.LineBorder;
 
 import ap2016.entities.News;
 
+/**
+ * This panels allows to show the summary of a single news.
+ * @author Matteo Nardini
+ *
+ */
 @SuppressWarnings("serial")
 public class NewsExtractDisplayPanel extends JPanel
 {
+	/**
+	 * Contains the {@link ap2016.entities.News#News() News} currently displayed by this panel.
+	 */
 	private News currentNews;
 	
 	private JLabel lblTitle;
@@ -24,6 +32,9 @@ public class NewsExtractDisplayPanel extends JPanel
 	private JLabel lblDescription;
 	private JLabel lblPubDate;
 	
+	/**
+	 * Constructor used by the GUI builder.
+	 */
 	public NewsExtractDisplayPanel() {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
@@ -114,7 +125,10 @@ public class NewsExtractDisplayPanel extends JPanel
 		panel.add(verticalStrut);
 	}
 
-	
+	/**
+	 * Creates a new news extract display panel that displays the summary of a given news.
+	 * @param n The news which summary has to be displayed.
+	 */
 	public NewsExtractDisplayPanel(News n) {
 		this();
 		this.currentNews = n;
@@ -125,6 +139,10 @@ public class NewsExtractDisplayPanel extends JPanel
 				+ "px;text-align:center;}</style></head><body><div id=\"mc\">" + currentNews.getDescription() + "</div></body></html>");
 	}
 	
+	/**
+	 * Allows to access the new displayed by this panel.
+	 * @return The {@link ap2016.entities.News#News() News} which summary is displayed by this panel.
+	 */
 	public News getNews()
 	{
 		return this.currentNews;

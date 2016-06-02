@@ -28,6 +28,11 @@ import ap2016.entities.User;
 import ap2016.gui.utilities.ValidableTextField;
 import ap2016.gui.utilities.ViewEditComponent;
 
+/**
+ * This panel is used to display the news list, a news' details and the new news creation panel.
+ * @author Shalen
+ *
+ */
 @SuppressWarnings("serial")
 public class NewsListPanel extends JPanel
 {
@@ -63,7 +68,10 @@ public class NewsListPanel extends JPanel
 	private ViewEditComponent<JLabel, ValidableTextField> vecAuthor;
 	private ViewEditComponent<JLabel, ValidableTextField> vecPubDate;
 	private ViewEditComponent<JLabel, JTextArea> vecContent;
-
+	
+	/**
+	 * Constructor used by the GUI designer.
+	 */
 	public NewsListPanel()
 	{
 		JPanel panel_1;
@@ -291,7 +299,8 @@ public class NewsListPanel extends JPanel
 		pnlNewsDetail.add(panel_5);
 		panel_5.setLayout(new BoxLayout(panel_5, BoxLayout.X_AXIS));
 
-		btnBack = new JButton("ï¿½ Back to the news list")		btnBack.setPreferredSize(new Dimension(170, 30));
+		btnBack = new JButton("« Back to the news list");
+		btnBack.setPreferredSize(new Dimension(170, 30));
 		btnBack.setMinimumSize(new Dimension(170, 30));
 		btnBack.setMaximumSize(new Dimension(170, 30));
 		panel_5.add(btnBack);
@@ -537,6 +546,10 @@ public class NewsListPanel extends JPanel
 
 	}
 
+	/**
+	 * Creates a news panel that shows only the controls allowed by a user's roles.
+	 * @param currentUser The user whose roles will be used to choose which controls to display and which to hide.
+	 */
 	public NewsListPanel(User currentUser)
 	{
 		this();
@@ -555,13 +568,20 @@ public class NewsListPanel extends JPanel
 	}
 
 	
-	
+	/**
+	 * Allows to specify a function that should be called whenever a new news is added. A unique "news added" listener per NewsListPanel instance is allowed.
+	 * @param listener The function that should be called whenever a new news is added.
+	 */
 	public void setOnDataAddedListener(Consumer<Integer> listener)
 	{
 		if (listeners.putIfAbsent("onDataAdded", listener) != null)
 			listeners.replace("onDataAdded", listener);
 	}
 
+	/**
+	 * Allows to specify a function that should be called whenever a news is deleted. A unique "news removed" listener per NewsListPanel instance is allowed.
+	 * @param listener The function that should be called whenever a news is deleted.
+	 */
 	public void setOnDataRemovedListener(Consumer<Integer> listener)
 	{
 		if (listeners.putIfAbsent("onDataRemoved", listener) != null)
@@ -569,7 +589,10 @@ public class NewsListPanel extends JPanel
 	}
 
 	
-	
+	/**
+	 * Updates the currently displayed news channel.
+	 * @param nc The new news channel to display.
+	 */
 	public void updateCurrentNewsChannel(NewsChannel nc)
 	{
 		if (nc == null)
@@ -581,6 +604,10 @@ public class NewsListPanel extends JPanel
 
 	}
 
+	/**
+	 * Updates the user being used to determine which controls should be shown or not.
+	 * @param u The new user that will be used to determine which controls should be shown or not.
+	 */
 	public void updateCurrentUser(User u)
 	{
 		this.currentUser = u;
@@ -589,6 +616,9 @@ public class NewsListPanel extends JPanel
 		updatePermissions();
 	}
 
+	/**
+	 * Uses the current news channel and the current user to update the GUI considering the news contained in the current news channel and the roles that the user has.
+	 */
 	public void updatePermissions()
 	{
 		scrollableMainPanel.removeAll();
@@ -657,7 +687,10 @@ public class NewsListPanel extends JPanel
 	}
 
 	
-	
+	/**
+	 * This method hides the news list and shows the detail of a particular news.
+	 * @param n The news which details should be shown.
+	 */
 	private void onNewsExtractClick(News n)
 	{
 		pnlNewsList.setVisible(false);
@@ -683,7 +716,6 @@ public class NewsListPanel extends JPanel
 	
 	
 	
-	
 	private void btnBack_Click()
 	{
 		updatePermissions();
@@ -696,8 +728,6 @@ public class NewsListPanel extends JPanel
 	{
 		if (btnRemove.getText().equals("Remove"))
 		{
-			
-			
 			Object[] options = { "Yes", "No" };
 			if (JOptionPane.showOptionDialog(this, "Are you sure you want to delete this news?", "Warning",
 					JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options,
@@ -835,6 +865,11 @@ public class NewsListPanel extends JPanel
 		
 	}
 	
+	/**
+	 * This method searches the text contained in the "Search" text field in a given news. The check is case-insensitive.
+	 * @param n The news in which the text contained in the "Search" text field should be searched.
+	 * @return The method returns {@code true} if the news contains the text contained in the "Search" text field, {@code false} otherwise.
+	 */
 	private boolean newsContainsTest(News n)
 	{
 		String txt = txtSearch.getText().toLowerCase();

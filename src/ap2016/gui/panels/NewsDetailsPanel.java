@@ -1,17 +1,22 @@
 package ap2016.gui.panels;
 
-import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 import java.awt.Color;
-import javax.swing.BoxLayout;
-import java.awt.Container;
 import java.awt.Component;
-import javax.swing.Box;
 import java.awt.Dimension;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.SwingConstants;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+
+/**
+ * This class represents a panel that can display the details of a news.
+ * @author Matteo Nardini
+ *
+ */
 @SuppressWarnings("serial")
 public class NewsDetailsPanel extends JPanel
 {
