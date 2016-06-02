@@ -61,13 +61,6 @@ public class User {
 		setNewPassword(newPassword);	
 	}
 	
-	public User(String username, StringBuffer newPassword)
-	{
-		this(username, "default", null);
-		
-		setNewPassword(newPassword);	
-	}
-	
 	public User(String username, byte[] passwordHash, byte[] passwordSalt, String avatarName)
 	{
 		this(username, avatarName, null);
@@ -119,26 +112,13 @@ public class User {
 			throw new InvalidPasswordException("The password is not valid.");
 		}
 	}
-	public void setNewPassword(StringBuffer newPassword)
-	{
-		  char[] charsToHash = new char[newPassword.length()];
-		  newPassword.getChars(0, newPassword.length() - 1, charsToHash, 0);
-		  
-		  setNewPassword(charsToHash);
-	}
 
+	
 	public boolean isRightPassword(char[] pwd)
-	{
-		StringBuffer sb = new StringBuffer();
-		sb.append(pwd);
-		return isRightPassword(sb);
-	}
-	
-	
-	public boolean isRightPassword(StringBuffer pwd)
 	{
 		return Arrays.equals(passwordHash, hashPassword(pwd, currentPasswordSalt));
 	}
+
 	
 	public byte[] getCurrentPasswordSalt()
 	{
@@ -264,26 +244,13 @@ public class User {
 	{
 		StringBuffer a = new StringBuffer();
 		a.append(password);
-		return isValidPassword(a);
-	}
-	
-	public static boolean isValidPassword(StringBuffer password)
-	{
-		return ApplicationConstants.passwordRegEx.matcher(password).matches();
+		return ApplicationConstants.passwordRegEx.matcher(a).matches();
 	}
 	
 	
 	
 	
 	
-	
-	private static byte[] hashPassword(StringBuffer toHash, byte[] salt)
-	{
-		  char[] charsToHash = new char[toHash.length()];
-		  toHash.getChars(0, toHash.length() - 1, charsToHash, 0);
-		  
-		  return hashPassword(charsToHash, salt);
-	}
 	
 	private static byte[] hashPassword(char[] toHash, byte[] salt)
 	{	  

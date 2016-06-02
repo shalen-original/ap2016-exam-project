@@ -80,16 +80,16 @@ public class UserDataProviderTest
 	{
 		User u;
 		
-		u = new User("Username1", new StringBuffer("Password1"));
+		u = new User("Username1", "Password1".toCharArray());
 		u.grantRole(Role.READ);
 		us.add(u);
 		
-		u = new User("Username2", new StringBuffer("Password2"));
+		u = new User("Username2", "Password2".toCharArray());
 		u.grantRole(Role.READ);
 		u.grantRole(Role.SEARCH);
 		us.add(u);
 		
-		u = new User("Username3", new StringBuffer("Password3"));
+		u = new User("Username3", "Password3".toCharArray());
 		us.add(u);
 	}
 

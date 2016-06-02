@@ -113,15 +113,13 @@ public class LoginJFrame extends JFrame
 			JOptionPane.showMessageDialog(this, "Select an username or register\na new user before trying to login");
 		}else{
 			char[] pwdChar = pfPassword.getPassword();
-			StringBuffer pwd = new StringBuffer();
-			pwd.append(pwdChar);
 			
-			if (u.isRightPassword(pwd))
+			if (u.isRightPassword(pwdChar))
 			{
 				for (int i = 0; i < pwdChar.length; i++)
 				{
 					pwdChar[i] = 0;
-					pwd.setCharAt(i, (char) 0);
+					pwdChar[i] = (char) 0;
 				}
 				
 				this.setVisible(false);
