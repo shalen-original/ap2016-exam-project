@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -293,6 +295,24 @@ public class ManageUsersJDialog extends JDialog
 		vpfConfirmNewPassword.setMaximumSize(new Dimension(2147483647, 30));
 		panel_14.add(vpfConfirmNewPassword);
 		
+		
+		
+		vpfNewPassword.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				vpfConfirmNewPassword.updateValidationState();
+			}
+		});
+		
+		vpfConfirmNewPassword.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				vpfNewPassword.updateValidationState();
+			}
+		});
+		
+		
+		
 		Component verticalStrut_16 = Box.createVerticalStrut(10);
 		panel_11.add(verticalStrut_16);
 		
@@ -489,16 +509,22 @@ public class ManageUsersJDialog extends JDialog
 		if (!currentUser.isRightPassword(pwOldPassword.getPassword()))
 		{
 			JOptionPane.showMessageDialog(this, "The old password inserted is not valid, password not updated");
+			return;
 		}
 		
 		if ((!vpfNewPassword.isValid()) || (!vpfConfirmNewPassword.isValid()))
 		{
-			JOptionPane.showMessageDialog(this, "The new passwords are invalid or they doesn't match");
+			JOptionPane.showMessageDialog(this, "The new passwords are invalid or they don't match");
+			return;
 		}
 		
 		currentUser.setNewPassword(vpfNewPassword.getPassword());
 		
 		JOptionPane.showMessageDialog(this, "The new passwords has been updated correctly");
+		
+		pwOldPassword.setText("");
+		vpfNewPassword.setText("");
+		vpfConfirmNewPassword.setText("");
 		
 	}
 }
