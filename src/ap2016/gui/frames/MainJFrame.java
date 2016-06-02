@@ -31,6 +31,7 @@ import javax.swing.border.TitledBorder;
 
 import ap2016.application.ApplicationConstants;
 import ap2016.application.ApplicationUtilities;
+import ap2016.entities.News;
 import ap2016.entities.NewsChannel;
 import ap2016.entities.Role;
 import ap2016.entities.User;
@@ -650,23 +651,18 @@ public class MainJFrame extends JFrame
 		nlp.setOnDataRemovedListener((k) -> lblDeletedRecords.setText(Integer.parseInt(lblDeletedRecords.getText()) + k + ""));
 		
 		
-		// Updating channel details
-		vecChannelTitle.getViewComponent().setText(currentNewsChannel.getTitle());
 		vecChannelTitle.getEditComponent().updateValidationTest(s -> (!s.equals("")));
 		vecChannelTitle.setViewToEditOperation((v,e) -> e.setText(v.getText()));
 		vecChannelTitle.setEditToViewOperation((v,e) -> v.setText(e.getText()));
 		
-		vecChannelLink.getViewComponent().setText(currentNewsChannel.getLink());
 		vecChannelLink.getEditComponent().updateValidationTest(ApplicationUtilities::isValidURL);
 		vecChannelLink.setViewToEditOperation((v,e) -> e.setText(v.getText()));
 		vecChannelLink.setEditToViewOperation((v,e) -> v.setText(e.getText()));
 		
-		vecChannelLanguage.getViewComponent().setText(currentNewsChannel.getLanguage());
 		vecChannelLanguage.getEditComponent().updateValidationTest(ApplicationUtilities::isValidLanguage);
 		vecChannelLanguage.setViewToEditOperation((v,e) -> e.setText(v.getText()));
 		vecChannelLanguage.setEditToViewOperation((v,e) -> v.setText(e.getText()));
 		
-		vecChannelDescription.getViewComponent().setText(currentNewsChannel.getDescription());
 		vecChannelDescription.setViewToEditOperation((v,e) -> e.setText(v.getText()));
 		vecChannelDescription.setEditToViewOperation((v,e) -> v.setText(e.getText()));
 		
@@ -683,7 +679,8 @@ public class MainJFrame extends JFrame
 		{
 			cmbNewsChannel.setSelectedIndex(defaultChannel);
 		}else{
-			cmbNewsChannel.setSelectedIndex(0);
+			if (cmbNewsChannel.getItemCount() > 0)
+				cmbNewsChannel.setSelectedIndex(0);
 		}
 	}
 	
@@ -691,6 +688,16 @@ public class MainJFrame extends JFrame
 	{
 		currentNewsChannel = (NewsChannel)cmbNewsChannel.getSelectedItem();
 		nlp.updateCurrentNewsChannel(currentNewsChannel);
+		
+		if (currentNewsChannel != null)
+		{
+			// Updating channel details
+			vecChannelTitle.getViewComponent().setText(currentNewsChannel.getTitle());		
+			vecChannelLink.getViewComponent().setText(currentNewsChannel.getLink());		
+			vecChannelLanguage.getViewComponent().setText(currentNewsChannel.getLanguage());
+			vecChannelDescription.getViewComponent().setText(currentNewsChannel.getDescription());
+			
+		}
 	}
 	
 	private void updatePermissions()
@@ -797,7 +804,14 @@ public class MainJFrame extends JFrame
             {
             	int last = cmbNewsChannel.getSelectedIndex();
             	NewsChannelDataProvider.getInstance().readDataFromSelectedFile(file);
-            	fillNewsChannel(last);
+            	fillNewsChannel(last > 0 ? last : 0);
+            	Integer i = 0;
+        		for (NewsChannel nc : NewsChannelDataProvider.getInstance().getData())
+        		{
+        			i += nc.getNews().size();
+        		}
+        		lblDataRecordCount.setText(i + "");
+            	
             }catch (Exception ex){
             	JOptionPane.showMessageDialog(this, "The application was not able to import the selected file.");
             }
