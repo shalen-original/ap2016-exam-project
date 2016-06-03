@@ -68,7 +68,10 @@ public class ApplicationConstants {
 	 */
 	public final static Border invalidBorder = BorderFactory.createLineBorder(invalidColor, 2, true);
 	
-	
+	/**
+	 * Allows to obtain the absolute path string of the starting folder of the application.
+	 * @return The string that contains the absolute path of the starting folder of the application.
+	 */
 	private static String getBaseFolder()
 	{
 		try
