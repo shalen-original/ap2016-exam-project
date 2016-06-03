@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -320,13 +321,13 @@ public class User {
 		avatarName = hashImage(tmp);
 		
 		// Writes to a file "internal" to the program
-		try(BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(ApplicationConstants.assetsBase + avatarName)))
+		try(BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(Paths.get(ApplicationConstants.assetsBase, avatarName).toString())))
 		{
 			ImageIO.write(tmp, "png", outputStream);
 		}
 		
 		// Reads from the internal file (after next GC, the original image will not be used by the process anymore).
-		tmp = ImageIO.read(new File(ApplicationConstants.assetsBase + avatarName));
+		tmp = ImageIO.read(Paths.get(ApplicationConstants.assetsBase, avatarName).toFile());
 		
 		// Sets the new avatar.
 		avatar = new ImageIcon(tmp);
@@ -342,7 +343,7 @@ public class User {
 	{
 		try {
 			this.avatarName = avatarName;
-			avatar = new ImageIcon(ImageIO.read(new File(ApplicationConstants.assetsBase + avatarName)));
+			avatar = new ImageIcon(ImageIO.read(Paths.get(ApplicationConstants.assetsBase, avatarName).toFile()));
 		} catch (IOException e) {
 			throw new InvalidAvatarNameException("The avatar with the supplied avatar name was not found");
 		}

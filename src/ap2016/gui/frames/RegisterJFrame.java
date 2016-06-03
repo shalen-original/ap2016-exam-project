@@ -8,6 +8,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Arrays;
 
 import javax.imageio.ImageIO;
@@ -106,7 +107,7 @@ public class RegisterJFrame extends JFrame
 		aidImage.setBounds(343, 50, 113, 113);
 		try
 		{
-			aidImage.setIcon(new ImageIcon(ImageIO.read(new File(ApplicationConstants.assetsBase + "default"))));
+			aidImage.setIcon(new ImageIcon(ImageIO.read(Paths.get(ApplicationConstants.assetsBase, "default").toFile())));
 		}catch (IOException ex){
 			aidImage.setText("Default user image");
 		}

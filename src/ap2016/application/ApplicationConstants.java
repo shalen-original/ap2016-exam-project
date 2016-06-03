@@ -1,6 +1,7 @@
 package ap2016.application;
 
 import java.awt.Color;
+import java.nio.file.Paths;
 import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
@@ -37,12 +38,12 @@ public class ApplicationConstants {
 	/**
 	 * The folder containing all the assets (relative path).
 	 */
-	public final static String assetsBase = System.getProperty("user.dir") + "\\assets\\" + (System.getenv("TEST_FOLDER") != null ? System.getenv("TEST_FOLDER") : "");
+	public final static String assetsBase = Paths.get(System.getProperty("user.dir"), "assets", (System.getenv("TEST_FOLDER") != null ? System.getenv("TEST_FOLDER") : "")).toAbsolutePath().toString();
 	
 	/**
 	 * The folder containing all the XML data (relative path).
 	 */
-	public final static String dataBase = System.getProperty("user.dir") + "\\data\\" + (System.getenv("TEST_FOLDER") != null ? System.getenv("TEST_FOLDER") : "");
+	public final static String dataBase = Paths.get(System.getProperty("user.dir"), "data", (System.getenv("TEST_FOLDER") != null ? System.getenv("TEST_FOLDER") : "")).toAbsolutePath().toString();
 	
 	
 	

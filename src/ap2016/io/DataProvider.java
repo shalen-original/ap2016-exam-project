@@ -2,6 +2,7 @@ package ap2016.io;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -65,11 +66,11 @@ public abstract class DataProvider <T>
 		data.clear();
 		try {
 			
-			Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File(ApplicationConstants.dataBase + "\\" + filename));
+			Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(Paths.get(ApplicationConstants.dataBase, filename).toFile());
 			parseDoc(doc);
 			
 		} catch (IOException | ParserConfigurationException e) {
-			throw new Exception("The file located at \"" + ApplicationConstants.dataBase + "\\" + filename + "\" is not valid");
+			throw new Exception("The file located at \"" + Paths.get(ApplicationConstants.dataBase, filename).toString() + "\" is not valid");
 		} catch (SAXException e) {}	
 	}
 	
@@ -108,7 +109,7 @@ public abstract class DataProvider <T>
 		{
 			t = TransformerFactory.newInstance().newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File(ApplicationConstants.dataBase + "\\" + filename));
+			StreamResult result = new StreamResult(Paths.get(ApplicationConstants.dataBase, filename).toFile());
 			t.transform(source, result);
 		} catch (TransformerFactoryConfigurationError | TransformerException e) {}
 	}
