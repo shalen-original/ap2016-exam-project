@@ -33,7 +33,7 @@ public class ApplicationConstants {
 	/**
 	 * The regular expression used to validate the "language" strings. A language string is expected to be in the format "en-EN", with the two letter before the dash being the minor locale and the to after being the major locale.
 	 */
-	public final static Pattern languageRegEx = Pattern.compile("[a-z]{2}-[A-Z]{2}");
+	public final static Pattern languageRegEx = Pattern.compile("[a-z]{2}(-[A-Z]{2})?");
 	
 	
 	/**
