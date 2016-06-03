@@ -21,7 +21,7 @@ public class Main
 		{
 			String ans = "";
 			ans += "ApplicationConstants.dataBase =>" + ApplicationConstants.dataBase + "\n";
-			ans += "ApplicationConstants.assetsBase =>" + ApplicationConstants.assetsBase + "\n";
+			ans += "ApplicationConstants.assetsBase =>" + ApplicationConstants.assetsBase + "\n";	
 			
 			JOptionPane.showMessageDialog(null, ans);
 		}
