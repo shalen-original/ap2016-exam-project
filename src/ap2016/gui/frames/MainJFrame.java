@@ -82,7 +82,7 @@ public class MainJFrame extends JFrame
 					UserDataProvider.getInstance().saveDataToFile();
 			}
 		});
-		setSize(new Dimension(1000, 649));
+		setSize(new Dimension(1100, 649));
 		setPreferredSize(new Dimension(1000, 649));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("NewsFeed");
@@ -93,10 +93,10 @@ public class MainJFrame extends JFrame
 		DrawerPanel.setLayout(new BorderLayout(5, 0));
 		
 		JPanel DrawerPanelInternal = new JPanel();
-		DrawerPanelInternal.setSize(new Dimension(250, 0));
-		DrawerPanelInternal.setMaximumSize(new Dimension(250, 32767));
-		DrawerPanelInternal.setPreferredSize(new Dimension(250, 200));
-		DrawerPanelInternal.setMinimumSize(new Dimension(250, 200));
+		DrawerPanelInternal.setSize(new Dimension(270, 0));
+		DrawerPanelInternal.setMaximumSize(new Dimension(270, 32767));
+		DrawerPanelInternal.setPreferredSize(new Dimension(270, 200));
+		DrawerPanelInternal.setMinimumSize(new Dimension(270, 200));
 		DrawerPanelInternal.setBounds(new Rectangle(0, 0, 250, 0));
 		DrawerPanel.add(DrawerPanelInternal);
 		DrawerPanelInternal.setLayout(new BoxLayout(DrawerPanelInternal, BoxLayout.Y_AXIS));
