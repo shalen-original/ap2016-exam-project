@@ -1,6 +1,8 @@
 package ap2016.application;
 
 import java.awt.Color;
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
 import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
@@ -12,7 +14,7 @@ import javax.swing.border.Border;
  *
  */
 public class ApplicationConstants {
-
+		
 	/**
 	 * The regular expression used to validate usernames.
 	 */
@@ -37,12 +39,12 @@ public class ApplicationConstants {
 	/**
 	 * The folder containing all the assets (relative path).
 	 */
-	public final static String assetsBase = System.getProperty("user.dir") + "\\assets\\" + (System.getenv("TEST_FOLDER") != null ? System.getenv("TEST_FOLDER") : "");
+	public final static String assetsBase = Paths.get(getBaseFolder(), "assets", (System.getenv("TEST_FOLDER") != null ? System.getenv("TEST_FOLDER") : "")).toAbsolutePath().toString();
 	
 	/**
 	 * The folder containing all the XML data (relative path).
 	 */
-	public final static String dataBase = System.getProperty("user.dir") + "\\data\\" + (System.getenv("TEST_FOLDER") != null ? System.getenv("TEST_FOLDER") : "");
+	public final static String dataBase = Paths.get(getBaseFolder(), "data", (System.getenv("TEST_FOLDER") != null ? System.getenv("TEST_FOLDER") : "")).toAbsolutePath().toString();
 	
 	
 	
@@ -66,6 +68,19 @@ public class ApplicationConstants {
 	 */
 	public final static Border invalidBorder = BorderFactory.createLineBorder(invalidColor, 2, true);
 	
-	
+	/**
+	 * Allows to obtain the absolute path string of the starting folder of the application.
+	 * @return The string that contains the absolute path of the starting folder of the application.
+	 */
+	private static String getBaseFolder()
+	{
+		try
+		{
+			return Paths.get(ApplicationConstants.class.getClassLoader().getResource("").toURI()).toString();
+		} catch (URISyntaxException e)
+		{
+			return "";
+		}
+	}
 	
 }

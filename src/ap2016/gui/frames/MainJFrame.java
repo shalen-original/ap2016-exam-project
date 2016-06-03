@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -633,8 +634,8 @@ public class MainJFrame extends JFrame
 		fillNewsChannel(0);
 		
 		// Updating the statistics label
-		lblDataFilePath.setText((new File(ApplicationConstants.dataBase + "\\data.xml")).getAbsolutePath());
-		lblDataFilePath.setToolTipText(new File(ApplicationConstants.dataBase + "\\data.xml").getAbsolutePath());
+		lblDataFilePath.setText(Paths.get(ApplicationConstants.dataBase, "data.xml").toString());
+		lblDataFilePath.setToolTipText(Paths.get(ApplicationConstants.dataBase, "data.xml").toString());
 		
 		Integer i = 0;
 		for (NewsChannel nc : NewsChannelDataProvider.getInstance().getData())

@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -316,7 +317,7 @@ public class ExportJDialog extends JDialog
 		{
 			t = TransformerFactory.newInstance().newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File(f.getAbsolutePath() + "\\HTMLexport-" + (new Date()).getTime() + ".html"));
+			StreamResult result = new StreamResult(Paths.get(f.getAbsolutePath(), "HTMLexport-" + (new Date()).getTime() + ".html").toFile());
 			t.transform(source, result);
 		} catch (TransformerFactoryConfigurationError | TransformerException e) 
 		{
@@ -368,7 +369,7 @@ public class ExportJDialog extends JDialog
 		rtf.append("}");
 		
 			
-		try(FileWriter fw = new FileWriter(new File(f.getAbsolutePath() + "\\RTFexport-" + (new Date()).getTime() + ".rtf")))
+		try(FileWriter fw = new FileWriter(Paths.get(f.getAbsolutePath(), "RTFexport-" + (new Date()).getTime() + ".rtf").toFile()))
 		{
 			fw.write(rtf.toString());
 		}catch(IOException ex){
