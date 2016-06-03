@@ -38,6 +38,15 @@ public class News {
 	 */
 	private String content;
 	
+	public News(){
+		title = "";
+		link = "";
+		pubblicationDate = "";
+		author = "";
+		description = "";
+		content = "";
+	}
+	
 	/**
 	 * Allows to access the title of the news.
 	 * @return Returns the title of the news.
