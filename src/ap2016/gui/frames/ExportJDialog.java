@@ -317,7 +317,7 @@ public class ExportJDialog extends JDialog
 		{
 			t = TransformerFactory.newInstance().newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(Paths.get(f.getAbsolutePath(), "\\HTMLexport-" + (new Date()).getTime() + ".html").toFile());
+			StreamResult result = new StreamResult(Paths.get(f.getAbsolutePath(), "HTMLexport-" + (new Date()).getTime() + ".html").toFile());
 			t.transform(source, result);
 		} catch (TransformerFactoryConfigurationError | TransformerException e) 
 		{
@@ -369,7 +369,7 @@ public class ExportJDialog extends JDialog
 		rtf.append("}");
 		
 			
-		try(FileWriter fw = new FileWriter(Paths.get(f.getAbsolutePath(), "\\RTFexport-" + (new Date()).getTime() + ".rtf").toFile()))
+		try(FileWriter fw = new FileWriter(Paths.get(f.getAbsolutePath(), "RTFexport-" + (new Date()).getTime() + ".rtf").toFile()))
 		{
 			fw.write(rtf.toString());
 		}catch(IOException ex){
