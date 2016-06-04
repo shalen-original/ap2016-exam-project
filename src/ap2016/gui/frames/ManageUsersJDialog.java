@@ -55,10 +55,18 @@ public class ManageUsersJDialog extends JDialog
 	private JPanel pnlUserDetails;
 	private JPasswordField pwOldPassword;
 	
+	/**
+	 * Constructor used by the GUI builder.
+	 */
 	public ManageUsersJDialog() {
 		setupGUI();
 	}
 	
+	/**
+	 * Creates a windows that allows a user to manage its account and (if required) the permission given to other users.
+	 * @param parent The JFrame that is the parent of this dialog.
+	 * @param currentUser The current user. This user's permission will be considered in order to choose which part of the dialog have to be shown or hidden.
+	 */
 	public ManageUsersJDialog(JFrame parent, User currentUser){
 		super(parent, "Manage users", true);
 		setupGUI();
@@ -89,6 +97,9 @@ public class ManageUsersJDialog extends JDialog
 		
 	}
 	
+	/**
+	 * Creates the GUI for this dialog.
+	 */
 	private void setupGUI()
 	{
 		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
@@ -390,6 +401,9 @@ public class ManageUsersJDialog extends JDialog
 		
 	}
 
+	/**
+	 * When the selected user is changed, this method updates the GUI to reflect the state of the selected user.
+	 */
 	private void cmbUsers_SelectedItemChanged()
 	{
 		if (cmbUsers.getSelectedItem() == null)
@@ -406,7 +420,9 @@ public class ManageUsersJDialog extends JDialog
 				
 	}
 	
-	
+	/**
+	 * Reloads the list of users that have to be shown to the {@code currentUser}.
+	 */
 	private void fillCmbUsers()
 	{
 		Object prev = cmbUsers.getSelectedItem();
@@ -431,6 +447,9 @@ public class ManageUsersJDialog extends JDialog
 		
 	}
 	
+	/**
+	 * Allows the user to edit it's own username.
+	 */
 	private void btnEditUsername_Click()
 	{
 		if (btnEditUsername.getText().equals("Edit"))
@@ -452,12 +471,18 @@ public class ManageUsersJDialog extends JDialog
 		}
 	}
 	
+	/**
+	 * Allows the user to reset its avatar to the default one.
+	 */
 	private void btnResetToDefault_Click()
 	{
 		currentUser.setAvatarFromName("default");
 		aidAvatar.setIcon(currentUser.getAvatar());
 	}
 	
+	/**
+	 * Allows the user to pick a new avatar image.
+	 */
 	private void btnPickNew_Click()
 	{
 		JFileChooser fc = new JFileChooser();
@@ -505,6 +530,9 @@ public class ManageUsersJDialog extends JDialog
 		
 	}
 
+	/**
+	 * Allows the user to update its current password.
+	 */
 	private void btnUpdatePassword_Click(){
 		if (!currentUser.isRightPassword(pwOldPassword.getPassword()))
 		{

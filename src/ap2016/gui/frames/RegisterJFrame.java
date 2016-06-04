@@ -3,7 +3,6 @@ package ap2016.gui.frames;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -46,6 +45,9 @@ public class RegisterJFrame extends JFrame
 	private AvatarImageDisplay aidImage;
 	private JLabel lblAvatarPath;
 
+	/**
+	 * Constructor used by the GUI builder
+	 */
 	public RegisterJFrame() {
 		setSize(new Dimension(553, 387));
 		setPreferredSize(new Dimension(553, 387));
@@ -87,17 +89,17 @@ public class RegisterJFrame extends JFrame
 		panel.add(lblAvatarPath);
 		
 		btnRegisterAndLogin = new JButton("Register and login");
-		btnRegisterAndLogin.addActionListener(e -> btnRegisterAndLogin_Click(e));
+		btnRegisterAndLogin.addActionListener(e -> btnRegisterAndLogin_Click());
 		btnRegisterAndLogin.setBounds(283, 237, 147, 28);
 		panel.add(btnRegisterAndLogin);
 		
 		btnAbort = new JButton("Abort");
-		btnAbort.addActionListener(e -> btnAbort_Click(e));
+		btnAbort.addActionListener(e -> btnAbort_Click());
 		btnAbort.setBounds(68, 237, 147, 28);
 		panel.add(btnAbort);
 		
 		btnSelectImage = new JButton("Choose avatar");
-		btnSelectImage.addActionListener(e -> btnSelectImage_Click(e));
+		btnSelectImage.addActionListener(e -> btnSelectImage_Click());
 		btnSelectImage.setBounds(333, 189, 133, 23);
 		panel.add(btnSelectImage);
 		
@@ -149,14 +151,20 @@ public class RegisterJFrame extends JFrame
 		
 	}
 	
+	/**
+	 * Creates a frame that allows a new user to register.
+	 * @param originalLoginFrame The login frame to show if the registration process is aborted.
+	 */
 	public RegisterJFrame(JFrame originalLoginFrame)
 	{
 		this();
 		this.originalLoginFrame = originalLoginFrame;
 	}
 	
-	
-	private void btnAbort_Click(ActionEvent e)
+	/**
+	 * Aborts the current registration operation and shows the original login frame, if present.
+	 */
+	private void btnAbort_Click()
 	{
 		if (originalLoginFrame != null)
 		{
@@ -166,7 +174,10 @@ public class RegisterJFrame extends JFrame
 		}
 	}
 	
-	private void btnSelectImage_Click(ActionEvent e)
+	/**
+	 * Allows the user to select an image as avatar.
+	 */
+	private void btnSelectImage_Click()
 	{
 		JFileChooser fc = new JFileChooser();
 		fc.setDialogTitle("Choose avatar image file");
@@ -176,6 +187,9 @@ public class RegisterJFrame extends JFrame
 
 			private String[] validExt = {".jpg", ".jpeg", ".png"};
 			
+			/**
+			 * Checks if a given file is valid for this application.
+			 */
 			@Override
 			public boolean accept(File arg0)
 			{
@@ -189,6 +203,9 @@ public class RegisterJFrame extends JFrame
 				return ans;
 			}
 
+			/**
+			 * Returns the description of this filter
+			 */
 			@Override
 			public String getDescription()
 			{
@@ -213,7 +230,10 @@ public class RegisterJFrame extends JFrame
 		
 	}
 	
-	private void btnRegisterAndLogin_Click(ActionEvent e)
+	/**
+	 * Uses the immitted information to create a new user and to display the main application window to that user.
+	 */
+	private void btnRegisterAndLogin_Click()
 	{
 		
 		if (!vtfUsername.isValid())

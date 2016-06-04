@@ -49,10 +49,18 @@ public class ExportJDialog extends JDialog
 	private JList<NewsChannel> lChannels;
 	private ArrayList<NewsChannel> selectedChannels;
 	
+	/**
+	 * Constructor used by the GUI builder.
+	 */
 	public ExportJDialog() {
 		setupGUI();
 	}
 	
+	/**
+	 * Shows the export dialog that allows the user to choose which news channel to export.
+	 * @param parent The JFrame parent of this dialog.
+	 * @param exportFormat The format to use to export the selected news channel.
+	 */
 	public ExportJDialog(JFrame parent, String exportFormat){
 		super(parent, "Export news channel", true);
 		setupGUI();
@@ -72,6 +80,9 @@ public class ExportJDialog extends JDialog
 		
 	}
 	
+	/**
+	 * Creates all the GUI of the dialog.
+	 */
 	private void setupGUI()
 	{
 		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
@@ -153,12 +164,17 @@ public class ExportJDialog extends JDialog
 		getContentPane().add(horizontalStrut_5);
 	}
 
-	
+	/**
+	 * Aborts the export operation.
+	 */
 	private void btnAbort_Click()
 	{
 		setVisible(false);
 	}
 	
+	/**
+	 * Exports the selected news channel to a file.
+	 */
 	private void btnExport_Click()
 	{
 		JFileChooser fc = new JFileChooser();
@@ -190,6 +206,11 @@ public class ExportJDialog extends JDialog
 		setVisible(false);
 	}
 	
+	/**
+	 * Converts the selected news channel to an HTML file.
+	 * @param f The file in which the HTML output has to be written.
+	 * @return The method returns {@code true} if the operation succeeded, {@code false} otherwise.
+	 */
 	private boolean exportAsHTML(File f)
 	{
 		Document doc = null;
@@ -327,6 +348,11 @@ public class ExportJDialog extends JDialog
 		return true;
 	}
 	
+	/**
+	 * Converts the selected news channel to a RTF file.
+	 * @param f The file in which the RTF output has to be written.
+	 * @return The method returns {@code true} if the operation succeeded, {@code false} otherwise.
+	 */
 	private boolean exportAsRTF(File f)
 	{
 		StringBuilder rtf = new StringBuilder();

@@ -6,7 +6,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -48,8 +47,6 @@ public class MainJFrame extends JFrame
 	private User currentUser;
 	private NewsChannel currentNewsChannel;
 	
-	
-	
 	private AvatarImageDisplay avatarImg;
 	private JLabel lblUsername;
 	private JComboBox<NewsChannel> cmbNewsChannel;
@@ -74,6 +71,9 @@ public class MainJFrame extends JFrame
 	private JLabel lblDeletedRecords;
 	private NewsListPanel nlp;
 	
+	/**
+	 * Constructor used by the GUI builder.
+	 */
 	public MainJFrame() {
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -559,7 +559,7 @@ public class MainJFrame extends JFrame
 		btnEdit.setMaximumSize(new Dimension(65, 25));
 		btnEdit.setMinimumSize(new Dimension(65, 25));
 		btnEdit.setPreferredSize(new Dimension(65, 25));
-		btnEdit.addActionListener(e -> btnEdit_Click(e));
+		btnEdit.addActionListener(e -> btnEdit_Click());
 		
 		Component horizontalStrut_29 = Box.createHorizontalStrut(20);
 		panel_13.add(horizontalStrut_29);
@@ -613,6 +613,10 @@ public class MainJFrame extends JFrame
 		MainPanel.add(verticalStrut_14);
 	}
 	
+	/**
+	 * Shows the main windows of the application.
+	 * @param u The user whose permission will be used to choose which parts of the frame have to be displayed or hidden.
+	 */
 	public MainJFrame(User u) 
 	{
 		this();
@@ -670,6 +674,10 @@ public class MainJFrame extends JFrame
 		
 	}
 	
+	/**
+	 * Fills the news channel combobox. 
+	 * @param defaultChannel The index of the element to be selected at the end of the refilling. If the element at this index is not present, then the first item is selected. If there are no item, no item is selected.
+	 */
 	private void fillNewsChannel(int defaultChannel)
 	{
 		cmbNewsChannel.removeAllItems();
@@ -684,6 +692,9 @@ public class MainJFrame extends JFrame
 		}
 	}
 	
+	/**
+	 * Updates the GUI to reflect the the currently selected news channel.
+	 */
 	private void cmbNewChannel_SelectedItemChanged()
 	{
 		currentNewsChannel = (NewsChannel)cmbNewsChannel.getSelectedItem();
@@ -700,6 +711,9 @@ public class MainJFrame extends JFrame
 		}
 	}
 	
+	/**
+	 * Shows or hides the elements of the GUI according to the {@code currentUser}'s permissions.
+	 */
 	private void updatePermissions()
 	{
 		if (currentUser == null)
@@ -718,25 +732,27 @@ public class MainJFrame extends JFrame
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
+	/**
+	 * Toggles the drawer panel on the left.
+	 */
 	private void toggleDrawer()
 	{
 		DrawerPanel.setVisible(!DrawerPanel.isVisible());
 		btnToggleDrawer.setText(btnToggleDrawer.getText().equals("«") ? "»" : "«");
 	}
 	
+	/**
+	 * Exits from the application.
+	 */
 	private void btnExit_Click()
 	{
 		this.setVisible(false);
 		this.dispose();
 	}
 	
+	/**
+	 * Logs-out from the application an shows again the login screen.
+	 */
 	private void btnLogout_Click()
 	{
 		JFrame a = new LoginJFrame();
@@ -746,7 +762,10 @@ public class MainJFrame extends JFrame
 		a.setVisible(true);
 	}
 	
-	private void btnEdit_Click(ActionEvent e)
+	/**
+	 * Allows to edit the current news channel's details.
+	 */
+	private void btnEdit_Click()
 	{
 		if (btnEdit.getText().equals("Edit"))
 		{
@@ -792,6 +811,9 @@ public class MainJFrame extends JFrame
 		}
 	}
 
+	/**
+	 * Allows the user to import a data file into the application.
+	 */
 	private void btnImportData_Click()
 	{
 		JFileChooser fc = new JFileChooser();
@@ -819,7 +841,9 @@ public class MainJFrame extends JFrame
         }
 	}
 	
-	
+	/**
+	 * Shows the window that allows the user to manage its own account and, if allowed, the permission granted to the other users.
+	 */
 	private void btnManageUsers_Click()
 	{
 		JDialog a = new ManageUsersJDialog(this, currentUser);
@@ -836,6 +860,9 @@ public class MainJFrame extends JFrame
 		updatePermissions();
 	}
 	
+	/**
+	 * Shows the window that allows the user to export the news channel in the choosen format.
+	 */
     private void btnExport_Click()
     {
     	JDialog a = new ExportJDialog(this, (String)cmbSaveAllType.getSelectedItem());
@@ -845,7 +872,9 @@ public class MainJFrame extends JFrame
 		a.setVisible(true);
     }
 	
-	
+	/**
+	 * Shows some information about the developer and the application.
+	 */
 	private void btnAbout_Click()
 	{
 		StringBuilder ans = new StringBuilder();
@@ -947,6 +976,11 @@ public class MainJFrame extends JFrame
 		JOptionPane.showMessageDialog(this, ans.toString());
 	}
 	
+	/**
+	 * Parses a class object and updates the total count.
+	 * @param values The map containing the total counts.
+	 * @param c The class objects to be parsed.
+	 */
 	private void parseClass(HashMap<String, Integer> values, Class<? extends Object> c)
 	{	
 		values.replace("numberOfClasses", values.get("numberOfClasses") + 1);

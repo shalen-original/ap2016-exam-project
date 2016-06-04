@@ -3,7 +3,6 @@ package ap2016.gui.frames;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -28,6 +27,9 @@ public class LoginJFrame extends JFrame
 	private JButton btnRegister;
 	private JPasswordField pfPassword;
 	
+	/**
+	 * Creates a new login frame.
+	 */
 	public LoginJFrame() {
 		setTitle("NewsFeed - Login");
 		setResizable(false);
@@ -65,19 +67,20 @@ public class LoginJFrame extends JFrame
 		
 		btnLogin = new JButton("Login");
 		btnLogin.setBounds(164, 155, 98, 28);
-		btnLogin.addActionListener(e -> btnLogin_click(e));
+		btnLogin.addActionListener(e -> btnLogin_click());
 		panel.add(btnLogin);
 		
 		btnRegister = new JButton("Register");
 		btnRegister.setBounds(33, 155, 98, 28);
-		btnRegister.addActionListener(e -> btnRegister_click(e));
+		btnRegister.addActionListener(e -> btnRegister_click());
 		panel.add(btnRegister);
 		
 		afterGUIInitialization();
 	}
 	
-	
-	
+	/**
+	 * Fills the username combo box with all the usernames of the users that already registered.
+	 */
 	private void afterGUIInitialization()
 	{
 		UserDataProvider udp = UserDataProvider.getInstance();
@@ -103,8 +106,10 @@ public class LoginJFrame extends JFrame
 
 	
 	
-	
-	private void btnLogin_click(ActionEvent e)
+	/**
+	 * Validates the selected username with the given password. If the pair matches the content of the user.xml file, the main window of the application is displayed.
+	 */
+	private void btnLogin_click()
 	{
 		User u = (User) cmbUsername.getSelectedItem();
 		
@@ -136,7 +141,10 @@ public class LoginJFrame extends JFrame
 		
 	}
 	
-	private void btnRegister_click(ActionEvent e)
+	/**
+	 * Shows the windows that allows to register a new user.
+	 */
+	private void btnRegister_click()
 	{
 		JFrame a = new RegisterJFrame(this);
 		a.pack();
