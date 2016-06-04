@@ -20,6 +20,9 @@ import javax.swing.border.LineBorder;
 @SuppressWarnings("serial")
 public class NewsDetailsPanel extends JPanel
 {
+	/**
+	 * Initializes the GUI of this panel.
+	 */
 	public NewsDetailsPanel() {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		

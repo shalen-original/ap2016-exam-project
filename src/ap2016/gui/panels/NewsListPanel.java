@@ -715,7 +715,9 @@ public class NewsListPanel extends JPanel
 
 	
 	
-	
+	/**
+	 *  Goes back from "News detail" view to "News list" view.
+	 */
 	private void btnBack_Click()
 	{
 		updatePermissions();
@@ -724,6 +726,9 @@ public class NewsListPanel extends JPanel
 		pnlNewsList.setVisible(true);
 	}
 
+	/**
+	 * Removes the selected news. If the news is in "edit mode", then this button saves the changes.
+	 */
 	private void btnRemove_Click()
 	{
 		if (btnRemove.getText().equals("Remove"))
@@ -776,6 +781,9 @@ public class NewsListPanel extends JPanel
 		}
 	}
 
+	/**
+	 * Shows the view that allows to add a news.
+	 */
 	private void btnAdd_Click()
 	{
 		pnlNewsList.setVisible(false);
@@ -788,12 +796,18 @@ public class NewsListPanel extends JPanel
 
 	}
 
+	/**
+	 * Allows to abort the attempt to add a news.
+	 */
 	private void btnAbort_Click()
 	{
 		pnlAddNews.setVisible(false);
 		pnlNewsList.setVisible(true);
 	}
 
+	/**
+	 * Allows to save a new news.
+	 */
 	private void btnSave_Click()
 	{
 		if (!vtfTitle.isValid())
@@ -833,11 +847,17 @@ public class NewsListPanel extends JPanel
 
 	}
 	
+	/**
+	 * Updates the news displayed in the news list according to the content of the search bar and the permissions of the current user.
+	 */
 	private void btnSearch_Click()
 	{
 		updatePermissions();
 	}
 	
+	/**
+	 * Allows to edit a displayed news. If the news is already in "edit mode", then this button allows to delete all the changes.
+	 */
 	private void btnEdit_Click()
 	{
 		if (btnEdit.getText().equals("Edit"))
