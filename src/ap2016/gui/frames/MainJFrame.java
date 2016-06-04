@@ -978,7 +978,16 @@ public class MainJFrame extends JFrame
 		ans.append(values.get("numberOfMethods"));
 		ans.append(" test methods.\n");
 		
+		ans.append("\t => ");
+		ans.append(3670);
+		ans.append(" lines of normal code.\n");
+		
+		ans.append("\t => ");
+		ans.append(960);
+		ans.append(" lines of test code.\n");
+		
 		ans.append("\n");
+
 		
 		JOptionPane.showMessageDialog(this, ans.toString());
 	}
