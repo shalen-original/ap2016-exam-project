@@ -892,9 +892,16 @@ public class MainJFrame extends JFrame
 		classNames.add("ap2016.entities.Role");
 		classNames.add("ap2016.entities.User");
 		
+		classNames.add("ap2016.exceptions.InvalidAvatarNameException");
+		classNames.add("ap2016.exceptions.InvalidLanguageStringException");
+		classNames.add("ap2016.exceptions.InvalidPasswordException");
+		classNames.add("ap2016.exceptions.InvalidURLException");
+		classNames.add("ap2016.exceptions.InvalidUsernameException");
+		
 		classNames.add("ap2016.gui.frames.ExportJDialog");
 		classNames.add("ap2016.gui.frames.LoginJFrame");
 		classNames.add("ap2016.gui.frames.MainJFrame");
+		classNames.add("ap2016.gui.frames.ManageUsersJDialog");
 		classNames.add("ap2016.gui.frames.RegisterJFrame");
 		
 		classNames.add("ap2016.gui.panels.NewsDetailsPanel");
@@ -933,7 +940,7 @@ public class MainJFrame extends JFrame
 		
 		ans.append("\t => ");
 		ans.append(values.get("numberOfMethods"));
-		ans.append(" normal methods.\n");
+		ans.append(" normal methods;\n");
 		
 		
 		classNames.clear();
