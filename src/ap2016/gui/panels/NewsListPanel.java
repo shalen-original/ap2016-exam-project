@@ -1,10 +1,14 @@
 package ap2016.gui.panels;
 
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.function.Consumer;
 
@@ -291,6 +295,9 @@ public class NewsListPanel extends JPanel
 		
 		vecContent = new ViewEditComponent<JLabel, JTextArea>(lblContent, new JTextArea());
 		pnlContentLabelPanel.add(vecContent);
+		
+		Component verticalStrut_13 = Box.createVerticalStrut(10);
+		panel_1.add(verticalStrut_13);
 
 		verticalStrut_5 = Box.createVerticalStrut(10);
 		pnlNewsDetail.add(verticalStrut_5);
@@ -313,6 +320,17 @@ public class NewsListPanel extends JPanel
 		btnEdit.setMinimumSize(new Dimension(80, 30));
 		btnEdit.setMaximumSize(new Dimension(80, 30));
 		btnEdit.addActionListener(e -> btnEdit_Click());
+		
+		JButton btnOpenNewsIn = new JButton("Open news in browser");
+		panel_5.add(btnOpenNewsIn);
+		btnOpenNewsIn.addActionListener(e -> btnOpenNewsIn_Click());
+		btnOpenNewsIn.setMaximumSize(new Dimension(220, 30));
+		btnOpenNewsIn.setMinimumSize(new Dimension(220, 30));
+		btnOpenNewsIn.setPreferredSize(new Dimension(220, 30));
+		
+		Component horizontalStrut_23 = Box.createHorizontalStrut(10);
+		horizontalStrut_23.setMaximumSize(new Dimension(20, 0));
+		panel_5.add(horizontalStrut_23);
 		panel_5.add(btnEdit);
 
 		horizontalStrut_6 = Box.createHorizontalStrut(10);
@@ -708,6 +726,8 @@ public class NewsListPanel extends JPanel
 					+ "px;}</style></head><body><div id=\"mc\">" + n.getContent() + "</div></body></html>");
 		}
 		
+	
+		
 		currentNews = n;
 
 		spMain.revalidate();
@@ -853,6 +873,25 @@ public class NewsListPanel extends JPanel
 	private void btnSearch_Click()
 	{
 		updatePermissions();
+	}
+	
+	/**
+	 * Opens the currently displayed news in the default browser.
+	 */
+	private void btnOpenNewsIn_Click()
+	{
+		if (Desktop.isDesktopSupported()) 
+		{
+		  try {
+		    Desktop.getDesktop().browse(new URI(currentNews.getLink()));
+		  } catch (IOException e) { 
+			  JOptionPane.showMessageDialog(this, "The preferred browser did not respond properly and the application is not able to open the news.");
+		  } catch (URISyntaxException e) {
+			JOptionPane.showMessageDialog(this, "This news' link is not valid, the application cannot open the news.");
+		      }
+		} else { 
+			JOptionPane.showMessageDialog(this, "Preferred browser not found, the application cannot open the news.");
+		}
 	}
 	
 	/**
