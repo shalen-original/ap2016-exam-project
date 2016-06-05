@@ -7,18 +7,18 @@
 
 
 ##Description##
-This is my exam project for the programming course of summer 2016. This application is a basic RSS news feed readers. The user can
+This is my exam project for the programming course of summer 2016. This application is a basic RSS news feed reader. The user can
 read, edit and write `News` and can keep them organized in `News Channel`. The user can also import a new RSS feed from a file and can
 export the existing news channel to an HTML or an RTF file. Each user has a list of roles, which defines what he/she can or cannot do. The first
 user that registers itself in the application obtains automatically all the roles, include the one required to modify other users' roles. All the
 following user that register will only be able to read and search the news. The description of the available roles is:
 
-* **READ**: Basic permission, allows the user to read the news
-* **SEARCH**: Basic permission, allows the user to search/query the news
-* **ADD_NEWS**: Allows the user to add new news
-* **DELETE_NEWS**: Allows the user to delete news
-* **EDIT_NEWS**: Allows the user to edit existing news
-* **IMPORT_NEWS_FROM_FILE**: Allows the user to import news from another file
+* **READ**: Basic permission, allows the user to read the news;
+* **SEARCH**: Basic permission, allows the user to search/query the news;
+* **ADD_NEWS**: Allows the user to add new news;
+* **DELETE_NEWS**: Allows the user to delete news;
+* **EDIT_NEWS**: Allows the user to edit existing news;
+* **IMPORT_NEWS_FROM_FILE**: Allows the user to import news from another file;
 * **MANAGE_USER**: *ADMIN* level permission, allows the user to manage both its own roles and the ones of the other users.
 
 The data is persistently stored in two XML file, one for the users and one for the news channel. These two file are stored in the **data** folder. All the user avatars are copied and stored in the **assets** folder, in order to ensure that they are always available, even if the original image selected is deleted.
@@ -32,10 +32,10 @@ This feature was used all the classes located in the **test** source folder. In 
 * `tests.ap2016.entities.NewsChannelTest`;
 * `tests.ap2016.entities.NewsTest`.
 
-JUnit tests have been used to cover all of the classes that cover the logic of the application. Also the new components created for this application (`ValidableTextField`, `ValidablePasswordField`, `AvatarImageDisplay`) have been tested.
+JUnit tests have been used to cover all of the classes that manage the logic of the application. Also the new components created for this application (`ValidableTextField`, `ValidablePasswordField`, `AvatarImageDisplay`) have been tested.
 
 ####Exception handling####
-Some special exceptions have been defined for this application. They are mostly used to describe situations in which the input given by the user is not valid. The exceptions defined for this class are:
+Some special exceptions have been defined for this application. They are mostly used to describe situations in which the input given by the user is not valid. The exceptions defined for this application are:
 
 * `ap2016.exceptions.InvalidAvatarNameException`;
 * `ap2016.exceptions.InvalidLanguageStringException`;
