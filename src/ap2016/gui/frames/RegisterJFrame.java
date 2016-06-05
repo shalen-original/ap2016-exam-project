@@ -97,23 +97,23 @@ public class RegisterJFrame extends JFrame
 
 		this.btnRegisterAndLogin = new JButton("Register and login");
 		this.btnRegisterAndLogin.addActionListener(e -> btnRegisterAndLogin_Click());
-		this.btnRegisterAndLogin.setBounds(283, 237, 147, 28);
+		this.btnRegisterAndLogin.setBounds(278, 237, 160, 28);
 		panel.add(this.btnRegisterAndLogin);
 
 		this.btnAbort = new JButton("Abort");
 		this.btnAbort.addActionListener(e -> btnAbort_Click());
-		this.btnAbort.setBounds(68, 237, 147, 28);
+		this.btnAbort.setBounds(59, 237, 160, 28);
 		panel.add(this.btnAbort);
 
 		this.btnSelectImage = new JButton("Choose avatar");
 		this.btnSelectImage.addActionListener(e -> btnSelectImage_Click());
-		this.btnSelectImage.setBounds(333, 189, 133, 23);
+		this.btnSelectImage.setBounds(333, 189, 140, 23);
 		panel.add(this.btnSelectImage);
 
 		this.aidImage = new AvatarImageDisplay();
 		this.aidImage.setHorizontalAlignment(SwingConstants.CENTER);
 		this.aidImage.setBackground(Color.WHITE);
-		this.aidImage.setBounds(343, 50, 113, 113);
+		this.aidImage.setBounds(347, 50, 113, 113);
 		try
 		{
 			this.aidImage.setIcon(

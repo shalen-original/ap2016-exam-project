@@ -236,11 +236,11 @@ public class MainJFrame extends JFrame
 		panel_1.add(horizontalStrut_5);
 
 		this.btnExport = new JButton("Go");
-		this.btnExport.setPreferredSize(new Dimension(50, 25));
+		this.btnExport.setPreferredSize(new Dimension(60, 25));
 		this.btnExport.addActionListener(e -> btnExport_Click());
 		panel_1.add(this.btnExport);
-		this.btnExport.setMinimumSize(new Dimension(50, 25));
-		this.btnExport.setMaximumSize(new Dimension(50, 25));
+		this.btnExport.setMinimumSize(new Dimension(60, 25));
+		this.btnExport.setMaximumSize(new Dimension(60, 25));
 
 		JPanel panel_3 = new JPanel();
 		panel_2.add(panel_3);
@@ -539,6 +539,11 @@ public class MainJFrame extends JFrame
 		panel_13.add(horizontalStrut_23);
 
 		this.vecChannelTitle = new ViewEditComponent<>(new JLabel(), new ValidableTextField());
+		vecChannelTitle.getViewComponent().setMinimumSize(new Dimension(150, 0));
+		vecChannelTitle.getViewComponent().setPreferredSize(new Dimension(150, 0));
+		vecChannelTitle.getViewComponent().setMaximumSize(new Dimension(150, 0));
+		vecChannelTitle.setPreferredSize(new Dimension(300, 0));
+		vecChannelTitle.setMaximumSize(new Dimension(300, 2147483647));
 		panel_13.add(this.vecChannelTitle);
 
 		Component horizontalStrut_24 = Box.createHorizontalStrut(20);
@@ -553,6 +558,9 @@ public class MainJFrame extends JFrame
 		panel_13.add(horizontalStrut_25);
 
 		this.vecChannelLink = new ViewEditComponent<>(new JLabel(), new ValidableTextField());
+		vecChannelLink.getViewComponent().setMinimumSize(new Dimension(150, 0));
+		vecChannelLink.getViewComponent().setMaximumSize(new Dimension(150, 0));
+		vecChannelLink.getViewComponent().setPreferredSize(new Dimension(150, 0));
 		panel_13.add(this.vecChannelLink);
 
 		Component horizontalStrut_26 = Box.createHorizontalStrut(20);
@@ -567,6 +575,9 @@ public class MainJFrame extends JFrame
 		panel_13.add(horizontalStrut_27);
 
 		this.vecChannelLanguage = new ViewEditComponent<>(new JLabel(), new ValidableTextField());
+		vecChannelLanguage.getViewComponent().setMinimumSize(new Dimension(40, 0));
+		vecChannelLanguage.getViewComponent().setMaximumSize(new Dimension(40, 0));
+		vecChannelLanguage.getViewComponent().setPreferredSize(new Dimension(40, 0));
 		panel_13.add(this.vecChannelLanguage);
 
 		Component horizontalGlue_1 = Box.createHorizontalGlue();

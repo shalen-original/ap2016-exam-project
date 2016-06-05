@@ -317,18 +317,18 @@ public class NewsListPanel extends JPanel
 		panel_5.setLayout(new BoxLayout(panel_5, BoxLayout.X_AXIS));
 
 		this.btnBack = new JButton("« Back to the news list");
-		this.btnBack.setPreferredSize(new Dimension(170, 30));
-		this.btnBack.setMinimumSize(new Dimension(170, 30));
-		this.btnBack.setMaximumSize(new Dimension(170, 30));
+		this.btnBack.setPreferredSize(new Dimension(190, 30));
+		this.btnBack.setMinimumSize(new Dimension(190, 30));
+		this.btnBack.setMaximumSize(new Dimension(190, 30));
 		panel_5.add(this.btnBack);
 
 		horizontalGlue_6 = Box.createHorizontalGlue();
 		panel_5.add(horizontalGlue_6);
 
 		this.btnEdit = new JButton("Edit");
-		this.btnEdit.setPreferredSize(new Dimension(80, 30));
-		this.btnEdit.setMinimumSize(new Dimension(80, 30));
-		this.btnEdit.setMaximumSize(new Dimension(80, 30));
+		this.btnEdit.setPreferredSize(new Dimension(100, 30));
+		this.btnEdit.setMinimumSize(new Dimension(100, 30));
+		this.btnEdit.setMaximumSize(new Dimension(100, 30));
 		this.btnEdit.addActionListener(e -> btnEdit_Click());
 
 		JButton btnOpenNewsIn = new JButton("Open news in browser");
@@ -348,9 +348,9 @@ public class NewsListPanel extends JPanel
 		panel_5.add(horizontalStrut_6);
 
 		this.btnRemove = new JButton("Remove");
-		this.btnRemove.setMaximumSize(new Dimension(80, 30));
-		this.btnRemove.setMinimumSize(new Dimension(80, 30));
-		this.btnRemove.setPreferredSize(new Dimension(80, 30));
+		this.btnRemove.setMaximumSize(new Dimension(100, 30));
+		this.btnRemove.setMinimumSize(new Dimension(100, 30));
+		this.btnRemove.setPreferredSize(new Dimension(100, 30));
 		this.btnRemove.addActionListener((e) -> btnRemove_Click());
 		panel_5.add(this.btnRemove);
 
