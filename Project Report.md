@@ -104,7 +104,7 @@ Reflection was used in the following class:
 ####I/O & Streams####
 I/O and streams were used in the following classes:
 
-* * `ap2016.entities.User`, line 74-76, 394-396, 402-410, 438-439;
+* `ap2016.entities.User`, line 74-76, 394-396, 402-410, 438-439;
 * `ap2016.gui.frames.ExportJDialog`, line 262-266, 320-329;
 * `ap2016.io.DataProvider`, line 105, 128, 157-160;
 
