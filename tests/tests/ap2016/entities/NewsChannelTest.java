@@ -1,5 +1,6 @@
 package tests.ap2016.entities;
 
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -12,128 +13,140 @@ import org.junit.Test;
 import ap2016.entities.News;
 import ap2016.entities.NewsChannel;
 
+
 public class NewsChannelTest
 {
 
 	NewsChannel n;
 	ArrayList<News> original;
-	
+
 	@Before
 	public void setup()
 	{
-		n = new NewsChannel("Test Title", "http://www.example.org", "Test Description", "ts-TS");
-		
+		this.n = new NewsChannel("Test Title", "http://www.example.org", "Test Description", "ts-TS");
+
 		News a;
-		original = new ArrayList<>();
-		
+		this.original = new ArrayList<>();
+
 		for (int i = 0; i < 10; i++)
 		{
 			a = new News();
 			a.setTitle("Test News Title " + (i + 1));
-			n.getNews().add(a);
-			original.add(a);
+			this.n.getNews().add(a);
+			this.original.add(a);
 		}
 	}
-	
+
 	@After
 	public void teardown()
 	{
-		n = null;
+		this.n = null;
 	}
 
 	@Test
-	public void testNewsChannelStringStringStringString()
+	public void testGetDescription()
 	{
-		n = new NewsChannel("Test Title 2", "http://next.example.org", "Test Description 2", "ts-TV");
-		
-		if (!n.getTitle().equals("Test Title 2"))
-			fail("Title doesn't match. Obtained [" + n.getTitle() + "] but expected [Test Title 2]");
-		if (!n.getLink().equals("http://next.example.org"))
-			fail("Link doesn't match. Obtained [" + n.getLink() + "] but expected [http://next.example.org]");
-		if (!n.getDescription().equals("Test Description 2"))
-			fail("Title doesn't match. Obtained [" + n.getDescription() + "] but expected [Test Description 2]");
-		if (!n.getLanguage().equals("ts-TV"))
-			fail("Title doesn't match. Obtained [" + n.getLanguage() + "] but expected [ts-TV]");
+		assertEquals(this.n.getDescription(), "Test Description");
+	}
+
+	@Test
+	public void testGetLanguage()
+	{
+		assertEquals(this.n.getLanguage(), "ts-TS");
+	}
+
+	@Test
+	public void testGetLink()
+	{
+		assertEquals(this.n.getLink(), "http://www.example.org");
 	}
 
 	@Test
 	public void testGetNews()
 	{
-		ArrayList<News> a = n.getNews();
-		for (int i = 0; i < original.size(); i++)
+		ArrayList<News> a = this.n.getNews();
+		for (int i = 0; i < this.original.size(); i++)
 		{
-			if (!original.get(i).equals(a.get(i)))
+			if (!this.original.get(i).equals(a.get(i)))
+			{
 				fail("The news are not the same");
+			}
 		}
 	}
 
 	@Test
 	public void testGetTitle()
 	{
-		assertEquals(n.getTitle(), "Test Title");
+		assertEquals(this.n.getTitle(), "Test Title");
 	}
 
 	@Test
-	public void testSetTitle()
+	public void testNewsChannelStringStringStringString()
 	{
-		n.setTitle("Test Title 2");
-		assertEquals(n.getTitle(), "Test Title 2");
-	}
+		this.n = new NewsChannel("Test Title 2", "http://next.example.org", "Test Description 2", "ts-TV");
 
-	@Test
-	public void testGetLink()
-	{
-		assertEquals(n.getLink(), "http://www.example.org");
-	}
-
-	@Test
-	public void testSetLink_00()
-	{
-		n.setLink("http://next.example.org");
-		assertEquals(n.getLink(), "http://next.example.org");
-	}
-	@Test(expected = IllegalArgumentException.class)
-	public void testSetLink_01()
-	{
-		n.setLink("invalid url");
-	}
-
-	@Test
-	public void testGetDescription()
-	{
-		assertEquals(n.getDescription(), "Test Description");
+		if (!this.n.getTitle().equals("Test Title 2"))
+		{
+			fail("Title doesn't match. Obtained [" + this.n.getTitle() + "] but expected [Test Title 2]");
+		}
+		if (!this.n.getLink().equals("http://next.example.org"))
+		{
+			fail("Link doesn't match. Obtained [" + this.n.getLink() + "] but expected [http://next.example.org]");
+		}
+		if (!this.n.getDescription().equals("Test Description 2"))
+		{
+			fail("Title doesn't match. Obtained [" + this.n.getDescription() + "] but expected [Test Description 2]");
+		}
+		if (!this.n.getLanguage().equals("ts-TV"))
+		{
+			fail("Title doesn't match. Obtained [" + this.n.getLanguage() + "] but expected [ts-TV]");
+		}
 	}
 
 	@Test
 	public void testSetDescription()
 	{
-		n.setDescription("Test Description 2");
-		assertEquals(n.getDescription(), "Test Description 2");
-	}
-
-	@Test
-	public void testGetLanguage()
-	{
-		assertEquals(n.getLanguage(), "ts-TS");
+		this.n.setDescription("Test Description 2");
+		assertEquals(this.n.getDescription(), "Test Description 2");
 	}
 
 	@Test
 	public void testSetLanguage_00()
 	{
-		n.setLanguage("ts-TV");
-		assertEquals(n.getLanguage(), "ts-TV");
+		this.n.setLanguage("ts-TV");
+		assertEquals(this.n.getLanguage(), "ts-TV");
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetLanguage_01()
 	{
-		n.setLanguage("invalid language");
+		this.n.setLanguage("invalid language");
 	}
-	
+
+	@Test
+	public void testSetLink_00()
+	{
+		this.n.setLink("http://next.example.org");
+		assertEquals(this.n.getLink(), "http://next.example.org");
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetLink_01()
+	{
+		this.n.setLink("invalid url");
+	}
+
+	@Test
+	public void testSetTitle()
+	{
+		this.n.setTitle("Test Title 2");
+		assertEquals(this.n.getTitle(), "Test Title 2");
+	}
+
 	@Test
 	public void testToString()
 	{
-		assertEquals(n.toString(), "Test Title");
+		assertEquals(this.n.toString(), "Test Title");
 	}
 
 }

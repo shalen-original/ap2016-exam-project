@@ -1,40 +1,16 @@
 package tests.ap2016.gui.utilities;
 
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 import ap2016.gui.utilities.ValidablePasswordField;
 
+
 public class TestValidablePasswordField
 {
 
-
-	@Test
-	public void testValidablePasswordFieldPredicateOfchar_00()
-	{
-		ValidablePasswordField a = new ValidablePasswordField(c -> c[0] == '0');
-		a.setText("0 text");
-		assertEquals(a.isValid(), true);
-	}
-	
-	@Test
-	public void testValidablePasswordFieldPredicateOfchar_01()
-	{
-		ValidablePasswordField a = new ValidablePasswordField(c -> c[0] != '0');
-		a.setText("0 text");
-		assertEquals(a.isValid(), false);
-	}
-
-	
-	@Test
-	public void testValidablePasswordField()
-	{
-		@SuppressWarnings("unused")
-		ValidablePasswordField a = new ValidablePasswordField();
-	}
-
-	
 	@Test
 	public void testIsValid()
 	{
@@ -44,7 +20,15 @@ public class TestValidablePasswordField
 		a.setText("1 text");
 		assertEquals(a.isValid(), false);
 	}
-	
+
+	@Test
+	public void testUpdateValidationState()
+	{
+		ValidablePasswordField a = new ValidablePasswordField(c -> c[0] == '0');
+		a.setText("0 text");
+		a.updateValidationState();
+	}
+
 	@Test
 	public void testUpdateValidationTest()
 	{
@@ -57,11 +41,26 @@ public class TestValidablePasswordField
 	}
 
 	@Test
-	public void testUpdateValidationState()
+	public void testValidablePasswordField()
+	{
+		@SuppressWarnings("unused")
+		ValidablePasswordField a = new ValidablePasswordField();
+	}
+
+	@Test
+	public void testValidablePasswordFieldPredicateOfchar_00()
 	{
 		ValidablePasswordField a = new ValidablePasswordField(c -> c[0] == '0');
 		a.setText("0 text");
-		a.updateValidationState();
+		assertEquals(a.isValid(), true);
+	}
+
+	@Test
+	public void testValidablePasswordFieldPredicateOfchar_01()
+	{
+		ValidablePasswordField a = new ValidablePasswordField(c -> c[0] != '0');
+		a.setText("0 text");
+		assertEquals(a.isValid(), false);
 	}
 
 }

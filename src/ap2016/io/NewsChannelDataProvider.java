@@ -1,5 +1,6 @@
 package ap2016.io;
 
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -8,17 +9,20 @@ import org.w3c.dom.NodeList;
 import ap2016.entities.News;
 import ap2016.entities.NewsChannel;
 
+
 /**
  * This class acts as a wrapper between the <i>data.xml</i> file and the rest of the application. Is uses the <i>Singleton</i> pattern.
  * @author Matteo Nardini
  *
  */
-public class NewsChannelDataProvider extends DataProvider<NewsChannel>{
-	
+public class NewsChannelDataProvider extends DataProvider<NewsChannel>
+{
+
 	/**
 	 * Contains the unique instance of the class.
 	 */
 	private static NewsChannelDataProvider instance;
+
 	/**
 	 * Returns the instance of this class.
 	 * @return This method returns the instance of this class.
@@ -29,10 +33,10 @@ public class NewsChannelDataProvider extends DataProvider<NewsChannel>{
 		{
 			instance = new NewsChannelDataProvider();
 		}
-		
+
 		return instance;
 	}
-	
+
 	/**
 	 * Creates a new news channel data provider from the file <i>data.xml</i>
 	 */
@@ -42,54 +46,46 @@ public class NewsChannelDataProvider extends DataProvider<NewsChannel>{
 	}
 
 	/**
-	 * Converts the file <i>data.xml</i> to a list of {@link ap2016.entities.NewsChannel NewsChannel}.
+	 * Imports an external "data.xml" file to the current news channel list.
 	 */
-	protected void parseDoc(Document doc)
+	@Override
+	protected void appendDoc(Document doc)
 	{
-		NodeList channelNodes = doc.getElementsByTagName("channel");
-		NodeList currentChannelChild;
-		Node tmp;
-		NewsChannel currentChannel;
-		
-		// Generally, a well formed RSS has only a single channel. This time, however, I will allow the user
-		// to import its data into this file and will allow him/her to choose wether to add them to a new channel or
-		// to the current one. Therefore, this file could contain more than a single channel. Thus, the for loop is required.
-		
-		for (int i = 0; i < channelNodes.getLength(); i++)
+		// The steps to parse an external document are exactly those required to parse the data.xml.
+		parseDoc(doc);
+	}
+
+	/**
+	 * Converts the list of {@link ap2016.entities.NewsChannel NewsChannel} to an XML document.
+	 */
+	@Override
+	protected void buildDoc(Document doc)
+	{
+		// Creates the root elements and appends it to the document
+		Element uRoot = doc.createElement("news-list");
+		doc.appendChild(uRoot);
+
+		Element currChannelNode = null;
+		for (NewsChannel currentChannel : this.data)
 		{
-			// Gets this channel data
-			currentChannelChild = channelNodes.item(i).getChildNodes();
-			
-			// Creates the new channel
-			currentChannel = new NewsChannel();		
-			
-			for (int j = 0; j < currentChannelChild.getLength(); j++)
+			// Creates this user
+			currChannelNode = doc.createElement("channel");
+
+			addElementWithText(currChannelNode, "title", currentChannel.getTitle(), doc);
+			addElementWithText(currChannelNode, "description", currentChannel.getDescription(), doc);
+			addElementWithText(currChannelNode, "link", currentChannel.getLink(), doc);
+			addElementWithText(currChannelNode, "language", currentChannel.getLanguage(), doc);
+
+			for (News n : currentChannel.getNews())
 			{
-				tmp = currentChannelChild.item(j);
-				switch(tmp.getNodeName())
-				{
-					case "title":
-						currentChannel.setTitle(tmp.getTextContent());
-						break;
-					case "description":
-						currentChannel.setDescription(tmp.getTextContent());
-						break;
-					case "link":
-						currentChannel.setLink(tmp.getTextContent());
-						break;
-					case "language":
-						currentChannel.setLanguage(tmp.getTextContent());
-						break;
-					case "item":
-						currentChannel.getNews().add(buildNewFromNodeList(tmp));
-						break;
-				}
+				currChannelNode.appendChild(generateNodeFromNews("item", n, doc));
 			}
-			
-			data.add(currentChannel);	
+
+			uRoot.appendChild(currChannelNode);
+
 		}
 	}
-	
+
 	/**
 	 * This method converts a {@code news} tag to a {@link ap2016.entities.News News} object.
 	 * @param item The node representing a {@code news} tag.
@@ -98,15 +94,15 @@ public class NewsChannelDataProvider extends DataProvider<NewsChannel>{
 	private News buildNewFromNodeList(Node item)
 	{
 		News nn = new News();
-		
+
 		NodeList newsNode = item.getChildNodes();
 		Node tmp;
-		
+
 		for (int i = 0; i < newsNode.getLength(); i++)
 		{
 			tmp = newsNode.item(i);
-			
-			switch(tmp.getNodeName())
+
+			switch (tmp.getNodeName())
 			{
 				case "title":
 					nn.setTitle(tmp.getTextContent());
@@ -129,42 +125,10 @@ public class NewsChannelDataProvider extends DataProvider<NewsChannel>{
 					break;
 			}
 		}
-		
+
 		return nn;
 	}
-	
-	
-	
-	/**
-	 * Converts the list of {@link ap2016.entities.NewsChannel NewsChannel} to an XML document.
-	 */
-	protected void buildDoc(Document doc)
-	{
-		// Creates the root elements and appends it to the document
-		Element uRoot = doc.createElement("news-list");
-		doc.appendChild(uRoot);
-		
-		Element currChannelNode = null;
-		for (NewsChannel currentChannel : data)
-		{
-			// Creates this user
-			currChannelNode = doc.createElement("channel");
-			
-			addElementWithText(currChannelNode, "title", currentChannel.getTitle(), doc);
-			addElementWithText(currChannelNode, "description", currentChannel.getDescription(), doc);
-			addElementWithText(currChannelNode, "link", currentChannel.getLink(), doc);
-			addElementWithText(currChannelNode, "language", currentChannel.getLanguage(), doc);
 
-			for (News n : currentChannel.getNews())
-			{
-				currChannelNode.appendChild(generateNodeFromNews("item", n, doc));
-			}
-			
-			uRoot.appendChild(currChannelNode);
-			
-		}
-	}
-	
 	/**
 	 * This method generate a new {@code news} tag from a given {@link ap2016.entities.News News} object.
 	 * @param elName The name of the {@code news} tag.
@@ -175,25 +139,68 @@ public class NewsChannelDataProvider extends DataProvider<NewsChannel>{
 	private Element generateNodeFromNews(String elName, News n, Document doc)
 	{
 		Element el = doc.createElement(elName);
-		
+
 		addElementWithText(el, "title", n.getTitle(), doc);
 		addElementWithText(el, "link", n.getLink(), doc);
 		addElementWithText(el, "pubDate", n.getPubblicationDate(), doc);
 		addElementWithText(el, "author", n.getAuthor(), doc);
 		addElementWithText(el, "description", n.getDescription(), doc);
 		addElementWithText(el, "content", n.getContent(), doc);
-		
+
 		return el;
 	}
 
 	/**
-	 * Imports an external "data.xml" file to the current news channel list.
+	 * Converts the file <i>data.xml</i> to a list of {@link ap2016.entities.NewsChannel NewsChannel}.
 	 */
 	@Override
-	protected void appendDoc(Document doc)
+	protected void parseDoc(Document doc)
 	{
-		// The steps to parse an external document are exactly those required to parse the data.xml.
-		parseDoc(doc);
+		NodeList channelNodes = doc.getElementsByTagName("channel");
+		NodeList currentChannelChild;
+		Node tmp;
+		NewsChannel currentChannel;
+
+		// Generally, a well formed RSS has only a single channel. This time, however, I will allow
+		// the user
+		// to import its data into this file and will allow him/her to choose wether to add them to
+		// a new channel or
+		// to the current one. Therefore, this file could contain more than a single channel. Thus,
+		// the for loop is required.
+
+		for (int i = 0; i < channelNodes.getLength(); i++)
+		{
+			// Gets this channel data
+			currentChannelChild = channelNodes.item(i).getChildNodes();
+
+			// Creates the new channel
+			currentChannel = new NewsChannel();
+
+			for (int j = 0; j < currentChannelChild.getLength(); j++)
+			{
+				tmp = currentChannelChild.item(j);
+				switch (tmp.getNodeName())
+				{
+					case "title":
+						currentChannel.setTitle(tmp.getTextContent());
+						break;
+					case "description":
+						currentChannel.setDescription(tmp.getTextContent());
+						break;
+					case "link":
+						currentChannel.setLink(tmp.getTextContent());
+						break;
+					case "language":
+						currentChannel.setLanguage(tmp.getTextContent());
+						break;
+					case "item":
+						currentChannel.getNews().add(buildNewFromNodeList(tmp));
+						break;
+				}
+			}
+
+			this.data.add(currentChannel);
+		}
 	}
 
 }

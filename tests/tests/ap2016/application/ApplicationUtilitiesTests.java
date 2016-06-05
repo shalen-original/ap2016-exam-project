@@ -1,5 +1,6 @@
 package tests.ap2016.application;
 
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -14,17 +15,70 @@ import org.junit.Test;
 
 import ap2016.application.ApplicationUtilities;
 
+
 public class ApplicationUtilitiesTests
 {
-	
+
+	@Test
+	public void testByteArrayToString_00()
+	{
+		byte[] test = { 45, 36, 10, 47, 67, -10 };
+		String a = Arrays.toString(test);
+
+		assertEquals(a, ApplicationUtilities.byteArrayToString(test));
+	}
+
+	@Test
+	public void testByteArrayToString_01()
+	{
+		byte[] test = {};
+		String a = Arrays.toString(test);
+
+		assertEquals(a, ApplicationUtilities.byteArrayToString(test));
+
+	}
+
+	@Test
+	public void testFormatComponent_00()
+	{
+		JComponent a = new JTextField();
+		ApplicationUtilities.formatComponent(a, true);
+		ApplicationUtilities.formatComponent(a, false);
+	}
+
+	@Test
+	public void testIsValidLanguage()
+	{
+		HashMap<String, Boolean> tests = new HashMap<>();
+
+		tests.put("en-EN", true);
+		tests.put("en-Ec", false);
+		tests.put("En-EN", false);
+		tests.put("en-ENF", false);
+		tests.put("enf-EN", false);
+		tests.put("en-sEf", false);
+		tests.put("enD-EN", false);
+		tests.put("ENenD", false);
+
+		for (Map.Entry<String, Boolean> k : tests.entrySet())
+		{
+			if (ApplicationUtilities.isValidLanguage(k.getKey()) != k.getValue())
+			{
+				fail("The language: " + k.getKey() + " is marked as "
+						+ (ApplicationUtilities.isValidLanguage(k.getKey()) ? "valid" : "invalid")
+						+ " but should have been " + (k.getValue() ? "valid" : "invalid"));
+			}
+		}
+	}
+
 	@Test
 	public void testIsValidURL()
 	{
 		HashMap<String, Boolean> tests = new HashMap<>();
-		
+
 		// The following list of valid/invalid urls has been kindly provided
 		// by the website: https://mathiasbynens.be/demo/url-regex
-		
+
 		// VALID URLS
 		tests.put("http://foo.com/blah_blah", true);
 		tests.put("http://foo.com/blah_blah/", true);
@@ -42,19 +96,19 @@ public class ApplicationUtilitiesTests
 		tests.put("http://142.42.1.1:8080/", true);
 		tests.put("http://code.google.com/events/#&product=browser", true);
 		tests.put("http://j.mp", true);
-    	tests.put("ftp://foo.bar/baz", true);
+		tests.put("ftp://foo.bar/baz", true);
 		tests.put("http://foo.bar/?q=Test%20URL-encoded%20stuff", true);
 		tests.put("http://1337.net", true);
 		tests.put("http://a.b-c.de", true);
 		tests.put("http://223.255.255.254", true);
-		
-		//INVALID URLS
+
+		// INVALID URLS
 		tests.put("ttp://", false);
 		tests.put("://.", false);
 		tests.put("://..", false);
 		tests.put("://../", false);
 		tests.put("://?", false);
-    	tests.put("://??", false);
+		tests.put("://??", false);
 		tests.put("://??/", false);
 		tests.put("://#", false);
 		tests.put("://##", false);
@@ -87,89 +141,49 @@ public class ApplicationUtilitiesTests
 		tests.put("://www.foo.bar./", false);
 		tests.put("://.www.foo.bar./", false);
 		tests.put("://10.1.1.1", false);
-				
+
 		for (Map.Entry<String, Boolean> k : tests.entrySet())
 		{
 			if (ApplicationUtilities.isValidURL(k.getKey()) != k.getValue())
-				fail("The url: " + k.getKey() + " is marked as " + (ApplicationUtilities.isValidURL(k.getKey()) ? "valid" : "invalid") 
-						+ " but should have been " + (k.getValue() ? "valid" : "invalid"));
-		}
-	}
-	
-	@Test
-	public void testIsValidLanguage()
-	{
-		HashMap<String, Boolean> tests = new HashMap<>();
-		
-		tests.put("en-EN", true);
-		tests.put("en-Ec", false);
-		tests.put("En-EN", false);
-		tests.put("en-ENF", false);
-		tests.put("enf-EN", false);
-		tests.put("en-sEf", false);
-		tests.put("enD-EN", false);
-		tests.put("ENenD", false);
-				
-		for (Map.Entry<String, Boolean> k : tests.entrySet())
-		{
-			if (ApplicationUtilities.isValidLanguage(k.getKey()) != k.getValue())
-				fail("The language: " + k.getKey() + " is marked as " + (ApplicationUtilities.isValidLanguage(k.getKey()) ? "valid" : "invalid") 
-						+ " but should have been " + (k.getValue() ? "valid" : "invalid"));
+			{
+				fail("The url: " + k.getKey() + " is marked as "
+						+ (ApplicationUtilities.isValidURL(k.getKey()) ? "valid" : "invalid") + " but should have been "
+						+ (k.getValue() ? "valid" : "invalid"));
+			}
 		}
 	}
 
 	@Test
 	public void testStringToByteArray_00()
 	{
-		byte[] test = {45, 36, 10, 47, 67, -10};
+		byte[] test = { 45, 36, 10, 47, 67, -10 };
 		String a = Arrays.toString(test);
-		
+
 		byte[] ans = ApplicationUtilities.stringToByteArray(a);
-		
+
 		for (int i = 0; i < test.length; i++)
 		{
 			if (test[i] != ans[i])
+			{
 				fail("The string has not been parsed correctly. The value " + ans[i] + "should have been " + test[i]);
+			}
 		}
-		
+
 	}
+
 	@Test
 	public void testStringToByteArray_01()
 	{
 		byte[] test = {};
 		String a = Arrays.toString(test);
-		
-		byte[] ans = ApplicationUtilities.stringToByteArray(a);
-		
-		if (ans.length != 0)
-			fail("The length of the array should be zero");
-		
-	}
 
-	@Test
-	public void testByteArrayToString_00()
-	{
-		byte[] test = {45, 36, 10, 47, 67, -10};
-		String a = Arrays.toString(test);
-		
-		assertEquals(a, ApplicationUtilities.byteArrayToString(test));
-	}
-	@Test
-	public void testByteArrayToString_01()
-	{
-		byte[] test = {};
-		String a = Arrays.toString(test);
-		
-		assertEquals(a, ApplicationUtilities.byteArrayToString(test));
-		
-	}
-	
-	@Test
-	public void testFormatComponent_00()
-	{
-		JComponent a = new JTextField();
-		ApplicationUtilities.formatComponent(a, true);
-		ApplicationUtilities.formatComponent(a, false);
+		byte[] ans = ApplicationUtilities.stringToByteArray(a);
+
+		if (ans.length != 0)
+		{
+			fail("The length of the array should be zero");
+		}
+
 	}
 
 }

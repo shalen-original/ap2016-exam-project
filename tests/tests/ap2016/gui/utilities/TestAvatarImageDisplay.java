@@ -1,10 +1,12 @@
 package tests.ap2016.gui.utilities;
 
+
 import javax.swing.ImageIcon;
 
 import org.junit.Test;
 
 import ap2016.gui.utilities.AvatarImageDisplay;
+
 
 @SuppressWarnings("unused")
 public class TestAvatarImageDisplay

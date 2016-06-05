@@ -1,5 +1,6 @@
 package tests.ap2016.io;
 
+
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
@@ -11,57 +12,56 @@ import org.junit.Test;
 import ap2016.entities.NewsChannel;
 import ap2016.io.NewsChannelDataProvider;
 
+
 public class NewsChannelDataProviderTest
 {
 
 	@Test
-	public void testGetInstance()
+	public void testGetData()
 	{
-		 NewsChannelDataProvider.getInstance();
+		NewsChannelDataProvider.getInstance().getData();
 	}
 
 	@Test
-	public void testGetData()
+	public void testGetInstance()
 	{
-		 NewsChannelDataProvider.getInstance().getData();
+		NewsChannelDataProvider.getInstance();
 	}
 
 	@Test
 	public void testSaveReadDataToFile() throws TransformerFactoryConfigurationError, Exception
 	{
 		NewsChannelDataProvider.getInstance().readDataFromFile();
-		ArrayList<NewsChannel> us =  NewsChannelDataProvider.getInstance().getData();
-		
+		ArrayList<NewsChannel> us = NewsChannelDataProvider.getInstance().getData();
+
 		@SuppressWarnings("unchecked")
 		ArrayList<NewsChannel> origin = (ArrayList<NewsChannel>) us.clone();
-		
-		
+
 		NewsChannelDataProvider.getInstance().saveDataToFile();
-		NewsChannelDataProvider.getInstance().readDataFromFile();	
-		
-		
+		NewsChannelDataProvider.getInstance().readDataFromFile();
+
 		for (int i = 0; i < origin.size(); i++)
 		{
 			if (!origin.get(i).getTitle().equals(us.get(i).getTitle()))
 			{
 				fail("data file was not read correctly");
 			}
-			
+
 			if (!origin.get(i).getDescription().equals(us.get(i).getDescription()))
 			{
 				fail("data file was not read correctly");
 			}
-			
+
 			if (!origin.get(i).getLink().equals(us.get(i).getLink()))
 			{
 				fail("data file was not read correctly");
 			}
-			
+
 			if (!origin.get(i).getLanguage().equals(us.get(i).getLanguage()))
 			{
 				fail("data file was not read correctly");
 			}
-			
+
 			for (int j = 0; j < origin.get(i).getNews().size(); j++)
 			{
 				if (!origin.get(i).getNews().get(j).getTitle().equals(us.get(i).getNews().get(j).getTitle()))
@@ -76,7 +76,8 @@ public class NewsChannelDataProviderTest
 				{
 					fail("data file was not read correctly");
 				}
-				if (!origin.get(i).getNews().get(j).getDescription().equals(us.get(i).getNews().get(j).getDescription()))
+				if (!origin.get(i).getNews().get(j).getDescription()
+						.equals(us.get(i).getNews().get(j).getDescription()))
 				{
 					fail("data file was not read correctly");
 				}
@@ -84,13 +85,13 @@ public class NewsChannelDataProviderTest
 				{
 					fail("data file was not read correctly");
 				}
-				if (!origin.get(i).getNews().get(j).getPubblicationDate().equals(us.get(i).getNews().get(j).getPubblicationDate()))
+				if (!origin.get(i).getNews().get(j).getPubblicationDate()
+						.equals(us.get(i).getNews().get(j).getPubblicationDate()))
 				{
 					fail("data file was not read correctly");
 				}
 			}
 		}
 	}
-	
 
 }
