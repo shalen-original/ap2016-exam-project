@@ -1,5 +1,14 @@
-#Feature used in the project#
-This file reports the list of all the *Advanced Programming Techniques* used in the project, as requested in the requirements. Here is the list.
+#Advanced Programming 2015/16 Project Report#
+**Title**: News feed - basic RSS feed reader
+**Student**: Matteo Nardini - mnardini@unibz.it
+**Student ID**: TODO
+
+##Description##
+[description]
+
+##Advanced programming techniques##
+####used in the project####
+This section reports the list of all the *Advanced Programming Techniques* used in the project, as requested in the requirements.
 
 ###JUnit Test Cases and Test Suite###
 This feature was used in the following classes:

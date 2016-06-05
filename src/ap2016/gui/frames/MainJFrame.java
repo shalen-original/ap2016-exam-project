@@ -38,12 +38,17 @@ import ap2016.gui.panels.NewsListPanel;
 import ap2016.gui.utilities.AvatarImageDisplay;
 import ap2016.gui.utilities.ValidableTextField;
 import ap2016.gui.utilities.ViewEditComponent;
+import ap2016.io.DataProvider;
 import ap2016.io.NewsChannelDataProvider;
 import ap2016.io.UserDataProvider;
 
 @SuppressWarnings("serial")
 public class MainJFrame extends JFrame
 {	
+	
+	private boolean isRTTIUsed = false;
+	
+	
 	private User currentUser;
 	private NewsChannel currentNewsChannel;
 	
@@ -671,6 +676,12 @@ public class MainJFrame extends JFrame
 		vecChannelDescription.setEditToViewOperation((v,e) -> v.setText(e.getText()));
 		
 		updatePermissions();
+		
+		
+		if (this instanceof MainJFrame && UserDataProvider.getInstance() instanceof DataProvider)
+		{
+			isRTTIUsed = true;
+		}
 		
 	}
 	
