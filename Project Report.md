@@ -8,7 +8,7 @@
 
 ##Description##
 This is my exam project for the programming course of summer 2016. This application is a basic RSS news feed readers. The user can
-read, edit and write *news* and can keep them organized in *news channel*. The user can also import a new RSS feed from a file and can
+read, edit and write `News` and can keep them organized in `News Channel`. The user can also import a new RSS feed from a file and can
 export the existing news channel to an HTML or an RTF file. Each user has a list of roles, which defines what he/she can or cannot do. The first
 user that registers itself in the application obtains automatically all the roles, include the one required to modify other users' roles. All the
 following user that register will only be able to read and search the news. The description of the available roles is:
@@ -54,6 +54,11 @@ Exception have been handled in the following situations:
 * `ap2016.gui.frames.MainJFrame`, line 643-648, 751-757, 792-799, 906-921;
 * `ap2016.gui.frames.ManageUserJDialog`, line 172-178;
 * `ap2016.gui.frames.RegisterJFrame`, line 117-124, 209-216, 284-296;
+* `ap2016.gui.panels.NewsListPanel`, line 670-687;
+* `ap2016.gui.io.DataProvider`, line 102-115, 125-136, 144-164;
+* `ap2016.gui.utilities.ValidablePasswordField`, line 85-92;
+* `ap2016.gui.utilities.ValidableTextField`, line 85-92;
+* `tests.ap2016.entities.UserTests`, line 25-31, 52-58;
 
 
 ####XML####
@@ -66,6 +71,9 @@ The only exception to this rule is in the class `ap2016.gui.frames.ExportJDialog
 Generics are extensively used in the application, particularly in the following situations:
 
 * `ap2016.gui.frames.MainJFrame`, line 63-64, 75-79;
+* `ap2016.gui.utilities.ValidablePasswordField`, line 28;
+* `ap2016.gui.utilities.ValidableTextField`, line 28;
+* `ap2016.gui.utilities.ViewEditComponent`, whole class;
 
 Also collections are used, particularly in the following situations:
 
@@ -75,6 +83,14 @@ Also collections are used, particularly in the following situations:
 * `ap2016.gui.frames.LoginJFrame`, line 30, 107-108;
 * `ap2016.gui.frames.MainJFrame`, line 710-807;
 * `ap2016.gui.frames.ManageUserJDialog`, line 51-52, 59, 95-100;
+* `ap2016.gui.panels.NewsListPanel`, line 48, 76-79;
+* `ap2016.gui.utilities.ViewEditComponent`, line 73;
+* `ap2016.gui.utilities.NewsChannelCheckboxListCellRenderer`, line 24, 30, 39, 59;
+* `ap2016.gui.utilities.RoleCheckboxListCellRenderer`, line 38;
+* `tests.ap2016.application.ApplicationUtilitiesTests`, line 52-72, 77-153;
+* `tests.ap2016.entities.NewsChannelTest`, line 26-38, 67-74;
+* `tests.ap2016.io.NewsChannelDataProviderTest`, line 33-94;
+* `tests.ap2016.io.UserDataProviderTest`, line 53-89;
 
 ####Reflection & RTTI####
 RTTI was used in the following class:
@@ -86,13 +102,14 @@ Reflection was used in the following class:
 * `ap2016.gui.frames.MainJFrame`, line 753, 795, 102-1007;
 
 ####I/O & Streams####
-This feature was used in the following classes:
+I/O and streams were used in the following classes:
 
 * * `ap2016.entities.User`, line 74-76, 394-396, 402-410, 438-439;
 * `ap2016.gui.frames.ExportJDialog`, line 262-266, 320-329;
+* `ap2016.io.DataProvider`, line 105, 128, 157-160;
 
 ####Regular expression####
-This advanced programmin technique was used mostly for user input validation. In detail, it has been used in the following classes:
+This advanced programming technique was used mostly for user input validation. In detail, it has been used in the following classes:
 
 * `ap2016.application.ApplicationConstants`, line 21-41;
 * `ap2016.application.ApplicationUtilities`, line 43-61;
