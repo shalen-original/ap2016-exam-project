@@ -62,7 +62,33 @@ public class NewsChannelDataProviderTest
 				fail("data file was not read correctly");
 			}
 			
-			//TODO check news
+			for (int j = 0; j < origin.get(i).getNews().size(); j++)
+			{
+				if (!origin.get(i).getNews().get(j).getTitle().equals(us.get(i).getNews().get(j).getTitle()))
+				{
+					fail("data file was not read correctly");
+				}
+				if (!origin.get(i).getNews().get(j).getAuthor().equals(us.get(i).getNews().get(j).getAuthor()))
+				{
+					fail("data file was not read correctly");
+				}
+				if (!origin.get(i).getNews().get(j).getContent().equals(us.get(i).getNews().get(j).getContent()))
+				{
+					fail("data file was not read correctly");
+				}
+				if (!origin.get(i).getNews().get(j).getDescription().equals(us.get(i).getNews().get(j).getDescription()))
+				{
+					fail("data file was not read correctly");
+				}
+				if (!origin.get(i).getNews().get(j).getLink().equals(us.get(i).getNews().get(j).getLink()))
+				{
+					fail("data file was not read correctly");
+				}
+				if (!origin.get(i).getNews().get(j).getPubblicationDate().equals(us.get(i).getNews().get(j).getPubblicationDate()))
+				{
+					fail("data file was not read correctly");
+				}
+			}
 		}
 	}
 	
