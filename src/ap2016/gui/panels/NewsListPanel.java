@@ -227,6 +227,7 @@ public class NewsListPanel extends JPanel
 		panel_1.add(verticalStrut_1);
 
 		panel_2 = new JPanel();
+		panel_2.setMaximumSize(new Dimension(32767, 40));
 		panel_1.add(panel_2);
 		panel_2.setLayout(new BoxLayout(panel_2, BoxLayout.X_AXIS));
 
