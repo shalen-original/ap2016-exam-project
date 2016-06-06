@@ -79,6 +79,8 @@ public class NewsListPanel extends JPanel
 	private ViewEditComponent<JLabel, JTextArea> vecContent;
 	private JPanel pnlLink;
 	private ValidableTextField vtfLinkEdit;
+	private JPanel pnlDescription;
+	private JTextField txtDescriptionEdit;
 
 	/**
 	 * Constructor used by the GUI designer.
@@ -88,8 +90,6 @@ public class NewsListPanel extends JPanel
 		JPanel panel_1;
 		Component verticalStrut_1;
 		JPanel panel_2;
-		Component horizontalGlue_1;
-		Component horizontalGlue_2;
 		Component verticalStrut_2;
 		JPanel panel_3;
 		Component horizontalStrut_2;
@@ -230,19 +230,19 @@ public class NewsListPanel extends JPanel
 		panel_1.add(panel_2);
 		panel_2.setLayout(new BoxLayout(panel_2, BoxLayout.X_AXIS));
 
-		horizontalGlue_1 = Box.createHorizontalGlue();
-		panel_2.add(horizontalGlue_1);
-
 		JLabel lblTitle = new JLabel("Title");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		
+		Component horizontalStrut_32 = Box.createHorizontalStrut(20);
+		panel_2.add(horizontalStrut_32);
 		this.vecTitle = new ViewEditComponent<JLabel, ValidableTextField>(lblTitle,
 				new ValidableTextField(s -> !s.isEmpty()));
 		this.vecTitle.setMaximumSize(new Dimension(2147483647, 40));
 		panel_2.add(this.vecTitle);
-
-		horizontalGlue_2 = Box.createHorizontalGlue();
-		panel_2.add(horizontalGlue_2);
+		
+		Component horizontalStrut_33 = Box.createHorizontalStrut(20);
+		panel_2.add(horizontalStrut_33);
 
 		verticalStrut_2 = Box.createVerticalStrut(10);
 		verticalStrut_2.setMaximumSize(new Dimension(0, 10));
@@ -315,6 +315,34 @@ public class NewsListPanel extends JPanel
 		Component verticalStrut_14 = Box.createVerticalStrut(10);
 		panel_1.add(verticalStrut_14);
 		
+		pnlDescription = new JPanel();
+		pnlDescription.setVisible(false);
+		panel_1.add(pnlDescription);
+		pnlDescription.setLayout(new BoxLayout(pnlDescription, BoxLayout.Y_AXIS));
+		
+		JPanel panel_19 = new JPanel();
+		pnlDescription.add(panel_19);
+		panel_19.setLayout(new BoxLayout(panel_19, BoxLayout.X_AXIS));
+		
+		Component horizontalStrut_27 = Box.createHorizontalStrut(20);
+		panel_19.add(horizontalStrut_27);
+		
+		JLabel lblDescription_1 = new JLabel("Description:");
+		panel_19.add(lblDescription_1);
+		
+		Component horizontalStrut_30 = Box.createHorizontalStrut(20);
+		panel_19.add(horizontalStrut_30);
+		
+		txtDescriptionEdit = new JTextField();
+		txtDescriptionEdit.setMaximumSize(new Dimension(2147483647, 30));
+		panel_19.add(txtDescriptionEdit);
+		txtDescriptionEdit.setColumns(10);
+		
+		Component horizontalStrut_31 = Box.createHorizontalStrut(20);
+		panel_19.add(horizontalStrut_31);
+		
+		Component verticalStrut_15 = Box.createVerticalStrut(10);
+		pnlDescription.add(verticalStrut_15);
 
 		panel_4 = new JPanel();
 		panel_1.add(panel_4);
@@ -674,7 +702,9 @@ public class NewsListPanel extends JPanel
 			this.vecContent.setEditState();
 			
 			this.vtfLinkEdit.setText(currentNews.getLink());
+			this.txtDescriptionEdit.setText(currentNews.getDescription());
 			this.pnlLink.setVisible(true);
+			pnlDescription.setVisible(true);
 		} else
 		{
 			this.btnEdit.setText("Edit");
@@ -686,7 +716,9 @@ public class NewsListPanel extends JPanel
 			this.vecContent.setViewState();
 
 			this.vtfLinkEdit.setText("");
+			this.txtDescriptionEdit.setText("");
 			this.pnlLink.setVisible(false);
+			pnlDescription.setVisible(false);
 			
 			onNewsExtractClick(this.currentNews);
 
@@ -773,14 +805,17 @@ public class NewsListPanel extends JPanel
 			this.vecContent.setViewState();
 
 			this.pnlLink.setVisible(false);
+			pnlDescription.setVisible(false);
 			
 			this.currentNews.setTitle(this.vecTitle.getViewComponent().getText());
 			this.currentNews.setAuthor(this.vecAuthor.getViewComponent().getText());
 			this.currentNews.setPubblicationDate(this.vecPubDate.getViewComponent().getText());
 			this.currentNews.setContent(this.vecContent.getViewComponent().getText());
 			this.currentNews.setLink(vtfLinkEdit.getText());
+			this.currentNews.setDescription(txtDescriptionEdit.getText());
 			
 			this.vtfLinkEdit.setText("");
+			this.txtDescriptionEdit.setText("");
 
 		}
 	}
