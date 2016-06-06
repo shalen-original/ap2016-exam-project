@@ -372,7 +372,7 @@ public class NewsListPanel extends JPanel
 		this.pnlNewsDetail.add(panel_5);
 		panel_5.setLayout(new BoxLayout(panel_5, BoxLayout.X_AXIS));
 
-		this.btnBack = new JButton("ï¿½ Back to the news list");
+		this.btnBack = new JButton("« Back to the news list");
 		this.btnBack.setPreferredSize(new Dimension(200, 30));
 		this.btnBack.setMinimumSize(new Dimension(200, 30));
 		this.btnBack.setMaximumSize(new Dimension(200, 30));
