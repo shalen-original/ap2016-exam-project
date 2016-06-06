@@ -97,12 +97,12 @@ public class RegisterJFrame extends JFrame
 
 		this.btnRegisterAndLogin = new JButton("Register and login");
 		this.btnRegisterAndLogin.addActionListener(e -> btnRegisterAndLogin_Click());
-		this.btnRegisterAndLogin.setBounds(278, 237, 160, 28);
+		this.btnRegisterAndLogin.setBounds(272, 237, 180, 28);
 		panel.add(this.btnRegisterAndLogin);
 
 		this.btnAbort = new JButton("Abort");
 		this.btnAbort.addActionListener(e -> btnAbort_Click());
-		this.btnAbort.setBounds(59, 237, 160, 28);
+		this.btnAbort.setBounds(46, 237, 180, 28);
 		panel.add(this.btnAbort);
 
 		this.btnSelectImage = new JButton("Choose avatar");

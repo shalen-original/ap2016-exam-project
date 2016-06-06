@@ -277,7 +277,7 @@ public class NewsListPanel extends JPanel
 		this.vecPubDate = new ViewEditComponent<JLabel, ValidableTextField>(new JLabel("PUBLICATION DATE"),
 				new ValidableTextField(s -> !s.isEmpty()));
 		this.vecPubDate.setMaximumSize(new Dimension(700, 2147483647));
-		this.vecPubDate.setMinimumSize(new Dimension(0, 16));
+		this.vecPubDate.setMinimumSize(new Dimension(100, 16));
 		panel_3.add(this.vecPubDate);
 
 		horizontalStrut_5 = Box.createHorizontalStrut(20);
@@ -317,9 +317,9 @@ public class NewsListPanel extends JPanel
 		panel_5.setLayout(new BoxLayout(panel_5, BoxLayout.X_AXIS));
 
 		this.btnBack = new JButton("« Back to the news list");
-		this.btnBack.setPreferredSize(new Dimension(190, 30));
-		this.btnBack.setMinimumSize(new Dimension(190, 30));
-		this.btnBack.setMaximumSize(new Dimension(190, 30));
+		this.btnBack.setPreferredSize(new Dimension(200, 30));
+		this.btnBack.setMinimumSize(new Dimension(200, 30));
+		this.btnBack.setMaximumSize(new Dimension(200, 30));
 		panel_5.add(this.btnBack);
 
 		horizontalGlue_6 = Box.createHorizontalGlue();
@@ -772,11 +772,14 @@ public class NewsListPanel extends JPanel
 		n.setContent(this.taContent.getText());
 		n.setLink(this.vtfLink.getText());
 		n.setDescription(this.taDescription.getText());
+		n.setPubblicationDate(this.vtfPubDate.getText());
 
 		this.currentNewsChannel.getNews().add(n);
 
 		this.listeners.get("onDataAdded").accept(1);
 
+		updatePermissions();
+		
 		this.pnlAddNews.setVisible(false);
 		this.pnlNewsList.setVisible(true);
 
