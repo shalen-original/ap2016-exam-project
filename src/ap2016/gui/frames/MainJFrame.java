@@ -96,7 +96,7 @@ public class MainJFrame extends JFrame
 				UserDataProvider.getInstance().saveDataToFile();
 			}
 		});
-		setSize(new Dimension(1100, 649));
+		setSize(new Dimension(1200, 649));
 		setPreferredSize(new Dimension(1000, 649));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("NewsFeed");
@@ -886,6 +886,8 @@ public class MainJFrame extends JFrame
 	 */
 	private void btnExit_Click()
 	{
+		NewsChannelDataProvider.getInstance().saveDataToFile();
+		UserDataProvider.getInstance().saveDataToFile();
 		setVisible(false);
 		dispose();
 	}
