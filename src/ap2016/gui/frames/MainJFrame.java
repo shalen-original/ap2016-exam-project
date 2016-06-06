@@ -539,11 +539,11 @@ public class MainJFrame extends JFrame
 		panel_13.add(horizontalStrut_23);
 
 		this.vecChannelTitle = new ViewEditComponent<>(new JLabel(), new ValidableTextField());
-		vecChannelTitle.getViewComponent().setMinimumSize(new Dimension(150, 0));
-		vecChannelTitle.getViewComponent().setPreferredSize(new Dimension(150, 0));
-		vecChannelTitle.getViewComponent().setMaximumSize(new Dimension(150, 0));
-		vecChannelTitle.setPreferredSize(new Dimension(300, 0));
-		vecChannelTitle.setMaximumSize(new Dimension(300, 2147483647));
+		this.vecChannelTitle.getViewComponent().setMinimumSize(new Dimension(150, 0));
+		this.vecChannelTitle.getViewComponent().setPreferredSize(new Dimension(150, 0));
+		this.vecChannelTitle.getViewComponent().setMaximumSize(new Dimension(150, 0));
+		this.vecChannelTitle.setPreferredSize(new Dimension(300, 0));
+		this.vecChannelTitle.setMaximumSize(new Dimension(300, 2147483647));
 		panel_13.add(this.vecChannelTitle);
 
 		Component horizontalStrut_24 = Box.createHorizontalStrut(20);
@@ -558,9 +558,9 @@ public class MainJFrame extends JFrame
 		panel_13.add(horizontalStrut_25);
 
 		this.vecChannelLink = new ViewEditComponent<>(new JLabel(), new ValidableTextField());
-		vecChannelLink.getViewComponent().setMinimumSize(new Dimension(150, 0));
-		vecChannelLink.getViewComponent().setMaximumSize(new Dimension(150, 0));
-		vecChannelLink.getViewComponent().setPreferredSize(new Dimension(150, 0));
+		this.vecChannelLink.getViewComponent().setMinimumSize(new Dimension(150, 0));
+		this.vecChannelLink.getViewComponent().setMaximumSize(new Dimension(150, 0));
+		this.vecChannelLink.getViewComponent().setPreferredSize(new Dimension(150, 0));
 		panel_13.add(this.vecChannelLink);
 
 		Component horizontalStrut_26 = Box.createHorizontalStrut(20);
@@ -575,9 +575,9 @@ public class MainJFrame extends JFrame
 		panel_13.add(horizontalStrut_27);
 
 		this.vecChannelLanguage = new ViewEditComponent<>(new JLabel(), new ValidableTextField());
-		vecChannelLanguage.getViewComponent().setMinimumSize(new Dimension(40, 0));
-		vecChannelLanguage.getViewComponent().setMaximumSize(new Dimension(40, 0));
-		vecChannelLanguage.getViewComponent().setPreferredSize(new Dimension(40, 0));
+		this.vecChannelLanguage.getViewComponent().setMinimumSize(new Dimension(40, 0));
+		this.vecChannelLanguage.getViewComponent().setMaximumSize(new Dimension(40, 0));
+		this.vecChannelLanguage.getViewComponent().setPreferredSize(new Dimension(40, 0));
 		panel_13.add(this.vecChannelLanguage);
 
 		Component horizontalGlue_1 = Box.createHorizontalGlue();
@@ -819,7 +819,7 @@ public class MainJFrame extends JFrame
 		ans.append(" test methods.\n");
 
 		ans.append("\t => ");
-		ans.append(3842);
+		ans.append(3914);
 		ans.append(" lines of normal code.\n");
 
 		ans.append("\t => ");

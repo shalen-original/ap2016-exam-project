@@ -233,14 +233,14 @@ public class NewsListPanel extends JPanel
 		JLabel lblTitle = new JLabel("Title");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		
+
 		Component horizontalStrut_32 = Box.createHorizontalStrut(20);
 		panel_2.add(horizontalStrut_32);
 		this.vecTitle = new ViewEditComponent<JLabel, ValidableTextField>(lblTitle,
 				new ValidableTextField(s -> !s.isEmpty()));
 		this.vecTitle.setMaximumSize(new Dimension(2147483647, 40));
 		panel_2.add(this.vecTitle);
-		
+
 		Component horizontalStrut_33 = Box.createHorizontalStrut(20);
 		panel_2.add(horizontalStrut_33);
 
@@ -289,60 +289,60 @@ public class NewsListPanel extends JPanel
 		verticalStrut_3 = Box.createVerticalStrut(10);
 		verticalStrut_3.setMaximumSize(new Dimension(0, 20));
 		panel_1.add(verticalStrut_3);
-		
-		pnlLink = new JPanel();
-		pnlLink.setVisible(false);
-		panel_1.add(pnlLink);
-		pnlLink.setLayout(new BoxLayout(pnlLink, BoxLayout.X_AXIS));
-		
+
+		this.pnlLink = new JPanel();
+		this.pnlLink.setVisible(false);
+		panel_1.add(this.pnlLink);
+		this.pnlLink.setLayout(new BoxLayout(this.pnlLink, BoxLayout.X_AXIS));
+
 		Component horizontalStrut_24 = Box.createHorizontalStrut(20);
-		pnlLink.add(horizontalStrut_24);
-		
+		this.pnlLink.add(horizontalStrut_24);
+
 		JLabel lblLink_1 = new JLabel("Link:");
-		pnlLink.add(lblLink_1);
-		
+		this.pnlLink.add(lblLink_1);
+
 		Component horizontalStrut_25 = Box.createHorizontalStrut(3);
-		pnlLink.add(horizontalStrut_25);
-		
-		vtfLinkEdit = new ValidableTextField();
-		vtfLinkEdit.updateValidationTest(ApplicationUtilities::isValidURL);
-		vtfLinkEdit.setMaximumSize(new Dimension(2147483647, 30));
-		pnlLink.add(vtfLinkEdit);
-		
+		this.pnlLink.add(horizontalStrut_25);
+
+		this.vtfLinkEdit = new ValidableTextField();
+		this.vtfLinkEdit.updateValidationTest(ApplicationUtilities::isValidURL);
+		this.vtfLinkEdit.setMaximumSize(new Dimension(2147483647, 30));
+		this.pnlLink.add(this.vtfLinkEdit);
+
 		Component horizontalStrut_26 = Box.createHorizontalStrut(20);
-		pnlLink.add(horizontalStrut_26);
-		
+		this.pnlLink.add(horizontalStrut_26);
+
 		Component verticalStrut_14 = Box.createVerticalStrut(10);
 		panel_1.add(verticalStrut_14);
-		
-		pnlDescription = new JPanel();
-		pnlDescription.setVisible(false);
-		panel_1.add(pnlDescription);
-		pnlDescription.setLayout(new BoxLayout(pnlDescription, BoxLayout.Y_AXIS));
-		
+
+		this.pnlDescription = new JPanel();
+		this.pnlDescription.setVisible(false);
+		panel_1.add(this.pnlDescription);
+		this.pnlDescription.setLayout(new BoxLayout(this.pnlDescription, BoxLayout.Y_AXIS));
+
 		JPanel panel_19 = new JPanel();
-		pnlDescription.add(panel_19);
+		this.pnlDescription.add(panel_19);
 		panel_19.setLayout(new BoxLayout(panel_19, BoxLayout.X_AXIS));
-		
+
 		Component horizontalStrut_27 = Box.createHorizontalStrut(20);
 		panel_19.add(horizontalStrut_27);
-		
+
 		JLabel lblDescription_1 = new JLabel("Description:");
 		panel_19.add(lblDescription_1);
-		
+
 		Component horizontalStrut_30 = Box.createHorizontalStrut(20);
 		panel_19.add(horizontalStrut_30);
-		
-		txtDescriptionEdit = new JTextField();
-		txtDescriptionEdit.setMaximumSize(new Dimension(2147483647, 30));
-		panel_19.add(txtDescriptionEdit);
-		txtDescriptionEdit.setColumns(10);
-		
+
+		this.txtDescriptionEdit = new JTextField();
+		this.txtDescriptionEdit.setMaximumSize(new Dimension(2147483647, 30));
+		panel_19.add(this.txtDescriptionEdit);
+		this.txtDescriptionEdit.setColumns(10);
+
 		Component horizontalStrut_31 = Box.createHorizontalStrut(20);
 		panel_19.add(horizontalStrut_31);
-		
+
 		Component verticalStrut_15 = Box.createVerticalStrut(10);
-		pnlDescription.add(verticalStrut_15);
+		this.pnlDescription.add(verticalStrut_15);
 
 		panel_4 = new JPanel();
 		panel_1.add(panel_4);
@@ -372,7 +372,7 @@ public class NewsListPanel extends JPanel
 		this.pnlNewsDetail.add(panel_5);
 		panel_5.setLayout(new BoxLayout(panel_5, BoxLayout.X_AXIS));
 
-		this.btnBack = new JButton("� Back to the news list");		
+		this.btnBack = new JButton("� Back to the news list");
 		this.btnBack.setPreferredSize(new Dimension(200, 30));
 		this.btnBack.setMinimumSize(new Dimension(200, 30));
 		this.btnBack.setMaximumSize(new Dimension(200, 30));
@@ -398,17 +398,17 @@ public class NewsListPanel extends JPanel
 		this.btnRemove.setPreferredSize(new Dimension(100, 30));
 		this.btnRemove.addActionListener((e) -> btnRemove_Click());
 		panel_5.add(this.btnRemove);
-		
-				this.btnEdit = new JButton("Edit");
-				this.btnEdit.setPreferredSize(new Dimension(100, 30));
-				this.btnEdit.setMinimumSize(new Dimension(100, 30));
-				this.btnEdit.setMaximumSize(new Dimension(100, 30));
-				this.btnEdit.addActionListener(e -> btnEdit_Click());
-				
-						horizontalStrut_6 = Box.createHorizontalStrut(10);
-						horizontalStrut_6.setMaximumSize(new Dimension(20, 0));
-						panel_5.add(horizontalStrut_6);
-				panel_5.add(this.btnEdit);
+
+		this.btnEdit = new JButton("Edit");
+		this.btnEdit.setPreferredSize(new Dimension(100, 30));
+		this.btnEdit.setMinimumSize(new Dimension(100, 30));
+		this.btnEdit.setMaximumSize(new Dimension(100, 30));
+		this.btnEdit.addActionListener(e -> btnEdit_Click());
+
+		horizontalStrut_6 = Box.createHorizontalStrut(10);
+		horizontalStrut_6.setMaximumSize(new Dimension(20, 0));
+		panel_5.add(horizontalStrut_6);
+		panel_5.add(this.btnEdit);
 
 		horizontalStrut_7 = Box.createHorizontalStrut(10);
 		horizontalStrut_7.setMaximumSize(new Dimension(20, 0));
@@ -700,11 +700,11 @@ public class NewsListPanel extends JPanel
 			this.vecAuthor.setEditState();
 			this.vecPubDate.setEditState();
 			this.vecContent.setEditState();
-			
-			this.vtfLinkEdit.setText(currentNews.getLink());
-			this.txtDescriptionEdit.setText(currentNews.getDescription());
+
+			this.vtfLinkEdit.setText(this.currentNews.getLink());
+			this.txtDescriptionEdit.setText(this.currentNews.getDescription());
 			this.pnlLink.setVisible(true);
-			pnlDescription.setVisible(true);
+			this.pnlDescription.setVisible(true);
 		} else
 		{
 			this.btnEdit.setText("Edit");
@@ -718,8 +718,8 @@ public class NewsListPanel extends JPanel
 			this.vtfLinkEdit.setText("");
 			this.txtDescriptionEdit.setText("");
 			this.pnlLink.setVisible(false);
-			pnlDescription.setVisible(false);
-			
+			this.pnlDescription.setVisible(false);
+
 			onNewsExtractClick(this.currentNews);
 
 		}
@@ -789,7 +789,7 @@ public class NewsListPanel extends JPanel
 				JOptionPane.showMessageDialog(this, "The pubblication date should not be empty");
 				return;
 			}
-			
+
 			if (!this.vtfLinkEdit.isValid())
 			{
 				JOptionPane.showMessageDialog(this, "The link is not valid");
@@ -805,15 +805,15 @@ public class NewsListPanel extends JPanel
 			this.vecContent.setViewState();
 
 			this.pnlLink.setVisible(false);
-			pnlDescription.setVisible(false);
-			
+			this.pnlDescription.setVisible(false);
+
 			this.currentNews.setTitle(this.vecTitle.getViewComponent().getText());
 			this.currentNews.setAuthor(this.vecAuthor.getViewComponent().getText());
 			this.currentNews.setPubblicationDate(this.vecPubDate.getViewComponent().getText());
 			this.currentNews.setContent(this.vecContent.getViewComponent().getText());
-			this.currentNews.setLink(vtfLinkEdit.getText());
-			this.currentNews.setDescription(txtDescriptionEdit.getText());
-			
+			this.currentNews.setLink(this.vtfLinkEdit.getText());
+			this.currentNews.setDescription(this.txtDescriptionEdit.getText());
+
 			this.vtfLinkEdit.setText("");
 			this.txtDescriptionEdit.setText("");
 
@@ -859,7 +859,7 @@ public class NewsListPanel extends JPanel
 		this.listeners.get("onDataAdded").accept(1);
 
 		updatePermissions();
-		
+
 		this.pnlAddNews.setVisible(false);
 		this.pnlNewsList.setVisible(true);
 
