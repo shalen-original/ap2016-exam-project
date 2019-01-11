@@ -1,11 +1,11 @@
-#Advanced Programming 2016 exam#
+# Advanced Programming 2016 exam
 
-##Code repository for the exam project##
+## Code repository for the exam project
 
 This repository contains the code for the 2016 advanced programming exam project.
 The requirements for this project can be found in the `project-description.pdf` file.
 
-##Package description##
+## Package description
 
 The project includes the following source packages:
 
@@ -27,7 +27,7 @@ The project includes the following source packages:
  The `tests` folder contains all the tests created for this application. The structure of the `tests` folder mirrors the one of the
  `src` folder.
 
-##How to setup the enviroment##
+## How to setup the enviroment
 
 The following steps are required:
 
@@ -35,6 +35,6 @@ The following steps are required:
 * Import the folder as an Eclipse project;
 * You're good to go.
 
-##Copyright##
+## Copyright
 
 All the resources on this repository are owned by Matteo Nardini. All rights reserved, (C) 2016.
