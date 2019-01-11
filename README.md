@@ -1,7 +1,7 @@
 #Advanced Programming 2016 exam#
 ##Code repository for the exam project##
 This repository contains the code for the 2016 advanced programming exam project.
-The requirements for this project can be found [here](https://ole.unibz.it/pluginfile.php/17781/mod_resource/content/1/AP-Exam-Projects-Selected-June-2016.pdf).
+The requirements for this project can be found in the `project-description.pdf` file.
 
 ##Package description##
 The project includes the following source packages:
@@ -32,4 +32,4 @@ The following steps are required:
 * You're good to go.
 
 ##Copyright##
-All the resources on this repository are owned by Matteo Nardini. All rights reserved © 2016.
+All the resources on this repository are owned by Matteo Nardini. All rights reserved, (C) 2016.
